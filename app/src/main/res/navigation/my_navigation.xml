@@ -6,7 +6,7 @@
         app:startDestination="@id/home2">
     <fragment
             android:id="@+id/home2"
-            android:name="fu.prm391.sampl.project.home"
+            android:name="fu.prm391.sampl.project.Home"
             android:label="fragment_home"
             tools:layout="@layout/fragment_home" />
     <fragment
@@ -21,7 +21,7 @@
             tools:layout="@layout/fragment_cart" />
     <fragment
             android:id="@+id/setting"
-            android:name="fu.prm391.sampl.project.setting"
+            android:name="fu.prm391.sampl.project.Setting"
             android:label="fragment_setting"
             tools:layout="@layout/fragment_setting" />
 </navigation>

@@ -5,7 +5,16 @@
             android:id="@+id/home2"
             android:title="Home"
             android:icon="@drawable/icon_home" />
-    <item android:title="Cart" />
-    <item android:title="Account" />
-    <item android:title="Setting" />
+    <item
+            android:id="@+id/cart"
+            android:title="Cart"
+            android:icon="@drawable/icon_cart" />
+    <item
+            android:id="@+id/account"
+            android:title="Account"
+            android:icon="@drawable/icon_person" />
+    <item
+            android:id="@+id/setting"
+            android:title="Setting"
+            android:icon="@drawable/icon_setting" />
 </menu>
