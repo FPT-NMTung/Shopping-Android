@@ -12,11 +12,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:cardElevation="15dp" >
+            app:cardElevation="15dp"
+            android:id="@+id/cardView2">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/project_header_gray">
 
             <TextView
                     android:text="Account"
@@ -33,4 +35,5 @@
                     android:textStyle="bold" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

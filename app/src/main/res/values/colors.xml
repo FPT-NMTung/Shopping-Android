@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="project_orange">#FF8E3C</color>
+    <color name="project_body_gray">#DEDFE3</color>
+    <color name="project_header_gray">#EFF0F3</color>
 </resources>
