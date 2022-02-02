@@ -14,10 +14,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.activity_login);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        NavController navController = Navigation.findNavController(this,  R.id.fragmentContainerView);
-        NavigationUI.setupWithNavController(bottomNavigationView, navController);
+
+//        setContentView(R.layout.main);
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+//        NavController navController = Navigation.findNavController(this,  R.id.fragmentContainerView);
+//        NavigationUI.setupWithNavController(bottomNavigationView, navController);
     }
 }
