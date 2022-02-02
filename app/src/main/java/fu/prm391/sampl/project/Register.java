@@ -7,19 +7,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class Login extends AppCompatActivity {
+public class Register extends AppCompatActivity {
 
-    private TextView txtCreateAccount;
+    private TextView txtHaveAnAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        txtCreateAccount = findViewById(R.id.txtCreateAccount);
-        txtCreateAccount.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_register);
+        txtHaveAnAccount = findViewById(R.id.txtHaveAnAccount);
+        txtHaveAnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Login.this, Register.class);
+                Intent intent = new Intent(Register.this, Login.class);
                 startActivity(intent);
             }
         });
