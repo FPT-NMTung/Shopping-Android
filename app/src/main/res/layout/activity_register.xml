@@ -71,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtEmailRegister">
 
         <EditText
-            android:id="@+id/editTextTextEmailRegister"
+            android:id="@+id/editTextEmailRegister"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
@@ -186,7 +186,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnRegister"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginStart="20dp"
