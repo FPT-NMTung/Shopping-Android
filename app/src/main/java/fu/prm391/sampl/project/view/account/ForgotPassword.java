@@ -1,4 +1,4 @@
-package fu.prm391.sampl.project;
+package fu.prm391.sampl.project.view.account;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import fu.prm391.sampl.project.R;
 
 public class ForgotPassword extends AppCompatActivity {
 
@@ -34,6 +36,7 @@ public class ForgotPassword extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Send forgot pass action
+                
             }
         });
     }
