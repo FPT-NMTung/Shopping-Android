@@ -36,6 +36,7 @@ public class ForgotPassword extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Send forgot pass action
+
                 
             }
         });
