@@ -1,4 +1,4 @@
-package fu.prm391.sampl.project.view;
+package fu.prm391.sampl.project.view.fragment;
 
 import android.os.Bundle;
 

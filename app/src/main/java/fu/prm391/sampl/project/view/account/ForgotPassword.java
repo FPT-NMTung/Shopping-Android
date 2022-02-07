@@ -25,8 +25,7 @@ public class ForgotPassword extends AppCompatActivity {
         txtRememberedPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ForgotPassword.this, Login.class);
-                startActivity(intent);
+                finish();
             }
         });
 
@@ -37,7 +36,7 @@ public class ForgotPassword extends AppCompatActivity {
             public void onClick(View view) {
                 // Send forgot pass action
 
-                
+
             }
         });
     }

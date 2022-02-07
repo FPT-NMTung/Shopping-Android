@@ -49,8 +49,7 @@ public class Register extends AppCompatActivity {
         txtHaveAnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Register.this, Login.class);
-                startActivity(intent);
+                finish();
             }
         });
         // MainActivity
@@ -58,8 +57,7 @@ public class Register extends AppCompatActivity {
         txtSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Register.this, MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
     }
