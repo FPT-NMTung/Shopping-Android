@@ -3,4 +3,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="intro1">intro1</string>
+    <string name="continuebutton">Continue</string>
+    <string name="intro1screentext">Jumbo Brand</string>
+
+    <string name="use_filler_">
+
+Use filler text that has been edited for length an format to match on a the characteristics of real content as closely as possible.
+</string>
+    <string name="intro2Des">intro2</string>
+    <string name="relaxing_fu">Relaxing Furnitures
+</string>
 </resources>

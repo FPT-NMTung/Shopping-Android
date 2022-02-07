@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project">
-        <activity android:name=".view.intro.Intro1"
+        <activity
+            android:name=".view.intro.Intro3"
+            android:exported="false" />
+        <activity
+            android:name=".view.intro.Intro2"
+            android:exported="false" />
+        <activity
+            android:name=".view.intro.Intro1"
             android:exported="false" />
         <activity
             android:name=".view.account.ForgotPassword"
