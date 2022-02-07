@@ -23,7 +23,7 @@ public class Intro1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro1);
         btnContinue = findViewById(R.id.btnContinue);
-        txtSkip = findViewById(R.id.txtSkipintro1);
+//        txtSkip = findViewById(R.id.txtSkipintro1);
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,14 +31,14 @@ public class Intro1 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        txtSkip.setOnClickListener(new View.OnClickListener() {
-            @Override
-
-            public void onClick(View view) {
-                Intent intent = new Intent(Intro1.this, Login.class);
-                startActivity(intent);
-            }
-
-        });
+//        txtSkip.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//
+//            public void onClick(View view) {
+//                Intent intent = new Intent(Intro1.this, Login.class);
+//                startActivity(intent);
+//            }
+//
+//        });
     }
 }

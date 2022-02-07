@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, Intro1.class));
         }
 
-//        getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
-//                .putBoolean("isFirstRun", false).commit();
+        getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                .putBoolean("isFirstRun", false).commit();
     }
 }

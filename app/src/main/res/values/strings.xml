@@ -13,4 +13,10 @@ Use filler text that has been edited for length an format to match on a the char
     <string name="intro2Des">intro2</string>
     <string name="relaxing_fu">Relaxing Furnitures
 </string>
+    <string name="home_furnit">Home Furnitures</string>
+    <string name="design_is_a">
+
+Design is an evolutionary process, and filler text is just one tool in your progress-pushing arsenal.
+</string>
+
 </resources>
