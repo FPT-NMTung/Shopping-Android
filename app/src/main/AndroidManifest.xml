@@ -11,7 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project">
-        <activity android:name=".view.intro.Intro1"
+
+        <activity
+            android:name=".view.intro.Intro3"
+            android:exported="false" />
+        <activity
+            android:name=".view.intro.Intro2"
+            android:exported="false" />
+        <activity
+            android:name=".view.intro.Intro1"
             android:exported="false" />
         <activity
             android:name=".view.account.ForgotPassword"
@@ -22,8 +30,14 @@
         <activity
             android:name=".view.account.Login"
             android:exported="false" />
+
         <activity
             android:name=".view.MainActivity"
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name=".view.intro.IntroApp"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,6 +45,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
         <meta-data
             android:name="preloaded_fonts"
