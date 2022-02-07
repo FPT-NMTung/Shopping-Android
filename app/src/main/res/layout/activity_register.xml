@@ -7,18 +7,6 @@
     tools:context=".view.account.Register">
 
     <TextView
-        android:id="@+id/txtSkipRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="Skip"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/txtLabel1Register"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -106,19 +94,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardPassRegister" />
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="Mobile Number*"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardRePassRegister" />
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardPassRegister"
         android:layout_width="0dp"
@@ -163,41 +138,19 @@
             tools:ignore="SpeakableTextPresentCheck" />
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardPhoneRegister"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        app:cardCornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12">
-
-        <EditText
-            android:id="@+id/editTextPhoneRegister"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:ems="10"
-            android:inputType="phone"
-            tools:ignore="SpeakableTextPresentCheck" />
-    </androidx.cardview.widget.CardView>
-
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
         android:text="Register"
         android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardPhoneRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/cardRePassRegister" />
 
     <TextView
         android:id="@+id/txtHaveAnAccount"

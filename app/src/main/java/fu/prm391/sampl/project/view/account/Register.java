@@ -15,7 +15,6 @@ import fu.prm391.sampl.project.view.MainActivity;
 public class Register extends AppCompatActivity {
 
     private TextView txtHaveAnAccount;
-    private TextView txtSkip;
     private EditText email;
     private EditText password;
     private EditText rePassword;
@@ -33,7 +32,6 @@ public class Register extends AppCompatActivity {
         email = findViewById(R.id.editTextEmailRegister);
         password = findViewById(R.id.editTextPassRegister);
         rePassword = findViewById(R.id.editTextRePassRegister);
-        phone = findViewById(R.id.editTextPhoneRegister);
         btnRegister = findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,14 +45,6 @@ public class Register extends AppCompatActivity {
         // Login
         txtHaveAnAccount = findViewById(R.id.txtHaveAnAccount);
         txtHaveAnAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-        // MainActivity
-        txtSkip = findViewById(R.id.txtSkipRegister);
-        txtSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
