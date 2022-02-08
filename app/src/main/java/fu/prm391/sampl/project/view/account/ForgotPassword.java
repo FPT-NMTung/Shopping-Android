@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import fu.prm391.sampl.project.R;
+import fu.prm391.sampl.project.view.intro.Intro2;
+import fu.prm391.sampl.project.view.intro.Intro3;
 
 public class ForgotPassword extends AppCompatActivity {
 
@@ -35,8 +37,11 @@ public class ForgotPassword extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Send forgot pass action
+                //Khong biet gi het
 
 
+                Intent intent = new Intent(ForgotPassword.this, VerificationEmailCode.class);
+                startActivity(intent);
             }
         });
     }

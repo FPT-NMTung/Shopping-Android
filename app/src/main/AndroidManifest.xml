@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fu.prm391.sampl.project">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project">
-
+        <activity
+            android:name=".view.account.VerificationEmailCode"
+            android:exported="false" />
         <activity
             android:name=".view.intro.Intro3"
             android:exported="false" />
@@ -30,12 +32,9 @@
         <activity
             android:name=".view.account.Login"
             android:exported="false" />
-
         <activity
             android:name=".view.MainActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".view.intro.IntroApp"
             android:exported="true">
@@ -45,7 +44,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
 
         <meta-data
             android:name="preloaded_fonts"

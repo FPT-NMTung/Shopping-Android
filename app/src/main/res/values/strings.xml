@@ -18,5 +18,19 @@ Use filler text that has been edited for length an format to match on a the char
 
 Design is an evolutionary process, and filler text is just one tool in your progress-pushing arsenal.
 </string>
+    <!-- strings.xml -->
+    <string name="verifyemail">
+
+Verifycation Code
+</string>
+    <string name="please_enter">
+
+Please Enter digit code that you received on your EMail Address.
+</string>
+
+    <string name="labelverifycode">
+
+Verify Code*
+</string>
 
 </resources>
