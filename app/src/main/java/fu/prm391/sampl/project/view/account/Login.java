@@ -23,11 +23,8 @@ import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
 
-    private TextView txtCreateAccount;
-    private TextView txtForgotPassword;
-    private TextView txtSkip;
-    private EditText email;
-    private EditText password;
+    private TextView txtCreateAccount, txtForgotPassword, txtSkip;
+    private EditText email, password;
     private Button btnLogin;
 
     @Override

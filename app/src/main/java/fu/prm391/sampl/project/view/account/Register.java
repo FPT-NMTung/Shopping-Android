@@ -24,10 +24,8 @@ import retrofit2.Response;
 
 public class Register extends AppCompatActivity {
 
-    private TextView txtHaveAnAccount;
-    private EditText email;
-    private EditText password;
-    private EditText rePassword;
+    private TextView txtHaveAnAccount, txtBack;
+    private EditText email, password, rePassword;
     private Button btnRegister;
 
     @Override
@@ -54,7 +52,6 @@ public class Register extends AppCompatActivity {
                     // proceed register
                     register();
                 }
-
             }
         });
     }
@@ -93,6 +90,15 @@ public class Register extends AppCompatActivity {
         // Login
         txtHaveAnAccount = findViewById(R.id.txtHaveAnAccount);
         txtHaveAnAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Register.this, Login.class));
+                finish();
+            }
+        });
+        // way 2
+        txtBack = findViewById(R.id.txtBackRegister);
+        txtBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Register.this, Login.class));

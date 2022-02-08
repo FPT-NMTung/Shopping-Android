@@ -22,22 +22,23 @@ public class Intro1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro1);
+        // continue
         btnContinue = findViewById(R.id.btnContinue);
-//        txtSkip = findViewById(R.id.txtSkipintro1);
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Intro1.this, Intro2.class));
+                finish();
             }
         });
-//        txtSkip.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//
-//            public void onClick(View view) {
-//                Intent intent = new Intent(Intro1.this, Login.class);
-//                startActivity(intent);
-//            }
-//
-//        });
+        // skip
+        txtSkip = findViewById(R.id.txtSkipIntro1);
+        txtSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Intro1.this, Login.class));
+                finish();
+            }
+        });
     }
 }

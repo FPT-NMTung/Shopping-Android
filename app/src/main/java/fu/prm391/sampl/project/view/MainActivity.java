@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
@@ -34,13 +33,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void firstRunActivity() {
-        Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
-                .getBoolean("isFirstRun", true);
+        Boolean isFirstRun = PreferencesHelpers.getBooleanData(MainActivity.this, "isFirstRun", true);
         if (isFirstRun) {
             //show start activity
             startActivity(new Intent(MainActivity.this, Intro1.class));
         }
-        getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
-                .putBoolean("isFirstRun", false).commit();
+        PreferencesHelpers.editBooleanData(MainActivity.this, "isFirstRun", false);
+//        cách 2:
+//        Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+//                .getBoolean("isFirstRun", true);
+//        if (isFirstRun) {
+//            //show start activity
+//            startActivity(new Intent(MainActivity.this, Intro1.class));
+//        }
+//        getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+//                .putBoolean("isFirstRun", false).commit();
     }
 }

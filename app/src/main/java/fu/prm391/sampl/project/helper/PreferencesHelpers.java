@@ -21,16 +21,15 @@ public class PreferencesHelpers {
         return text;
     }
 
-    public static void saveBooleanData(Context context, String key, Boolean value) {
+    public static Boolean getBooleanData(Context context, String key, Boolean value) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        return sharedPreferences.getBoolean(key, value);
+    }
+
+    public static void editBooleanData(Context context, String key, Boolean value) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(key, value);
-        editor.apply();
-    }
-
-    public static Boolean loadBooleanData(Context context, String key) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        Boolean aBoolean = sharedPreferences.getBoolean(key, true);
-        return aBoolean;
+        editor.commit();
     }
 }
