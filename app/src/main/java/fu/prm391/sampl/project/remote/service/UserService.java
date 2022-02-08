@@ -1,5 +1,7 @@
 package fu.prm391.sampl.project.remote.service;
 
+import fu.prm391.sampl.project.model.user.ForgotPassRequest;
+import fu.prm391.sampl.project.model.user.ForgotPassResponse;
 import fu.prm391.sampl.project.model.user.LoginRequest;
 import fu.prm391.sampl.project.model.user.LoginResponse;
 import fu.prm391.sampl.project.model.user.RegisterRequest;
@@ -15,4 +17,7 @@ public interface UserService {
 
     @POST("user/sign-up")
     Call<RegisterResponse> registerUser(@Body RegisterRequest registerRequest);
+
+    @POST("user/send-email-forgot-password")
+    Call<ForgotPassResponse> sendForgotPass(@Body ForgotPassRequest forgotPassRequest);
 }
