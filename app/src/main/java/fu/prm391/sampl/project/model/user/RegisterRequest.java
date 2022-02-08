@@ -3,12 +3,11 @@ package fu.prm391.sampl.project.model.user;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LoginRequest {
+public class RegisterRequest {
 
     @SerializedName("email")
     @Expose
     private String email;
-
     @SerializedName("password")
     @Expose
     private String password;

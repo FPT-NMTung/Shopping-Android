@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import fu.prm391.sampl.project.R;
+import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.model.user.LoginRequest;
 import fu.prm391.sampl.project.model.user.LoginResponse;
@@ -47,8 +47,8 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Login Action
-                if(TextUtils.isEmpty(email.getText().toString()) || TextUtils.isEmpty(password.getText().toString())) {
-                    Toast.makeText(Login.this, "Email & Password Required", Toast.LENGTH_LONG).show();
+                if (TextUtils.isEmpty(email.getText().toString()) || TextUtils.isEmpty(password.getText().toString())) {
+                    Toast.makeText(Login.this, "Email & Password are required!", Toast.LENGTH_LONG).show();
                 } else {
                     // proceed to login
                     login();
@@ -62,33 +62,26 @@ public class Login extends AppCompatActivity {
         loginRequest.setEmail(email.getText().toString());
         loginRequest.setPassword(password.getText().toString());
 
-        Call<LoginResponse> loginResponseCall = ApiClient.getUserService().login(loginRequest);
+        Call<LoginResponse> loginResponseCall = ApiClient.getUserService().loginUser(loginRequest);
         loginResponseCall.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
 
-                if(response.isSuccessful()) { // login success
+                if (response.isSuccessful()) { // login success
                     LoginResponse loginResponse = response.body();
                     Toast.makeText(Login.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
-
-                    //delay 0.5s
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Intent intent = new Intent(Login.this, MainActivity.class);
-                            intent.putExtra("token", loginResponse.getToken());
-                            startActivity(intent);
-                        }
-                    }, 500);
-
+                    PreferencesHelpers.saveStringData(Login.this, "token", loginResponse.getToken());
+                    Intent intent = new Intent(Login.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else { // login failed
-                    Toast.makeText(Login.this, "Login failed", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, "Login failed\nCheck your input fields!", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Toast.makeText(Login.this, "Throwable" + t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -100,6 +93,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Login.this, Register.class));
+                finish();
             }
         });
         // ForgotPassword
@@ -108,6 +102,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Login.this, ForgotPassword.class));
+                finish();
             }
         });
         // MainActivity
@@ -115,6 +110,7 @@ public class Login extends AppCompatActivity {
         txtSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(Login.this, MainActivity.class));
                 finish();
             }
         });
