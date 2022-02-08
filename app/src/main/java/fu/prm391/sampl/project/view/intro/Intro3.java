@@ -22,8 +22,7 @@ public class Intro3 extends AppCompatActivity {
         btnContinue3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intro3.this, MainActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(Intro3.this, MainActivity.class));
             }
         });
     }

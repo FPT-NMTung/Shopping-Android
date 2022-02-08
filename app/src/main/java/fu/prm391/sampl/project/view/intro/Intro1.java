@@ -27,8 +27,7 @@ public class Intro1 extends AppCompatActivity {
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intro1.this, Intro2.class);
-                startActivity(intent);
+                startActivity(new Intent(Intro1.this, Intro2.class));
             }
         });
 //        txtSkip.setOnClickListener(new View.OnClickListener() {

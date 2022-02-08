@@ -48,7 +48,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 // Login Action
                 if(TextUtils.isEmpty(email.getText().toString()) || TextUtils.isEmpty(password.getText().toString())) {
-                    Toast.makeText(Login.this, "Email & Password Required", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, "Email & Password are required!", Toast.LENGTH_LONG).show();
                 } else {
                     // proceed to login
                     login();
@@ -62,7 +62,7 @@ public class Login extends AppCompatActivity {
         loginRequest.setEmail(email.getText().toString());
         loginRequest.setPassword(password.getText().toString());
 
-        Call<LoginResponse> loginResponseCall = ApiClient.getUserService().login(loginRequest);
+        Call<LoginResponse> loginResponseCall = ApiClient.getUserService().loginUser(loginRequest);
         loginResponseCall.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
@@ -82,13 +82,13 @@ public class Login extends AppCompatActivity {
                     }, 500);
 
                 } else { // login failed
-                    Toast.makeText(Login.this, "Login failed", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, "Login failed\nCheck your input fields!", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Toast.makeText(Login.this, "Throwable" + t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -100,6 +100,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Login.this, Register.class));
+                finish();
             }
         });
         // ForgotPassword
@@ -108,6 +109,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Login.this, ForgotPassword.class));
+                finish();
             }
         });
         // MainActivity
@@ -115,6 +117,7 @@ public class Login extends AppCompatActivity {
         txtSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(Login.this, MainActivity.class));
                 finish();
             }
         });
