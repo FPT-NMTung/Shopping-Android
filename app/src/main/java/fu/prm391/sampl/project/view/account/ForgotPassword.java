@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import fu.prm391.sampl.project.R;
+
 import fu.prm391.sampl.project.model.user.ForgotPassRequest;
 import fu.prm391.sampl.project.model.user.ForgotPassResponse;
 import fu.prm391.sampl.project.model.user.LoginResponse;
@@ -18,6 +19,7 @@ import fu.prm391.sampl.project.remote.ApiClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 
 public class ForgotPassword extends AppCompatActivity {
 
@@ -46,6 +48,7 @@ public class ForgotPassword extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Send forgot pass action
+
                 ForgotPassRequest forgotPassRequest = new ForgotPassRequest();
                 forgotPassRequest.setEmail(email.getText().toString());
 
@@ -60,6 +63,10 @@ public class ForgotPassword extends AppCompatActivity {
                             Toast.makeText(ForgotPassword.this, "Send Email failed!", Toast.LENGTH_LONG).show();
                         }
                     }
+
+
+                Intent intent = new Intent(ForgotPassword.this, VerificationEmailCode.class);
+                startActivity(intent);
 
                     @Override
                     public void onFailure(Call<ForgotPassResponse> call, Throwable t) {
