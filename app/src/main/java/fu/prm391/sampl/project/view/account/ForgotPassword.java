@@ -59,14 +59,12 @@ public class ForgotPassword extends AppCompatActivity {
                         if(response.isSuccessful()) {
                             ForgotPassResponse forgotPassResponse = response.body();
                             Toast.makeText(ForgotPassword.this, forgotPassResponse.getMessage(), Toast.LENGTH_LONG).show();
+//                            startActivity(new Intent(ForgotPassword.this, VerificationEmailCode.class));
+//                            finish();
                         } else {
                             Toast.makeText(ForgotPassword.this, "Send Email failed!", Toast.LENGTH_LONG).show();
                         }
                     }
-
-
-                Intent intent = new Intent(ForgotPassword.this, VerificationEmailCode.class);
-                startActivity(intent);
 
                     @Override
                     public void onFailure(Call<ForgotPassResponse> call, Throwable t) {

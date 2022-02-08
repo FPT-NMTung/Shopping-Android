@@ -6,8 +6,8 @@ import fu.prm391.sampl.project.model.user.LoginRequest;
 import fu.prm391.sampl.project.model.user.LoginResponse;
 import fu.prm391.sampl.project.model.user.RegisterRequest;
 import fu.prm391.sampl.project.model.user.RegisterResponse;
-import fu.prm391.sampl.project.model.user.VerifyEmailRequest;
-import fu.prm391.sampl.project.model.user.VerifyEmailResponse;
+import fu.prm391.sampl.project.model.user.ResetPassRequest;
+import fu.prm391.sampl.project.model.user.ResetPassResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.PATCH;
@@ -25,5 +25,5 @@ public interface UserService {
     Call<ForgotPassResponse> sendForgotPass(@Body ForgotPassRequest forgotPassRequest);
 
     @PATCH("user/reset-password")
-    Call<VerifyEmailResponse> verifyEmail(@Body VerifyEmailRequest verifyEmailRequest);
+    Call<ResetPassResponse> resetPass(@Body ResetPassRequest resetPassRequest);
 }

@@ -3,7 +3,7 @@ package fu.prm391.sampl.project.model.user;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class VerifyEmailResponse {
+public class ResetPassResponse {
 
     @SerializedName("message")
     @Expose

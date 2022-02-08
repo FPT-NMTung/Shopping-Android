@@ -5,32 +5,12 @@
     <string name="intro1">intro1</string>
     <string name="continuebutton">Continue</string>
     <string name="intro1screentext">Jumbo Brand</string>
-
-    <string name="use_filler_">
-
-Use filler text that has been edited for length an format to match on a the characteristics of real content as closely as possible.
-</string>
+    <string name="use_filler_"> Use filler text that has been edited for length an format to match on a the characteristics of real content as closely as possible. </string>
     <string name="intro2Des">intro2</string>
-    <string name="relaxing_fu">Relaxing Furnitures
-</string>
-    <string name="home_furnit">Home Furnitures</string>
-    <string name="design_is_a">
-
-Design is an evolutionary process, and filler text is just o
-    Verifycation Code
-</string>
-<string name="please_enter">
-
-Please Enter digit code that you received on your EMail Address.
-</string>
-
-<string name="labelverifycode">ne tool in your progress-pushing arsenal..
-</string>
-    <!-- strings.xml -->
-    <string name="verifyemail">
-
-
-Verify Code*
-</string>
+    <string name="relaxing_fu">Relaxing Furnitures </string>
+    <string name="home_furnit">Home Furnitures </string>
+    <string name="design_is_a"> Design is an evolutionary process, and filler text is just o Verifycation Code </string>
+    <string name="please_enter"> Please Enter digit code that you received on your EMail Address. </string>
+    <string name="verifyCodeLabel"> Verify Code </string>
 
 </resources>
