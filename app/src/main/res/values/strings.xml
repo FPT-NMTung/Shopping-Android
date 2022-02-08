@@ -16,19 +16,19 @@ Use filler text that has been edited for length an format to match on a the char
     <string name="home_furnit">Home Furnitures</string>
     <string name="design_is_a">
 
-Design is an evolutionary process, and filler text is just one tool in your progress-pushing arsenal.
+Design is an evolutionary process, and filler text is just o
+    Verifycation Code
 </string>
-    <!-- strings.xml -->
-    <string name="verifyemail">
-
-Verifycation Code
-</string>
-    <string name="please_enter">
+<string name="please_enter">
 
 Please Enter digit code that you received on your EMail Address.
 </string>
 
-    <string name="labelverifycode">
+<string name="labelverifycode">ne tool in your progress-pushing arsenal..
+</string>
+    <!-- strings.xml -->
+    <string name="verifyemail">
+
 
 Verify Code*
 </string>
