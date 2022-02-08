@@ -6,11 +6,17 @@
     <string name="continuebutton">Continue</string>
     <string name="intro1screentext">Jumbo Brand</string>
     <string name="use_filler_"> Use filler text that has been edited for length an format to match on a the characteristics of real content as closely as possible. </string>
-    <string name="intro2Des">intro2</string>
+    <string name="ContentDesIntro2">intro2</string>
     <string name="relaxing_fu">Relaxing Furnitures </string>
     <string name="home_furnit">Home Furnitures </string>
     <string name="design_is_a"> Design is an evolutionary process, and filler text is just o Verifycation Code </string>
     <string name="please_enter"> Please Enter digit code that you received on your EMail Address. </string>
     <string name="verifyCodeLabel"> Verify Code </string>
+    <string name="TxtSkipIntro1">Skip</string>
+    <string name="TxtSkipIntro2">Skip</string>
+    <string name="TxtSkipIntro3">Skip</string>
+    <string name="ContentDesIntro3">BgIntro3</string>
+    <string name="ContentDesIntro1">BgIntro1</string>
+    <string name="ContentDesIntroApp">BgIntroApp</string>
 
 </resources>
