@@ -18,5 +18,37 @@
     <string name="ContentDesIntro3">BgIntro3</string>
     <string name="ContentDesIntro1">BgIntro1</string>
     <string name="ContentDesIntroApp">BgIntroApp</string>
+    <string name="BtnContinueIntro1">Continue</string>
+    <string name="BtnContinueIntro2">Continue</string>
+    <string name="BtnContinueIntro3">Continue</string>
+    <string name="TxtBackResetPassword">BACK</string>
+    <string name="LabelResetPassword">Reset Password</string>
+    <string name="BtnAcceptResetPassWord">Accept</string>
+    <string name="LabelCheckYourEmailVerifyCodeResetPassWord">Check Your Email Verify Code</string>
+    <string name="LabelVerifyCodeResetPassword">Verify Code*</string>
+    <string name="LabePassWordResetPassWord">Password*</string>
+    <string name="LabelEmailAddressResetPassWord">Email Address*</string>
+    <string name="TxtBackRegister">BACK</string>
+    <string name="LabelCreateAccount">Create an Account</string>
+    <string name="BtnRegisterRegister">Register</string>
+    <string name="LabelHaveAnAccountRegister">Have an Account?</string>
+    <string name="LabelEmailAddressRegister">Email Address*</string>
+    <string name="LabelEnterYourDetailsInformationsRegister">Enter your Details Informations</string>
+    <string name="LabelPasswordRegister">Password*</string>
+    <string name="LabelRePassword">Re-Password</string>
+    <string name="TxtSkipLogin">SKIP</string>
+    <string name="LabelLetsSignYouInLogin">Let’s Sign You In</string>
+    <string name="LabelToContinueFirstVerifyThatItYouLogin">To Continue, first Verify that it’s You.</string>
+    <string name="LabelEmailAddressLogin">Email Address*</string>
+    <string name="LabelPasswordLogin">Password*</string>
+    <string name="LabelForgotPasswordLogin">Forgot Password</string>
+    <string name="BtnLoginLogin">Login</string>
+    <string name="TxtDontHaveAnAccountLogin">Don’t have an Account?</string>
+    <string name="TxtBackForgotPassword">BACK</string>
+    <string name="LabelSetYourPassword">Set your Password?</string>
+    <string name="BtnSendForgotPassword">Send</string>
+    <string name="LabelRememberedYourPasswordForgotPassword">Remembered Your Password?</string>
+    <string name="LabelPleaseEnterEmailAddressYouWillReceiveForGot">Please Enter your eMail Address. Your will Receive a Code to Create a new Password via email.</string>
+    <string name="LabelEmailAddressForgotPass">Email Address*</string>
 
 </resources>

@@ -33,7 +33,7 @@
 <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <TextView
-        android:id="@+id/use_filler"
+        android:id="@+id/use_filler2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -48,6 +48,7 @@
         android:lineSpacingExtra="0sp"
         android:text="@string/use_filler_"
         android:textAppearance="@style/use_filler_"
+        android:textColor="#000000"
         android:textSize="15sp"
         android:translationY="-0.25sp"
         app:layout_constraintBottom_toTopOf="@+id/btnContinue2"
@@ -73,7 +74,7 @@
         android:text="@string/relaxing_fu"
         android:textAlignment="center"
         android:textAppearance="@style/relaxing_fu"
-        app:layout_constraintBottom_toTopOf="@+id/use_filler"
+        app:layout_constraintBottom_toTopOf="@+id/use_filler2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
@@ -87,7 +88,7 @@
         android:layout_marginBottom="100dp"
         android:fontFamily="@font/poppins_bold"
         android:lineHeight="22sp"
-        android:text="@string/continuebutton"
+        android:text="@string/BtnContinueIntro2"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -102,6 +103,7 @@
         android:fontFamily="@font/poppins_bold"
         android:text="@string/TxtSkipIntro2"
         android:textAllCaps="true"
+        android:textColor="#000000"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
