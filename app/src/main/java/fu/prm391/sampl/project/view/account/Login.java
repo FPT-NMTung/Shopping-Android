@@ -47,7 +47,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Login Action
-                if(TextUtils.isEmpty(email.getText().toString()) || TextUtils.isEmpty(password.getText().toString())) {
+                if (TextUtils.isEmpty(email.getText().toString()) || TextUtils.isEmpty(password.getText().toString())) {
                     Toast.makeText(Login.this, "Email & Password are required!", Toast.LENGTH_LONG).show();
                 } else {
                     // proceed to login
@@ -67,20 +67,13 @@ public class Login extends AppCompatActivity {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
 
-                if(response.isSuccessful()) { // login success
+                if (response.isSuccessful()) { // login success
                     LoginResponse loginResponse = response.body();
                     Toast.makeText(Login.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
 
-                    //delay 0.5s
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Intent intent = new Intent(Login.this, MainActivity.class);
-                            intent.putExtra("token", loginResponse.getToken());
-                            startActivity(intent);
-                        }
-                    }, 500);
-
+                    Intent intent = new Intent(Login.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else { // login failed
                     Toast.makeText(Login.this, "Login failed\nCheck your input fields!", Toast.LENGTH_LONG).show();
                 }

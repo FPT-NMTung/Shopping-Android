@@ -29,6 +29,7 @@ public class Register extends AppCompatActivity {
     private EditText password;
     private EditText rePassword;
     private Button btnRegister;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +46,9 @@ public class Register extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TextUtils.isEmpty(email.getText().toString()) || TextUtils.isEmpty(password.getText().toString()) || TextUtils.isEmpty(rePassword.getText().toString())) {
+                if (TextUtils.isEmpty(email.getText().toString()) || TextUtils.isEmpty(password.getText().toString()) || TextUtils.isEmpty(rePassword.getText().toString())) {
                     Toast.makeText(Register.this, "All fields are required!", Toast.LENGTH_LONG).show();
-                } else if(!password.getText().toString().equals(rePassword.getText().toString())) {
+                } else if (!password.getText().toString().equals(rePassword.getText().toString())) {
                     Toast.makeText(Register.this, "Password & Re-Password must be the same!", Toast.LENGTH_LONG).show();
                 } else {
                     // proceed register
@@ -69,17 +70,13 @@ public class Register extends AppCompatActivity {
             @Override
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
 
-                if(response.isSuccessful()) { // register success
+                if (response.isSuccessful()) { // register success
                     RegisterResponse registerResponse = response.body();
                     Toast.makeText(Register.this, registerResponse.getMessage(), Toast.LENGTH_LONG).show();
 
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            startActivity(new Intent(Register.this, Login.class));
-                            finish();
-                        }
-                    }, 500);
+                    startActivity(new Intent(Register.this, Login.class));
+                    finish();
+
                 } else {
                     Toast.makeText(Register.this, "Register failed\nCheck your input fields!", Toast.LENGTH_LONG).show();
                 }
