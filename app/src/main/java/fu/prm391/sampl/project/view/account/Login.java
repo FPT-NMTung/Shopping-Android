@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import fu.prm391.sampl.project.R;
+import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.model.user.LoginRequest;
 import fu.prm391.sampl.project.model.user.LoginResponse;
@@ -70,7 +70,7 @@ public class Login extends AppCompatActivity {
                 if (response.isSuccessful()) { // login success
                     LoginResponse loginResponse = response.body();
                     Toast.makeText(Login.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
-
+                    PreferencesHelpers.saveStringData(Login.this, "token", loginResponse.getToken());
                     Intent intent = new Intent(Login.this, MainActivity.class);
                     startActivity(intent);
                     finish();
