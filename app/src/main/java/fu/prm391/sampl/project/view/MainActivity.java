@@ -1,11 +1,16 @@
 package fu.prm391.sampl.project.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
@@ -27,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-//        NavController navController = Navigation.findNavController(this,  R.id.fragmentContainerView);
-//        NavigationUI.setupWithNavController(bottomNavigationView, navController);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        NavController navController = Navigation.findNavController(this,  R.id.fragmentContainerView);
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
     }
 
     private void firstRunActivity() {
