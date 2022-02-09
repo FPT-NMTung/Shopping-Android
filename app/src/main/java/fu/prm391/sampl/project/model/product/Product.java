@@ -1,4 +1,4 @@
-package fu.prm391.sampl.project.model;
+package fu.prm391.sampl.project.model.product;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

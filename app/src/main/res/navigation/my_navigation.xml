@@ -6,22 +6,22 @@
         app:startDestination="@id/home2">
     <fragment
             android:id="@+id/home2"
-            android:name="fu.prm391.sampl.project.Home"
+            android:name="fu.prm391.sampl.project.view.fragment.Home"
             android:label="fragment_home"
             tools:layout="@layout/fragment_home" />
     <fragment
             android:id="@+id/account"
-            android:name="fu.prm391.sampl.project.Account"
+            android:name="fu.prm391.sampl.project.view.fragment.Account"
             android:label="fragment_account"
             tools:layout="@layout/fragment_account" />
     <fragment
             android:id="@+id/cart"
-            android:name="fu.prm391.sampl.project.Cart"
+            android:name="fu.prm391.sampl.project.view.fragment.Cart"
             android:label="fragment_cart"
             tools:layout="@layout/fragment_cart" />
     <fragment
             android:id="@+id/setting"
-            android:name="fu.prm391.sampl.project.Setting"
+            android:name="fu.prm391.sampl.project.view.fragment.Setting"
             android:label="fragment_setting"
             tools:layout="@layout/fragment_setting" />
 </navigation>
