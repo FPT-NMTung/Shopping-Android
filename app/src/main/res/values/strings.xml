@@ -5,7 +5,7 @@
     <string name="intro1">intro1</string>
     <string name="continuebutton">Continue</string>
     <string name="intro1screentext">Jumbo Brand</string>
-    <string name="use_filler_"> Coming to Jumbo Brand you can find the products here are quite diverse from: Tee, Bottom, Demin Jacket, Hoodie, accessories, ...  </string>
+    <string name="use_filler_"> Coming to Jumbo Brand you can find the products here are quite diverse from: Tee, Bottom, Demin Jacket, Hoodie, accessories</string>
     <string name="ContentDesIntro2">intro2</string>
     <string name="relaxing_fu">The Real Value </string>
     <string name="home_furnit">Unique Design </string>
@@ -50,6 +50,6 @@
     <string name="LabelRememberedYourPasswordForgotPassword">Remembered Your Password?</string>
     <string name="LabelPleaseEnterEmailAddressYouWillReceiveForGot">Please Enter your eMail Address. Your will Receive a Code to Create a new Password via email.</string>
     <string name="LabelEmailAddressForgotPass">Email Address*</string>
-    <string name="LabelIntro2">Best Deal: Jumbo products provided with competitive prices and product quality are always guaranteed from material to other services</string>
+    <string name="LabelIntro2">Best Deal: Jumbo products provided with competitive prices and product quality are always guaranteed from material</string>
 
 </resources>

@@ -6,19 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".view.intro.Intro2">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/ContentDesIntro2"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/intro2" />
-
-<!--    <TextView-->
+    <!--    <TextView-->
 <!--        android:id="@+id/txtSkipintro"-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
@@ -31,6 +19,15 @@
 <!--        android:textStyle="bold"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/ContentDesIntro2"
+        app:srcCompat="@drawable/intro2"
+        tools:layout_editor_absoluteX="-110dp"
+        tools:layout_editor_absoluteY="58dp" />
 
     <TextView
         android:id="@+id/use_filler2"
