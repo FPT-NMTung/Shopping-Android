@@ -2,54 +2,45 @@
     <string name="app_name">Project</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="intro1">intro1</string>
-    <string name="continuebutton">Continue</string>
-    <string name="intro1screentext">Jumbo Brand</string>
-    <string name="use_filler_"> Coming to Jumbo Brand you can find the products here are quite diverse from: Tee, Bottom, Demin Jacket, Hoodie, accessories</string>
-    <string name="ContentDesIntro2">intro2</string>
-    <string name="relaxing_fu">The Real Value </string>
-    <string name="home_furnit">Unique Design </string>
-    <string name="design_is_a"> The images are designed rebelliously, personality to help Jumbo products look cool and more play </string>
-    <string name="please_enter"> Please Enter digit code that you received on your EMail Address. </string>
-    <string name="verifyCodeLabel"> Verify Code </string>
-    <string name="TxtSkipIntro1">Skip</string>
-    <string name="TxtSkipIntro2">Skip</string>
-    <string name="TxtSkipIntro3">Skip</string>
-    <string name="ContentDesIntro3">BgIntro3</string>
-    <string name="ContentDesIntro1">BgIntro1</string>
-    <string name="ContentDesIntroApp">BgIntroApp</string>
-    <string name="BtnContinueIntro1">Continue</string>
-    <string name="BtnContinueIntro2">Continue</string>
-    <string name="BtnContinueIntro3">Continue</string>
-    <string name="TxtBackResetPassword">BACK</string>
-    <string name="LabelResetPassword">Reset Password</string>
-    <string name="BtnAcceptResetPassWord">Accept</string>
-    <string name="LabelCheckYourEmailVerifyCodeResetPassWord">Check Your Email Verify Code</string>
-    <string name="LabelVerifyCodeResetPassword">Verify Code*</string>
-    <string name="LabePassWordResetPassWord">Password*</string>
-    <string name="LabelEmailAddressResetPassWord">Email Address*</string>
-    <string name="TxtBackRegister">BACK</string>
-    <string name="LabelCreateAccount">Create an Account</string>
-    <string name="BtnRegisterRegister">Register</string>
-    <string name="LabelHaveAnAccountRegister">Have an Account?</string>
-    <string name="LabelEmailAddressRegister">Email Address*</string>
-    <string name="LabelEnterYourDetailsInformationsRegister">Enter your Details Informations</string>
-    <string name="LabelPasswordRegister">Password*</string>
-    <string name="LabelRePassword">Re-Password</string>
-    <string name="TxtSkipLogin">SKIP</string>
-    <string name="LabelLetsSignYouInLogin">Let’s Sign You In</string>
-    <string name="LabelToContinueFirstVerifyThatItYouLogin">To Continue, first Verify that it’s You.</string>
-    <string name="LabelEmailAddressLogin">Email Address*</string>
-    <string name="LabelPasswordLogin">Password*</string>
-    <string name="LabelForgotPasswordLogin">Forgot Password</string>
-    <string name="BtnLoginLogin">Login</string>
-    <string name="TxtDontHaveAnAccountLogin">Don’t have an Account?</string>
-    <string name="TxtBackForgotPassword">BACK</string>
-    <string name="LabelSetYourPassword">Set your Password?</string>
-    <string name="BtnSendForgotPassword">Send</string>
-    <string name="LabelRememberedYourPasswordForgotPassword">Remembered Your Password?</string>
-    <string name="LabelPleaseEnterEmailAddressYouWillReceiveForGot">Please Enter your eMail Address. Your will Receive a Code to Create a new Password via email.</string>
-    <string name="LabelEmailAddressForgotPass">Email Address*</string>
-    <string name="LabelIntro2">Best Deal: Jumbo products provided with competitive prices and product quality are always guaranteed from material</string>
+
+    <string name="btnLoginLabel">Login</string>
+    <string name="btnSendLabel">Send</string>
+    <string name="btnContinueLabel">Continue</string>
+    <string name="txtSkipLabel">Skip</string>
+    <string name="txtBackLabel">Back</string>
+    <string name="btnAcceptLabel">Accept</string>
+    <string name="btnRegisterLabel">Register</string>
+    <string name="txtVerifyCodeStarLabel">Verify Code*</string>
+    <string name="txtVerifyCodeLabel">Verify Code</string>
+    <string name="txtResetPasswordLabel">Reset Password</string>
+    <string name="txtPasswordStarLabel">Password*</string>
+    <string name="txtEmailAddressStarLabel">Email Address*</string>
+    <string name="txtRePasswordStarLabel">Re-Password*</string>
+    <string name="txtForgotPasswordLabel">Forgot Password</string>
+
+    <string name="intro1ScreenText">Jumbo Brand</string>
+    <string name="intro2ScreenText">The Real Value </string>
+    <string name="intro3ScreenText">Unique Design</string>
+
+    <string name="intro1Content">Coming to Jumbo Brand you can find the products here are quite diverse from: Tee, Bottom, Demin Jacket, Hoodie, accessories</string>
+    <string name="intro3Content">The images are designed rebelliously, personality to help Jumbo products look cool and more play</string>
+    <string name="intro2Content">Best Deal: Jumbo products provided with competitive prices and product quality are always guaranteed from material</string>
+
+    <string name="contentDesIntro3">BgIntro3</string>
+    <string name="contentDesIntro2">intro2</string>
+    <string name="contentDesIntro1">BgIntro1</string>
+    <string name="contentDesIntroApp">BgIntroApp</string>
+
+    <string name="please_enter">Please Enter digit code that you received on your Email Address.</string>
+    <string name="checkYourEmailVerifyCodeResetPassWordLabel">Check Your Email Verify Code</string>
+    <string name="createAccountLabel">Create an Account</string>
+    <string name="haveAnAccountLabel">Have an Account?</string>
+    <string name="enterYourDetailsInformationLabel">Enter your Details Informations</string>
+    <string name="letsSignYouInLoginLabel">Let’s Sign You In</string>
+    <string name="toContinueFirstVerifyThatItYouLoginLabel">To Continue, first Verify that it’s You.</string>
+    <string name="dontHaveAnAccountLabel">Don’t have an Account?</string>
+    <string name="setYourPasswordLabel">Set your Password?</string>
+    <string name="rememberedYourPasswordLabel">Remembered Your Password?</string>
+    <string name="pleaseEnterEmailAddressLabel">Please Enter your eMail Address. Your will Receive a Code to Create a new Password via email.</string>
 
 </resources>

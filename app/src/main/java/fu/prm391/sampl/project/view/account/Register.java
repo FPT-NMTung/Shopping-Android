@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +15,6 @@ import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.model.user.RegisterRequest;
 import fu.prm391.sampl.project.model.user.RegisterResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
-import fu.prm391.sampl.project.view.MainActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -88,7 +85,7 @@ public class Register extends AppCompatActivity {
 
     private void moveToOtherActivities() {
         // Login
-        txtHaveAnAccount = findViewById(R.id.txtHaveAnAccount);
+        txtHaveAnAccount = findViewById(R.id.txtHaveAnAccountRegister);
         txtHaveAnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

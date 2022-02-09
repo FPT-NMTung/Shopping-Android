@@ -88,7 +88,7 @@ public class Login extends AppCompatActivity {
 
     private void moveToOtherActivities() {
         // Register
-        txtCreateAccount = findViewById(R.id.txtCreateAccount);
+        txtCreateAccount = findViewById(R.id.txtCreateAccountLogin);
         txtCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
