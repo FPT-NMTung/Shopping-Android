@@ -11,7 +11,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 import fu.prm391.sampl.project.R;
+import fu.prm391.sampl.project.helper.StringHelpers;
 import fu.prm391.sampl.project.model.user.RegisterRequest;
 import fu.prm391.sampl.project.model.user.RegisterResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
@@ -41,10 +47,18 @@ public class Register extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (TextUtils.isEmpty(email.getText().toString()) || TextUtils.isEmpty(password.getText().toString()) || TextUtils.isEmpty(rePassword.getText().toString())) {
-                    Toast.makeText(Register.this, "All fields are required!", Toast.LENGTH_LONG).show();
+                btnRegister.setEnabled(false);
+                if (TextUtils.isEmpty(email.getText().toString().trim())
+                        || TextUtils.isEmpty(password.getText().toString().trim())
+                        || TextUtils.isEmpty(rePassword.getText().toString().trim())) {
+                    Toast.makeText(Register.this, "All fields are required!", Toast.LENGTH_SHORT).show();
+                    btnRegister.setEnabled(true);
+                } else if (!StringHelpers.isValidEmail(email.getText().toString().trim())) {
+                    Toast.makeText(Register.this, "Your email is invalid!", Toast.LENGTH_SHORT).show();
+                    btnRegister.setEnabled(true);
                 } else if (!password.getText().toString().equals(rePassword.getText().toString())) {
-                    Toast.makeText(Register.this, "Password & Re-Password must be the same!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Register.this, "Password & Re-Password must be the same!", Toast.LENGTH_SHORT).show();
+                    btnRegister.setEnabled(true);
                 } else {
                     // proceed register
                     register();
@@ -56,8 +70,8 @@ public class Register extends AppCompatActivity {
     private void register() {
         RegisterRequest registerRequest = new RegisterRequest();
 
-        registerRequest.setEmail(email.getText().toString());
-        registerRequest.setPassword(password.getText().toString());
+        registerRequest.setEmail(email.getText().toString().trim());
+        registerRequest.setPassword(password.getText().toString().trim());
 
         Call<RegisterResponse> registerResponseCall = ApiClient.getUserService().registerUser(registerRequest);
         registerResponseCall.enqueue(new Callback<RegisterResponse>() {
@@ -72,13 +86,20 @@ public class Register extends AppCompatActivity {
                     finish();
 
                 } else {
-                    Toast.makeText(Register.this, "Register failed\nCheck your input fields!", Toast.LENGTH_LONG).show();
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                        Toast.makeText(Register.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                    } catch (JSONException | IOException e) {
+                        Toast.makeText(Register.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                    btnRegister.setEnabled(true);
                 }
             }
 
             @Override
             public void onFailure(Call<RegisterResponse> call, Throwable t) {
-                Toast.makeText(Register.this, t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(Register.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                btnRegister.setEnabled(true);
             }
         });
     }

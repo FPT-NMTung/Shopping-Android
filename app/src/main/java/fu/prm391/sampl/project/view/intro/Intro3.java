@@ -35,7 +35,7 @@ public class Intro3 extends AppCompatActivity {
         txtSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Intro3.this, Login.class));
+                startActivity(new Intent(Intro3.this, MainActivity.class));
                 finish();
             }
         });

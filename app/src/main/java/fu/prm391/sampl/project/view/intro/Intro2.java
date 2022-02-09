@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import fu.prm391.sampl.project.R;
+import fu.prm391.sampl.project.view.MainActivity;
 import fu.prm391.sampl.project.view.account.Login;
 
 public class Intro2 extends AppCompatActivity {
@@ -34,7 +35,7 @@ public class Intro2 extends AppCompatActivity {
         txtSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Intro2.this, Login.class));
+                startActivity(new Intent(Intro2.this, MainActivity.class));
                 finish();
             }
         });

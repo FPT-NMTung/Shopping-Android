@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
 
     public static final String BASE_URL = "https://api.nmtung.xyz/";
-
+//        public static final String BASE_URL = "https://shopping-project-git-api-order-fpt-nmtung.vercel.app/";
 
     private static Retrofit getRetrofit() {
     // logging

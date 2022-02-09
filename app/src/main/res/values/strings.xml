@@ -41,6 +41,7 @@
     <string name="dontHaveAnAccountLabel">Don’t have an Account?</string>
     <string name="setYourPasswordLabel">Set your Password?</string>
     <string name="rememberedYourPasswordLabel">Remembered Your Password?</string>
-    <string name="pleaseEnterEmailAddressLabel">Please Enter your eMail Address. Your will Receive a Code to Create a new Password via email.</string>
+    <string name="pleaseEnterEmailAddressLabel">Please Enter your Email Address. Your will Receive a Code to Create a new Password via email.</string>
+    <string name="txtNewPassStarLabel">New Password*</string>
 
 </resources>

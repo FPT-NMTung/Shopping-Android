@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -11,12 +12,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.model.user.LoginRequest;
 import fu.prm391.sampl.project.model.user.LoginResponse;
 import fu.prm391.sampl.project.view.MainActivity;
+import fu.prm391.sampl.project.view.intro.IntroApp;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,9 +50,11 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnLogin.setEnabled(false);
                 // Login Action
                 if (TextUtils.isEmpty(email.getText().toString()) || TextUtils.isEmpty(password.getText().toString())) {
-                    Toast.makeText(Login.this, "Email & Password are required!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, "Email & Password are required!", Toast.LENGTH_SHORT).show();
+                    btnLogin.setEnabled(true);
                 } else {
                     // proceed to login
                     login();
@@ -74,14 +83,22 @@ public class Login extends AppCompatActivity {
                     Intent intent = new Intent(Login.this, MainActivity.class);
                     startActivity(intent);
                     finish();
+
                 } else { // login failed
-                    Toast.makeText(Login.this, "Login failed\nCheck your input fields!", Toast.LENGTH_LONG).show();
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                        Toast.makeText(Login.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                    } catch (JSONException | IOException e) {
+                        Toast.makeText(Login.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                    btnLogin.setEnabled(true);
                 }
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Toast.makeText(Login.this, t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                btnLogin.setEnabled(true);
             }
         });
     }

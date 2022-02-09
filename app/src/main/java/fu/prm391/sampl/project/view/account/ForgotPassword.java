@@ -10,6 +10,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 import fu.prm391.sampl.project.R;
 
 import fu.prm391.sampl.project.model.user.ForgotPassRequest;
@@ -32,7 +37,6 @@ public class ForgotPassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
         moveToOtherActivities();
-
         //send email
         sendEmailForgotPassAction();
     }
@@ -43,6 +47,7 @@ public class ForgotPassword extends AppCompatActivity {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnSend.setEnabled(false);
                 // Send forgot pass
                 ForgotPassRequest forgotPassRequest = new ForgotPassRequest();
                 forgotPassRequest.setEmail(email.getText().toString());
@@ -55,16 +60,25 @@ public class ForgotPassword extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             ForgotPassResponse forgotPassResponse = response.body();
                             Toast.makeText(ForgotPassword.this, forgotPassResponse.getMessage(), Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(ForgotPassword.this, ResetPassword.class));
+                            Intent intent = new Intent(ForgotPassword.this, ResetPassword.class);
+                            intent.putExtra("email", email.getText().toString());
+                            startActivity(intent);
                             finish();
                         } else {
-                            Toast.makeText(ForgotPassword.this, "Send Email failed!\nPlease check your email", Toast.LENGTH_LONG).show();
+                            try {
+                                JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                                Toast.makeText(ForgotPassword.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                            } catch (JSONException | IOException e) {
+                                Toast.makeText(ForgotPassword.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                            btnSend.setEnabled(true);
                         }
                     }
 
                     @Override
                     public void onFailure(Call<ForgotPassResponse> call, Throwable t) {
-                        Toast.makeText(ForgotPassword.this, t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(ForgotPassword.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        btnSend.setEnabled(true);
                     }
                 });
             }
