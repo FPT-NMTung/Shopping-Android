@@ -11,9 +11,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="115dp"
         android:layout_marginEnd="20dp"
-        android:text="Create an Account"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/LabelCreateAccount"
+        android:textColor="#000000"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,8 +29,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
-        android:text="Enter your Details Informations"
-        android:textSize="17sp"
+        android:fontFamily="@font/poppins"
+        android:text="@string/LabelEnterYourDetailsInformationsRegister"
+        android:textColor="#000000"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLabel1Register" />
@@ -40,7 +44,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
-        android:text="Email Address*"
+        android:fontFamily="@font/poppins"
+        android:text="@string/LabelEmailAddressRegister"
+        android:textColor="#000000"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,8 +71,9 @@
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
             android:ems="10"
+            android:importantForAutofill="no"
             android:inputType="textEmailAddress"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="LabelFor,SpeakableTextPresentCheck" />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -75,7 +83,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:text="Password*"
+        android:fontFamily="@font/poppins"
+        android:text="@string/LabelPasswordRegister"
+        android:textColor="#000000"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +99,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:text="Re-Password*"
+        android:fontFamily="@font/poppins"
+        android:text="@string/LabelRePassword"
+        android:textColor="#000000"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -112,8 +126,9 @@
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
             android:ems="10"
+            android:importantForAutofill="no"
             android:inputType="textPassword"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="LabelFor,SpeakableTextPresentCheck" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -134,8 +149,9 @@
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
             android:ems="10"
+            android:importantForAutofill="no"
             android:inputType="textPassword"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="LabelFor,SpeakableTextPresentCheck" />
     </androidx.cardview.widget.CardView>
 
     <Button
@@ -145,7 +161,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
-        android:text="Register"
+        android:text="@string/BtnRegisterRegister"
+        android:textColor="#FFFFFF"
         android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -159,7 +176,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="30dp"
-        android:text="Have an Account?"
+        android:fontFamily="@font/poppins"
+        android:text="@string/LabelHaveAnAccountRegister"
+        android:textColor="#000000"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -171,8 +191,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="Back"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/TxtBackRegister"
         android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
