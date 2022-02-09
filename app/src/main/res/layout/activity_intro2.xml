@@ -46,7 +46,7 @@
         android:fontFamily="@font/poppins"
         android:gravity="center_horizontal|top"
         android:lineSpacingExtra="0sp"
-        android:text="@string/use_filler_"
+        android:text="@string/LabelIntro2"
         android:textAppearance="@style/use_filler_"
         android:textColor="#000000"
         android:textSize="15sp"
