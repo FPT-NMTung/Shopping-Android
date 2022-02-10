@@ -104,6 +104,7 @@ public class ResetPassword extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(ResetPassword.this, ForgotPassword.class));
                 finish();
+
             }
         });
     }

@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profilelayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F2F6F9"
@@ -133,7 +134,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/btnEditProfiles" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/labelVerified"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="39dp"
@@ -146,7 +147,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/verifyimage"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginStart="21dp"
@@ -335,7 +336,7 @@
         app:layout_constraintTop_toTopOf="@+id/some_id3" />
 
     <ImageView
-        android:id="@+id/arrowShippingAddress2"
+        android:id="@+id/arrowSGiftCards"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginEnd="30dp"
@@ -423,7 +424,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/arrowShippingAddress3"
+        android:id="@+id/arrowLogout"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginEnd="30dp"

@@ -1,14 +1,31 @@
 package fu.prm391.sampl.project.view.fragment;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.navigation.NavigationView;
 
 import fu.prm391.sampl.project.R;
+import fu.prm391.sampl.project.view.MainActivity;
+import fu.prm391.sampl.project.view.intro.IntroApp;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +42,11 @@ public class Profiles extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private ImageView arrowLogout;
+    private View someid5;
+    private Button btnverifyprofiles;
+    private TextView labelVerified;
+    private ImageView verifyimage;
 
     public Profiles() {
         // Required empty public constructor
@@ -55,12 +77,51 @@ public class Profiles extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_profiles, container, false);
+        someid5 =view.findViewById(R.id.some_id5);
+        btnverifyprofiles = view.findViewById(R.id.btnverifyprofiles);
+        btnverifyprofiles.setVisibility(View.INVISIBLE);
+        labelVerified = view.findViewById(R.id.labelVerified);
+        labelVerified.setText("Unverify");
+        verifyimage = view.findViewById(R.id.verifyimage);
+        verifyimage.setImageResource(R.drawable.unverified);
+        arrowLogout = view.findViewById(R.id.arrowLogout);
+        someid5.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+               MaterialAlertDialogBuilder materialAlert =  new MaterialAlertDialogBuilder(getContext(),  R.style.ThemeOverlay_App_MaterialAlertDialog);
+               materialAlert.setTitle("ALERT");
+               materialAlert.setMessage("Are you Sure want to Logout");
+               materialAlert.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialogInterface, int i) {
+                       BottomNavigationView bottomNavigationView;
+                       bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
+                       bottomNavigationView.setSelectedItemId(R.id.home2);
+                   }
+               });
+               materialAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialogInterface, int i) {
+
+                   }
+               });
+
+               materialAlert.show();
+
+            }
+        });
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profiles, container, false);
+        return view;
+
     }
 }
