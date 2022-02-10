@@ -111,6 +111,7 @@
                 android:id="@+id/btnEditProfiles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableStart="@drawable/editprofile"
                 android:fontFamily="@font/poppins_semibold"
                 android:forceDarkAllowed="false"
                 android:includeFontPadding="true"
@@ -156,6 +157,17 @@
                 android:src="@drawable/verified"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="23dp"
+                android:layout_height="25dp"
+                android:layout_marginBottom="13dp"
+                android:src="@drawable/editprofile"
+                app:layout_constraintBottom_toBottomOf="@+id/btnEditProfiles"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.133"
+                app:layout_constraintStart_toStartOf="@+id/btnEditProfiles" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
