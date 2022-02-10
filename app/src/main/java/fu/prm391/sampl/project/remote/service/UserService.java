@@ -8,8 +8,10 @@ import fu.prm391.sampl.project.model.user.RegisterRequest;
 import fu.prm391.sampl.project.model.user.RegisterResponse;
 import fu.prm391.sampl.project.model.user.ResetPassRequest;
 import fu.prm391.sampl.project.model.user.ResetPassResponse;
+import fu.prm391.sampl.project.model.user.UserResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 
@@ -26,4 +28,7 @@ public interface UserService {
 
     @PATCH("user/reset-password")
     Call<ResetPassResponse> resetPass(@Body ResetPassRequest resetPassRequest);
+
+    @GET("user/get-user-info")
+    Call<UserResponse> getUserInformation();
 }

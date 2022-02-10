@@ -18,14 +18,25 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
 
 import fu.prm391.sampl.project.R;
+import fu.prm391.sampl.project.helper.PreferencesHelpers;
+import fu.prm391.sampl.project.model.user.LoginResponse;
+import fu.prm391.sampl.project.model.user.User;
+import fu.prm391.sampl.project.model.user.UserResponse;
+import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.MainActivity;
+import fu.prm391.sampl.project.view.account.Login;
+import fu.prm391.sampl.project.view.intro.Intro1;
 import fu.prm391.sampl.project.view.intro.IntroApp;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,6 +58,7 @@ public class Profiles extends Fragment {
     private Button btnverifyprofiles;
     private TextView labelVerified;
     private ImageView verifyimage;
+    private TextView profilesName;
 
     public Profiles() {
         // Required empty public constructor
@@ -70,9 +82,17 @@ public class Profiles extends Fragment {
         return fragment;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String token = PreferencesHelpers.loadStringData(getContext(),"token");
+        if (token == ""){
+            startActivity(new Intent(getContext(), Login.class));
+
+        }
+
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -80,13 +100,41 @@ public class Profiles extends Fragment {
 
     }
 
+    private void getUserInformation()
+
+    {
+        profilesName = getView().findViewById(R.id.profilesName);
+        Call<UserResponse> userResponseCall = ApiClient.getUserService().getUserInformation();
+        userResponseCall.enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                if (response.isSuccessful()) {
+                    User user = response.body().getData();
+                    profilesName.setText(user.getFirstName()+" "+user.getLastName());
+
+
+
+                } else {
+
+                }
+            }
+
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+                Toast.makeText(getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        getUserInformation();
         View view = inflater.inflate(R.layout.fragment_profiles, container, false);
-        someid5 =view.findViewById(R.id.some_id5);
+        someid5 = view.findViewById(R.id.some_id5);
         btnverifyprofiles = view.findViewById(R.id.btnverifyprofiles);
         btnverifyprofiles.setVisibility(View.INVISIBLE);
         labelVerified = view.findViewById(R.id.labelVerified);
@@ -98,30 +146,33 @@ public class Profiles extends Fragment {
 
             @Override
             public void onClick(View view) {
-               MaterialAlertDialogBuilder materialAlert =  new MaterialAlertDialogBuilder(getContext(),  R.style.ThemeOverlay_App_MaterialAlertDialog);
-               materialAlert.setTitle("ALERT");
-               materialAlert.setMessage("Are you Sure want to Logout");
-               materialAlert.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
-                   @Override
-                   public void onClick(DialogInterface dialogInterface, int i) {
-                       BottomNavigationView bottomNavigationView;
-                       bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
-                       bottomNavigationView.setSelectedItemId(R.id.home2);
-                   }
-               });
-               materialAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                   @Override
-                   public void onClick(DialogInterface dialogInterface, int i) {
+                MaterialAlertDialogBuilder materialAlert = new MaterialAlertDialogBuilder(getContext(), R.style.ThemeOverlay_App_MaterialAlertDialog);
+                materialAlert.setTitle("ALERT");
+                materialAlert.setMessage("Are you Sure want to Logout");
+                materialAlert.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        BottomNavigationView bottomNavigationView;
+                        bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
+                        bottomNavigationView.setSelectedItemId(R.id.home2);
+                    }
+                });
+                materialAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
 
-                   }
-               });
+                    }
+                });
 
-               materialAlert.show();
+                materialAlert.show();
 
             }
         });
         // Inflate the layout for this fragment
         return view;
+
+
+
 
     }
 }
