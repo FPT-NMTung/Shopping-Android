@@ -1,31 +1,19 @@
-package fu.prm391.sampl.project.model.product;
+package fu.prm391.sampl.project.model.category;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Product {
+public class Category {
 
     @SerializedName("id")
     @Expose
     private int id;
-    @SerializedName("categoryId")
-    @Expose
-    private int categoryId;
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("description")
-    @Expose
-    private String description;
     @SerializedName("image")
     @Expose
     private String image;
-    @SerializedName("price")
-    @Expose
-    private int price;
-    @SerializedName("quantity")
-    @Expose
-    private int quantity;
     @SerializedName("createdAt")
     @Expose
     private String createdAt;
@@ -33,20 +21,23 @@ public class Product {
     @Expose
     private String updatedAt;
 
+    public Category() {
+    }
+
+    public Category(int id, String name, String image, String createdAt, String updatedAt) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
     }
 
     public String getName() {
@@ -57,36 +48,12 @@ public class Product {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getImage() {
         return image;
     }
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public String getCreatedAt() {
@@ -104,5 +71,4 @@ public class Product {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
-
 }

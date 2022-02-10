@@ -1,14 +1,27 @@
 package fu.prm391.sampl.project.view.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 import fu.prm391.sampl.project.R;
+import fu.prm391.sampl.project.model.category.Category;
+import fu.prm391.sampl.project.model.category.CategoryListAdapter;
+import fu.prm391.sampl.project.model.category.CategoryResponse;
+import fu.prm391.sampl.project.remote.ApiClient;
+import fu.prm391.sampl.project.view.MainActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,6 +61,9 @@ public class Home extends Fragment {
         return fragment;
     }
 
+    private RecyclerView recyclerViewTop4;
+    private ArrayList<Category> categories;
+    private CategoryListAdapter categoryListAdapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,12 +71,33 @@ public class Home extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        recyclerViewTop4 = view.findViewById(R.id.recyclerViewTop4);
+        Call<CategoryResponse> categoryResponseCall = ApiClient.getCategoryService().getTop4Categories();
+        categoryResponseCall.enqueue(new Callback<CategoryResponse>() {
+            @Override
+            public void onResponse(Call<CategoryResponse> call, Response<CategoryResponse> response) {
+                ArrayList<Category> data = (ArrayList<Category>) response.body().getData();
+                recyclerViewTop4.setAdapter(new CategoryListAdapter(getContext(), data));
+                LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+                recyclerViewTop4.setLayoutManager(layoutManager);
+            }
+
+            @Override
+            public void onFailure(Call<CategoryResponse> call, Throwable t) {
+
+            }
+        });
+
+
+        return view;
     }
 }

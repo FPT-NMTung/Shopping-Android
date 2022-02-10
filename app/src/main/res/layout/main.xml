@@ -14,6 +14,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/main_menu"
+            app:itemTextColor="@color/black"
+            style="@style/Widget.App.BottomNavigationView"
             android:id="@+id/bottomNavigationView" />
 
     <fragment

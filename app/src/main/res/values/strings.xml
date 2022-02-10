@@ -49,5 +49,9 @@
     <string name="accountLabel">Account</string>
     <string name="searchLabel">Search</string>
     <string name="contentDesImageCart">imageCartHome</string>
+    <string name="categoriesLabel">Categories</string>
+    <string name="txtViewAllLabel">View All</string>
+    <string name="contentDesImage">top4CateImage</string>
+    <string name="category_name">Category name</string>
 
 </resources>
