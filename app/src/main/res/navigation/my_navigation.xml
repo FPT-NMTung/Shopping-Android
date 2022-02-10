@@ -11,9 +11,9 @@
             tools:layout="@layout/fragment_home" />
     <fragment
             android:id="@+id/account"
-            android:name="fu.prm391.sampl.project.view.fragment.Account"
+            android:name="fu.prm391.sampl.project.view.fragment.Profiles"
             android:label="fragment_account"
-            tools:layout="@layout/fragment_account" />
+            tools:layout="@layout/fragment_profiles" />
     <fragment
             android:id="@+id/cart"
             android:name="fu.prm391.sampl.project.view.fragment.Cart"

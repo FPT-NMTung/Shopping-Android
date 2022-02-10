@@ -12,10 +12,10 @@ import fu.prm391.sampl.project.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Account#newInstance} factory method to
+ * Use the {@link Profiles#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Account extends Fragment {
+public class Profiles extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class Account extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Account() {
+    public Profiles() {
         // Required empty public constructor
     }
 
@@ -39,8 +39,8 @@ public class Account extends Fragment {
      * @return A new instance of fragment Account.
      */
     // TODO: Rename and change types and number of parameters
-    public static Account newInstance(String param1, String param2) {
-        Account fragment = new Account();
+    public static Profiles newInstance(String param1, String param2) {
+        Profiles fragment = new Profiles();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class Account extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false);
+        return inflater.inflate(R.layout.fragment_profiles, container, false);
     }
 }

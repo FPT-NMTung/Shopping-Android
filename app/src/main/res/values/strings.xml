@@ -43,5 +43,6 @@
     <string name="rememberedYourPasswordLabel">Remembered Your Password?</string>
     <string name="pleaseEnterEmailAddressLabel">Please Enter your Email Address. Your will Receive a Code to Create a new Password via email.</string>
     <string name="txtNewPassStarLabel">New Password*</string>
+    <string name="LabelProfiles">Profiles</string>
 
 </resources>
