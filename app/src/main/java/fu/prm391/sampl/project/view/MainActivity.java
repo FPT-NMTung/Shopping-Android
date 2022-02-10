@@ -24,14 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         firstRunActivity();
-        Button button = findViewById(R.id.btnTest);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, Login.class));
-                finish();
-            }
-        });
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         NavController navController = Navigation.findNavController(this,  R.id.fragmentContainerView);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);

@@ -59,7 +59,105 @@
         app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
-        tools:targetApi="s" />
+        tools:targetApi="s">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:background="#000000"
+                app:cardBackgroundColor="#000000"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/profilesName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="31dp"
+                android:background="#FFFFFF"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/LabelUsername"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@+id/cardView2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/LabelEmail"
+                android:textColor="#353636"
+                android:textSize="13sp"
+                app:layout_constraintStart_toEndOf="@+id/cardView2"
+                app:layout_constraintTop_toBottomOf="@+id/profilesName" />
+
+            <Button
+
+
+                android:id="@+id/btnEditProfiles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:forceDarkAllowed="false"
+                android:includeFontPadding="true"
+                android:text="@string/btnEditlLabel"
+                android:textSize="14sp"
+                android:visibility="visible"
+                app:cornerRadius="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                android:id="@+id/btnverifyprofiles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="14dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/LabelVerifyNow"
+                android:textSize="14sp"
+                app:cornerRadius="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnEditProfiles" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="39dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/LabelVeriedUser"
+                android:textColor="#000000"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginStart="21dp"
+                android:layout_marginBottom="18dp"
+                android:contentDescription="@string/DesImage"
+                android:src="@drawable/verified"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
     <!-- 01 -->
     <View
         android:id="@+id/some_id"
@@ -90,7 +188,7 @@
         app:layout_constraintTop_toTopOf="@+id/some_id" />
 
     <ImageView
-        android:id="@+id/ArrowRight"
+        android:id="@+id/ArrowOrders"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginEnd="30dp"
@@ -115,6 +213,242 @@
         android:backgroundTint="#C6C5C5"
         app:layout_constraintBottom_toBottomOf="@+id/some_id"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <View
+        android:id="@+id/some_id2"
+        android:layout_width="0dp"
+        android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="30dp"
+        android:background="#00000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/some_id"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/MyFavourite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="top"
+        android:lineSpacingExtra="0sp"
+        android:text="@string/LabelMyFavourites"
+        android:textAppearance="@style/my_orders"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/some_id2" />
+
+    <View
+
+        android:id="@+id/line2"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="#C6C5C5"
+        android:backgroundTint="#C6C5C5"
+        app:layout_constraintBottom_toBottomOf="@+id/some_id2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/arrowMyFavourite"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="30dp"
+
+        android:contentDescription="@string/DesImage"
+        android:src="@drawable/arrowright"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/some_id2" />
+
+    <View
+        android:id="@+id/some_id3"
+        android:layout_width="0dp"
+        android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="30dp"
+        android:background="#00000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/some_id2"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/ShippingAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="top"
+        android:lineSpacingExtra="0sp"
+        android:text="@string/LabelShippingAddress"
+        android:textAppearance="@style/my_orders"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/some_id3" />
+
+    <View
+
+        android:id="@+id/line4"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="#C6C5C5"
+        android:backgroundTint="#C6C5C5"
+        app:layout_constraintBottom_toBottomOf="@+id/some_id3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/arrowShippingAddress"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="30dp"
+
+        android:contentDescription="@string/DesImage"
+        android:src="@drawable/arrowright"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/some_id3" />
+
+    <ImageView
+        android:id="@+id/arrowShippingAddress2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="30dp"
+
+        android:contentDescription="@string/DesImage"
+        android:src="@drawable/arrowright"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/some_id4" />
+
+    <View
+        android:id="@+id/some_id4"
+        android:layout_width="0dp"
+        android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="30dp"
+        android:background="#00000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/some_id3"
+        tools:ignore="MissingConstraints" />
+
+    <View
+
+        android:id="@+id/line5"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="#C6C5C5"
+        android:backgroundTint="#C6C5C5"
+        app:layout_constraintBottom_toBottomOf="@+id/some_id4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/shippingAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="top"
+        android:lineSpacingExtra="0sp"
+        android:text="@string/Labelgiftcardsvouchers"
+        android:textAppearance="@style/my_orders"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/some_id4" />
+
+    <TextView
+        android:id="@+id/Logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="top"
+        android:lineSpacingExtra="0sp"
+        android:text="@string/LabelLogout"
+        android:textAppearance="@style/my_orders"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/some_id5" />
+
+    <View
+        android:id="@+id/some_id5"
+        android:layout_width="0dp"
+        android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="30dp"
+        android:background="#00000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/some_id4"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/arrowShippingAddress3"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="30dp"
+
+        android:contentDescription="@string/DesImage"
+        android:src="@drawable/arrowright"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/some_id5" />
+
+    <View
+
+        android:id="@+id/line6"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="#C6C5C5"
+        android:backgroundTint="#C6C5C5"
+        app:layout_constraintBottom_toBottomOf="@+id/some_id5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
