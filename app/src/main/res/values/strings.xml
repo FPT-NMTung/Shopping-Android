@@ -44,5 +44,7 @@
     <string name="pleaseEnterEmailAddressLabel">Please Enter your Email Address. Your will Receive a Code to Create a new Password via email.</string>
     <string name="txtNewPassStarLabel">New Password*</string>
     <string name="LabelProfiles">Profiles</string>
+    <string name="LabelMyOrders">My Orders</string>
+    <string name="DesImage">TODO</string>
 
 </resources>
