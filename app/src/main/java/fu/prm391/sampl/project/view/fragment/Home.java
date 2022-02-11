@@ -31,6 +31,8 @@ import fu.prm391.sampl.project.model.product.ProductResponse;
 import fu.prm391.sampl.project.model.product.ProductTopTrendingAdapter;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.category.AllCategory;
+import fu.prm391.sampl.project.view.product.NewArrivalProduct;
+import fu.prm391.sampl.project.view.product.TopDiscountProduct;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -55,7 +57,8 @@ public class Home extends Fragment {
     private ImageView imageCart;
     private RecyclerView recyclerViewTopTrendingProduct;
     private TextView txtViewAllCategory;
-
+    private ImageView imageTopDiscount;
+    private ImageView imageNewArrival;
     public Home() {
         // Required empty public constructor
     }
@@ -96,32 +99,12 @@ public class Home extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         getTop4Category(view);
         getTrendingProducts(view);
-        txtViewAllCategory = view.findViewById(R.id.txtViewAllCategoryHome);
-        txtViewAllCategory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), AllCategory.class);
-                startActivity(intent);
-                getActivity().finish();
-            }
-        });
-
+        moveToOtherActivities(view);
         moveToOtherNavigationTab(view);
         return view;
     }
 
-    private void moveToOtherNavigationTab(View view) {
-        imageCart = view.findViewById(R.id.imageCartHome);
-        imageCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                BottomNavigationView bottomNavigationView;
-                bottomNavigationView = (BottomNavigationView) getActivity().findViewById(R.id.bottomNavigationView);
-//                bottomNavigationView.setOnNavigationItemSelectedListener(myNavigationItemListener);
-                bottomNavigationView.setSelectedItemId(R.id.cart);
-            }
-        });
-    }
+
 
     private void getTop4Category(View view) {
         recyclerViewTop4Category = view.findViewById(R.id.recyclerViewTop4Cate);
@@ -177,6 +160,51 @@ public class Home extends Fragment {
             @Override
             public void onFailure(Call<ProductResponse> call, Throwable t) {
                 Toast.makeText(getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void moveToOtherActivities(View view) {
+        // All Category
+        txtViewAllCategory = view.findViewById(R.id.txtViewAllCategoryHome);
+        txtViewAllCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), AllCategory.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+        // Top discount
+        imageTopDiscount = view.findViewById(R.id.imageSuperSale);
+        imageTopDiscount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), TopDiscountProduct.class));
+                getActivity().finish();
+            }
+        });
+        // New Arrival
+        imageNewArrival = view.findViewById(R.id.imageNewArrival);
+        imageNewArrival.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), NewArrivalProduct.class));
+                getActivity().finish();
+            }
+        });
+
+    }
+
+    private void moveToOtherNavigationTab(View view) {
+        imageCart = view.findViewById(R.id.imageCartHome);
+        imageCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BottomNavigationView bottomNavigationView;
+                bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
+//                bottomNavigationView.setOnNavigationItemSelectedListener(myNavigationItemListener);
+                bottomNavigationView.setSelectedItemId(R.id.cart);
             }
         });
     }
