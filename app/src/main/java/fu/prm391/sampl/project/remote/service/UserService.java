@@ -12,6 +12,7 @@ import fu.prm391.sampl.project.model.user.UserResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 
@@ -30,5 +31,5 @@ public interface UserService {
     Call<ResetPassResponse> resetPass(@Body ResetPassRequest resetPassRequest);
 
     @GET("user/get-user-info")
-    Call<UserResponse> getUserInformation();
+    Call<UserResponse> getUserInformation(@Header("Authorization") String token);
 }

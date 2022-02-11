@@ -101,23 +101,23 @@ public class Profiles extends Fragment {
 
     }
 
-//    private void getUserInformation()
-//
-//    {
+    private void getUserInformation()
+
+    {
 //        profilesName = getView().findViewById(R.id.profilesName);
-//        Call<UserResponse> userResponseCall = ApiClient.getUserService().getUserInformation();
+//        Call<UserResponse> userResponseCall = ApiClient.getUserService().getUserInformation("Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZW1haWwiOiJubXR1bmdvZmZpY2lhbEBnbWFpbC5jb20iLCJpYXQiOjE2NDQyMzM1OTl9.X7sI6-AIyKQHNj6-vlBHuuplFmTEkLnL5zkZfn5Dnzs");
 //        userResponseCall.enqueue(new Callback<UserResponse>() {
 //            @Override
 //            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-//                if (response.isSuccessful()) {
-//                    User user = response.body().getData();
-//                    profilesName.setText(user.getFirstName()+" "+user.getLastName());
-//
-//
-//
-//                } else {
-//
-//                }
+////                if (response.isSuccessful()) {
+////                    User user = response.body().getData();
+////                    profilesName.setText(user.getFirstName()+" "+user.getLastName());
+////
+////
+////
+////                } else {
+////
+////                }
 //            }
 //
 //
@@ -127,7 +127,7 @@ public class Profiles extends Fragment {
 //
 //            }
 //        });
-//    }
+    }
 
 
     @Override
@@ -143,16 +143,40 @@ public class Profiles extends Fragment {
         verifyimage = view.findViewById(R.id.verifyimage);
         verifyimage.setImageResource(R.drawable.unverified);
         arrowLogout = view.findViewById(R.id.arrowLogout);
+        profilesName = view.findViewById(R.id.profilesName);
+        Call<UserResponse> userResponseCall = ApiClient.getUserService().getUserInformation("Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZW1haWwiOiJubXR1bmdvZmZpY2lhbEBnbWFpbC5jb20iLCJpYXQiOjE2NDQyMzM1OTl9.X7sI6-AIyKQHNj6-vlBHuuplFmTEkLnL5zkZfn5Dnzs");
+        userResponseCall.enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                if (response.isSuccessful()) {
+//                    User user = response.body().getData();
+//                    profilesName.setText(user.getFirstName()+" "+user.getLastName());
+
+
+
+                } else {
+
+                }
+            }
+
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+                Toast.makeText(getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
         String token = PreferencesHelpers.loadStringData(getContext(),"token");
-        if (token == ""){
-            profilelayout = view.findViewById((R.id.profilelayout));
-            profilelayout.setVisibility(View.INVISIBLE);
+//        if (token == ""){
+//            profilelayout = view.findViewById((R.id.profilelayout));
+//            profilelayout.setVisibility(View.INVISIBLE);
+//
+//            startActivity(new Intent(getContext(), Login.class));
+//
+//        }else{
 
-            startActivity(new Intent(getContext(), Login.class));
-
-        }else{
-            profilelayout.setVisibility(View.VISIBLE);
-        }
+//            profilelayout.setVisibility(View.VISIBLE);
+//        }
         someid5.setOnClickListener(new View.OnClickListener() {
 
             @Override
