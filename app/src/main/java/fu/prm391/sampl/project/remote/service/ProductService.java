@@ -11,4 +11,7 @@ public interface ProductService {
 
     @GET("product/get-top-trending")
     Call<ProductResponse> getTopTrendingProduct();
+
+    @GET("product/get-top-discount")
+    Call<ProductResponse> getTopDiscountProduct();
 }

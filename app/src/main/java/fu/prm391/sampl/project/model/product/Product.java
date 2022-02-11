@@ -19,7 +19,7 @@ public class Product {
     private String image;
     @SerializedName("price")
     @Expose
-    private int price;
+    private double price;
     @SerializedName("quantity")
     @Expose
     private int quantity;
@@ -39,7 +39,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(int id, String name, String description, String image, int price, int quantity, int quantitySold, String createdAt, String updatedAt, int discount) {
+    public Product(int id, String name, String description, String image, double price, int quantity, int quantitySold, String createdAt, String updatedAt, int discount) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -84,11 +84,11 @@ public class Product {
         this.image = image;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

@@ -15,6 +15,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import fu.prm391.sampl.project.R;
+import fu.prm391.sampl.project.helper.StringHelpers;
 
 public class ProductTopTrendingAdapter extends RecyclerView.Adapter<ProductTopTrendingAdapter.ViewHolder> {
 
@@ -39,7 +40,7 @@ public class ProductTopTrendingAdapter extends RecyclerView.Adapter<ProductTopTr
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Product product = products.get(position);
         holder.productName.setText(product.getName());
-        holder.productPrice.setText(String.valueOf(product.getPrice()));
+        holder.productPrice.setText(StringHelpers.currencyFormatter(product.getPrice()));
         Picasso.get().load(product.getImage()).fit().into(holder.productImage);
     }
 

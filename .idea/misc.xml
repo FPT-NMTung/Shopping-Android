@@ -54,6 +54,7 @@
         <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.3171875" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.2602564102564103" />
+        <entry key="app/src/main/res/layout/grid_product_item.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_address_psa.xml" value="0.2602564102564103" />
         <entry key="app/src/main/res/layout/item_product.xml" value="0.2602564102564103" />
         <entry key="app/src/main/res/layout/main.xml" value="0.13100672533486046" />
