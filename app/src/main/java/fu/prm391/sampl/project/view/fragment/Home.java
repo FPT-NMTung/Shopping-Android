@@ -92,9 +92,6 @@ public class Home extends Fragment {
                 recyclerViewTop4.setAdapter(new CategoryListAdapter(getContext(), data));
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
                 recyclerViewTop4.setLayoutManager(layoutManager);
-
-                Intent intent = new Intent(getContext(), ProfileShippingAddress.class);
-                startActivity(intent);
             }
 
             @Override

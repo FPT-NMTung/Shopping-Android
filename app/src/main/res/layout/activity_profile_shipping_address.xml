@@ -52,13 +52,33 @@
             android:fontFamily="@font/poppins_semibold" />
 
     <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="333dp"
-            android:layout_height="722dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12"
-            app:layout_constraintVertical_bias="1.0"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp" />
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:id="@+id/recyclerViewAddress"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <Button
+            android:text="New address"
+            android:layout_width="118dp"
+            android:layout_height="28dp"
+            android:id="@+id/button"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:padding="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerViewAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="28dp"
+            style="@style/style_psa_second_title"
+            android:backgroundTint="@color/mainBackGroundColor"
+            android:textStyle="normal"
+            android:layout_marginBottom="4dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
