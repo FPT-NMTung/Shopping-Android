@@ -1,5 +1,6 @@
 package fu.prm391.sampl.project.view.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -11,8 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
+import fu.prm391.sampl.project.ProfileShippingAddress;
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.model.category.Category;
 import fu.prm391.sampl.project.model.category.CategoryListAdapter;
@@ -89,6 +92,9 @@ public class Home extends Fragment {
                 recyclerViewTop4.setAdapter(new CategoryListAdapter(getContext(), data));
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
                 recyclerViewTop4.setLayoutManager(layoutManager);
+
+                Intent intent = new Intent(getContext(), ProfileShippingAddress.class);
+                startActivity(intent);
             }
 
             @Override

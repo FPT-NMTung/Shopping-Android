@@ -1,5 +1,6 @@
 package fu.prm391.sampl.project.remote;
 
+import fu.prm391.sampl.project.remote.service.AddressService;
 import fu.prm391.sampl.project.remote.service.CategoryService;
 import fu.prm391.sampl.project.remote.service.ProductService;
 import fu.prm391.sampl.project.remote.service.UserService;
@@ -9,7 +10,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
 
     public static final String BASE_URL = "https://api.nmtung.xyz/";
-//        public static final String BASE_URL = "https://shopping-project-git-api-order-fpt-nmtung.vercel.app/";
 
     private static Retrofit getRetrofit() {
     // logging
@@ -39,5 +39,10 @@ public class ApiClient {
     public static CategoryService getCategoryService() {
         CategoryService categoryService = getRetrofit().create(CategoryService.class);
         return categoryService;
+    }
+
+    public static AddressService getAddressService() {
+        AddressService addressService = getRetrofit().create(AddressService.class);
+        return addressService;
     }
 }
