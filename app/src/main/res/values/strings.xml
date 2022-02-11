@@ -150,5 +150,8 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+    <string name="contentDesImageButtonBack">Back button</string>
+    <string name="categoryLabel">Category</string>
+    <string name="contentDesImageButtonNext">Next</string>
 
 </resources>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainBackGroundColor"
     tools:context=".view.account.Register">
 
     <TextView
@@ -60,6 +61,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         app:cardCornerRadius="15dp"
+        app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEmailRegister">
@@ -68,7 +70,7 @@
             android:id="@+id/editTextEmailRegister"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/transparent"
+            android:background="@color/mainBackGroundColor"
             android:ems="10"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
@@ -113,6 +115,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
         app:cardCornerRadius="15dp"
+        app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9">
@@ -121,7 +124,7 @@
             android:id="@+id/editTextPassRegister"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/transparent"
+            android:background="@color/mainBackGroundColor"
             android:ems="10"
             android:importantForAutofill="no"
             android:inputType="textPassword"
@@ -136,6 +139,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
         app:cardCornerRadius="15dp"
+        app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10">
@@ -144,7 +148,7 @@
             android:id="@+id/editTextRePassRegister"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/transparent"
+            android:background="@color/mainBackGroundColor"
             android:ems="10"
             android:importantForAutofill="no"
             android:inputType="textPassword"

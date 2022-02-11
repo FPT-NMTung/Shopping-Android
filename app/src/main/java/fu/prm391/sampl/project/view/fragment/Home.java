@@ -1,5 +1,6 @@
 package fu.prm391.sampl.project.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,10 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 import fu.prm391.sampl.project.R;
@@ -25,6 +31,7 @@ import fu.prm391.sampl.project.model.product.ProductResponse;
 import fu.prm391.sampl.project.model.product.ProductTopTrendingAdapter;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.account.Login;
+import fu.prm391.sampl.project.view.category.CategoryView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -48,6 +55,7 @@ public class Home extends Fragment {
     private RecyclerView recyclerViewTop4Category;
     private ImageView imageCart;
     private RecyclerView recyclerViewTopTrendingProduct;
+    private TextView txtViewAllCategory;
 
     public Home() {
         // Required empty public constructor
@@ -87,21 +95,60 @@ public class Home extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        //get top 4 category
+        getTop4Category(view);
+        getTrendingProducts(view);
+        txtViewAllCategory = view.findViewById(R.id.txtViewAllCategoryHome);
+        txtViewAllCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CategoryView.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+
+        moveToOtherNavigationTab(view);
+        return view;
+    }
+
+    private void moveToOtherNavigationTab(View view) {
+        imageCart = view.findViewById(R.id.imageCartHome);
+        imageCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BottomNavigationView bottomNavigationView;
+                bottomNavigationView = (BottomNavigationView) getActivity().findViewById(R.id.bottomNavigationView);
+//                bottomNavigationView.setOnNavigationItemSelectedListener(myNavigationItemListener);
+                bottomNavigationView.setSelectedItemId(R.id.cart);
+            }
+        });
+    }
+
+    private void getTop4Category(View view) {
         recyclerViewTop4Category = view.findViewById(R.id.recyclerViewTop4Cate);
         Call<CategoryResponse> categoryResponseCall = ApiClient.getCategoryService().getTop4Categories();
         categoryResponseCall.enqueue(new Callback<CategoryResponse>() {
             @Override
             public void onResponse(Call<CategoryResponse> call, Response<CategoryResponse> response) {
-                ArrayList<Category> categories = (ArrayList<Category>) response.body().getData();
-                recyclerViewTop4Category.setAdapter(new CategoryTop4Adapter(getContext(), categories));
-                LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false) {
-                    @Override
-                    public boolean canScrollHorizontally() {
-                        return false;
+                if (response.isSuccessful()) {
+                    ArrayList<Category> categories = (ArrayList<Category>) response.body().getData();
+                    recyclerViewTop4Category.setAdapter(new CategoryTop4Adapter(getContext(), categories));
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false) {
+                        @Override
+                        public boolean canScrollHorizontally() {
+                            return false;
+                        }
+                    };
+                    recyclerViewTop4Category.setLayoutManager(layoutManager);
+                } else {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                        Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                    } catch (JSONException | IOException e) {
+                        Toast.makeText(getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
-                };
-                recyclerViewTop4Category.setLayoutManager(layoutManager);
+                }
+
             }
 
             @Override
@@ -109,8 +156,9 @@ public class Home extends Fragment {
                 Toast.makeText(getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
-        //get trending product
+    private void getTrendingProducts(View view) {
         recyclerViewTopTrendingProduct = view.findViewById(R.id.recyclerViewTopTrendingProduct);
         Call<ProductResponse> productResponseCall = ApiClient.getProductService().getTopTrendingProduct();
         productResponseCall.enqueue(new Callback<ProductResponse>() {
@@ -132,17 +180,5 @@ public class Home extends Fragment {
                 Toast.makeText(getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-        imageCart = view.findViewById(R.id.imageCartHome);
-        imageCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                BottomNavigationView bottomNavigationView;
-                bottomNavigationView = (BottomNavigationView) getActivity().findViewById(R.id.bottomNavigationView);
-//                bottomNavigationView.setOnNavigationItemSelectedListener(myNavigationItemListener);
-                bottomNavigationView.setSelectedItemId(R.id.cart);
-            }
-        });
-        return view;
     }
 }

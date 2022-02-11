@@ -27,11 +27,13 @@
         <entry key="app/src/main/res/drawable/bg.xml" value="0.2311965811965812" />
         <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.18076923076923077" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.23205128205128206" />
+        <entry key="app/src/main/res/drawable/icon_back.xml" value="0.27350427350427353" />
         <entry key="app/src/main/res/drawable/icon_cart.xml" value="0.3333333333333333" />
         <entry key="app/src/main/res/drawable/icon_home.xml" value="0.3333333333333333" />
         <entry key="app/src/main/res/drawable/icon_person.xml" value="0.3333333333333333" />
         <entry key="app/src/main/res/drawable/icon_search.xml" value="0.23205128205128206" />
         <entry key="app/src/main/res/drawable/icon_setting.xml" value="0.3333333333333333" />
+        <entry key="app/src/main/res/layout/activity_category.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_intro1.xml" value="0.3171875" />
         <entry key="app/src/main/res/layout/activity_intro2.xml" value="0.25" />
@@ -43,6 +45,7 @@
         <entry key="app/src/main/res/layout/activity_reset_password.xml" value="0.4002181206056813" />
         <entry key="app/src/main/res/layout/activity_scrolling.xml" value="0.2602564102564103" />
         <entry key="app/src/main/res/layout/activity_verification_email_code.xml" value="0.3171875" />
+        <entry key="app/src/main/res/layout/all_category.xml" value="0.335" />
         <entry key="app/src/main/res/layout/content_scrolling.xml" value="0.16452991452991453" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.26666666666666666" />
         <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.3171875" />
