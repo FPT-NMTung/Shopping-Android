@@ -54,4 +54,7 @@
     <string name="contentDesImage">top4CateImage</string>
     <string name="category_name">Category name</string>
 
+    <!--  Profile Shipping Address  -->
+    <string name="PSA__title">Shipping Address</string>
+    <string name="PSA__second_title">Address</string>
 </resources>
