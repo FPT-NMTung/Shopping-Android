@@ -26,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CategoryView extends AppCompatActivity {
+public class AllCategory extends AppCompatActivity {
 
     private ImageButton imageButtonBack;
     private RecyclerView recyclerViewAllCategory;
@@ -39,7 +39,7 @@ public class CategoryView extends AppCompatActivity {
         imageButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CategoryView.this, MainActivity.class));
+                startActivity(new Intent(AllCategory.this, MainActivity.class));
                 finish();
             }
         });
@@ -51,22 +51,22 @@ public class CategoryView extends AppCompatActivity {
             public void onResponse(Call<CategoryResponse> call, Response<CategoryResponse> response) {
                 if (response.isSuccessful()) {
                     ArrayList<Category> categories = (ArrayList<Category>) response.body().getData();
-                    recyclerViewAllCategory.setAdapter(new CategoryAllAdapter(CategoryView.this, categories));
-                    LinearLayoutManager layoutManager = new LinearLayoutManager(CategoryView.this, LinearLayoutManager.VERTICAL, false);
+                    recyclerViewAllCategory.setAdapter(new CategoryAllAdapter(AllCategory.this, categories));
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(AllCategory.this, LinearLayoutManager.VERTICAL, false);
                     recyclerViewAllCategory.setLayoutManager(layoutManager);
                 } else {
                     try {
                         JSONObject jsonObject = new JSONObject(response.errorBody().string());
-                        Toast.makeText(CategoryView.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AllCategory.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                     } catch (JSONException | IOException e) {
-                        Toast.makeText(CategoryView.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AllCategory.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
 
             @Override
             public void onFailure(Call<CategoryResponse> call, Throwable t) {
-                Toast.makeText(CategoryView.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AllCategory.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

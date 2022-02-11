@@ -30,8 +30,7 @@ import fu.prm391.sampl.project.model.product.Product;
 import fu.prm391.sampl.project.model.product.ProductResponse;
 import fu.prm391.sampl.project.model.product.ProductTopTrendingAdapter;
 import fu.prm391.sampl.project.remote.ApiClient;
-import fu.prm391.sampl.project.view.account.Login;
-import fu.prm391.sampl.project.view.category.CategoryView;
+import fu.prm391.sampl.project.view.category.AllCategory;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -101,7 +100,7 @@ public class Home extends Fragment {
         txtViewAllCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), CategoryView.class);
+                Intent intent = new Intent(getContext(), AllCategory.class);
                 startActivity(intent);
                 getActivity().finish();
             }

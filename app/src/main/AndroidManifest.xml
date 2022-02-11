@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project">
         <activity
-            android:name=".view.category.CategoryView"
+            android:name=".view.category.AllCategory"
             android:exported="false" />
         <activity
             android:name=".view.account.ResetPassword"
