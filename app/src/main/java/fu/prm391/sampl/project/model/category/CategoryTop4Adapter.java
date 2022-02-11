@@ -16,14 +16,13 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import fu.prm391.sampl.project.R;
-import fu.prm391.sampl.project.view.fragment.Home;
 
-public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.ViewHolder> {
+public class CategoryTop4Adapter extends RecyclerView.Adapter<CategoryTop4Adapter.ViewHolder> {
 
     private Context context;
     private ArrayList<Category> categories;
 
-    public CategoryListAdapter(Context context, ArrayList<Category> categories) {
+    public CategoryTop4Adapter(Context context, ArrayList<Category> categories) {
         this.context = context;
         this.categories = categories;
     }
@@ -32,7 +31,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View categoryView = inflater.inflate(R.layout.top4_category_product, parent, false);
+        View categoryView = inflater.inflate(R.layout.top4_category, parent, false);
         ViewHolder viewHolder = new ViewHolder(categoryView);
         return viewHolder;
     }
@@ -41,9 +40,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Category category = categories.get(position);
         holder.categoryName.setText(category.getName());
-        System.out.println(category.getImage());
-        String url = "https://i.imgur.com/tGbaZCY.jpg";
-        Picasso.get().load(url).fit().into(holder.categoryImage);
+        Picasso.get().load(category.getImage()).fit().into(holder.categoryImage);
     }
 
     @Override
@@ -59,7 +56,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            categoryImage = itemView.findViewById(R.id.top4CategoryImage);
+            categoryImage = itemView.findViewById(R.id.imgTop4Category);
             categoryName = itemView.findViewById(R.id.top4CategoryName);
             cardView = itemView.findViewById(R.id.cardTop4Category);
         }

@@ -26,4 +26,5 @@ public interface UserService {
 
     @PATCH("user/reset-password")
     Call<ResetPassResponse> resetPass(@Body ResetPassRequest resetPassRequest);
+    
 }

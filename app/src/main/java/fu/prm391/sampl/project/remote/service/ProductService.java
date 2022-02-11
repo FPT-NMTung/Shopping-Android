@@ -8,4 +8,7 @@ public interface ProductService {
 
     @GET("products")
     Call<ProductResponse> getAllProduct();
+
+    @GET("product/get-top-trending")
+    Call<ProductResponse> getTopTrendingProduct();
 }

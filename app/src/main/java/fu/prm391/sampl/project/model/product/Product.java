@@ -8,9 +8,6 @@ public class Product {
     @SerializedName("id")
     @Expose
     private int id;
-    @SerializedName("categoryId")
-    @Expose
-    private int categoryId;
     @SerializedName("name")
     @Expose
     private String name;
@@ -26,12 +23,34 @@ public class Product {
     @SerializedName("quantity")
     @Expose
     private int quantity;
+    @SerializedName("quantitySold")
+    @Expose
+    private int quantitySold;
     @SerializedName("createdAt")
     @Expose
     private String createdAt;
     @SerializedName("updatedAt")
     @Expose
     private String updatedAt;
+    @SerializedName("discount")
+    @Expose
+    private int discount;
+
+    public Product() {
+    }
+
+    public Product(int id, String name, String description, String image, int price, int quantity, int quantitySold, String createdAt, String updatedAt, int discount) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.image = image;
+        this.price = price;
+        this.quantity = quantity;
+        this.quantitySold = quantitySold;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.discount = discount;
+    }
 
     public int getId() {
         return id;
@@ -39,14 +58,6 @@ public class Product {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
     }
 
     public String getName() {
@@ -89,6 +100,14 @@ public class Product {
         this.quantity = quantity;
     }
 
+    public int getQuantitySold() {
+        return quantitySold;
+    }
+
+    public void setQuantitySold(int quantitySold) {
+        this.quantitySold = quantitySold;
+    }
+
     public String getCreatedAt() {
         return createdAt;
     }
@@ -105,4 +124,11 @@ public class Product {
         this.updatedAt = updatedAt;
     }
 
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
 }
