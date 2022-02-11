@@ -67,7 +67,7 @@
             android:layout_height="match_parent">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView2"
+                android:id="@+id/imageProfiles"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_marginStart="20dp"
@@ -76,7 +76,18 @@
                 app:cardBackgroundColor="#000000"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" >
+
+                <ImageView
+                    android:id="@+id/imageProfilesId"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@android:drawable/screen_background_dark"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/profilesName"
@@ -89,11 +100,11 @@
                 android:text="@string/LabelUsername"
                 android:textColor="#000000"
                 android:textSize="15sp"
-                app:layout_constraintStart_toEndOf="@+id/cardView2"
+                app:layout_constraintStart_toEndOf="@+id/imageProfiles"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/emailprofiles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -102,7 +113,7 @@
                 android:text="@string/LabelEmail"
                 android:textColor="#353636"
                 android:textSize="13sp"
-                app:layout_constraintStart_toEndOf="@+id/cardView2"
+                app:layout_constraintStart_toEndOf="@+id/imageProfiles"
                 app:layout_constraintTop_toBottomOf="@+id/profilesName" />
 
             <Button

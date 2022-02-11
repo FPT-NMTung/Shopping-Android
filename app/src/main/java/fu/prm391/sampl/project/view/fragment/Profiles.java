@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -24,6 +25,9 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
+
+import java.net.URL;
 
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
@@ -38,6 +42,7 @@ import fu.prm391.sampl.project.view.intro.IntroApp;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Url;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +66,9 @@ public class Profiles extends Fragment {
     private ImageView verifyimage;
     private TextView profilesName;
     private ConstraintLayout profilelayout;
+    private TextView emailprofiles;
+    private CardView imageProfiles;
+    private ImageView imageProfilesId;
 
     public Profiles() {
         // Required empty public constructor
@@ -101,56 +109,44 @@ public class Profiles extends Fragment {
 
     }
 
-    private void getUserInformation()
-
-    {
-//        profilesName = getView().findViewById(R.id.profilesName);
-//        Call<UserResponse> userResponseCall = ApiClient.getUserService().getUserInformation("Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZW1haWwiOiJubXR1bmdvZmZpY2lhbEBnbWFpbC5jb20iLCJpYXQiOjE2NDQyMzM1OTl9.X7sI6-AIyKQHNj6-vlBHuuplFmTEkLnL5zkZfn5Dnzs");
-//        userResponseCall.enqueue(new Callback<UserResponse>() {
-//            @Override
-//            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-////                if (response.isSuccessful()) {
-////                    User user = response.body().getData();
-////                    profilesName.setText(user.getFirstName()+" "+user.getLastName());
-////
-////
-////
-////                } else {
-////
-////                }
-//            }
-//
-//
-//            @Override
-//            public void onFailure(Call<UserResponse> call, Throwable t) {
-//                Toast.makeText(getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
-    }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        getUserInformation();
         View view = inflater.inflate(R.layout.fragment_profiles, container, false);
         someid5 = view.findViewById(R.id.some_id5);
         btnverifyprofiles = view.findViewById(R.id.btnverifyprofiles);
-        btnverifyprofiles.setVisibility(View.INVISIBLE);
+
         labelVerified = view.findViewById(R.id.labelVerified);
-        labelVerified.setText("Unverify");
         verifyimage = view.findViewById(R.id.verifyimage);
-        verifyimage.setImageResource(R.drawable.unverified);
+        emailprofiles = view.findViewById(R.id.emailprofiles);
+
         arrowLogout = view.findViewById(R.id.arrowLogout);
         profilesName = view.findViewById(R.id.profilesName);
+        imageProfiles = view.findViewById(R.id.imageProfiles);
+        imageProfilesId = view.findViewById(R.id.imageProfilesId);
+        String token = PreferencesHelpers.loadStringData(getContext(),"token");
         Call<UserResponse> userResponseCall = ApiClient.getUserService().getUserInformation("Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZW1haWwiOiJubXR1bmdvZmZpY2lhbEBnbWFpbC5jb20iLCJpYXQiOjE2NDQyMzM1OTl9.X7sI6-AIyKQHNj6-vlBHuuplFmTEkLnL5zkZfn5Dnzs");
         userResponseCall.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 if (response.isSuccessful()) {
-//                    User user = response.body().getData();
-//                    profilesName.setText(user.getFirstName()+" "+user.getLastName());
+                    User user = response.body().getData();
+                    profilesName.setText(user.getFirstName()+" "+user.getLastName());
+                    if(user.isActive()){
+                        verifyimage.setImageResource(R.drawable.unverified);
+                        labelVerified.setText("UnVerified");;
+                        btnverifyprofiles.setVisibility(View.VISIBLE);
+                    }else{
+                        btnverifyprofiles.setVisibility(View.INVISIBLE);
+                        verifyimage.setImageResource(R.drawable.verified);
+                        labelVerified.setText("Verified");;
+
+                    }
+                    emailprofiles.setText(user.getEmail());
+                    Picasso.get().load(user.getAvatar()).into(imageProfilesId);
+
 
 
 
@@ -166,17 +162,17 @@ public class Profiles extends Fragment {
 
             }
         });
-        String token = PreferencesHelpers.loadStringData(getContext(),"token");
-//        if (token == ""){
+
+        if (token == ""){
 //            profilelayout = view.findViewById((R.id.profilelayout));
 //            profilelayout.setVisibility(View.INVISIBLE);
-//
-//            startActivity(new Intent(getContext(), Login.class));
-//
-//        }else{
+
+            startActivity(new Intent(getContext(), Login.class));
+
+        }else{
 
 //            profilelayout.setVisibility(View.VISIBLE);
-//        }
+        }
         someid5.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -190,6 +186,14 @@ public class Profiles extends Fragment {
                         BottomNavigationView bottomNavigationView;
                         bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
                         bottomNavigationView.setSelectedItemId(R.id.home2);
+                        //Logout trả về home
+                        //Token thành null
+                        //Chạy lại hàm onCreateView
+
+
+
+
+
                     }
                 });
                 materialAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
