@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -59,6 +60,7 @@ public class Profiles extends Fragment {
     private TextView labelVerified;
     private ImageView verifyimage;
     private TextView profilesName;
+    private ConstraintLayout profilelayout;
 
     public Profiles() {
         // Required empty public constructor
@@ -85,12 +87,11 @@ public class Profiles extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        String token = PreferencesHelpers.loadStringData(getContext(),"token");
-        if (token == ""){
-            startActivity(new Intent(getContext(), Login.class));
 
-        }
+        //If token empty when open app display will bring to login
+
+        super.onCreate(savedInstanceState);
+
 
 
         if (getArguments() != null) {
@@ -100,39 +101,39 @@ public class Profiles extends Fragment {
 
     }
 
-    private void getUserInformation()
-
-    {
-        profilesName = getView().findViewById(R.id.profilesName);
-        Call<UserResponse> userResponseCall = ApiClient.getUserService().getUserInformation();
-        userResponseCall.enqueue(new Callback<UserResponse>() {
-            @Override
-            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-                if (response.isSuccessful()) {
-                    User user = response.body().getData();
-                    profilesName.setText(user.getFirstName()+" "+user.getLastName());
-
-
-
-                } else {
-
-                }
-            }
-
-
-            @Override
-            public void onFailure(Call<UserResponse> call, Throwable t) {
-                Toast.makeText(getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
+//    private void getUserInformation()
+//
+//    {
+//        profilesName = getView().findViewById(R.id.profilesName);
+//        Call<UserResponse> userResponseCall = ApiClient.getUserService().getUserInformation();
+//        userResponseCall.enqueue(new Callback<UserResponse>() {
+//            @Override
+//            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+//                if (response.isSuccessful()) {
+//                    User user = response.body().getData();
+//                    profilesName.setText(user.getFirstName()+" "+user.getLastName());
+//
+//
+//
+//                } else {
+//
+//                }
+//            }
+//
+//
+//            @Override
+//            public void onFailure(Call<UserResponse> call, Throwable t) {
+//                Toast.makeText(getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//    }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        getUserInformation();
+//        getUserInformation();
         View view = inflater.inflate(R.layout.fragment_profiles, container, false);
         someid5 = view.findViewById(R.id.some_id5);
         btnverifyprofiles = view.findViewById(R.id.btnverifyprofiles);
@@ -142,6 +143,16 @@ public class Profiles extends Fragment {
         verifyimage = view.findViewById(R.id.verifyimage);
         verifyimage.setImageResource(R.drawable.unverified);
         arrowLogout = view.findViewById(R.id.arrowLogout);
+        String token = PreferencesHelpers.loadStringData(getContext(),"token");
+        if (token == ""){
+            profilelayout = view.findViewById((R.id.profilelayout));
+            profilelayout.setVisibility(View.INVISIBLE);
+
+            startActivity(new Intent(getContext(), Login.class));
+
+        }else{
+            profilelayout.setVisibility(View.VISIBLE);
+        }
         someid5.setOnClickListener(new View.OnClickListener() {
 
             @Override
