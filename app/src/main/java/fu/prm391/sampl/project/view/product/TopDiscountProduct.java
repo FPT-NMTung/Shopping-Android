@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -19,10 +18,9 @@ import java.util.ArrayList;
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.model.product.Product;
 import fu.prm391.sampl.project.model.product.ProductResponse;
-import fu.prm391.sampl.project.model.product.ProductSuperSaleAdapter;
+import fu.prm391.sampl.project.model.product.ProductGridViewAdapter;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.MainActivity;
-import fu.prm391.sampl.project.view.account.Login;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,7 +41,7 @@ public class TopDiscountProduct extends AppCompatActivity {
             public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
                 if (response.isSuccessful()) {
                     ArrayList<Product> products = (ArrayList<Product>) response.body().getResult();
-                    gridView.setAdapter(new ProductSuperSaleAdapter(TopDiscountProduct.this, products));
+                    gridView.setAdapter(new ProductGridViewAdapter(TopDiscountProduct.this, products));
                     // When the user clicks on the GridItem
 //                    gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //

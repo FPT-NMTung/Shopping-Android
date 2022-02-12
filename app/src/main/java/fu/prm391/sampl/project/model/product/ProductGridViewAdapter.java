@@ -16,12 +16,12 @@ import java.util.ArrayList;
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.helper.StringHelpers;
 
-public class ProductSuperSaleAdapter extends BaseAdapter {
+public class ProductGridViewAdapter extends BaseAdapter {
 
     private Context context;
     private ArrayList<Product> products;
 
-    public ProductSuperSaleAdapter(Context context, ArrayList<Product> products) {
+    public ProductGridViewAdapter(Context context, ArrayList<Product> products) {
         this.context = context;
         this.products = products;
     }
