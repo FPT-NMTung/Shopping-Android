@@ -55,13 +55,14 @@
 
             <TextView
                 android:id="@+id/txtAllCategoryName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="@string/category_name"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton"
                 app:layout_constraintStart_toEndOf="@+id/cardImgAllProduct"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,6 +79,19 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/icon_next"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/txtNumberOfItemInCategory"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="18dp"
+                android:text="@string/number_of_item_category"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton"
+                app:layout_constraintStart_toEndOf="@+id/cardImgAllProduct"
+                app:layout_constraintTop_toBottomOf="@+id/txtAllCategoryName" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

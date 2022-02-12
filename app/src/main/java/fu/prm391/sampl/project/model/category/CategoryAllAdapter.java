@@ -40,6 +40,11 @@ public class CategoryAllAdapter extends RecyclerView.Adapter<CategoryAllAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Category category = categories.get(position);
         holder.categoryName.setText(category.getName());
+        if (category.getQuantity() == 0) {
+            holder.numberOfItem.setText(category.getQuantity() + " Item");
+        } else {
+            holder.numberOfItem.setText(category.getQuantity() + " Items");
+        }
         Picasso.get().load(category.getImage()).fit().into(holder.categoryImage);
     }
 
@@ -53,12 +58,14 @@ public class CategoryAllAdapter extends RecyclerView.Adapter<CategoryAllAdapter.
 
         private TextView categoryName;
         private ImageView categoryImage;
+        private TextView numberOfItem;
         private CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             categoryImage = itemView.findViewById(R.id.imgAllCategory);
             categoryName = itemView.findViewById(R.id.txtAllCategoryName);
+            numberOfItem = itemView.findViewById(R.id.txtNumberOfItemInCategory);
             cardView = itemView.findViewById(R.id.cardAllProduct);
         }
     }

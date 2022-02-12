@@ -154,5 +154,7 @@
     <string name="categoryLabel">Category</string>
     <string name="contentDesImageButtonNext">Next</string>
     <string name="superSaleLabel">Super Sale</string>
+    <string name="number_of_item_category">Number of item</string>
+    <string name="newArrivalsLabel">New Arrivals</string>
 
 </resources>
