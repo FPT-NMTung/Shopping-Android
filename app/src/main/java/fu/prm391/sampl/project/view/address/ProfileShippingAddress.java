@@ -24,7 +24,9 @@ import retrofit2.Response;
 public class ProfileShippingAddress extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+
     private Button btnCreateNewAddress;
+    private Button btnPsaBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,25 +34,23 @@ public class ProfileShippingAddress extends AppCompatActivity {
         setContentView(R.layout.activity_profile_shipping_address);
 
         recyclerView = findViewById(R.id.recyclerViewAddress);
-        btnCreateNewAddress = findViewById(R.id.btnPsaNewAddress);
 
-        btnCreateNewAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProfileShippingAddress.this, CreateNewAddress.class);
-                startActivity(intent);
-            }
-        });
+        btnCreateNewAddress = findViewById(R.id.btnPsaNewAddress);
+        btnPsaBack = findViewById(R.id.btnPsaBack);
+
+        setEventBtnCreateNewAddress();
+        setEventBtnBack();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        // clear recycler view
-        ShippingAddressAdapter temp = new ShippingAddressAdapter(new ArrayList<>(), ProfileShippingAddress.this);
-        recyclerView.setAdapter(temp);
+        clearListInsideRecycleView();
+        loadListToRecycleView();
+    }
 
+    private void loadListToRecycleView() {
         Call<GetAllAddressResponse> call = ApiClient.getAddressService().getAllAddress("Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZW1haWwiOiJubXR1bmdvZmZpY2lhbEBnbWFpbC5jb20iLCJpYXQiOjE2NDQyMzM1OTl9.X7sI6-AIyKQHNj6-vlBHuuplFmTEkLnL5zkZfn5Dnzs");
         call.enqueue(new Callback<GetAllAddressResponse>() {
             @Override
@@ -65,5 +65,29 @@ public class ProfileShippingAddress extends AppCompatActivity {
                 Log.e("GetAllAddressResponse: ", "Failed");
             }
         });
+    }
+
+    private void setEventBtnCreateNewAddress() {
+        btnCreateNewAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfileShippingAddress.this, CreateNewAddress.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void setEventBtnBack() {
+        btnPsaBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+
+    private void clearListInsideRecycleView() {
+        ShippingAddressAdapter temp = new ShippingAddressAdapter(new ArrayList<>(), ProfileShippingAddress.this);
+        recyclerView.setAdapter(temp);
     }
 }

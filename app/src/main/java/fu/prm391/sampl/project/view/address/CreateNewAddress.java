@@ -19,6 +19,8 @@ import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.adapter.DistrictAdapter;
 import fu.prm391.sampl.project.adapter.ProvinceAdapter;
 import fu.prm391.sampl.project.adapter.WardAdapter;
+import fu.prm391.sampl.project.model.address.create_new_address.CreateNewAddressRequest;
+import fu.prm391.sampl.project.model.address.create_new_address.CreateNewAddressResponse;
 import fu.prm391.sampl.project.model.address.get_district.District;
 import fu.prm391.sampl.project.model.address.get_district.GetDistrictResponse;
 import fu.prm391.sampl.project.model.address.get_province.GetProvinceResponse;
@@ -132,7 +134,31 @@ public class CreateNewAddress extends AppCompatActivity {
                     return;
                 }
 
-                Call<>
+                CreateNewAddressRequest createNewAddressRequest = new CreateNewAddressRequest();
+                createNewAddressRequest.setFullName(name);
+                createNewAddressRequest.setPhone(phone);
+                createNewAddressRequest.setDetail(detail);
+                createNewAddressRequest.setProvinceId(provinceId);
+                createNewAddressRequest.setDistrictId(districtId);
+                createNewAddressRequest.setWardId(wardId);
+
+                Call<CreateNewAddressResponse> call =ApiClient.getAddressService().createNewAddress("Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZW1haWwiOiJubXR1bmdvZmZpY2lhbEBnbWFpbC5jb20iLCJpYXQiOjE2NDQyMzM1OTl9.X7sI6-AIyKQHNj6-vlBHuuplFmTEkLnL5zkZfn5Dnzs", createNewAddressRequest);
+                call.enqueue(new Callback<CreateNewAddressResponse>() {
+                    @Override
+                    public void onResponse(Call<CreateNewAddressResponse> call, Response<CreateNewAddressResponse> response) {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(CreateNewAddress.this, "Create new address successfully", Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            Toast.makeText(CreateNewAddress.this, "Create new address failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<CreateNewAddressResponse> call, Throwable t) {
+
+                    }
+                });
             }
         });
     }
