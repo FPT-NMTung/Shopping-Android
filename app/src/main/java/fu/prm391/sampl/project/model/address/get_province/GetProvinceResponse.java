@@ -1,22 +1,22 @@
-package fu.prm391.sampl.project.model.address.get_district;
+package fu.prm391.sampl.project.model.address.get_province;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class GetDistrictResponse {
+public class GetProvinceResponse {
     @SerializedName("message")
     @Expose
     private String message;
-    @SerializedName("data")
+    @SerializedName("list")
     @Expose
-    private List<District> list;
+    private List<Province> list;
 
-    public GetDistrictResponse() {
+    public GetProvinceResponse() {
     }
 
-    public GetDistrictResponse(String message, List<District> list) {
+    public GetProvinceResponse(String message, List<Province> list) {
         this.message = message;
         this.list = list;
     }
@@ -29,12 +29,11 @@ public class GetDistrictResponse {
         this.message = message;
     }
 
-    public List<District> getList() {
+    public List<Province> getList() {
         return list;
     }
 
-    public void setList(List<District> list) {
+    public void setList(List<Province> list) {
         this.list = list;
     }
 }
-
