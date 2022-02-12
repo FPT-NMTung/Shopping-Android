@@ -46,9 +46,12 @@ public class ProductTopTrendingAdapter extends RecyclerView.Adapter<ProductTopTr
 
     @Override
     public int getItemCount() {
-        return products.size();
+        if (products.size() <= 5) {
+            return products.size();
+        } else {
+            return 5;
+        }
     }
-
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView productName;

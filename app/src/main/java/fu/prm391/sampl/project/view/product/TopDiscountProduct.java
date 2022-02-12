@@ -52,7 +52,6 @@ public class TopDiscountProduct extends AppCompatActivity {
 //                            Toast.makeText(TopDiscountProduct.this, "Selected :"
 //                                    + " " + product, Toast.LENGTH_SHORT).show();
 //                        }
-//
 //                    });
                 } else {
                     try {
