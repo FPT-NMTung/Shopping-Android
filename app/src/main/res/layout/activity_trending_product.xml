@@ -33,16 +33,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <GridView
-        android:id="@+id/gridViewTrendingProduct"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewTrendingProduct"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:numColumns="2"
-        android:scrollbars="none"
-        android:stretchMode="columnWidth"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTopTrending" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

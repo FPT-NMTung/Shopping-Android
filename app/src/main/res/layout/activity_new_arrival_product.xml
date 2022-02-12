@@ -33,16 +33,14 @@
         app:srcCompat="@drawable/icon_back"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,RedundantDescriptionCheck" />
 
-    <GridView
-        android:id="@+id/gridViewNewArrivalProduct"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewNewArrivalsProduct"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:numColumns="2"
-        android:scrollbars="none"
-        android:stretchMode="columnWidth"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTopArrival" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

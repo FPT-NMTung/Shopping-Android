@@ -1,6 +1,8 @@
 package fu.prm391.sampl.project.view.product;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,8 +19,8 @@ import java.util.ArrayList;
 
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.model.product.Product;
+import fu.prm391.sampl.project.model.product.ProductGridRecyclerViewAdapter;
 import fu.prm391.sampl.project.model.product.ProductResponse;
-import fu.prm391.sampl.project.model.product.ProductGridViewAdapter;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.MainActivity;
 import retrofit2.Call;
@@ -27,14 +29,14 @@ import retrofit2.Response;
 
 public class NewArrivalProduct extends AppCompatActivity {
 
-    private GridView gridView;
+    private RecyclerView recyclerView;
     private ImageButton imageButtonBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_arrival_product);
 
-        gridView = findViewById(R.id.gridViewNewArrivalProduct);
+        recyclerView = findViewById(R.id.recyclerViewNewArrivalsProduct);
 
         Call<ProductResponse> productResponseCall = ApiClient.getProductService().getNewArrivalsProduct();
         productResponseCall.enqueue(new Callback<ProductResponse>() {
@@ -42,19 +44,9 @@ public class NewArrivalProduct extends AppCompatActivity {
             public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
                 if (response.isSuccessful()) {
                     ArrayList<Product> products = (ArrayList<Product>) response.body().getResult();
-                    gridView.setAdapter(new ProductGridViewAdapter(NewArrivalProduct.this, products));
-                    // When the user clicks on the GridItem
-//                    gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
-//                        @Override
-//                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                            Object o = gridView.getItemAtPosition(i);
-//                            Product product = (Product) o;
-//                            Toast.makeText(TopDiscountProduct.this, "Selected :"
-//                                    + " " + product, Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                    });
+                    recyclerView.setAdapter(new ProductGridRecyclerViewAdapter(NewArrivalProduct.this, products));
+                    GridLayoutManager layoutManager = new GridLayoutManager(NewArrivalProduct.this, 2);
+                    recyclerView.setLayoutManager(layoutManager);
                 } else {
                     try {
                         JSONObject jsonObject = new JSONObject(response.errorBody().string());

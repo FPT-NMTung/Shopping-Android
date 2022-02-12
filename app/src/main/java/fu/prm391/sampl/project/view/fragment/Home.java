@@ -28,7 +28,7 @@ import fu.prm391.sampl.project.model.category.CategoryTop4Adapter;
 import fu.prm391.sampl.project.model.category.CategoryResponse;
 import fu.prm391.sampl.project.model.product.Product;
 import fu.prm391.sampl.project.model.product.ProductResponse;
-import fu.prm391.sampl.project.model.product.ProductTopTrendingAdapter;
+import fu.prm391.sampl.project.model.product.ProductTrendingHomeAdapter;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.category.AllCategory;
 import fu.prm391.sampl.project.view.product.NewArrivalProduct;
@@ -128,7 +128,6 @@ public class Home extends Fragment {
                         Toast.makeText(getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
-
             }
 
             @Override
@@ -139,13 +138,13 @@ public class Home extends Fragment {
     }
 
     private void getTrendingProducts(View view) {
-        recyclerViewTopTrendingProduct = view.findViewById(R.id.recyclerViewTopTrendingProduct);
+        recyclerViewTopTrendingProduct = view.findViewById(R.id.recyclerViewTopTrendingProductHome);
         Call<ProductResponse> productResponseCall = ApiClient.getProductService().getTopTrendingProduct();
         productResponseCall.enqueue(new Callback<ProductResponse>() {
             @Override
             public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
                 ArrayList<Product> products = (ArrayList<Product>) response.body().getResult();
-                recyclerViewTopTrendingProduct.setAdapter(new ProductTopTrendingAdapter(getContext(), products));
+                recyclerViewTopTrendingProduct.setAdapter(new ProductTrendingHomeAdapter(getContext(), products));
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false) {
                     @Override
                     public boolean canScrollVertically() {

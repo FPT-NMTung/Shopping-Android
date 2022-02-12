@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -17,22 +18,21 @@ import java.util.ArrayList;
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.helper.StringHelpers;
 
-public class ProductTopTrendingAdapter extends RecyclerView.Adapter<ProductTopTrendingAdapter.ViewHolder> {
+public class ProductGridRecyclerViewAdapter extends RecyclerView.Adapter<ProductGridRecyclerViewAdapter.ViewHolder> {
 
     private Context context;
     private ArrayList<Product> products;
 
-    public ProductTopTrendingAdapter(Context context, ArrayList<Product> products) {
+    public ProductGridRecyclerViewAdapter(Context context, ArrayList<Product> products) {
         this.context = context;
         this.products = products;
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View productView = inflater.inflate(R.layout.top_trending_product, parent, false);
-        ProductTopTrendingAdapter.ViewHolder viewHolder = new ProductTopTrendingAdapter.ViewHolder(productView);
+        View productView = inflater.inflate(R.layout.grid_product_item, parent, false);
+        ProductGridRecyclerViewAdapter.ViewHolder viewHolder = new ProductGridRecyclerViewAdapter.ViewHolder(productView);
         return viewHolder;
     }
 
@@ -46,23 +46,22 @@ public class ProductTopTrendingAdapter extends RecyclerView.Adapter<ProductTopTr
 
     @Override
     public int getItemCount() {
-        if (products.size() <= 5) {
-            return products.size();
-        } else {
-            return 5;
-        }
+        return products.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView productName;
-        private TextView productPrice;
-        private ImageView productImage;
+
+        ImageView productImage;
+        TextView productName;
+        TextView productPrice;
+        CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            productName = itemView.findViewById(R.id.txtProductNameHome);
-            productPrice = itemView.findViewById(R.id.txtProductPriceHome);
-            productImage = itemView.findViewById(R.id.imgTrendingProduct);
+            productImage = itemView.findViewById(R.id.imageProductItemGrid);
+            productName = itemView.findViewById(R.id.txtProductItemGridName);
+            productPrice = itemView.findViewById(R.id.txtProductItemGridPrice);
+            cardView = itemView.findViewById(R.id.cardProductItemGridView);
         }
     }
 }

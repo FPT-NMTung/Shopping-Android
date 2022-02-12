@@ -167,7 +167,7 @@
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewTopTrendingProduct"
+                    android:id="@+id/recyclerViewTopTrendingProductHome"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
