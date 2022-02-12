@@ -45,8 +45,7 @@ public class ShippingAddressAdapter extends RecyclerView.Adapter<ShippingAddress
     @Override
     public ShippingAddressViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.item_address_psa, parent, false);
-        ShippingAddressViewHolder viewHolder = new ShippingAddressViewHolder(view);
-        return viewHolder;
+        return new ShippingAddressViewHolder(view);
     }
 
     @Override

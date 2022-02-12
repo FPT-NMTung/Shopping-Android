@@ -9,7 +9,7 @@ public class GetWardResponse {
     @SerializedName("message")
     @Expose
     private String message;
-    @SerializedName("list")
+    @SerializedName("data")
     @Expose
     private List<Ward> list;
 

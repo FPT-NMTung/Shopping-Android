@@ -70,4 +70,5 @@
     <string name="CNA__editName">Enter your name …</string>
     <string name="CNA__editPhone">Enter your phone …</string>
     <string name="CNA__editDetail">Enter detail address …</string>
+    <string name="CNA__btnSubmit">Create</string>
 </resources>

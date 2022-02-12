@@ -9,7 +9,7 @@ public class GetProvinceResponse {
     @SerializedName("message")
     @Expose
     private String message;
-    @SerializedName("list")
+    @SerializedName("data")
     @Expose
     private List<Province> list;
 

@@ -14,9 +14,6 @@ public class District {
     @Expose
     private String prefix;
 
-    public District() {
-    }
-
     public District(int id, String name, String prefix) {
         this.id = id;
         this.name = name;

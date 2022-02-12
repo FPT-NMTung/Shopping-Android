@@ -14,9 +14,6 @@ public class Province {
     @Expose
     private String code;
 
-    public Province() {
-    }
-
     public Province(int id, String name, String code) {
         this.id = id;
         this.name = name;

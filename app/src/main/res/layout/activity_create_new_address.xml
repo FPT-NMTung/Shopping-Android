@@ -91,7 +91,7 @@
                             android:layout_height="match_parent"
                             android:inputType="textPersonName"
                             android:ems="10"
-                            android:id="@+id/editTextTextPersonName"
+                            android:id="@+id/editText_cna_name"
                             android:textSize="16sp"
                             android:layout_marginLeft="15dp"
                             android:layout_marginTop="10dp"
@@ -144,7 +144,7 @@
                             android:layout_height="match_parent"
                             android:inputType="number"
                             android:ems="10"
-                            android:id="@+id/editTextTextPersonName2"
+                            android:id="@+id/editText_cna_phone"
                             android:textSize="16sp"
                             android:layout_marginLeft="15dp"
                             android:layout_marginTop="10dp"
@@ -194,7 +194,7 @@
                     <Spinner
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:id="@+id/spinner" />
+                            android:id="@+id/spinnerCnaProvince" />
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -234,7 +234,7 @@
                     <Spinner
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:id="@+id/spinner2" />
+                            android:id="@+id/spinnerCnaDistrict" />
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -272,7 +272,7 @@
                     <Spinner
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:id="@+id/spinner3" />
+                            android:id="@+id/spinnerCnaWard" />
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -312,7 +312,7 @@
                             android:inputType="textPersonName"
                             android:gravity="fill"
                             android:ems="10"
-                            android:id="@+id/editTextTextMultiLine"
+                            android:id="@+id/editText_cna_detail"
                             android:textSize="16sp"
                             android:layout_marginLeft="15dp"
                             android:layout_marginTop="10dp"
@@ -332,10 +332,10 @@
                     android:layout_height="match_parent">
 
                 <Button
-                        android:text="Button"
+                        android:text="@string/CNA__btnSubmit"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button"
+                        android:id="@+id/btnCnaSubmit"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
