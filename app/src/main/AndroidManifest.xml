@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project">
         <activity
+            android:name=".view.product.TrendingProduct"
+            android:exported="false" />
+        <activity
             android:name=".view.product.NewArrivalProduct"
             android:exported="false" />
         <activity

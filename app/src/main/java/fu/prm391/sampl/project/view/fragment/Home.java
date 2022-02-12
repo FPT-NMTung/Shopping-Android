@@ -33,6 +33,7 @@ import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.category.AllCategory;
 import fu.prm391.sampl.project.view.product.NewArrivalProduct;
 import fu.prm391.sampl.project.view.product.TopDiscountProduct;
+import fu.prm391.sampl.project.view.product.TrendingProduct;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,12 +54,9 @@ public class Home extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private RecyclerView recyclerViewTop4Category;
-    private ImageView imageCart;
-    private RecyclerView recyclerViewTopTrendingProduct;
-    private TextView txtViewAllCategory;
-    private ImageView imageTopDiscount;
-    private ImageView imageNewArrival;
+    private RecyclerView recyclerViewTop4Category, recyclerViewTopTrendingProduct;
+    private TextView txtViewAllCategory, txtViewAllTrendingProduct;
+    private ImageView imageCart, imageTopDiscount, imageNewArrival;
     public Home() {
         // Required empty public constructor
     }
@@ -175,6 +173,16 @@ public class Home extends Fragment {
                 getActivity().finish();
             }
         });
+        // Trending
+        txtViewAllTrendingProduct = view.findViewById(R.id.txtViewAllTrendingProductHome);
+        txtViewAllTrendingProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), TrendingProduct.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
         // Top discount
         imageTopDiscount = view.findViewById(R.id.imageSuperSale);
         imageTopDiscount.setOnClickListener(new View.OnClickListener() {
@@ -193,7 +201,6 @@ public class Home extends Fragment {
                 getActivity().finish();
             }
         });
-
     }
 
     private void moveToOtherNavigationTab(View view) {
