@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato"
-                android:text="Setting"
+                android:text="Search"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"

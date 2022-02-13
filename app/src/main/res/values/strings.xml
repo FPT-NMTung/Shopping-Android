@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Project</string>
+    <string name="app_name">Jumbo</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -44,4 +44,62 @@
     <string name="pleaseEnterEmailAddressLabel">Please Enter your Email Address. Your will Receive a Code to Create a new Password via email.</string>
     <string name="txtNewPassStarLabel">New Password*</string>
 
+    <string name="LabelProfiles">Profiles</string>
+    <string name="LabelMyOrders">My Orders</string>
+    <string name="DesImage">TODO</string>
+    <string name="LabelMyFavourites">My Favourites</string>
+    <string name="LabelShippingAddress">Shipping Address</string>
+    <string name="Labelgiftcardsvouchers"><![CDATA[Gift Cards & Vouchers]]></string>
+    <string name="LabelLogout">Logout</string>
+    <string name="LabelUsername">User Name</string>
+    <string name="LabelEmail">userEmail@gmail.com</string>
+    <string name="btnEditlLabel">Edit</string>
+    <string name="LabelVerifyNow">Verify Now</string>
+    <string name="LabelVeriedUser">Verified</string>
+
+    <string name="discoverLabel">Discover</string>
+    <string name="homeLabel">Home</string>
+    <string name="cartLabel">Cart</string>
+    <string name="accountLabel">Account</string>
+    <string name="searchLabel">Search</string>
+    <string name="contentDesImageCart">imageCartHome</string>
+    <string name="categoriesLabel">Categories</string>
+    <string name="txtViewAllLabel">View All</string>
+    <string name="contentDesImage">top4CateImage</string>
+    <string name="category_name">Category name</string>
+    <string name="contentDesImageHotSale">hotSaleHome</string>
+    <string name="trendingsLabel">Trendings</string>
+    <string name="product_name_label">Product Name</string>
+    <string name="product_price_label">Product Price</string>
+    <string name="contentDesProductImage">Product Image</string>
+    <string name="line">____________________________</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="contentDesImageButtonBack">Back button</string>
+    <string name="categoryLabel">Category</string>
+    <string name="contentDesImageButtonNext">Next</string>
+    <string name="superSaleLabel">Super Sale</string>
+    <string name="number_of_item_category">Number of item</string>
+    <string name="newArrivalsLabel">New Arrivals</string>
+    <string name="topTrendingLabel">Top Trendings</string>
+    <string name="contentDesIconEdit">Icon Edit</string>
+
+    <!--  Profile Shipping Address  -->
+    <string name="PSA__title">Shipping Address</string>
+    <string name="PSA__second_title">Address</string>
+    <string name="PSA__btn_create_new_address">New address</string>
+    <string name="PSA__edit">Edit</string>
+
+    <!--  Create New Address  -->
+    <string name="CNA__txtTitle">New Address</string>
+    <string name="CNA__txtName">Full name*</string>
+    <string name="CNA__txtPhone">Phone*</string>
+    <string name="CNA__txtDetail">Detail*</string>
+    <string name="CNA__cbxProvince">Province*</string>
+    <string name="CNA__cbxDistrict">District*</string>
+    <string name="CNA__cbxWard">Ward*</string>
+    <string name="CNA__editName">Enter your name …</string>
+    <string name="CNA__editPhone">Enter your phone …</string>
+    <string name="CNA__editDetail">Enter detail address …</string>
+    <string name="CNA__btnSubmit">Create</string>
 </resources>

@@ -59,7 +59,7 @@ public class ForgotPassword extends AppCompatActivity {
 
                         if (response.isSuccessful()) {
                             ForgotPassResponse forgotPassResponse = response.body();
-                            Toast.makeText(ForgotPassword.this, forgotPassResponse.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(ForgotPassword.this, forgotPassResponse.getMessage(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(ForgotPassword.this, ResetPassword.class);
                             intent.putExtra("email", email.getText().toString());
                             startActivity(intent);

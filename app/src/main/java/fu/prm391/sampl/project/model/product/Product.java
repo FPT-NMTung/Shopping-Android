@@ -7,10 +7,7 @@ public class Product {
 
     @SerializedName("id")
     @Expose
-    private Integer id;
-    @SerializedName("categoryId")
-    @Expose
-    private Integer categoryId;
+    private int id;
     @SerializedName("name")
     @Expose
     private String name;
@@ -22,31 +19,45 @@ public class Product {
     private String image;
     @SerializedName("price")
     @Expose
-    private Integer price;
+    private double price;
     @SerializedName("quantity")
     @Expose
-    private Integer quantity;
+    private int quantity;
+    @SerializedName("quantitySold")
+    @Expose
+    private int quantitySold;
     @SerializedName("createdAt")
     @Expose
     private String createdAt;
     @SerializedName("updatedAt")
     @Expose
     private String updatedAt;
+    @SerializedName("discount")
+    @Expose
+    private int discount;
 
-    public Integer getId() {
+    public Product() {
+    }
+
+    public Product(int id, String name, String description, String image, double price, int quantity, int quantitySold, String createdAt, String updatedAt, int discount) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.image = image;
+        this.price = price;
+        this.quantity = quantity;
+        this.quantitySold = quantitySold;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.discount = discount;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
-    }
-
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
     }
 
     public String getName() {
@@ -73,20 +84,28 @@ public class Product {
         this.image = image;
     }
 
-    public Integer getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getQuantitySold() {
+        return quantitySold;
+    }
+
+    public void setQuantitySold(int quantitySold) {
+        this.quantitySold = quantitySold;
     }
 
     public String getCreatedAt() {
@@ -105,4 +124,11 @@ public class Product {
         this.updatedAt = updatedAt;
     }
 
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
 }

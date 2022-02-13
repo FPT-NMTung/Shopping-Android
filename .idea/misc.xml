@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.24871794871794872" />
+        <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/drawable/image_place.xml" value="0.3141025641025641" />
+        <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/drawable/line.xml" value="0.3141025641025641" />
+        <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/drawable/profiles.xml" value="0.3141025641025641" />
+        <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/layout-v31/fragment_profiles.xml" value="0.36666666666666664" />
         <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/layout/activity_forgot_password.xml" value="0.30085470085470084" />
-        <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/layout/activity_intro1.xml" value="0.33" />
+        <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/layout/activity_intro1.xml" value="0.25" />
         <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/layout/activity_intro2.xml" value="0.30085470085470084" />
         <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/layout/activity_intro3.xml" value="0.30085470085470084" />
         <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/layout/activity_intro_app.xml" value="0.30085470085470084" />
@@ -14,15 +19,24 @@
         <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/layout/fragment_account.xml" value="0.30085470085470084" />
         <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/layout/fragment_cart.xml" value="0.30085470085470084" />
         <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/layout/fragment_home.xml" value="0.30085470085470084" />
+        <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/layout/fragment_profiles.xml" value="0.33" />
         <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/layout/fragment_setting.xml" value="0.30085470085470084" />
+        <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/layout/main.xml" value="0.23547008547008547" />
+        <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/menu/main_menu.xml" value="0.30085470085470084" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/activity_main.xml" value="0.3484375" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/activity_new_address.xml" value="0.23097826086956522" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/activity_profile_shipping_address.xml" value="0.30641025641025643" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/fragment_account.xml" value="0.3625" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/fragment_cart.xml" value="0.3625" />
-        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/fragment_home.xml" value="0.5" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/fragment_home.xml" value="0.23097826086956522" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/fragment_setting.xml" value="0.3625" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/home_product_item.xml" value="0.67" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/item_address_psa.xml" value="0.33" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/item_spinner_new_address.xml" value="0.33" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/main.xml" value="0.3625" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/top4_category_product.xml" value="0.29743589743589743" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/menu/main_menu.xml" value="0.1824074074074074" />
+        <entry key="app/src/main/res/drawable/bg.xml" value="0.27350427350427353" />
         <entry key="app/src/main/res/drawable/icon_cart.xml" value="0.3333333333333333" />
         <entry key="app/src/main/res/drawable/icon_home.xml" value="0.3333333333333333" />
         <entry key="app/src/main/res/drawable/icon_person.xml" value="0.3333333333333333" />
@@ -33,13 +47,19 @@
         <entry key="app/src/main/res/layout/activity_intro3.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_intro_app.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2526041666666667" />
+        <entry key="app/src/main/res/layout/activity_new_arrival_product.xml" value="0.16452991452991453" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.303125" />
         <entry key="app/src/main/res/layout/activity_reset_password.xml" value="0.4002181206056813" />
+        <entry key="app/src/main/res/layout/activity_top_discount_product.xml" value="0.16452991452991453" />
+        <entry key="app/src/main/res/layout/activity_trending_product.xml" value="0.16452991452991453" />
         <entry key="app/src/main/res/layout/activity_verification_email_code.xml" value="0.3171875" />
+        <entry key="app/src/main/res/layout/all_category.xml" value="0.16452991452991453" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.26666666666666666" />
         <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.3171875" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3171875" />
+        <entry key="app/src/main/res/layout/fragment_profiles.xml" value="0.2602564102564103" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.2602564102564103" />
+        <entry key="app/src/main/res/layout/grid_product_item.xml" value="0.16452991452991453" />
         <entry key="app/src/main/res/layout/main.xml" value="0.3171875" />
       </map>
     </option>
