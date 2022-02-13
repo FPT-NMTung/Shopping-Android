@@ -45,7 +45,7 @@ public class Profiles extends Fragment {
     private String mParam2;
 
     private View viewLogOut;
-    private Button btnVerifyProfiles;
+    private Button btnVerifyProfiles, btnEditProfiles;
     private TextView labelVerified, profilesName, emailProfiles;
     private ImageView verifyImage, imageProfiles;
 
@@ -91,13 +91,29 @@ public class Profiles extends Fragment {
             getActivity().finish();
         }
 
-        viewLogOut = view.findViewById(R.id.viewLogoutProfile);
-        btnVerifyProfiles = view.findViewById(R.id.btnVerifyProfiles);
         labelVerified = view.findViewById(R.id.labelVerifiedProfile);
         verifyImage = view.findViewById(R.id.imageVerifiedProfile);
         emailProfiles = view.findViewById(R.id.txtEmailProfiles);
         profilesName = view.findViewById(R.id.txtNameProfiles);
         imageProfiles = view.findViewById(R.id.imageProfiles);
+
+        // verify Profile Action
+        btnVerifyProfiles = view.findViewById(R.id.btnVerifyProfiles);
+        btnVerifyProfiles.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // verify Profile Action
+            }
+        });
+
+        // edit profile action
+        btnEditProfiles = view.findViewById(R.id.btnEditProfiles);
+        btnEditProfiles.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // edit profile action
+            }
+        });
 
         Call<UserResponse> userResponseCall = ApiClient.getUserService().getUserInformation("Bearer " + token);
         userResponseCall.enqueue(new Callback<UserResponse>() {
@@ -145,7 +161,7 @@ public class Profiles extends Fragment {
             }
         });
 
-
+        viewLogOut = view.findViewById(R.id.viewLogoutProfile);
         viewLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
