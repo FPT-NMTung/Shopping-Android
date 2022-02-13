@@ -10,7 +10,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         app:cardElevation="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,15 +41,15 @@
 
     <RelativeLayout
         android:id="@+id/profiles"
-        android:layout_width="354dp"
+        android:layout_width="0dp"
         android:layout_height="138dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="34dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="25dp"
         android:background="@color/white"
         android:backgroundTint="#FFFFFF"
         android:clipToOutline="true"
@@ -61,13 +61,21 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardImageProfiles"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="20dp"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="31dp"
+                android:layout_marginTop="25dp"
                 android:background="#FFFFFF"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="@string/LabelUsername"
@@ -118,52 +126,55 @@
                 android:id="@+id/btnEditProfiles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:drawableStart="@drawable/editprofile"
                 android:fontFamily="@font/poppins_semibold"
                 android:forceDarkAllowed="false"
                 android:includeFontPadding="true"
                 android:text="@string/btnEditlLabel"
-                android:textSize="14sp"
+                android:textSize="13sp"
                 android:visibility="visible"
                 app:cornerRadius="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtEmailProfiles" />
 
             <Button
                 android:id="@+id/btnVerifyProfiles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="14dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="@string/LabelVerifyNow"
-                android:textSize="14sp"
+                android:textSize="13sp"
                 app:cornerRadius="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btnEditProfiles" />
+                app:layout_constraintEnd_toStartOf="@+id/btnEditProfiles"
+                app:layout_constraintStart_toEndOf="@+id/labelVerifiedProfile"
+                app:layout_constraintTop_toBottomOf="@+id/txtEmailProfiles" />
 
             <TextView
                 android:id="@+id/labelVerifiedProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="39dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins"
                 android:text="@string/LabelVeriedUser"
                 android:textColor="#000000"
                 android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toEndOf="@+id/imageVerifiedProfile"
+                app:layout_constraintTop_toBottomOf="@+id/cardImageProfiles" />
 
             <ImageView
                 android:id="@+id/imageVerifiedProfile"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:layout_marginStart="21dp"
-                android:layout_marginBottom="18dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="22dp"
                 android:contentDescription="@string/DesImage"
                 android:src="@drawable/verified"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardImageProfiles" />
 
             <ImageView
                 android:id="@+id/imageView6"
