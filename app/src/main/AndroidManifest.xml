@@ -14,6 +14,7 @@
         <activity
                 android:name=".view.address.CreateNewAddress"
                 android:exported="false" />
+        <activity
             android:name=".view.product.TrendingProduct"
             android:exported="false" />
         <activity
@@ -30,9 +31,6 @@
             android:exported="false" />
         <activity
                 android:name=".view.address.ProfileShippingAddress"
-                android:exported="false" />
-        <activity
-                android:name=".view.account.ResetPassword"
                 android:exported="false" />
         <activity
                 android:name=".view.intro.Intro3"
