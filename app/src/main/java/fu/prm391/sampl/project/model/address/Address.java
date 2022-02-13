@@ -44,9 +44,6 @@ public class Address {
     @Expose
     private String wardPrefix;
 
-    public Address() {
-    }
-
     public Address(int id, int userId, String fullName, String phone, String detail, int isDefault, String createdAt, String updatedAt, String provinceName, String districtName, String districtPrefix, String wardName, String wardPrefix) {
         this.id = id;
         this.userId = userId;

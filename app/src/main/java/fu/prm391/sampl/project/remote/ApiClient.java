@@ -27,22 +27,18 @@ public class ApiClient {
     }
 
     public static UserService getUserService() {
-        UserService userService = getRetrofit().create(UserService.class);
-        return userService;
+        return getRetrofit().create(UserService.class);
     }
 
     public static ProductService getProductService() {
-        ProductService productService = getRetrofit().create(ProductService.class);
-        return productService;
+        return getRetrofit().create(ProductService.class);
     }
 
     public static CategoryService getCategoryService() {
-        CategoryService categoryService = getRetrofit().create(CategoryService.class);
-        return categoryService;
+        return getRetrofit().create(CategoryService.class);
     }
 
     public static AddressService getAddressService() {
-        AddressService addressService = getRetrofit().create(AddressService.class);
-        return addressService;
+        return getRetrofit().create(AddressService.class);
     }
 }

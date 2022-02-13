@@ -229,7 +229,7 @@ public class CreateNewAddress extends AppCompatActivity {
                 if (response.isSuccessful()) {
 
                     List<Province> list = response.body().getList();
-                    list.add(0, new Province(0, "-- Select province --", ""));
+                    list.add(0, new Province(0, "-- Select Province --", ""));
 
                     provinceList = list;
 

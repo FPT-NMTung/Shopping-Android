@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -88,8 +89,12 @@ public class ShippingAddressAdapter extends RecyclerView.Adapter<ShippingAddress
                         }
                     });
 
+                    list.get(positionCheck).setIsDefault(0);
+
                     lastRdb = holder.getRdbPsaDefault();
                     positionCheck = temp;
+
+                    list.get(positionCheck).setIsDefault(1);
                 }
             }
         });

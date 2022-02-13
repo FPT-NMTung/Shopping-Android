@@ -58,6 +58,7 @@
     <string name="PSA__title">Shipping Address</string>
     <string name="PSA__second_title">Address</string>
     <string name="PSA__btn_create_new_address">New address</string>
+    <string name="PSA__edit">Edit</string>
 
     <!--  Create New Address  -->
     <string name="CNA__txtTitle">New Address</string>
