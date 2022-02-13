@@ -1,5 +1,6 @@
 package fu.prm391.sampl.project.remote;
 
+import fu.prm391.sampl.project.remote.service.CategoryService;
 import fu.prm391.sampl.project.remote.service.ProductService;
 import fu.prm391.sampl.project.remote.service.UserService;
 import retrofit2.Retrofit;
@@ -33,5 +34,10 @@ public class ApiClient {
     public static ProductService getProductService() {
         ProductService productService = getRetrofit().create(ProductService.class);
         return productService;
+    }
+
+    public static CategoryService getCategoryService() {
+        CategoryService categoryService = getRetrofit().create(CategoryService.class);
+        return categoryService;
     }
 }

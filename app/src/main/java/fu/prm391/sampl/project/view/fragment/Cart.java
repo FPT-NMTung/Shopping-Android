@@ -3,10 +3,16 @@ package fu.prm391.sampl.project.view.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 import fu.prm391.sampl.project.R;
 
@@ -57,10 +63,23 @@ public class Cart extends Fragment {
         }
     }
 
+    Button button;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cart, container, false);
+        View view = inflater.inflate(R.layout.fragment_cart, container, false);
+        button = view.findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BottomNavigationView bottomNavigationView;
+                bottomNavigationView = (BottomNavigationView) getActivity().findViewById(R.id.bottomNavigationView);
+//                bottomNavigationView.setOnNavigationItemSelectedListener(myNavigationItemListener);
+                bottomNavigationView.setSelectedItemId(R.id.home2);
+            }
+
+        });
+        return view;
     }
 }

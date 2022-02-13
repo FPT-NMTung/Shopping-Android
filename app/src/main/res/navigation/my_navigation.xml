@@ -20,7 +20,7 @@
             android:label="fragment_cart"
             tools:layout="@layout/fragment_cart" />
     <fragment
-            android:id="@+id/setting"
+            android:id="@+id/search"
             android:name="fu.prm391.sampl.project.view.fragment.Setting"
             android:label="fragment_setting"
             tools:layout="@layout/fragment_setting" />
