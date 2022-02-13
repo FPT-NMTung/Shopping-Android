@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -28,7 +29,7 @@ import retrofit2.Response;
 
 public class TrendingProduct extends AppCompatActivity {
 
-    private ImageButton imageButtonBack;
+    private ImageView imageViewBack;
     private RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +61,8 @@ public class TrendingProduct extends AppCompatActivity {
             }
         });
 
-        imageButtonBack = findViewById(R.id.imageButtonBackTrending);
-        imageButtonBack.setOnClickListener(new View.OnClickListener() {
+        imageViewBack = findViewById(R.id.imageViewBackTrendingProduct);
+        imageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(TrendingProduct.this, MainActivity.class));

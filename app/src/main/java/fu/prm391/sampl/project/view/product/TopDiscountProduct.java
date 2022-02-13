@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -30,7 +30,7 @@ import retrofit2.Response;
 public class TopDiscountProduct extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private ImageButton imageButtonBack;
+    private ImageView imageViewBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +62,8 @@ public class TopDiscountProduct extends AppCompatActivity {
             }
         });
 
-        imageButtonBack = findViewById(R.id.imageButtonBackDiscount);
-        imageButtonBack.setOnClickListener(new View.OnClickListener() {
+        imageViewBack = findViewById(R.id.imageViewBackDiscountProduct);
+        imageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(TopDiscountProduct.this, MainActivity.class));
