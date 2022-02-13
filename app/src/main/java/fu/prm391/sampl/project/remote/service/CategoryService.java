@@ -8,4 +8,7 @@ public interface CategoryService {
 
     @GET("category/get-top-category-product")
     Call<CategoryResponse> getTop4Categories();
+
+    @GET("categories")
+    Call<CategoryResponse> getAllCategories();
 }

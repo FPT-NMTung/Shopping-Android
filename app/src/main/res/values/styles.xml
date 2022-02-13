@@ -41,15 +41,39 @@
         <item name="android:textColor">#353636</item>
     </style>
 
-    <style name="discoverLabel">
-        <item name="android:textSize">22sp</item>
-        <item name="android:textColor">#000000</item>
-        <item name="fontFamily">@font/poppins_bold</item>
+    <style name="my_orders">
+
+        <item name="android:textSize">
+            15sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+
+    </style>
+    <style name="MaterialAlertDialog.App" parent="MaterialAlertDialog.Material3">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
+        <item name="shapeAppearanceOverlay">@null</item>
     </style>
 
+    <style name="MaterialAlertDialog.App.Title.Text" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Widget.App.Button" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">8dp</item>
+    </style>
 
     <style name="Theme.App" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
     </style>
 
     <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
@@ -61,6 +85,7 @@
         <item name="colorOnSurfaceVariant">@color/black</item>  <!--  unactive icon color-->
         <item name="colorSecondaryContainer">@color/black</item> <!--  active container color-->
         <item name="colorOnSecondaryContainer">@color/white</item> <!--  active icon color-->
+    </style>
 
 
     </style>

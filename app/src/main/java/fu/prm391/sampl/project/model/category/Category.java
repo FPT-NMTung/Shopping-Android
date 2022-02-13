@@ -20,16 +20,20 @@ public class Category {
     @SerializedName("updatedAt")
     @Expose
     private String updatedAt;
+    @SerializedName("quantity")
+    @Expose
+    private int quantity;
 
     public Category() {
     }
 
-    public Category(int id, String name, String image, String createdAt, String updatedAt) {
+    public Category(int id, String name, String image, String createdAt, String updatedAt, int quantity) {
         this.id = id;
         this.name = name;
         this.image = image;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.quantity = quantity;
     }
 
     public int getId() {
@@ -70,5 +74,13 @@ public class Category {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

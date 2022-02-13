@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -76,11 +78,9 @@ public class Login extends AppCompatActivity {
 
                 if (response.isSuccessful()) { // login success
                     LoginResponse loginResponse = response.body();
-                    Toast.makeText(Login.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     //save token to preference
                     PreferencesHelpers.saveStringData(Login.this, "token", loginResponse.getToken());
-                    //check that user have logged in
-                    PreferencesHelpers.getBooleanData(Login.this, "isLoggedIn", true);
                     Intent intent = new Intent(Login.this, MainActivity.class);
                     startActivity(intent);
                     finish();
