@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -28,15 +29,15 @@ import retrofit2.Response;
 
 public class AllCategory extends AppCompatActivity {
 
-    private ImageButton imageButtonBack;
+    private ImageView imageViewBack;
     private RecyclerView recyclerViewAllCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-        imageButtonBack = findViewById(R.id.imageButtonBack);
-        imageButtonBack.setOnClickListener(new View.OnClickListener() {
+        imageViewBack = findViewById(R.id.imageViewBackCategory);
+        imageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(AllCategory.this, MainActivity.class));
