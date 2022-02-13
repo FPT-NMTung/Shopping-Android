@@ -51,8 +51,8 @@
     <string name="LabelShippingAddress">Shipping Address</string>
     <string name="Labelgiftcardsvouchers"><![CDATA[Gift Cards & Vouchers]]></string>
     <string name="LabelLogout">Logout</string>
-    <string name="LabelUsername">William B. Brickner</string>
-    <string name="LabelEmail">william.Brickner56@gmail.com</string>
+    <string name="LabelUsername">User Name</string>
+    <string name="LabelEmail">userEmail@gmail.com</string>
     <string name="btnEditlLabel">Edit</string>
     <string name="LabelVerifyNow">Verify Now</string>
     <string name="LabelVeriedUser">Verified</string>
@@ -82,5 +82,6 @@
     <string name="number_of_item_category">Number of item</string>
     <string name="newArrivalsLabel">New Arrivals</string>
     <string name="topTrendingLabel">Top Trendings</string>
+    <string name="contentDesIconEdit">Icon Edit</string>
 
 </resources>

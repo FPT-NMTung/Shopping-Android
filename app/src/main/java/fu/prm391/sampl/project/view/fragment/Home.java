@@ -143,15 +143,24 @@ public class Home extends Fragment {
         productResponseCall.enqueue(new Callback<ProductResponse>() {
             @Override
             public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
-                ArrayList<Product> products = (ArrayList<Product>) response.body().getResult();
-                recyclerViewTopTrendingProduct.setAdapter(new ProductTrendingHomeAdapter(getContext(), products));
-                LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false) {
-                    @Override
-                    public boolean canScrollVertically() {
-                        return false;
+                if (response.isSuccessful()) {
+                    ArrayList<Product> products = (ArrayList<Product>) response.body().getResult();
+                    recyclerViewTopTrendingProduct.setAdapter(new ProductTrendingHomeAdapter(getContext(), products));
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false) {
+                        @Override
+                        public boolean canScrollVertically() {
+                            return false;
+                        }
+                    };
+                    recyclerViewTopTrendingProduct.setLayoutManager(layoutManager);
+                } else {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                        Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                    } catch (JSONException | IOException e) {
+                        Toast.makeText(getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
-                };
-                recyclerViewTopTrendingProduct.setLayoutManager(layoutManager);
+                }
             }
 
             @Override

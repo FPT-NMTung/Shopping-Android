@@ -69,10 +69,11 @@
     <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
         <item name="cornerFamily">cut</item>
         <item name="cornerSize">8dp</item>
-
+    </style>
 
     <style name="Theme.App" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
     </style>
 
     <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
@@ -84,9 +85,7 @@
         <item name="colorOnSurfaceVariant">@color/black</item>  <!--  unactive icon color-->
         <item name="colorSecondaryContainer">@color/black</item> <!--  active container color-->
         <item name="colorOnSecondaryContainer">@color/white</item> <!--  active icon color-->
-
-
-
     </style>
+
 </resources>
 

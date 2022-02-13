@@ -18,6 +18,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.model.user.User;
@@ -123,7 +128,7 @@ public class Profiles extends Fragment {
                     User user = response.body().getData();
                     // check username
                     if (user.getFirstName() == null && user.getLastName() == null) {
-                        profilesName.setText("Your Username");
+                        profilesName.setText("Unknown");
                     } else if (user.getFirstName() == null && user.getLastName() != null) {
                         profilesName.setText(user.getLastName());
                     } else if (user.getFirstName() != null && user.getLastName() == null) {
@@ -150,8 +155,12 @@ public class Profiles extends Fragment {
                         btnVerifyProfiles.setVisibility(View.VISIBLE);
                     }
                 } else {
-                    // case response error
-                    // need to add after merge
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                        Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                    } catch (JSONException | IOException e) {
+                        Toast.makeText(getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 

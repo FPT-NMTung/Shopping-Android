@@ -17,10 +17,9 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.App" parent="Theme.Material3.DayNight.NoActionBar">
-        ...
-        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
-    </style>
+<!--    <style name="Theme.App" parent="Theme.Material3.DayNight.NoActionBar">-->
+<!--        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>-->
+<!--    </style>-->
 
     <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="colorPrimary">@color/white</item>

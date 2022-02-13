@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F2F6F9"
+    android:background="@color/mainBackGroundColor"
     tools:context=".view.fragment.Profiles">
 
     <androidx.cardview.widget.CardView
@@ -19,7 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#F2F6F9">
+            android:background="@color/mainBackGroundColor">
 
             <TextView
                 android:id="@+id/textView3"
@@ -85,12 +85,8 @@
                     android:id="@+id/imageProfiles"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:contentDescription="TODO"
-                    android:src="@android:drawable/screen_background_dark"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:contentDescription="@string/contentDesImage"
+                    android:src="@drawable/icon_person" />
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -127,7 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="5dp"
                 android:drawableStart="@drawable/editprofile"
                 android:fontFamily="@font/poppins_semibold"
                 android:forceDarkAllowed="false"
@@ -180,7 +176,7 @@
                 android:id="@+id/imageView6"
                 android:layout_width="23dp"
                 android:layout_height="25dp"
-                android:contentDescription="TODO"
+                android:contentDescription="@string/contentDesIconEdit"
                 android:src="@drawable/editprofile"
                 app:layout_constraintBottom_toBottomOf="@+id/btnEditProfiles"
                 app:layout_constraintEnd_toEndOf="parent"
