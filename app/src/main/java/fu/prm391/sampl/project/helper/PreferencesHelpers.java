@@ -32,4 +32,14 @@ public class PreferencesHelpers {
         editor.putBoolean(key, value);
         editor.commit();
     }
+
+    public static void removeSinglePreference(Context context, String key) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        sharedPreferences.edit().remove(key).commit();
+    }
+
+    public static void removeAllPreference(Context context, String key) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        sharedPreferences.edit().clear().commit();
+    }
 }

@@ -43,6 +43,20 @@
     <string name="rememberedYourPasswordLabel">Remembered Your Password?</string>
     <string name="pleaseEnterEmailAddressLabel">Please Enter your Email Address. Your will Receive a Code to Create a new Password via email.</string>
     <string name="txtNewPassStarLabel">New Password*</string>
+
+    <string name="LabelProfiles">Profiles</string>
+    <string name="LabelMyOrders">My Orders</string>
+    <string name="DesImage">TODO</string>
+    <string name="LabelMyFavourites">My Favourites</string>
+    <string name="LabelShippingAddress">Shipping Address</string>
+    <string name="Labelgiftcardsvouchers"><![CDATA[Gift Cards & Vouchers]]></string>
+    <string name="LabelLogout">Logout</string>
+    <string name="LabelUsername">William B. Brickner</string>
+    <string name="LabelEmail">william.Brickner56@gmail.com</string>
+    <string name="btnEditlLabel">Edit</string>
+    <string name="LabelVerifyNow">Verify Now</string>
+    <string name="LabelVeriedUser">Verified</string>
+
     <string name="discoverLabel">Discover</string>
     <string name="homeLabel">Home</string>
     <string name="cartLabel">Cart</string>

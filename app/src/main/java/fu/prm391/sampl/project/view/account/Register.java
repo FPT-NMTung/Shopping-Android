@@ -80,7 +80,7 @@ public class Register extends AppCompatActivity {
 
                 if (response.isSuccessful()) { // register success
                     RegisterResponse registerResponse = response.body();
-                    Toast.makeText(Register.this, registerResponse.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(Register.this, registerResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
                     startActivity(new Intent(Register.this, Login.class));
                     finish();
