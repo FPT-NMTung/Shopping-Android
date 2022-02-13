@@ -2,11 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/profilelayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F2F6F9"
-    android:backgroundTint="#F2F6F9"
     tools:context=".view.fragment.Profiles">
 
     <androidx.cardview.widget.CardView
@@ -21,8 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#F2F6F9"
-            android:backgroundTint="#F2F6F9">
+            android:background="#F2F6F9">
 
             <TextView
                 android:id="@+id/textView3"
@@ -67,21 +64,20 @@
             android:layout_height="match_parent">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/imageProfiles"
+                android:id="@+id/cardImageProfiles"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:background="#000000"
-                app:cardBackgroundColor="#000000"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" >
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/imageProfilesId"
+                    android:id="@+id/imageProfiles"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:contentDescription="TODO"
                     android:src="@android:drawable/screen_background_dark"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -90,7 +86,7 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/profilesName"
+                android:id="@+id/txtNameProfiles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -100,11 +96,11 @@
                 android:text="@string/LabelUsername"
                 android:textColor="#000000"
                 android:textSize="15sp"
-                app:layout_constraintStart_toEndOf="@+id/imageProfiles"
+                app:layout_constraintStart_toEndOf="@+id/cardImageProfiles"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/emailprofiles"
+                android:id="@+id/txtEmailProfiles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -113,8 +109,8 @@
                 android:text="@string/LabelEmail"
                 android:textColor="#353636"
                 android:textSize="13sp"
-                app:layout_constraintStart_toEndOf="@+id/imageProfiles"
-                app:layout_constraintTop_toBottomOf="@+id/profilesName" />
+                app:layout_constraintStart_toEndOf="@+id/cardImageProfiles"
+                app:layout_constraintTop_toBottomOf="@+id/txtNameProfiles" />
 
             <Button
 
@@ -134,7 +130,7 @@
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <Button
-                android:id="@+id/btnverifyprofiles"
+                android:id="@+id/btnVerifyProfiles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="14dp"
@@ -146,7 +142,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/btnEditProfiles" />
 
             <TextView
-                android:id="@+id/labelVerified"
+                android:id="@+id/labelVerifiedProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="39dp"
@@ -159,7 +155,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <ImageView
-                android:id="@+id/verifyimage"
+                android:id="@+id/imageVerifiedProfile"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginStart="21dp"
@@ -173,18 +169,19 @@
                 android:id="@+id/imageView6"
                 android:layout_width="23dp"
                 android:layout_height="25dp"
-                android:layout_marginBottom="13dp"
+                android:contentDescription="TODO"
                 android:src="@drawable/editprofile"
                 app:layout_constraintBottom_toBottomOf="@+id/btnEditProfiles"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.133"
-                app:layout_constraintStart_toStartOf="@+id/btnEditProfiles" />
+                app:layout_constraintStart_toStartOf="@+id/btnEditProfiles"
+                app:layout_constraintTop_toTopOf="@+id/btnEditProfiles" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
     <!-- 01 -->
     <View
-        android:id="@+id/some_id"
+        android:id="@+id/viewMyOrdersProfiles"
         android:layout_width="0dp"
         android:layout_height="41dp"
         android:layout_alignParentStart="true"
@@ -209,7 +206,7 @@
         android:text="@string/LabelMyOrders"
         android:textAppearance="@style/my_orders"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/some_id" />
+        app:layout_constraintTop_toTopOf="@+id/viewMyOrdersProfiles" />
 
     <ImageView
         android:id="@+id/ArrowOrders"
@@ -220,7 +217,7 @@
         android:contentDescription="@string/DesImage"
         android:src="@drawable/arrowright"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/some_id" />
+        app:layout_constraintTop_toTopOf="@+id/viewMyOrdersProfiles" />
     <!-- Line -->
     <View
 
@@ -235,13 +232,13 @@
         android:layout_marginEnd="30dp"
         android:background="#C6C5C5"
         android:backgroundTint="#C6C5C5"
-        app:layout_constraintBottom_toBottomOf="@+id/some_id"
+        app:layout_constraintBottom_toBottomOf="@+id/viewMyOrdersProfiles"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
     <View
-        android:id="@+id/some_id2"
+        android:id="@+id/viewMyFavoritiesProfiles"
         android:layout_width="0dp"
         android:layout_height="41dp"
         android:layout_alignParentStart="true"
@@ -253,7 +250,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/some_id"
+        app:layout_constraintTop_toBottomOf="@+id/viewMyOrdersProfiles"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -267,7 +264,7 @@
         android:text="@string/LabelMyFavourites"
         android:textAppearance="@style/my_orders"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/some_id2" />
+        app:layout_constraintTop_toTopOf="@+id/viewMyFavoritiesProfiles" />
 
     <View
 
@@ -282,7 +279,7 @@
         android:layout_marginEnd="30dp"
         android:background="#C6C5C5"
         android:backgroundTint="#C6C5C5"
-        app:layout_constraintBottom_toBottomOf="@+id/some_id2"
+        app:layout_constraintBottom_toBottomOf="@+id/viewMyFavoritiesProfiles"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -297,10 +294,10 @@
         android:contentDescription="@string/DesImage"
         android:src="@drawable/arrowright"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/some_id2" />
+        app:layout_constraintTop_toTopOf="@+id/viewMyFavoritiesProfiles" />
 
     <View
-        android:id="@+id/some_id3"
+        android:id="@+id/viewShippingAddressProfiles"
         android:layout_width="0dp"
         android:layout_height="41dp"
         android:layout_alignParentStart="true"
@@ -312,7 +309,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/some_id2"
+        app:layout_constraintTop_toBottomOf="@+id/viewMyFavoritiesProfiles"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -326,7 +323,7 @@
         android:text="@string/LabelShippingAddress"
         android:textAppearance="@style/my_orders"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/some_id3" />
+        app:layout_constraintTop_toTopOf="@+id/viewShippingAddressProfiles" />
 
     <View
 
@@ -341,7 +338,7 @@
         android:layout_marginEnd="30dp"
         android:background="#C6C5C5"
         android:backgroundTint="#C6C5C5"
-        app:layout_constraintBottom_toBottomOf="@+id/some_id3"
+        app:layout_constraintBottom_toBottomOf="@+id/viewShippingAddressProfiles"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -356,7 +353,7 @@
         android:contentDescription="@string/DesImage"
         android:src="@drawable/arrowright"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/some_id3" />
+        app:layout_constraintTop_toTopOf="@+id/viewShippingAddressProfiles" />
 
     <ImageView
         android:id="@+id/arrowSGiftCards"
@@ -367,10 +364,10 @@
         android:contentDescription="@string/DesImage"
         android:src="@drawable/arrowright"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/some_id4" />
+        app:layout_constraintTop_toTopOf="@+id/viewVoucherProfiles" />
 
     <View
-        android:id="@+id/some_id4"
+        android:id="@+id/viewVoucherProfiles"
         android:layout_width="0dp"
         android:layout_height="41dp"
         android:layout_alignParentStart="true"
@@ -382,7 +379,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/some_id3"
+        app:layout_constraintTop_toBottomOf="@+id/viewShippingAddressProfiles"
         tools:ignore="MissingConstraints" />
 
     <View
@@ -398,7 +395,7 @@
         android:layout_marginEnd="30dp"
         android:background="#C6C5C5"
         android:backgroundTint="#C6C5C5"
-        app:layout_constraintBottom_toBottomOf="@+id/some_id4"
+        app:layout_constraintBottom_toBottomOf="@+id/viewVoucherProfiles"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -415,7 +412,7 @@
         android:text="@string/Labelgiftcardsvouchers"
         android:textAppearance="@style/my_orders"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/some_id4" />
+        app:layout_constraintTop_toTopOf="@+id/viewVoucherProfiles" />
 
     <TextView
         android:id="@+id/Logout"
@@ -428,10 +425,10 @@
         android:text="@string/LabelLogout"
         android:textAppearance="@style/my_orders"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/some_id5" />
+        app:layout_constraintTop_toTopOf="@+id/viewLogoutProfile" />
 
     <View
-        android:id="@+id/some_id5"
+        android:id="@+id/viewLogoutProfile"
         android:layout_width="0dp"
         android:layout_height="41dp"
         android:layout_alignParentStart="true"
@@ -443,7 +440,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/some_id4"
+        app:layout_constraintTop_toBottomOf="@+id/viewVoucherProfiles"
         tools:ignore="MissingConstraints" />
 
     <ImageView
@@ -455,7 +452,7 @@
         android:contentDescription="@string/DesImage"
         android:src="@drawable/arrowright"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/some_id5" />
+        app:layout_constraintTop_toTopOf="@+id/viewLogoutProfile" />
 
     <View
 
@@ -470,7 +467,7 @@
         android:layout_marginEnd="30dp"
         android:background="#C6C5C5"
         android:backgroundTint="#C6C5C5"
-        app:layout_constraintBottom_toBottomOf="@+id/some_id5"
+        app:layout_constraintBottom_toBottomOf="@+id/viewLogoutProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

@@ -75,7 +75,7 @@ public class Login extends AppCompatActivity {
 
                 if (response.isSuccessful()) { // login success
                     LoginResponse loginResponse = response.body();
-                    Toast.makeText(Login.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     //save token to preference
                     PreferencesHelpers.saveStringData(Login.this, "token", loginResponse.getToken());
                     //check that user have logged in

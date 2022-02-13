@@ -51,7 +51,7 @@ public class ResetPassword extends AppCompatActivity {
             public void onClick(View view) {
                 btnAccept.setEnabled(false);
                 if (TextUtils.isEmpty(password.getText().toString()) || TextUtils.isEmpty(verifyCode.getText().toString())) {
-                    Toast.makeText(ResetPassword.this, "All fields are required!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ResetPassword.this, "All fields are required!", Toast.LENGTH_SHORT).show();
                     btnAccept.setEnabled(true);
                 } else {
                     // reset pass
