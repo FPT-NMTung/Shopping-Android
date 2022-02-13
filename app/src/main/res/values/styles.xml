@@ -87,7 +87,9 @@
         <item name="colorOnSecondaryContainer">@color/white</item> <!--  active icon color-->
     </style>
 
-
+    <style name="discoverLabel">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">#000000</item>
     </style>
 
     <!--  Profile Shipping Address  -->
