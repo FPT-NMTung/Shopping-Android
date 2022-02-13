@@ -49,18 +49,11 @@ public class NewArrivalProduct extends AppCompatActivity {
                     GridLayoutManager layoutManager = new GridLayoutManager(NewArrivalProduct.this, 2);
                     recyclerView.setLayoutManager(layoutManager);
                 } else {
-                    try {
-                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
-                        Toast.makeText(NewArrivalProduct.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                    } catch (JSONException | IOException e) {
-                        Toast.makeText(NewArrivalProduct.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                    }
                 }
             }
 
             @Override
             public void onFailure(Call<ProductResponse> call, Throwable t) {
-                Toast.makeText(NewArrivalProduct.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

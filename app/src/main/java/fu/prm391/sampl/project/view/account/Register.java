@@ -84,7 +84,6 @@ public class Register extends AppCompatActivity {
 
                     startActivity(new Intent(Register.this, Login.class));
                     finish();
-
                 } else {
                     try {
                         JSONObject jsonObject = new JSONObject(response.errorBody().string());
@@ -98,7 +97,6 @@ public class Register extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<RegisterResponse> call, Throwable t) {
-                Toast.makeText(Register.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 btnRegister.setEnabled(true);
             }
         });

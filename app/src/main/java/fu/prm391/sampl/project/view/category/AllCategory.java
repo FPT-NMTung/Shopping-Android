@@ -55,19 +55,11 @@ public class AllCategory extends AppCompatActivity {
                     recyclerViewAllCategory.setAdapter(new CategoryAllAdapter(AllCategory.this, categories));
                     LinearLayoutManager layoutManager = new LinearLayoutManager(AllCategory.this, LinearLayoutManager.VERTICAL, false);
                     recyclerViewAllCategory.setLayoutManager(layoutManager);
-                } else {
-                    try {
-                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
-                        Toast.makeText(AllCategory.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                    } catch (JSONException | IOException e) {
-                        Toast.makeText(AllCategory.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                    }
                 }
             }
 
             @Override
             public void onFailure(Call<CategoryResponse> call, Throwable t) {
-                Toast.makeText(AllCategory.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

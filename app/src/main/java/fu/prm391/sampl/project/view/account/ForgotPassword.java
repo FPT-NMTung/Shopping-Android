@@ -77,7 +77,6 @@ public class ForgotPassword extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ForgotPassResponse> call, Throwable t) {
-                        Toast.makeText(ForgotPassword.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                         btnSend.setEnabled(true);
                     }
                 });

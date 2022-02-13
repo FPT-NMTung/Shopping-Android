@@ -46,19 +46,11 @@ public class TopDiscountProduct extends AppCompatActivity {
                     recyclerView.setAdapter(new ProductGridRecyclerViewAdapter(TopDiscountProduct.this, products));
                     GridLayoutManager layoutManager = new GridLayoutManager(TopDiscountProduct.this, 2);
                     recyclerView.setLayoutManager(layoutManager);
-                } else {
-                    try {
-                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
-                        Toast.makeText(TopDiscountProduct.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                    } catch (JSONException | IOException e) {
-                        Toast.makeText(TopDiscountProduct.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                    }
                 }
             }
 
             @Override
             public void onFailure(Call<ProductResponse> call, Throwable t) {
-                Toast.makeText(TopDiscountProduct.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

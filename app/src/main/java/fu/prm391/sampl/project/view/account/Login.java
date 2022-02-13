@@ -84,7 +84,6 @@ public class Login extends AppCompatActivity {
                     Intent intent = new Intent(Login.this, MainActivity.class);
                     startActivity(intent);
                     finish();
-
                 } else { // login failed
                     try {
                         JSONObject jsonObject = new JSONObject(response.errorBody().string());
@@ -98,7 +97,6 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Toast.makeText(Login.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 btnLogin.setEnabled(true);
             }
         });

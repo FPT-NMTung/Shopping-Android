@@ -45,19 +45,11 @@ public class TrendingProduct extends AppCompatActivity {
                     recyclerView.setAdapter(new ProductGridRecyclerViewAdapter(TrendingProduct.this, products));
                     GridLayoutManager layoutManager = new GridLayoutManager(TrendingProduct.this, 2);
                     recyclerView.setLayoutManager(layoutManager);
-                } else {
-                    try {
-                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
-                        Toast.makeText(TrendingProduct.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                    } catch (JSONException | IOException e) {
-                        Toast.makeText(TrendingProduct.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                    }
                 }
             }
 
             @Override
             public void onFailure(Call<ProductResponse> call, Throwable t) {
-                Toast.makeText(TrendingProduct.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
