@@ -31,6 +31,7 @@ import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.MainActivity;
 import fu.prm391.sampl.project.view.account.Login;
 import fu.prm391.sampl.project.view.address.ProfileShippingAddress;
+import fu.prm391.sampl.project.view.profiles.EditProfiles;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -172,7 +173,9 @@ public class Profiles extends Fragment {
                     btnEditProfiles.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            // edit profile action
+                            Intent intent = new Intent(getContext(), EditProfiles.class);
+                            startActivity(intent);
+
                         }
                     });
                 }
