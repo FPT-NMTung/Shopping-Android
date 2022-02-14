@@ -102,6 +102,10 @@ public class Profiles extends Fragment {
         profilesName = view.findViewById(R.id.txtNameProfiles);
         imageProfiles = view.findViewById(R.id.imageProfiles);
 
+        // set visibility of name user and email
+        profilesName.setVisibility(View.INVISIBLE);
+        emailProfiles.setVisibility(View.INVISIBLE);
+
         // verify Profile Action
         btnVerifyProfiles = view.findViewById(R.id.btnVerifyProfiles);
         btnVerifyProfiles.setOnClickListener(new View.OnClickListener() {
