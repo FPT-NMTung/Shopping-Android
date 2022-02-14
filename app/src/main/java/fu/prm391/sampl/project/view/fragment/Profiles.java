@@ -28,7 +28,9 @@ import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.model.user.User;
 import fu.prm391.sampl.project.model.user.UserResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
+import fu.prm391.sampl.project.view.MainActivity;
 import fu.prm391.sampl.project.view.account.Login;
+import fu.prm391.sampl.project.view.address.ProfileShippingAddress;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,10 +51,11 @@ public class Profiles extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private View viewLogOut;
+    private View viewLogOut, viewShippingAddress;
     private Button btnVerifyProfiles, btnEditProfiles;
     private TextView labelVerified, profilesName, emailProfiles;
     private ImageView verifyImage, imageProfiles;
+
 
     public Profiles() {
         // Required empty public constructor
@@ -101,28 +104,17 @@ public class Profiles extends Fragment {
         emailProfiles = view.findViewById(R.id.txtEmailProfiles);
         profilesName = view.findViewById(R.id.txtNameProfiles);
         imageProfiles = view.findViewById(R.id.imageProfiles);
+        btnVerifyProfiles = view.findViewById(R.id.btnVerifyProfiles);
+        btnEditProfiles = view.findViewById(R.id.btnEditProfiles);
 
-        // set visibility of name user and email
+        // set invisible when api have not called
         profilesName.setVisibility(View.INVISIBLE);
         emailProfiles.setVisibility(View.INVISIBLE);
+        labelVerified.setVisibility(View.INVISIBLE);
+        verifyImage.setVisibility(View.INVISIBLE);
+        btnVerifyProfiles.setVisibility(View.INVISIBLE);
+        btnEditProfiles.setVisibility(View.INVISIBLE);
 
-        // verify Profile Action
-        btnVerifyProfiles = view.findViewById(R.id.btnVerifyProfiles);
-        btnVerifyProfiles.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // verify Profile Action
-            }
-        });
-
-        // edit profile action
-        btnEditProfiles = view.findViewById(R.id.btnEditProfiles);
-        btnEditProfiles.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // edit profile action
-            }
-        });
 
         Call<UserResponse> userResponseCall = ApiClient.getUserService().getUserInformation("Bearer " + token);
         userResponseCall.enqueue(new Callback<UserResponse>() {
@@ -130,6 +122,13 @@ public class Profiles extends Fragment {
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 if (response.isSuccessful()) {
                     User user = response.body().getData();
+                    // set visible when api call successful
+                    profilesName.setVisibility(View.VISIBLE);
+                    emailProfiles.setVisibility(View.VISIBLE);
+                    labelVerified.setVisibility(View.VISIBLE);
+                    verifyImage.setVisibility(View.VISIBLE);
+                    btnVerifyProfiles.setVisibility(View.VISIBLE);
+                    btnEditProfiles.setVisibility(View.VISIBLE);
                     // check username
                     if (user.getFirstName() == null && user.getLastName() == null) {
                         profilesName.setText("Unknown");
@@ -158,22 +157,40 @@ public class Profiles extends Fragment {
                         labelVerified.setText("UnVerified");
                         btnVerifyProfiles.setVisibility(View.VISIBLE);
                     }
-                } else {
-                    try {
-                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
-                        Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                    } catch (JSONException | IOException e) {
-                        Toast.makeText(getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                    }
+
+                    // verify Profile Action
+
+                    btnVerifyProfiles.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            // verify Profile Action
+                        }
+                    });
+
+                    // edit profile action
+
+                    btnEditProfiles.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            // edit profile action
+                        }
+                    });
                 }
             }
 
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
-                Toast.makeText(getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
+        viewShippingAddress = view.findViewById(R.id.viewShippingAddressProfiles);
+        viewShippingAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ProfileShippingAddress.class);
+                startActivity(intent);
+//                getActivity().finish();
+            }
+        });
         viewLogOut = view.findViewById(R.id.viewLogoutProfile);
         viewLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,5 +219,7 @@ public class Profiles extends Fragment {
             }
         });
         return view;
+
+
     }
 }
