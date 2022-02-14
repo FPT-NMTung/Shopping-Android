@@ -1,13 +1,14 @@
-package fu.prm391.sampl.project.model.user;
+package fu.prm391.sampl.project.model.user.login;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class RegisterRequest {
+public class LoginRequest {
 
     @SerializedName("email")
     @Expose
     private String email;
+
     @SerializedName("password")
     @Expose
     private String password;

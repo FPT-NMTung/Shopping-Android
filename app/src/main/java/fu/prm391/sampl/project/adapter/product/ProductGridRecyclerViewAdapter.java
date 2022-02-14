@@ -1,4 +1,4 @@
-package fu.prm391.sampl.project.model.product;
+package fu.prm391.sampl.project.adapter.product;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.helper.StringHelpers;
+import fu.prm391.sampl.project.model.product.Product;
 import fu.prm391.sampl.project.view.product.SpecifyProduct;
 
 public class ProductGridRecyclerViewAdapter extends RecyclerView.Adapter<ProductGridRecyclerViewAdapter.ViewHolder> {

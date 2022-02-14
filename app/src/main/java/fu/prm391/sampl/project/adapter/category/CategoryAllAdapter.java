@@ -1,6 +1,5 @@
-package fu.prm391.sampl.project.model.category;
+package fu.prm391.sampl.project.adapter.category;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -18,14 +17,15 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import fu.prm391.sampl.project.R;
+import fu.prm391.sampl.project.model.category.Category;
 import fu.prm391.sampl.project.view.category.SpecifyCategory;
 
-public class CategoryTop4Adapter extends RecyclerView.Adapter<CategoryTop4Adapter.ViewHolder> {
+public class CategoryAllAdapter extends RecyclerView.Adapter<CategoryAllAdapter.ViewHolder> {
 
     private Context context;
     private ArrayList<Category> categories;
 
-    public CategoryTop4Adapter(Context context, ArrayList<Category> categories) {
+    public CategoryAllAdapter(Context context, ArrayList<Category> categories) {
         this.context = context;
         this.categories = categories;
     }
@@ -34,8 +34,8 @@ public class CategoryTop4Adapter extends RecyclerView.Adapter<CategoryTop4Adapte
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View categoryView = inflater.inflate(R.layout.top4_category, parent, false);
-        ViewHolder viewHolder = new ViewHolder(categoryView);
+        View categoryView = inflater.inflate(R.layout.all_category, parent, false);
+        CategoryAllAdapter.ViewHolder viewHolder = new CategoryAllAdapter.ViewHolder(categoryView);
         return viewHolder;
     }
 
@@ -43,6 +43,11 @@ public class CategoryTop4Adapter extends RecyclerView.Adapter<CategoryTop4Adapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Category category = categories.get(position);
         holder.categoryName.setText(category.getName());
+        if (category.getQuantity() == 0) {
+            holder.numberOfItem.setText(category.getQuantity() + " Item");
+        } else {
+            holder.numberOfItem.setText(category.getQuantity() + " Items");
+        }
         Picasso.get().load(category.getImage()).fit().into(holder.categoryImage);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,17 +65,20 @@ public class CategoryTop4Adapter extends RecyclerView.Adapter<CategoryTop4Adapte
         return categories.size();
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView categoryName;
         private ImageView categoryImage;
+        private TextView numberOfItem;
         private CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            categoryImage = itemView.findViewById(R.id.imgTop4Category);
-            categoryName = itemView.findViewById(R.id.top4CategoryName);
-            cardView = itemView.findViewById(R.id.cardTop4Category);
+            categoryImage = itemView.findViewById(R.id.imgAllCategory);
+            categoryName = itemView.findViewById(R.id.txtAllCategoryName);
+            numberOfItem = itemView.findViewById(R.id.txtNumberOfItemInCategory);
+            cardView = itemView.findViewById(R.id.cardAllProduct);
         }
     }
 }

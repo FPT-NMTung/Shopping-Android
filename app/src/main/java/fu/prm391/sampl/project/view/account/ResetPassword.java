@@ -17,8 +17,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 import fu.prm391.sampl.project.R;
-import fu.prm391.sampl.project.model.user.ResetPassRequest;
-import fu.prm391.sampl.project.model.user.ResetPassResponse;
+import fu.prm391.sampl.project.model.user.reset_password.ResetPassRequest;
+import fu.prm391.sampl.project.model.user.reset_password.ResetPassResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
 import retrofit2.Call;
 import retrofit2.Callback;

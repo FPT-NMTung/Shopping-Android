@@ -17,9 +17,8 @@ import java.io.IOException;
 
 import fu.prm391.sampl.project.R;
 
-import fu.prm391.sampl.project.model.user.ForgotPassRequest;
-import fu.prm391.sampl.project.model.user.ForgotPassResponse;
-import fu.prm391.sampl.project.model.user.LoginResponse;
+import fu.prm391.sampl.project.model.user.forgot_password.ForgotPassRequest;
+import fu.prm391.sampl.project.model.user.forgot_password.ForgotPassResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -1,29 +1,16 @@
-package fu.prm391.sampl.project.model.user;
+package fu.prm391.sampl.project.model.user.register;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ResetPassRequest {
-
-    @SerializedName("code")
-    @Expose
-    private String code;
+public class RegisterRequest {
 
     @SerializedName("email")
     @Expose
     private String email;
-
     @SerializedName("password")
     @Expose
     private String password;
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     public String getEmail() {
         return email;

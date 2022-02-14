@@ -12,30 +12,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.model.category.Category;
-import fu.prm391.sampl.project.model.category.CategoryTop4Adapter;
+import fu.prm391.sampl.project.adapter.category.CategoryTop4Adapter;
 import fu.prm391.sampl.project.model.category.CategoryResponse;
 import fu.prm391.sampl.project.model.product.Product;
 import fu.prm391.sampl.project.model.product.ProductResponse;
-import fu.prm391.sampl.project.model.product.ProductTrendingHomeAdapter;
+import fu.prm391.sampl.project.adapter.product.ProductTrendingHomeAdapter;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.category.AllCategory;
 import fu.prm391.sampl.project.view.product.NewArrivalProduct;
 import fu.prm391.sampl.project.view.product.TopDiscountProduct;
 import fu.prm391.sampl.project.view.product.TrendingProduct;
-import fu.prm391.sampl.project.view.address.CreateNewAddress;
-import fu.prm391.sampl.project.view.address.ProfileShippingAddress;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

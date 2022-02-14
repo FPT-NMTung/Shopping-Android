@@ -1,9 +1,10 @@
-package fu.prm391.sampl.project.model.user;
+package fu.prm391.sampl.project.model.user.register;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ForgotPassResponse {
+public class RegisterResponse {
+
     @SerializedName("message")
     @Expose
     private String message;
