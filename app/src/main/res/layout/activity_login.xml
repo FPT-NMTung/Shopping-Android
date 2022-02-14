@@ -20,7 +20,7 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardEmailLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/cnaTxtFullName" />
 
     <TextView
         android:id="@+id/txtSkipLogin"
@@ -83,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtLabel2Login" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardEmailLogin"
+        android:id="@+id/cnaTxtFullName"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"

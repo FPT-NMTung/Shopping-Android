@@ -84,4 +84,22 @@
     <string name="topTrendingLabel">Top Trendings</string>
     <string name="contentDesIconEdit">Icon Edit</string>
 
+    <!--  Profile Shipping Address  -->
+    <string name="PSA__title">Shipping Address</string>
+    <string name="PSA__second_title">Address</string>
+    <string name="PSA__btn_create_new_address">New address</string>
+    <string name="PSA__edit">Edit</string>
+
+    <!--  Create New Address  -->
+    <string name="CNA__txtTitle">New Address</string>
+    <string name="CNA__txtName">Full name*</string>
+    <string name="CNA__txtPhone">Phone*</string>
+    <string name="CNA__txtDetail">Detail*</string>
+    <string name="CNA__cbxProvince">Province*</string>
+    <string name="CNA__cbxDistrict">District*</string>
+    <string name="CNA__cbxWard">Ward*</string>
+    <string name="CNA__editName">Enter your name …</string>
+    <string name="CNA__editPhone">Enter your phone …</string>
+    <string name="CNA__editDetail">Enter detail address …</string>
+    <string name="CNA__btnSubmit">Create</string>
 </resources>
