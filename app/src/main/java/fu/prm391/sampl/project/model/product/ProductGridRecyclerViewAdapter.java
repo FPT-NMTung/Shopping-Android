@@ -1,6 +1,7 @@
 package fu.prm391.sampl.project.model.product;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.helper.StringHelpers;
+import fu.prm391.sampl.project.view.product.SpecifyProduct;
 
 public class ProductGridRecyclerViewAdapter extends RecyclerView.Adapter<ProductGridRecyclerViewAdapter.ViewHolder> {
 
@@ -42,6 +44,14 @@ public class ProductGridRecyclerViewAdapter extends RecyclerView.Adapter<Product
         holder.productName.setText(product.getName());
         holder.productPrice.setText(StringHelpers.currencyFormatter(product.getPrice()));
         Picasso.get().load(product.getImage()).fit().into(holder.productImage);
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, SpecifyProduct.class);
+                intent.putExtra("specifyProduct", product);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
