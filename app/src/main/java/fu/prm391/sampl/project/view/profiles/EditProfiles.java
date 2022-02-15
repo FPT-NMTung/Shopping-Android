@@ -1,8 +1,10 @@
 package fu.prm391.sampl.project.view.profiles;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,21 +14,40 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.view.MainActivity;
 import fu.prm391.sampl.project.view.fragment.Profiles;
 import fu.prm391.sampl.project.view.product.NewArrivalProduct;
 
 public class EditProfiles extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    ImageView btnBack;
+    ImageView btnBack,cover;
     EditText firstName, lastName,emailAddress,phoneNumber;
     Spinner gender;
+    FloatingActionButton fab;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profiles);
+        cover = findViewById(R.id.coverImg);
+        fab =findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImagePicker.with(EditProfiles.this)
+
+//                        .crop()	    			//Crop image(Optional), Check Customization for more option
+//                        .compress(1024)			//Final image size will be less than 1 MB(Optional)
+//                        .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                        .start();
+
+            }
+        });
         btnBack = findViewById(R.id.imageViewBackEditProfile);
         firstName = findViewById(R.id.txtFirstName);
         lastName = findViewById(R.id.txtLastName);
@@ -83,5 +104,14 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Uri uri = data.getData();
+        cover.setImageURI(uri);
+        fab.setVisibility(View.INVISIBLE);
     }
 }
