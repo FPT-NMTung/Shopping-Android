@@ -53,6 +53,7 @@
         <entry key="app/src/main/res/layout/activity_reset_password.xml" value="0.2128205128205128" />
         <entry key="app/src/main/res/layout/activity_specify_category.xml" value="0.3171875" />
         <entry key="app/src/main/res/layout/activity_specify_product.xml" value="0.3171875" />
+        <entry key="app/src/main/res/layout/activity_top_discount_product.xml" value="0.2602564102564103" />
         <entry key="app/src/main/res/layout/activity_trending_product.xml" value="0.2602564102564103" />
         <entry key="app/src/main/res/layout/activity_verification_email_code.xml" value="0.3171875" />
         <entry key="app/src/main/res/layout/all_category.xml" value="0.2602564102564103" />
@@ -60,6 +61,7 @@
         <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.3171875" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.49069003285870755" />
         <entry key="app/src/main/res/layout/fragment_profiles.xml" value="0.2602564102564103" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.2602564102564103" />
         <entry key="app/src/main/res/layout/grid_product_item.xml" value="0.2602564102564103" />
         <entry key="app/src/main/res/layout/item_address_psa.xml" value="0.2602564102564103" />
@@ -69,6 +71,7 @@
         <entry key="app/src/main/res/layout/item_top4_category.xml" value="0.2602564102564103" />
         <entry key="app/src/main/res/layout/item_top_trending_product.xml" value="0.2602564102564103" />
         <entry key="app/src/main/res/layout/main.xml" value="0.13100672533486046" />
+        <entry key="app/src/main/res/layout/test_search_view.xml" value="0.2602564102564103" />
         <entry key="app/src/main/res/layout/top4_category.xml" value="0.2602564102564103" />
         <entry key="app/src/main/res/layout/top4_category_product.xml" value="0.335" />
         <entry key="app/src/main/res/layout/top_trending_product.xml" value="0.2602564102564103" />

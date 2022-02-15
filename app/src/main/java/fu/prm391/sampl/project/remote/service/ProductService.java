@@ -21,4 +21,8 @@ public interface ProductService {
 
     @GET("product/get-by-category")
     Call<ProductResponse> getProductByCategoryId(@Query("categoryId") int categoryId);
+
+    @GET("product/search")
+    Call<ProductResponse> searchProducts(@Query("query") String query,
+                                         @Query("limit") int limit);
 }

@@ -61,7 +61,7 @@
     <string name="homeLabel">Home</string>
     <string name="cartLabel">Cart</string>
     <string name="accountLabel">Account</string>
-    <string name="searchLabel">Search</string>
+<!--    <string name="searchLabel">Search</string>-->
     <string name="contentDesImageCart">imageCartHome</string>
     <string name="categoriesLabel">Categories</string>
     <string name="txtViewAllLabel">View All</string>
@@ -102,4 +102,7 @@
     <string name="CNA__editPhone">Enter your phone …</string>
     <string name="CNA__editDetail">Enter detail address …</string>
     <string name="CNA__btnSubmit">Create</string>
+    <string name="searchLabel">Search</string>
+    <string name="searchProductHintLabel">Search Products</string>
+    <string name="contentDesImageButtonSearch">Search Image</string>
 </resources>
