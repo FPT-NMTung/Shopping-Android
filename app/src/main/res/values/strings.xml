@@ -103,4 +103,11 @@
     <string name="CNA__editDetail">Enter detail address …</string>
     <string name="CNA__btnSubmit">Create</string>
     <string name="editProfilesLabel">Edit Profiles</string>
+    <string name="UserInformationLabel">User Information</string>
+    <string name="firstNameLabel">First Name</string>
+    <string name="lastNameLabel">Last Name</string>
+    <string name="emailAddressLabel">Email Address</string>
+    <string name="genderLabel">Gender</string>
+    <string name="phoneLabel">Phone</string>
+    <string name="btnSave">Save</string>
 </resources>
