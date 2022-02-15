@@ -22,11 +22,12 @@ public class SpecifyCategory extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_specify_category);
-        txtTitle.setText(category.getName());
+
         txtTitle = findViewById(R.id.txtSpecifyCategoryTitle);
 
         Intent intent = getIntent();
         category = (Category) intent.getSerializableExtra("specifyCategory");
+        txtTitle.setText(category.getName());
         imageViewBack = findViewById(R.id.imageViewBackSpecifyCategory);
         imageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
