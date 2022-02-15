@@ -6,12 +6,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -87,22 +89,29 @@ public class Search extends Fragment {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Call<ProductResponse> productResponseCall = ApiClient.getProductService().searchProducts(txtSearchQuery.getText().toString(), 10);
-                productResponseCall.enqueue(new Callback<ProductResponse>() {
-                    @Override
-                    public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
-                        if (response.isSuccessful()) {
-                            ArrayList<Product> products = (ArrayList<Product>) response.body().getResult();
-                            recyclerViewSearchedProduct.setAdapter(new ProductGridLayoutItemAdapter(getContext(), products));
-                            GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
-                            recyclerViewSearchedProduct.setLayoutManager(layoutManager);
+                if (TextUtils.isEmpty(txtSearchQuery.getText().toString())) {
+                    Toast.makeText(getContext(), "Enter search query to search!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Call<ProductResponse> productResponseCall = ApiClient.getProductService().searchProducts(txtSearchQuery.getText().toString(), 10);
+                    productResponseCall.enqueue(new Callback<ProductResponse>() {
+                        @Override
+                        public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
+                            if (response.isSuccessful()) {
+                                ArrayList<Product> products = (ArrayList<Product>) response.body().getResult();
+                                if (products.size() == 0) {
+                                    Toast.makeText(getContext(), "There is no products like this!", Toast.LENGTH_SHORT).show();
+                                }
+                                recyclerViewSearchedProduct.setAdapter(new ProductGridLayoutItemAdapter(getContext(), products));
+                                GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
+                                recyclerViewSearchedProduct.setLayoutManager(layoutManager);
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<ProductResponse> call, Throwable t) {
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<ProductResponse> call, Throwable t) {
+                        }
+                    });
+                }
             }
         });
         return view;
