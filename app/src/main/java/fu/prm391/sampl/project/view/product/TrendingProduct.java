@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.model.product.Product;
 import fu.prm391.sampl.project.model.product.ProductResponse;
-import fu.prm391.sampl.project.adapter.product.ProductGridRecyclerViewAdapter;
+import fu.prm391.sampl.project.adapter.product.ProductGridLayoutItemAdapter;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.MainActivity;
 import retrofit2.Call;
@@ -36,7 +36,7 @@ public class TrendingProduct extends AppCompatActivity {
             public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
                 if (response.isSuccessful()) {
                     ArrayList<Product> products = (ArrayList<Product>) response.body().getResult();
-                    recyclerView.setAdapter(new ProductGridRecyclerViewAdapter(TrendingProduct.this, products));
+                    recyclerView.setAdapter(new ProductGridLayoutItemAdapter(TrendingProduct.this, products));
                     GridLayoutManager layoutManager = new GridLayoutManager(TrendingProduct.this, 2);
                     recyclerView.setLayoutManager(layoutManager);
                 }
