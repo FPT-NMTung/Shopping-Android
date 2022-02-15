@@ -102,7 +102,6 @@
                 android:importantForAutofill="no"
                 android:inputType="textPersonName"
                 android:text="@string/lastNameLabel"
-                android:textColorHint="#00FFFFFF"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/txtFirstName"
@@ -121,7 +120,6 @@
                 android:inputType="textPersonName"
                 android:text="@string/firstNameLabel"
                 android:textColor="#000000"
-                android:textColorHint="#00000000"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -158,7 +156,6 @@
                 android:importantForAutofill="no"
                 android:inputType="textEmailAddress"
                 android:text="@string/emailAddressLabel"
-                android:textColorHint="#00FFFFFF"
                 android:textSize="15sp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -180,8 +177,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/txtGender"
+            <Spinner
+                android:id="@+id/spinnerGender"
                 android:layout_width="177dp"
                 android:layout_height="match_parent"
                 android:background="@null"
@@ -190,7 +187,6 @@
                 android:hint="@string/firstNameLabel"
                 android:importantForAutofill="no"
                 android:inputType="textPersonName"
-                android:text="@string/genderLabel"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
                 android:textSize="15sp"
@@ -205,6 +201,7 @@
                 android:background="@null"
                 android:ems="10"
                 android:fontFamily="@font/poppins_semibold"
+                android:hint="@string/phoneLabel"
                 android:inputType="phone"
                 android:text="@string/phoneLabel"
                 android:textSize="15sp"
