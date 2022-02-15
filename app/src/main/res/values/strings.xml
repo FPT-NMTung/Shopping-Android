@@ -45,7 +45,7 @@
     <string name="txtNewPassStarLabel">New Password*</string>
 
     <string name="LabelProfiles">Profiles</string>
-    <string name="LabelMyOrders">My Orders</string>
+    <string name="LabelMyOrdersHistory">My Orders History</string>
     <string name="DesImage">TODO</string>
     <string name="LabelMyFavourites">My Favourites</string>
     <string name="LabelShippingAddress">Shipping Address</string>

@@ -2,6 +2,7 @@ package fu.prm391.sampl.project.remote;
 
 import fu.prm391.sampl.project.remote.service.AddressService;
 import fu.prm391.sampl.project.remote.service.CategoryService;
+import fu.prm391.sampl.project.remote.service.OrderService;
 import fu.prm391.sampl.project.remote.service.ProductService;
 import fu.prm391.sampl.project.remote.service.UserService;
 import retrofit2.Retrofit;
@@ -40,5 +41,9 @@ public class ApiClient {
 
     public static AddressService getAddressService() {
         return getRetrofit().create(AddressService.class);
+    }
+
+    public static OrderService getOrderService() {
+        return getRetrofit().create(OrderService.class);
     }
 }
