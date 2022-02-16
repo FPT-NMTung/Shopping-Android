@@ -1,4 +1,4 @@
-package fu.prm391.sampl.project.adapter;
+package fu.prm391.sampl.project.adapter.address;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,13 +13,14 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 import fu.prm391.sampl.project.R;
-import fu.prm391.sampl.project.model.address.get_ward.Ward;
+import fu.prm391.sampl.project.model.address.get_province.Province;
 
-public class WardAdapter extends ArrayAdapter<Ward> {
+public class ProvinceAdapter extends ArrayAdapter<Province> {
+
     private LayoutInflater inflater;
 
-    public WardAdapter(@NonNull Context context, int resource, @NonNull List<Ward> objects) {
-        super(context, resource, objects);
+    public ProvinceAdapter(@NonNull Context context, int resource, @NonNull List<Province> list) {
+        super(context, resource, list);
         this.inflater = LayoutInflater.from(context);
     }
 
@@ -27,10 +28,10 @@ public class WardAdapter extends ArrayAdapter<Ward> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = inflater.inflate(R.layout.item_spinner_new_address, parent, false);
-        Ward ward = getItem(position);
+        Province province = getItem(position);
 
         TextView textView = view.findViewById(R.id.txt_spinner_new_address);
-        textView.setText(ward.getPrefix() + " " + ward.getName());
+        textView.setText(province.getName());
 
         return view;
     }
@@ -40,10 +41,10 @@ public class WardAdapter extends ArrayAdapter<Ward> {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_spinner_new_address, parent, false);
         }
-        Ward ward = getItem(position);
+        Province province = getItem(position);
 
         TextView textView = convertView.findViewById(R.id.txt_spinner_new_address);
-        textView.setText(ward.getPrefix() + " " + ward.getName());
+        textView.setText(province.getName());
 
         return convertView;
     }

@@ -16,9 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fu.prm391.sampl.project.R;
-import fu.prm391.sampl.project.adapter.DistrictAdapter;
-import fu.prm391.sampl.project.adapter.ProvinceAdapter;
-import fu.prm391.sampl.project.adapter.WardAdapter;
+import fu.prm391.sampl.project.adapter.address.DistrictAdapter;
+import fu.prm391.sampl.project.adapter.address.ProvinceAdapter;
+import fu.prm391.sampl.project.adapter.address.WardAdapter;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.model.address.create_new_address.CreateNewAddressRequest;
 import fu.prm391.sampl.project.model.address.create_new_address.CreateNewAddressResponse;

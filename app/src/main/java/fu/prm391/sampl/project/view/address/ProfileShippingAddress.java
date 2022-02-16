@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fu.prm391.sampl.project.R;
-import fu.prm391.sampl.project.adapter.ShippingAddressAdapter;
+import fu.prm391.sampl.project.adapter.address.ShippingAddressAdapter;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.model.address.Address;
 import fu.prm391.sampl.project.model.address.delete_address.DeleteAddressRequest;

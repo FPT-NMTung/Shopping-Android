@@ -1,33 +1,26 @@
-package fu.prm391.sampl.project.adapter;
+package fu.prm391.sampl.project.adapter.address;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.model.address.Address;
-import fu.prm391.sampl.project.model.address.get_information_address.GetInformationAddress;
 import fu.prm391.sampl.project.model.address.get_information_address.GetInformationAddressResponse;
 import fu.prm391.sampl.project.model.address.update_default.UpdateDefaultAddressRequest;
 import fu.prm391.sampl.project.model.address.update_default.UpdateDefaultAddressResponse;
-import fu.prm391.sampl.project.model.user.UserResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
-import fu.prm391.sampl.project.view.account.Login;
 import fu.prm391.sampl.project.view.address.CreateNewAddress;
 import retrofit2.Call;
 import retrofit2.Callback;
