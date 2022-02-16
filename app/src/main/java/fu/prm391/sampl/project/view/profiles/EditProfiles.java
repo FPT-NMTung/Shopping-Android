@@ -150,6 +150,6 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
 
         Uri uri = data.getData();
         cover.setImageURI(uri);
-        fab.setVisibility(View.INVISIBLE);
+//        fab.setVisibility(View.INVISIBLE);
     }
 }
