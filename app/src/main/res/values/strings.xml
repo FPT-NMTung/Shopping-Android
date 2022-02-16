@@ -102,6 +102,15 @@
     <string name="CNA__editPhone">Enter your phone …</string>
     <string name="CNA__editDetail">Enter detail address …</string>
     <string name="CNA__btnSubmit">Create</string>
+
+    <!--  Fragment Cart  -->
+    <string name="FA__title">Cart</string>
+    <string name="FA__subTotal">Sub Total</string>
+    <string name="FA__shippingFee">Shipping Fee</string>
+    <string name="FA__estimatingTax">Estimating Tax</string>
+    <string name="FA__total">Total</string>
+    <string name="FA__checkOut">Checkout</string>
+
     <string name="searchLabel">Search</string>
     <string name="searchProductHintLabel">Search Products</string>
     <string name="contentDesImageButtonSearch">Search Image</string>

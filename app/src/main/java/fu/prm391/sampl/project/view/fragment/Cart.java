@@ -8,10 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import fu.prm391.sampl.project.R;
+import fu.prm391.sampl.project.helper.PreferencesHelpers;
+import fu.prm391.sampl.project.model.order.get_all_order.GetAllOrderResponse;
+import fu.prm391.sampl.project.remote.ApiClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +35,8 @@ public class Cart extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private String token;
 
     public Cart() {
         // Required empty public constructor
@@ -66,17 +75,28 @@ public class Cart extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cart, container, false);
-        button = view.findViewById(R.id.btnPsaEditAddress);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        this.token = PreferencesHelpers.loadStringData(getContext(), "token");
+
+        loadAllListOrder();
+
+        return view;
+    }
+
+    private void loadAllListOrder() {
+        Call<GetAllOrderResponse> call = ApiClient.getOrderService().getAllOrder("Bearer " + this.token);
+        call.enqueue(new Callback<GetAllOrderResponse>() {
             @Override
-            public void onClick(View view) {
-                BottomNavigationView bottomNavigationView;
-                bottomNavigationView = (BottomNavigationView) getActivity().findViewById(R.id.bottomNavigationView);
-//                bottomNavigationView.setOnNavigationItemSelectedListener(myNavigationItemListener);
-                bottomNavigationView.setSelectedItemId(R.id.home2);
+            public void onResponse(Call<GetAllOrderResponse> call, Response<GetAllOrderResponse> response) {
+                if (response.isSuccessful()) {
+
+                }
             }
 
+            @Override
+            public void onFailure(Call<GetAllOrderResponse> call, Throwable t) {
+
+            }
         });
-        return view;
     }
 }

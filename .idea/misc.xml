@@ -23,17 +23,29 @@
         <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/layout/fragment_setting.xml" value="0.30085470085470084" />
         <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/layout/main.xml" value="0.23547008547008547" />
         <entry key="..\:/FPT/Subject/Project/Shopping-Android/app/src/main/res/menu/main_menu.xml" value="0.30085470085470084" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/activity_category.xml" value="0.2936708860759494" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/activity_create_new_address.xml" value="0.30641025641025643" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/activity_main.xml" value="0.3484375" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/activity_new_address.xml" value="0.23097826086956522" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/activity_new_arrival_product.xml" value="0.2936708860759494" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/activity_profile_shipping_address.xml" value="0.30641025641025643" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/activity_register.xml" value="0.2936708860759494" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/activity_reset_password.xml" value="0.2936708860759494" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/activity_specify_category.xml" value="0.2936708860759494" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/activity_specify_product.xml" value="0.2936708860759494" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/activity_top_discount_product.xml" value="0.2936708860759494" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/activity_trending_product.xml" value="0.2936708860759494" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/fragment_account.xml" value="0.3625" />
-        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/fragment_cart.xml" value="0.3625" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/fragment_cart.xml" value="0.33" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/fragment_home.xml" value="0.23097826086956522" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/fragment_profiles.xml" value="0.30641025641025643" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/fragment_search.xml" value="0.2936708860759494" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/fragment_setting.xml" value="0.3625" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/home_product_item.xml" value="0.67" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/item_address_psa.xml" value="0.33" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/item_cart_product.xml" value="0.75" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/item_gridlayout_product.xml" value="0.2936708860759494" />
+        <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/item_my_orders_history_product.xml" value="0.2936708860759494" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/item_spinner_new_address.xml" value="0.33" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/main.xml" value="0.3625" />
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/layout/top4_category_product.xml" value="0.29743589743589743" />
