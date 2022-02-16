@@ -3,7 +3,9 @@ package fu.prm391.sampl.project.model.product;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
 
     @SerializedName("id")
     @Expose

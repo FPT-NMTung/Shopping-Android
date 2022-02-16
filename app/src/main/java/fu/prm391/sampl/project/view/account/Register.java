@@ -18,8 +18,8 @@ import java.io.IOException;
 
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.helper.StringHelpers;
-import fu.prm391.sampl.project.model.user.RegisterRequest;
-import fu.prm391.sampl.project.model.user.RegisterResponse;
+import fu.prm391.sampl.project.model.user.register.RegisterRequest;
+import fu.prm391.sampl.project.model.user.register.RegisterResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -84,7 +84,6 @@ public class Register extends AppCompatActivity {
 
                     startActivity(new Intent(Register.this, Login.class));
                     finish();
-
                 } else {
                     try {
                         JSONObject jsonObject = new JSONObject(response.errorBody().string());
@@ -98,7 +97,6 @@ public class Register extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<RegisterResponse> call, Throwable t) {
-                Toast.makeText(Register.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 btnRegister.setEnabled(true);
             }
         });

@@ -1,6 +1,7 @@
-package fu.prm391.sampl.project.model.category;
+package fu.prm391.sampl.project.adapter.category;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import fu.prm391.sampl.project.R;
+import fu.prm391.sampl.project.model.category.Category;
+import fu.prm391.sampl.project.view.category.SpecifyCategory;
 
 public class CategoryAllAdapter extends RecyclerView.Adapter<CategoryAllAdapter.ViewHolder> {
 
@@ -46,6 +49,15 @@ public class CategoryAllAdapter extends RecyclerView.Adapter<CategoryAllAdapter.
             holder.numberOfItem.setText(category.getQuantity() + " Items");
         }
         Picasso.get().load(category.getImage()).fit().into(holder.categoryImage);
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, SpecifyCategory.class);
+                intent.putExtra("specifyCategory", category);
+                context.startActivity(intent);
+//                ((Activity)context).finish();
+            }
+        });
     }
 
     @Override

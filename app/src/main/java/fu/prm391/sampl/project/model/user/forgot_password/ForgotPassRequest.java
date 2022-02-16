@@ -1,4 +1,4 @@
-package fu.prm391.sampl.project.model.user;
+package fu.prm391.sampl.project.model.user.forgot_password;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

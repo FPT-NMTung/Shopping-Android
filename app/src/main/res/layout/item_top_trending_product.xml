@@ -2,8 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/consTraintLayoutTrendingProduct"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/mainBackGroundColor">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
@@ -12,8 +14,8 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="@color/mainBackGroundColor"
         app:cardCornerRadius="6dp"
-        app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -22,6 +24,7 @@
             android:id="@+id/imgTrendingProduct"
             android:layout_width="90dp"
             android:layout_height="100dp"
+            android:backgroundTint="@color/mainBackGroundColor"
             android:contentDescription="@string/contentDesProductImage"
             app:srcCompat="@drawable/ic_launcher_background"
             tools:ignore="ImageContrastCheck" />

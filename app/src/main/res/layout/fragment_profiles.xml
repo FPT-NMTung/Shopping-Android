@@ -188,7 +188,7 @@
     </RelativeLayout>
     <!-- 01 -->
     <View
-        android:id="@+id/viewMyOrdersProfiles"
+        android:id="@+id/viewMyOrdersHistoryProfiles"
         android:layout_width="0dp"
         android:layout_height="41dp"
         android:layout_alignParentStart="true"
@@ -210,10 +210,10 @@
         android:fontFamily="@font/poppins_semibold"
         android:gravity="top"
         android:lineSpacingExtra="0sp"
-        android:text="@string/LabelMyOrders"
+        android:text="@string/LabelMyOrdersHistory"
         android:textAppearance="@style/my_orders"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/viewMyOrdersProfiles" />
+        app:layout_constraintTop_toTopOf="@+id/viewMyOrdersHistoryProfiles" />
 
     <ImageView
         android:id="@+id/ArrowOrders"
@@ -224,7 +224,7 @@
         android:contentDescription="@string/DesImage"
         android:src="@drawable/arrowright"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/viewMyOrdersProfiles" />
+        app:layout_constraintTop_toTopOf="@+id/viewMyOrdersHistoryProfiles" />
     <!-- Line -->
     <View
 
@@ -239,7 +239,7 @@
         android:layout_marginEnd="30dp"
         android:background="#C6C5C5"
         android:backgroundTint="#C6C5C5"
-        app:layout_constraintBottom_toBottomOf="@+id/viewMyOrdersProfiles"
+        app:layout_constraintBottom_toBottomOf="@+id/viewMyOrdersHistoryProfiles"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
@@ -257,7 +257,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewMyOrdersProfiles"
+        app:layout_constraintTop_toBottomOf="@+id/viewMyOrdersHistoryProfiles"
         tools:ignore="MissingConstraints" />
 
     <TextView

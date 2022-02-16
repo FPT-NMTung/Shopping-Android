@@ -1,9 +1,9 @@
-package fu.prm391.sampl.project.model.user;
+package fu.prm391.sampl.project.model.user.reset_password;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class RegisterResponse {
+public class ResetPassResponse {
 
     @SerializedName("message")
     @Expose

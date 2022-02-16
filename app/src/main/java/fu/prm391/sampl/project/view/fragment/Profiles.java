@@ -12,16 +12,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.squareup.picasso.Picasso;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
@@ -29,6 +23,7 @@ import fu.prm391.sampl.project.model.user.User;
 import fu.prm391.sampl.project.model.user.UserResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.account.Login;
+import fu.prm391.sampl.project.view.order.MyOrderHistory;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,7 +44,7 @@ public class Profiles extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private View viewLogOut;
+    private View viewLogOut, viewMyHistoryOrders;
     private Button btnVerifyProfiles, btnEditProfiles;
     private TextView labelVerified, profilesName, emailProfiles;
     private ImageView verifyImage, imageProfiles;
@@ -154,22 +149,23 @@ public class Profiles extends Fragment {
                         labelVerified.setText("UnVerified");
                         btnVerifyProfiles.setVisibility(View.VISIBLE);
                     }
-                } else {
-                    try {
-                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
-                        Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                    } catch (JSONException | IOException e) {
-                        Toast.makeText(getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                    }
                 }
             }
 
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
-                Toast.makeText(getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
+        viewMyHistoryOrders = view.findViewById(R.id.viewMyOrdersHistoryProfiles);
+        viewMyHistoryOrders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), MyOrderHistory.class));
+            }
+        });
+
+        // logout
         viewLogOut = view.findViewById(R.id.viewLogoutProfile);
         viewLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -198,5 +194,6 @@ public class Profiles extends Fragment {
             }
         });
         return view;
+
     }
 }

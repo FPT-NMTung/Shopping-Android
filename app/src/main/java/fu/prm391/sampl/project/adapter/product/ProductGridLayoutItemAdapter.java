@@ -1,6 +1,7 @@
-package fu.prm391.sampl.project.model.product;
+package fu.prm391.sampl.project.adapter.product;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +18,15 @@ import java.util.ArrayList;
 
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.helper.StringHelpers;
+import fu.prm391.sampl.project.model.product.Product;
+import fu.prm391.sampl.project.view.product.SpecifyProduct;
 
-public class ProductGridRecyclerViewAdapter extends RecyclerView.Adapter<ProductGridRecyclerViewAdapter.ViewHolder> {
+public class ProductGridLayoutItemAdapter extends RecyclerView.Adapter<ProductGridLayoutItemAdapter.ViewHolder> {
 
     private Context context;
     private ArrayList<Product> products;
 
-    public ProductGridRecyclerViewAdapter(Context context, ArrayList<Product> products) {
+    public ProductGridLayoutItemAdapter(Context context, ArrayList<Product> products) {
         this.context = context;
         this.products = products;
     }
@@ -31,8 +34,8 @@ public class ProductGridRecyclerViewAdapter extends RecyclerView.Adapter<Product
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View productView = inflater.inflate(R.layout.grid_product_item, parent, false);
-        ProductGridRecyclerViewAdapter.ViewHolder viewHolder = new ProductGridRecyclerViewAdapter.ViewHolder(productView);
+        View productView = inflater.inflate(R.layout.item_gridlayout_product, parent, false);
+        ProductGridLayoutItemAdapter.ViewHolder viewHolder = new ProductGridLayoutItemAdapter.ViewHolder(productView);
         return viewHolder;
     }
 
@@ -42,6 +45,14 @@ public class ProductGridRecyclerViewAdapter extends RecyclerView.Adapter<Product
         holder.productName.setText(product.getName());
         holder.productPrice.setText(StringHelpers.currencyFormatter(product.getPrice()));
         Picasso.get().load(product.getImage()).fit().into(holder.productImage);
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, SpecifyProduct.class);
+                intent.putExtra("specifyProduct", product);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
