@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,71 +14,83 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 import fu.prm391.sampl.project.R;
-import fu.prm391.sampl.project.view.MainActivity;
-import fu.prm391.sampl.project.view.account.Login;
-import fu.prm391.sampl.project.view.fragment.Profiles;
-import fu.prm391.sampl.project.view.product.NewArrivalProduct;
+import fu.prm391.sampl.project.helper.PreferencesHelpers;
+import fu.prm391.sampl.project.model.user.UpdateUserInfoRequest;
+import fu.prm391.sampl.project.model.user.UpdateUserInfoResponse;
+import fu.prm391.sampl.project.model.user.User;
+import fu.prm391.sampl.project.remote.ApiClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class EditProfiles extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    ImageView btnBack, cover;
-    EditText firstName, lastName, emailAddress, phoneNumber;
-    Spinner gender;
-    FloatingActionButton fab;
-    Button btnSave;
+    private ImageView btnBack, cover;
+    private EditText firstName, lastName, phoneNumber;
+    private Spinner gender;
+    private FloatingActionButton fab;
+    private Button btnSave;
+    private TextView emailAddress;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profiles);
+
+
+        // findViewById
         cover = findViewById(R.id.coverImg);
         fab = findViewById(R.id.floatingActionButton);
         btnBack = findViewById(R.id.imageViewBackEditProfile);
         firstName = findViewById(R.id.txtFirstName);
         lastName = findViewById(R.id.txtLastName);
-        emailAddress = findViewById(R.id.editTextTextEmailAddress);
-        phoneNumber = findViewById(R.id.editTextPhone);
+        emailAddress = findViewById(R.id.textViewtEmailAddressEditProfile);
+        phoneNumber = findViewById(R.id.textPhoneEditProfile);
         btnSave = findViewById(R.id.btnSaveEditProfiles);
 
-        // button save action
+        // get info from profile and put
+        Intent intent = getIntent();
+        User user = (User) intent.getSerializableExtra("userInfo");
+        System.out.println(user.getPhone());
+        emailAddress.setText(user.getEmail());
+        firstName.setText(user.getFirstName());
+        lastName.setText(user.getLastName());
+        phoneNumber.setText(user.getPhone());
+        Picasso.get().load(user.getAvatar()).fit().into(cover);
+//        gender.set
+
+        // btnSave action
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (firstName.getText().toString().matches("") || lastName.getText().toString().matches("") || emailAddress.toString().matches("") || phoneNumber.toString().matches("")) {
-                    if (firstName.getText().toString().matches("")) {
-                        Toast.makeText(EditProfiles.this, "Save Unsuccessful,Please Fill First Name", Toast.LENGTH_SHORT).show();
-                        return;
-                    } else if (lastName.getText().toString().matches("")) {
-                        Toast.makeText(EditProfiles.this, "Save Unsuccessful,Please Fill Last Name", Toast.LENGTH_SHORT).show();
-                        return;
-                    } else if (emailAddress.getText().toString().matches("")) {
-                        Toast.makeText(EditProfiles.this, "Save Unsuccessful,Please Fill Email Address", Toast.LENGTH_SHORT).show();
-                        return;
-                    } else if (phoneNumber.getText().toString().matches("")) {
-                        Toast.makeText(EditProfiles.this, "Save Unsuccessful,Please Fill Phone Number", Toast.LENGTH_SHORT).show();
-                        return;
-
-                    } else {
-                        Toast.makeText(EditProfiles.this, "Save Unsuccessful,Please Fill Your Information", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
+                btnSave.setEnabled(false);
+                if (TextUtils.isEmpty(emailAddress.getText().toString().trim())
+                        || TextUtils.isEmpty(firstName.getText().toString().trim())
+                        || TextUtils.isEmpty(lastName.getText().toString().trim()) || TextUtils.isEmpty(phoneNumber.getText().toString().trim())) {
+                    Toast.makeText(EditProfiles.this, "All fields are required!", Toast.LENGTH_SHORT).show();
+                    btnSave.setEnabled(true);
                 } else {
-                    Toast.makeText(EditProfiles.this, "Save successful", Toast.LENGTH_SHORT).show();
-                    finish();
+                    // proceed save
+                    updateProfileAction();
                 }
-
 
             }
         });
 
-        // upload image
+        // upload image from phone
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,44 +104,62 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-
-        // spinner gender
+        // spinner for select gender
         gender = findViewById(R.id.spinnerGender);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.Gender, R.layout.color_spinner_layout);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
         gender.setAdapter(adapter);
         gender.setOnItemSelectedListener(this);
 
-        // remove text on edittext when click
-        lastName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lastName.setText("");
-            }
-        });
-        firstName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                firstName.setText("");
-            }
-        });
-        emailAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                emailAddress.setText("");
-            }
-        });
-        phoneNumber.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                phoneNumber.setText("");
-            }
-        });
+
         // BtnBack action
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+    }
+
+
+
+    private void updateProfileAction() {
+        String token = PreferencesHelpers.loadStringData(EditProfiles.this, "token");
+        UpdateUserInfoRequest updateUserInfoRequest = new UpdateUserInfoRequest();
+        updateUserInfoRequest.setFirstName(firstName.getText().toString().trim());
+        updateUserInfoRequest.setEmail("abc@gmail.com");
+        updateUserInfoRequest.setLastName(lastName.getText().toString().trim());
+        updateUserInfoRequest.setGender(gender.getSelectedItemPosition());
+        updateUserInfoRequest.setImage("https://i1.sndcdn.com/artworks-7oga5weJ873LFPZw-5n8oKA-t500x500.jpg");
+        updateUserInfoRequest.setPhone(phoneNumber.getText().toString().trim());
+
+        Call<UpdateUserInfoResponse> updateUserInfoResponseCall = ApiClient.getUserService().updateUserInformation("Bearer " + token, updateUserInfoRequest);
+        updateUserInfoResponseCall.enqueue(new Callback<UpdateUserInfoResponse>() {
+            @Override
+            public void onResponse(Call<UpdateUserInfoResponse> call, Response<UpdateUserInfoResponse> response) {
+                if (response.isSuccessful()) {
+                    UpdateUserInfoResponse updateUserInfoResponse = response.body();
+                    Toast.makeText(EditProfiles.this, updateUserInfoResponse.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent();
+                    intent.putExtra("userName", firstName.getText().toString().trim() + " " + lastName.getText().toString().trim());
+                    intent.putExtra("emailAddress", emailAddress.getText().toString().trim());
+                    setResult(201, intent);
+                    finish();
+                } else {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                        Toast.makeText(EditProfiles.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                    } catch (JSONException | IOException e) {
+                        Toast.makeText(EditProfiles.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                    btnSave.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UpdateUserInfoResponse> call, Throwable t) {
+                btnSave.setEnabled(true);
             }
         });
     }

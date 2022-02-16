@@ -4,6 +4,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -56,7 +60,7 @@ public class Profiles extends Fragment {
     private Button btnVerifyProfiles, btnEditProfiles;
     private TextView labelVerified, profilesName, emailProfiles;
     private ImageView verifyImage, imageProfiles;
-
+    private ActivityResultLauncher<Intent> launcher;
 
     public Profiles() {
         // Required empty public constructor
@@ -99,6 +103,7 @@ public class Profiles extends Fragment {
             startActivity(new Intent(getContext(), Login.class));
             getActivity().finish();
         }
+        // create launcher
 
         labelVerified = view.findViewById(R.id.labelVerifiedProfile);
         verifyImage = view.findViewById(R.id.imageVerifiedProfile);
@@ -108,6 +113,16 @@ public class Profiles extends Fragment {
         btnVerifyProfiles = view.findViewById(R.id.btnVerifyProfiles);
         btnEditProfiles = view.findViewById(R.id.btnEditProfiles);
 
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                if (result.getResultCode() == 201) {
+                    Intent data = result.getData();
+                    profilesName.setText(data.getStringExtra("userName"));
+                    emailProfiles.setText(data.getStringExtra("emailAddress"));
+                }
+            }
+        });
         // set invisible when api have not called
         profilesName.setVisibility(View.INVISIBLE);
         emailProfiles.setVisibility(View.INVISIBLE);
@@ -174,7 +189,9 @@ public class Profiles extends Fragment {
                         @Override
                         public void onClick(View view) {
                             Intent intent = new Intent(getContext(), EditProfiles.class);
-                            startActivity(intent);
+                            intent.putExtra("userInfo", user);
+                            launcher.launch(intent);
+//                        startActivity(intent);
 
                         }
                     });
@@ -221,8 +238,19 @@ public class Profiles extends Fragment {
                 materialAlert.show();
             }
         });
+
         return view;
 
 
     }
+
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        Intent intent = getActivity().getIntent();
+//        getActivity().finish();
+//        startActivity(intent);
+//
+//    }
+
 }
