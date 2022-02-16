@@ -23,6 +23,7 @@ import fu.prm391.sampl.project.model.user.User;
 import fu.prm391.sampl.project.model.user.UserResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.account.Login;
+import fu.prm391.sampl.project.view.address.ProfileShippingAddress;
 import fu.prm391.sampl.project.view.order.MyOrderHistory;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,7 +45,7 @@ public class Profiles extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private View viewLogOut, viewMyHistoryOrders;
+    private View viewLogOut, viewMyHistoryOrders, viewShippingAddressProfiles;
     private Button btnVerifyProfiles, btnEditProfiles;
     private TextView labelVerified, profilesName, emailProfiles;
     private ImageView verifyImage, imageProfiles;
@@ -96,6 +97,7 @@ public class Profiles extends Fragment {
         emailProfiles = view.findViewById(R.id.txtEmailProfiles);
         profilesName = view.findViewById(R.id.txtNameProfiles);
         imageProfiles = view.findViewById(R.id.imageProfiles);
+        viewShippingAddressProfiles = view.findViewById(R.id.viewShippingAddressProfiles);
 
         // verify Profile Action
         btnVerifyProfiles = view.findViewById(R.id.btnVerifyProfiles);
@@ -193,6 +195,15 @@ public class Profiles extends Fragment {
                 materialAlert.show();
             }
         });
+
+        viewShippingAddressProfiles.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ProfileShippingAddress.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
 
     }

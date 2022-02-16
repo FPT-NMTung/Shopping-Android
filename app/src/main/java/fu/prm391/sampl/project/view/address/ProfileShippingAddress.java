@@ -19,6 +19,7 @@ import java.util.List;
 
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.adapter.ShippingAddressAdapter;
+import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.model.address.Address;
 import fu.prm391.sampl.project.model.address.delete_address.DeleteAddressRequest;
 import fu.prm391.sampl.project.model.address.delete_address.DeleteAddressResponse;
@@ -39,10 +40,14 @@ public class ProfileShippingAddress extends AppCompatActivity {
 
     private List<Address> list;
 
+    private String token;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_shipping_address);
+
+        token = PreferencesHelpers.loadStringData(ProfileShippingAddress.this, "token");
 
         recyclerView = findViewById(R.id.recyclerViewAddress);
 
@@ -62,7 +67,7 @@ public class ProfileShippingAddress extends AppCompatActivity {
     }
 
     private void loadListToRecycleView() {
-        Call<GetAllAddressResponse> call = ApiClient.getAddressService().getAllAddress("Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZW1haWwiOiJubXR1bmdvZmZpY2lhbEBnbWFpbC5jb20iLCJpYXQiOjE2NDQyMzM1OTl9.X7sI6-AIyKQHNj6-vlBHuuplFmTEkLnL5zkZfn5Dnzs");
+        Call<GetAllAddressResponse> call = ApiClient.getAddressService().getAllAddress("Bearer " + token);
         call.enqueue(new Callback<GetAllAddressResponse>() {
             @Override
             public void onResponse(Call<GetAllAddressResponse> call, Response<GetAllAddressResponse> response) {
@@ -120,7 +125,7 @@ public class ProfileShippingAddress extends AppCompatActivity {
                 Toast.makeText(ProfileShippingAddress.this, "Cant delete default address", Toast.LENGTH_SHORT).show();
                 revertItem(position, address);
             } else {
-                Call<DeleteAddressResponse> call = ApiClient.getAddressService().deleteAddress("Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZW1haWwiOiJubXR1bmdvZmZpY2lhbEBnbWFpbC5jb20iLCJpYXQiOjE2NDMzMDg0OTB9.QyHUDAdfJPz8NQ0JZxAnwxdfeAMoKR2-OenzL590uCc", new DeleteAddressRequest(address.getId()));
+                Call<DeleteAddressResponse> call = ApiClient.getAddressService().deleteAddress("Bearer " + token, new DeleteAddressRequest(address.getId()));
                 call.enqueue(new Callback<DeleteAddressResponse>() {
                     @Override
                     public void onResponse(Call<DeleteAddressResponse> call, Response<DeleteAddressResponse> response) {
