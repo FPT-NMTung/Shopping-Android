@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -41,6 +42,8 @@ public class ProfileShippingAddress extends AppCompatActivity {
 
     private String token;
 
+    private ProgressBar progressBarSpa;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +52,8 @@ public class ProfileShippingAddress extends AppCompatActivity {
         token = PreferencesHelpers.loadStringData(ProfileShippingAddress.this, "token");
 
         recyclerView = findViewById(R.id.recyclerViewAddress);
+
+        progressBarSpa = findViewById(R.id.progressBarSpa);
 
         btnCreateNewAddress = findViewById(R.id.btnPsaNewAddress);
         btnPsaBack = findViewById(R.id.btnPsaBack);
@@ -66,6 +71,7 @@ public class ProfileShippingAddress extends AppCompatActivity {
     }
 
     private void loadListToRecycleView() {
+        progressBarSpa.setVisibility(View.VISIBLE);
         Call<GetAllAddressResponse> call = ApiClient.getAddressService().getAllAddress("Bearer " + token);
         call.enqueue(new Callback<GetAllAddressResponse>() {
             @Override
@@ -77,6 +83,8 @@ public class ProfileShippingAddress extends AppCompatActivity {
 
                 ItemTouchHelper itemTouchHelper = new ItemTouchHelper(psaItemTouchHelper);
                 itemTouchHelper.attachToRecyclerView(recyclerView);
+
+                progressBarSpa.setVisibility(View.INVISIBLE);
             }
 
             @Override
