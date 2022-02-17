@@ -56,6 +56,7 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
     private Button btnSave;
     private TextView emailAddress;
     private String encodedImage;
+    private String stringUri;
 
 
     @SuppressLint("WrongThread")
@@ -96,7 +97,17 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
         firstName.setText(user.getFirstName());
         lastName.setText(user.getLastName());
         phoneNumber.setText(user.getPhone());
-        gender.setSelection(user.getGender());
+        Picasso.get().load(stringUri).fit().into(cover);
+
+
+
+        // check and set gender
+        if (user.getGender() == 0){
+            gender.setSelection(2);
+        }else{
+            gender.setSelection(user.getGender()-1);
+        }
+
         Picasso.get().load(user.getAvatar()).fit().into(cover);
 
 
@@ -110,6 +121,7 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
                         || TextUtils.isEmpty(lastName.getText().toString().trim()) || TextUtils.isEmpty(phoneNumber.getText().toString().trim())) {
                     Toast.makeText(EditProfiles.this, "All fields are required!", Toast.LENGTH_SHORT).show();
                     btnSave.setEnabled(true);
+
                 } else {
                     // proceed save
                     updateProfileAction();
@@ -150,9 +162,8 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
         updateUserInfoRequest.setFirstName(firstName.getText().toString().trim());
 //        updateUserInfoRequest.setEmail("abc@gmail.com");
         updateUserInfoRequest.setLastName(lastName.getText().toString().trim());
-        updateUserInfoRequest.setGender(gender.getSelectedItemPosition());
-//        Log.i("Testttt",encodedImage);
-        updateUserInfoRequest.setImage("encodedImage");
+        updateUserInfoRequest.setGender(gender.getSelectedItemPosition() - 1);
+        updateUserInfoRequest.setImage("data:image/jpeg;base64," + encodedImage);
         updateUserInfoRequest.setPhone(phoneNumber.getText().toString().trim());
 
         Call<UpdateUserInfoResponse> updateUserInfoResponseCall = ApiClient.getUserService().updateUserInformation("Bearer " + token, updateUserInfoRequest);
@@ -165,8 +176,8 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
 
                     Intent intent = new Intent();
                     intent.putExtra("userName", firstName.getText().toString().trim() + " " + lastName.getText().toString().trim());
-                    intent.putExtra("emailAddress", emailAddress.getText().toString().trim());
-//                    intent.putExtra("profileImage", encodedImage);
+//                    intent.putExtra("emailAddress", emailAddress.getText().toString().trim());
+                    intent.putExtra("profileImage", stringUri);
                     setResult(201, intent);
                     finish();
                 } else {
@@ -214,6 +225,7 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
 
             Uri imageUri = data.getData();
             cover.setImageURI(imageUri);
+            stringUri = imageUri.toString();
             InputStream imageStream = null;
             try {
                 imageStream = getContentResolver().openInputStream(imageUri);

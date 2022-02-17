@@ -19,20 +19,18 @@ public class UpdateUserInfoRequest {
     @SerializedName("image")
     @Expose
     private String image;
-    @SerializedName("email")
-    @Expose
-    private String email;
+
 
     public UpdateUserInfoRequest() {
     }
 
-    public UpdateUserInfoRequest(String firstName, String lastName, int gender, String phone, String image, String email) {
+    public UpdateUserInfoRequest(String firstName, String lastName, int gender, String phone, String image) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.phone = phone;
         this.image = image;
-        this.email = email;
+
     }
 
     public String getFirstName() {
@@ -75,11 +73,4 @@ public class UpdateUserInfoRequest {
         this.image = image;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }

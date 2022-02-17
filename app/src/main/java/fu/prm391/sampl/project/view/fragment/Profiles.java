@@ -119,10 +119,10 @@ public class Profiles extends Fragment {
                 if (result.getResultCode() == 201) {
                     Intent data = result.getData();
                     profilesName.setText(data.getStringExtra("userName"));
-                    emailProfiles.setText(data.getStringExtra("emailAddress"));
-//                    String stringUri = data.getStringExtra("profileImage");
-////                    Picasso.get().lo
-//                    Picasso.get().load(stringUri).fit().into(imageProfiles);
+//                    emailProfiles.setText(data.getStringExtra("emailAddress"));
+                    String stringUri = data.getStringExtra("profileImage");
+//                    Picasso.get().lo
+                    Picasso.get().load(stringUri).fit().into(imageProfiles);
                 }
             }
         });
