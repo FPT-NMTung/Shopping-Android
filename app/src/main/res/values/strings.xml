@@ -105,4 +105,8 @@
     <string name="searchLabel">Search</string>
     <string name="searchProductHintLabel">Search Products</string>
     <string name="contentDesImageButtonSearch">Search Image</string>
+    <string name="percentHintLabel">10%</string>
+    <string name="old_price">Old Price</string>
+    <string name="sale_off">Sale Off</string>
+    <string name="strikethrough">-</string>
 </resources>

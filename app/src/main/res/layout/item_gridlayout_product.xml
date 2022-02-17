@@ -19,12 +19,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imageProductItemGrid"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/contentDesImage"
-            app:srcCompat="@drawable/icon_person" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageProductItemGrid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/contentDesImage"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/icon_person" />
+
+            <ImageView
+                android:id="@+id/imageViewProductItemDiscountTag"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="@string/contentDesImage"
+                android:scaleType="fitCenter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/discount_tag_2" />
+
+            <TextView
+                android:id="@+id/txtProductItemGridDiscount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/percentHintLabel"
+                android:textColor="@color/yellow"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewProductItemDiscountTag"
+                app:layout_constraintEnd_toEndOf="@+id/imageViewProductItemDiscountTag"
+                app:layout_constraintStart_toStartOf="@+id/imageViewProductItemDiscountTag"
+                app:layout_constraintTop_toTopOf="@+id/imageViewProductItemDiscountTag"
+                tools:ignore="TextContrastCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 

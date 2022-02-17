@@ -2,6 +2,7 @@ package fu.prm391.sampl.project.adapter.product;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +45,15 @@ public class ProductTrendingHomeAdapter extends RecyclerView.Adapter<ProductTren
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Product product = products.get(position);
         holder.productName.setText(product.getName());
-        holder.productPrice.setText(StringHelpers.currencyFormatter(product.getPrice()));
+        if(product.getDiscount() != 0) {
+            holder.productOldPrice.setText(StringHelpers.currencyFormatter(product.getPrice()));
+            holder.productPrice.setText(StringHelpers.currencyFormatterWithPercent(product.getPrice(), product.getDiscount()));
+            holder.productOldPrice.setPaintFlags(holder.productOldPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        } else {
+            holder.productOldPrice.setVisibility(View.GONE);
+            holder.productPrice.setText(StringHelpers.currencyFormatter(product.getPrice()));
+        }
+
         Picasso.get().load(product.getImage()).fit().into(holder.productImage);
         holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +77,7 @@ public class ProductTrendingHomeAdapter extends RecyclerView.Adapter<ProductTren
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView productName;
         private TextView productPrice;
+        private TextView productOldPrice;
         private ImageView productImage;
         private ConstraintLayout constraintLayout;
 
@@ -76,6 +86,7 @@ public class ProductTrendingHomeAdapter extends RecyclerView.Adapter<ProductTren
             productName = itemView.findViewById(R.id.txtProductNameHome);
             productPrice = itemView.findViewById(R.id.txtProductPriceHome);
             productImage = itemView.findViewById(R.id.imgTrendingProduct);
+            productOldPrice = itemView.findViewById(R.id.txtProductOldPriceHome);
             constraintLayout = itemView.findViewById(R.id.consTraintLayoutTrendingProduct);
         }
     }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+import java.util.Base64;
 
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.model.product.Product;
