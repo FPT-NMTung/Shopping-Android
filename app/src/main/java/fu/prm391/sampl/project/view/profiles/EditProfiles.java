@@ -3,10 +3,15 @@ package fu.prm391.sampl.project.view.profiles;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,7 +29,14 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
@@ -43,13 +55,21 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
     private FloatingActionButton fab;
     private Button btnSave;
     private TextView emailAddress;
+    private String encodedImage;
 
 
+    @SuppressLint("WrongThread")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profiles);
 
+//        //encode image to base64 string
+//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
+//        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+//        byte[] imageBytes = baos.toByteArray();
+//        String imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
 
         // findViewById
         cover = findViewById(R.id.coverImg);
@@ -61,6 +81,13 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
         phoneNumber = findViewById(R.id.textPhoneEditProfile);
         btnSave = findViewById(R.id.btnSaveEditProfiles);
 
+        // spinner for select gender
+        gender = findViewById(R.id.spinnerGender);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.Gender, R.layout.color_spinner_layout);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
+        gender.setAdapter(adapter);
+        gender.setOnItemSelectedListener(this);
+
         // get info from profile and put
         Intent intent = getIntent();
         User user = (User) intent.getSerializableExtra("userInfo");
@@ -69,8 +96,9 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
         firstName.setText(user.getFirstName());
         lastName.setText(user.getLastName());
         phoneNumber.setText(user.getPhone());
+        gender.setSelection(user.getGender());
         Picasso.get().load(user.getAvatar()).fit().into(cover);
-//        gender.set
+
 
         // btnSave action
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -96,20 +124,14 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
             public void onClick(View view) {
                 ImagePicker.with(EditProfiles.this)
 
+
                         .crop()                    //Crop image(Optional), Check Customization for more option
                         .compress(1024)            //Final image size will be less than 1 MB(Optional)
                         .maxResultSize(150, 150)    //Final image resolution will be less than 1080 x 1080(Optional)
-                        .start();
+                        .start(294);
 
             }
         });
-
-        // spinner for select gender
-        gender = findViewById(R.id.spinnerGender);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.Gender, R.layout.color_spinner_layout);
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
-        gender.setAdapter(adapter);
-        gender.setOnItemSelectedListener(this);
 
 
         // BtnBack action
@@ -122,15 +144,15 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
     }
 
 
-
     private void updateProfileAction() {
         String token = PreferencesHelpers.loadStringData(EditProfiles.this, "token");
         UpdateUserInfoRequest updateUserInfoRequest = new UpdateUserInfoRequest();
         updateUserInfoRequest.setFirstName(firstName.getText().toString().trim());
-        updateUserInfoRequest.setEmail("abc@gmail.com");
+//        updateUserInfoRequest.setEmail("abc@gmail.com");
         updateUserInfoRequest.setLastName(lastName.getText().toString().trim());
         updateUserInfoRequest.setGender(gender.getSelectedItemPosition());
-        updateUserInfoRequest.setImage("https://i1.sndcdn.com/artworks-7oga5weJ873LFPZw-5n8oKA-t500x500.jpg");
+//        Log.i("Testttt",encodedImage);
+        updateUserInfoRequest.setImage("encodedImage");
         updateUserInfoRequest.setPhone(phoneNumber.getText().toString().trim());
 
         Call<UpdateUserInfoResponse> updateUserInfoResponseCall = ApiClient.getUserService().updateUserInformation("Bearer " + token, updateUserInfoRequest);
@@ -144,6 +166,7 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
                     Intent intent = new Intent();
                     intent.putExtra("userName", firstName.getText().toString().trim() + " " + lastName.getText().toString().trim());
                     intent.putExtra("emailAddress", emailAddress.getText().toString().trim());
+//                    intent.putExtra("profileImage", encodedImage);
                     setResult(201, intent);
                     finish();
                 } else {
@@ -175,12 +198,43 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+    //    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == 101) {
+//            File file = new File(getR)
+////            Uri uri = data.getData();
+////            cover.setImageURI(uri);
+//        }
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        //
+        if (requestCode == 294 && resultCode == RESULT_OK) {
 
-        Uri uri = data.getData();
-        cover.setImageURI(uri);
-//        fab.setVisibility(View.INVISIBLE);
+            Uri imageUri = data.getData();
+            cover.setImageURI(imageUri);
+            InputStream imageStream = null;
+            try {
+                imageStream = getContentResolver().openInputStream(imageUri);
+                Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                encodedImage = encodeImage(selectedImage);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        }
+
     }
+
+    //Encode Bitmap in base64
+    private String encodeImage(Bitmap bm) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] b = baos.toByteArray();
+        String encImage = Base64.encodeToString(b, Base64.DEFAULT);
+
+        return encImage;
+    }
+
 }

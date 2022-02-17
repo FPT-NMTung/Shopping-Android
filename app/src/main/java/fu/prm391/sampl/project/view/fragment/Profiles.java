@@ -120,6 +120,9 @@ public class Profiles extends Fragment {
                     Intent data = result.getData();
                     profilesName.setText(data.getStringExtra("userName"));
                     emailProfiles.setText(data.getStringExtra("emailAddress"));
+//                    String stringUri = data.getStringExtra("profileImage");
+////                    Picasso.get().lo
+//                    Picasso.get().load(stringUri).fit().into(imageProfiles);
                 }
             }
         });
@@ -137,6 +140,7 @@ public class Profiles extends Fragment {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 if (response.isSuccessful()) {
+
                     User user = response.body().getData();
                     // set visible when api call successful
                     profilesName.setVisibility(View.VISIBLE);
@@ -155,6 +159,7 @@ public class Profiles extends Fragment {
                     } else {
                         profilesName.setText(user.getFirstName() + " " + user.getLastName());
                     }
+
                     // set default image
                     if (user.getAvatar() != null) {
                         Picasso.get().load(user.getAvatar()).fit().into(imageProfiles);
