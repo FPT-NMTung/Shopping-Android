@@ -1,21 +1,35 @@
 package fu.prm391.sampl.project.view.fragment;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.List;
+
 import fu.prm391.sampl.project.R;
+import fu.prm391.sampl.project.adapter.order.OrderCartAdapter;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
+import fu.prm391.sampl.project.helper.StringHelpers;
+import fu.prm391.sampl.project.model.order.Order;
 import fu.prm391.sampl.project.model.order.get_all_order.GetAllOrderResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
+import fu.prm391.sampl.project.view.account.Login;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,6 +51,19 @@ public class Cart extends Fragment {
     private String mParam2;
 
     private String token;
+
+    private RecyclerView recyclerViewMainCart;
+
+    private ProgressBar progressBarCart;
+
+    private TextView txtCartTotalValue;
+    private TextView txtCartEstimatingTaxValue;
+    private TextView txtCartShippingFeeValue;
+    private TextView txtCardSubTotalValue;
+
+    private Button btnCartCheckout;
+
+    private Call<GetAllOrderResponse> call;
 
     public Cart() {
         // Required empty public constructor
@@ -69,7 +96,6 @@ public class Cart extends Fragment {
         }
     }
 
-    Button button;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,25 +104,80 @@ public class Cart extends Fragment {
 
         this.token = PreferencesHelpers.loadStringData(getContext(), "token");
 
-        loadAllListOrder();
+        this.recyclerViewMainCart = view.findViewById(R.id.recyclerViewMainCart);
+
+        this.progressBarCart = view.findViewById(R.id.progressBarCart);
+
+        this.txtCartTotalValue = view.findViewById(R.id.txtCartTotalValue);
+        this.txtCartEstimatingTaxValue = view.findViewById(R.id.txtCartEstimatingTaxValue);
+        this.txtCartShippingFeeValue = view.findViewById(R.id.txtCartShippingFeeValue);
+        this.txtCardSubTotalValue = view.findViewById(R.id.txtCardSubTotalValue);
+
+        this.btnCartCheckout = view.findViewById(R.id.btnCartCheckout);
+
+        if (token.equals("")) {
+            Intent intent = new Intent(getContext(), Login.class);
+            startActivity(intent);
+        } else {
+            loadAllListOrder();
+        }
 
         return view;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        call.cancel();
+    }
+
     private void loadAllListOrder() {
-        Call<GetAllOrderResponse> call = ApiClient.getOrderService().getAllOrder("Bearer " + this.token);
+        progressBarCart.setVisibility(View.VISIBLE);
+        call = ApiClient.getOrderService().getAllOrder("Bearer " + this.token);
         call.enqueue(new Callback<GetAllOrderResponse>() {
             @Override
             public void onResponse(Call<GetAllOrderResponse> call, Response<GetAllOrderResponse> response) {
                 if (response.isSuccessful()) {
+                    OrderCartAdapter orderCartAdapter = new OrderCartAdapter(response.body().getData(), getContext(), Cart.this);
+                    recyclerViewMainCart.setAdapter(orderCartAdapter);
+                    recyclerViewMainCart.setLayoutManager(new LinearLayoutManager(getContext()));
+                    progressBarCart.setVisibility(View.INVISIBLE);
 
+                    renderCheckout(response.body().getData());
+
+                    if (response.body().getData().size() != 0) {
+                        btnCartCheckout.setEnabled(true);
+                    }
+                } else {
+                    progressBarCart.setVisibility(View.INVISIBLE);
+                    Log.e("onResponse", "asdasdasdadnasudgbasbsdugfyhbsuhfgbsdufhg");
                 }
             }
 
             @Override
             public void onFailure(Call<GetAllOrderResponse> call, Throwable t) {
-
+                Log.e("onResponse", t.toString());
             }
         });
+    }
+
+    public void renderCheckout(List<Order> list) {
+        float total = 0;
+        float subTotal = 0;
+        float shippingFee = (list.size() == 0) ? 0 : 2;
+        float tax;
+
+        for (int index = 0; index < list.size(); index++) {
+            Order order = list.get(index);
+            subTotal += ((order.getProduct().getPrice() * (100 - order.getProduct().getDiscount())) / 100) * order.getQuantity();
+        }
+
+        tax = subTotal / 10;
+        total = subTotal + shippingFee + tax;
+
+        txtCardSubTotalValue.setText(StringHelpers.currencyFormatter((double) subTotal));
+        txtCartEstimatingTaxValue.setText(StringHelpers.currencyFormatter((double) tax));
+        txtCartShippingFeeValue.setText(StringHelpers.currencyFormatter((double) shippingFee));
+        txtCartTotalValue.setText(StringHelpers.currencyFormatter((double) total));
     }
 }

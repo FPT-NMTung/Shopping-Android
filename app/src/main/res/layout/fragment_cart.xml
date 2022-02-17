@@ -62,7 +62,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginEnd="24dp"
-                    android:layout_marginStart="24dp" />
+                    android:layout_marginStart="24dp"
+                    android:enabled="false" />
 
             <TextView
                     android:text="@string/FA__total"
@@ -77,7 +78,6 @@
                     android:textSize="18sp" />
 
             <TextView
-                    android:text="0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/txtCartTotalValue"
@@ -180,7 +180,6 @@
                     android:layout_marginTop="22dp" />
 
             <TextView
-                    android:text="0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/txtCardSubTotalValue"
@@ -190,7 +189,6 @@
                     android:layout_marginBottom="16dp" />
 
             <TextView
-                    android:text="0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/txtCartShippingFeeValue"
@@ -200,7 +198,6 @@
                     android:layout_marginBottom="16dp" />
 
             <TextView
-                    android:text="0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/txtCartEstimatingTaxValue"
@@ -218,6 +215,22 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView"
             app:layout_constraintBottom_toTopOf="@+id/cardView13"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/recyclerViewMainCart" />
+
+    <ProgressBar
+            android:indeterminate="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/black"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBarCart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintVertical_bias="0.242" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
