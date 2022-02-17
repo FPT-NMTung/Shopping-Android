@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,6 +29,8 @@ import fu.prm391.sampl.project.adapter.order.OrderCartAdapter;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.helper.StringHelpers;
 import fu.prm391.sampl.project.model.order.Order;
+import fu.prm391.sampl.project.model.order.delete_order.DeleteOrderRequest;
+import fu.prm391.sampl.project.model.order.delete_order.DeleteOrderResponse;
 import fu.prm391.sampl.project.model.order.get_all_order.GetAllOrderResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.account.Login;
@@ -64,6 +68,10 @@ public class Cart extends Fragment {
     private Button btnCartCheckout;
 
     private Call<GetAllOrderResponse> call;
+
+    private List<Order> list;
+
+    private OrderCartAdapter orderCartAdapter;
 
     public Cart() {
         // Required empty public constructor
@@ -138,14 +146,17 @@ public class Cart extends Fragment {
             @Override
             public void onResponse(Call<GetAllOrderResponse> call, Response<GetAllOrderResponse> response) {
                 if (response.isSuccessful()) {
-                    OrderCartAdapter orderCartAdapter = new OrderCartAdapter(response.body().getData(), getContext(), Cart.this);
+                    list = response.body().getData();
+                    orderCartAdapter = new OrderCartAdapter(list, getContext(), Cart.this);
                     recyclerViewMainCart.setAdapter(orderCartAdapter);
                     recyclerViewMainCart.setLayoutManager(new LinearLayoutManager(getContext()));
+                    ItemTouchHelper itemTouchHelper = new ItemTouchHelper(cartSimpleCallback);
+                    itemTouchHelper.attachToRecyclerView(recyclerViewMainCart);
                     progressBarCart.setVisibility(View.INVISIBLE);
 
-                    renderCheckout(response.body().getData());
+                    renderCheckout(list);
 
-                    if (response.body().getData().size() != 0) {
+                    if (list.size() != 0) {
                         btnCartCheckout.setEnabled(true);
                     }
                 } else {
@@ -179,5 +190,42 @@ public class Cart extends Fragment {
         txtCartEstimatingTaxValue.setText(StringHelpers.currencyFormatter((double) tax));
         txtCartShippingFeeValue.setText(StringHelpers.currencyFormatter((double) shippingFee));
         txtCartTotalValue.setText(StringHelpers.currencyFormatter((double) total));
+
+        btnCartCheckout.setEnabled(list.size() != 0);
     }
+
+    ItemTouchHelper.SimpleCallback cartSimpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            int position = viewHolder.getBindingAdapterPosition();
+            Call<DeleteOrderResponse> call = ApiClient.getOrderService().deleteOrder("Bearer " + token, new DeleteOrderRequest(list.get(position).getProduct().getId()));
+            call.enqueue(new Callback<DeleteOrderResponse>() {
+                @Override
+                public void onResponse(Call<DeleteOrderResponse> call, Response<DeleteOrderResponse> response) {
+                    if (response.isSuccessful()) {
+                        Log.i("Delete order", "Delete order successfully");
+                    } else {
+                        Log.e("Delete order", "Delete order failure" + response.errorBody());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<DeleteOrderResponse> call, Throwable t) {
+                    Log.e("Delete order", "Delete order failure: " + t.toString());
+                }
+            });
+
+            list.remove(position);
+            orderCartAdapter.notifyItemRemoved(position);
+            recyclerViewMainCart.setAdapter(orderCartAdapter);
+            renderCheckout(list);
+        }
+    };
+
 }

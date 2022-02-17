@@ -61,7 +61,7 @@
     <string name="homeLabel">Home</string>
     <string name="cartLabel">Cart</string>
     <string name="accountLabel">Account</string>
-<!--    <string name="searchLabel">Search</string>-->
+    <!--    <string name="searchLabel">Search</string>-->
     <string name="contentDesImageCart">imageCartHome</string>
     <string name="categoriesLabel">Categories</string>
     <string name="txtViewAllLabel">View All</string>
