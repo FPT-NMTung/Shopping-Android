@@ -22,7 +22,7 @@ import fu.prm391.sampl.project.model.category.Category;
 import fu.prm391.sampl.project.adapter.category.CategoryTop4Adapter;
 import fu.prm391.sampl.project.model.category.CategoryResponse;
 import fu.prm391.sampl.project.model.product.Product;
-import fu.prm391.sampl.project.model.product.ProductResponse;
+import fu.prm391.sampl.project.model.product.get_list_product.ProductListResponse;
 import fu.prm391.sampl.project.adapter.product.ProductTrendingHomeAdapter;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.category.AllCategory;
@@ -126,12 +126,12 @@ public class Home extends Fragment {
 
     private void getTrendingProducts(View view) {
         recyclerViewTopTrendingProduct = view.findViewById(R.id.recyclerViewTopTrendingProductHome);
-        Call<ProductResponse> productResponseCall = ApiClient.getProductService().getTopTrendingProduct();
-        productResponseCall.enqueue(new Callback<ProductResponse>() {
+        Call<ProductListResponse> productResponseCall = ApiClient.getProductService().getTopTrendingProduct();
+        productResponseCall.enqueue(new Callback<ProductListResponse>() {
             @Override
-            public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
+            public void onResponse(Call<ProductListResponse> call, Response<ProductListResponse> response) {
                 if (response.isSuccessful()) {
-                    ArrayList<Product> products = (ArrayList<Product>) response.body().getResult();
+                    ArrayList<Product> products = (ArrayList<Product>) response.body().getData();
                     recyclerViewTopTrendingProduct.setAdapter(new ProductTrendingHomeAdapter(getContext(), products));
                     LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false) {
                         @Override
@@ -144,7 +144,7 @@ public class Home extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ProductResponse> call, Throwable t) {
+            public void onFailure(Call<ProductListResponse> call, Throwable t) {
             }
         });
     }

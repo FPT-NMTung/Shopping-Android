@@ -10,7 +10,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -20,7 +19,7 @@ import java.util.ArrayList;
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.adapter.product.ProductGridLayoutItemAdapter;
 import fu.prm391.sampl.project.model.product.Product;
-import fu.prm391.sampl.project.model.product.ProductResponse;
+import fu.prm391.sampl.project.model.product.get_list_product.ProductListResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -92,12 +91,12 @@ public class Search extends Fragment {
                 if (TextUtils.isEmpty(txtSearchQuery.getText().toString())) {
                     Toast.makeText(getContext(), "Enter search query to search!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Call<ProductResponse> productResponseCall = ApiClient.getProductService().searchProducts(txtSearchQuery.getText().toString(), 10);
-                    productResponseCall.enqueue(new Callback<ProductResponse>() {
+                    Call<ProductListResponse> productResponseCall = ApiClient.getProductService().searchProducts(txtSearchQuery.getText().toString(), 10);
+                    productResponseCall.enqueue(new Callback<ProductListResponse>() {
                         @Override
-                        public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
+                        public void onResponse(Call<ProductListResponse> call, Response<ProductListResponse> response) {
                             if (response.isSuccessful()) {
-                                ArrayList<Product> products = (ArrayList<Product>) response.body().getResult();
+                                ArrayList<Product> products = (ArrayList<Product>) response.body().getData();
                                 if (products.size() == 0) {
                                     Toast.makeText(getContext(), "There is no products like this!", Toast.LENGTH_SHORT).show();
                                 }
@@ -108,7 +107,7 @@ public class Search extends Fragment {
                         }
 
                         @Override
-                        public void onFailure(Call<ProductResponse> call, Throwable t) {
+                        public void onFailure(Call<ProductListResponse> call, Throwable t) {
                         }
                     });
                 }

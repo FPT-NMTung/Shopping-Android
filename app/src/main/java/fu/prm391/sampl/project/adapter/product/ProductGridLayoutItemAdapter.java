@@ -58,7 +58,7 @@ public class ProductGridLayoutItemAdapter extends RecyclerView.Adapter<ProductGr
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, SpecifyProduct.class);
-                intent.putExtra("specifyProduct", product);
+                intent.putExtra("productId", product.getId());
                 context.startActivity(intent);
             }
         });

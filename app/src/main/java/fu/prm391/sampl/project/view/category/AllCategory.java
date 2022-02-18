@@ -1,6 +1,7 @@
 package fu.prm391.sampl.project.view.category;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,19 +26,13 @@ public class AllCategory extends AppCompatActivity {
 
     private ImageView imageViewBack;
     private RecyclerView recyclerViewAllCategory;
-
+    private ConstraintLayout loadingConstraintLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-        imageViewBack = findViewById(R.id.imageViewBackCategory);
-        imageViewBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(AllCategory.this, MainActivity.class));
-                finish();
-            }
-        });
+        loadingConstraintLayout = findViewById(R.id.loadingConstraintLayoutCategories);
+        loadingConstraintLayout.setVisibility(View.VISIBLE);
 
         recyclerViewAllCategory = findViewById(R.id.recyclerViewAllCategory);
         Call<CategoryResponse> categoryResponseCall = ApiClient.getCategoryService().getAllCategories();
@@ -49,11 +44,22 @@ public class AllCategory extends AppCompatActivity {
                     recyclerViewAllCategory.setAdapter(new CategoryAllAdapter(AllCategory.this, categories));
                     LinearLayoutManager layoutManager = new LinearLayoutManager(AllCategory.this, LinearLayoutManager.VERTICAL, false);
                     recyclerViewAllCategory.setLayoutManager(layoutManager);
+                    loadingConstraintLayout.setVisibility(View.GONE);
                 }
             }
 
             @Override
             public void onFailure(Call<CategoryResponse> call, Throwable t) {
+            }
+        });
+
+
+        imageViewBack = findViewById(R.id.imageViewBackCategory);
+        imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AllCategory.this, MainActivity.class));
+                finish();
             }
         });
     }
