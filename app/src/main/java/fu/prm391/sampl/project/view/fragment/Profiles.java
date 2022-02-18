@@ -134,13 +134,12 @@ public class Profiles extends Fragment {
         btnVerifyProfiles.setVisibility(View.INVISIBLE);
         btnEditProfiles.setVisibility(View.INVISIBLE);
 
-
+        // call Api
         Call<UserResponse> userResponseCall = ApiClient.getUserService().getUserInformation("Bearer " + token);
         userResponseCall.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 if (response.isSuccessful()) {
-
                     User user = response.body().getData();
                     // set visible when api call successful
                     profilesName.setVisibility(View.VISIBLE);
@@ -159,7 +158,6 @@ public class Profiles extends Fragment {
                     } else {
                         profilesName.setText(user.getFirstName() + " " + user.getLastName());
                     }
-
                     // set default image
                     if (user.getAvatar() != null) {
                         Picasso.get().load(user.getAvatar()).fit().into(imageProfiles);
@@ -180,7 +178,6 @@ public class Profiles extends Fragment {
                     }
 
                     // verify Profile Action
-
                     btnVerifyProfiles.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -189,20 +186,16 @@ public class Profiles extends Fragment {
                     });
 
                     // edit profile action
-
                     btnEditProfiles.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             Intent intent = new Intent(getContext(), EditProfiles.class);
                             intent.putExtra("userInfo", user);
                             launcher.launch(intent);
-//                        startActivity(intent);
-
                         }
                     });
                 }
             }
-
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
             }
@@ -237,25 +230,11 @@ public class Profiles extends Fragment {
                 materialAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
                     }
                 });
                 materialAlert.show();
             }
         });
-
         return view;
-
-
     }
-
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        Intent intent = getActivity().getIntent();
-//        getActivity().finish();
-//        startActivity(intent);
-//
-//    }
-
 }
