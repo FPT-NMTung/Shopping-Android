@@ -108,6 +108,8 @@
         android:layout_marginRight="20dp"
         android:background="@color/mainBackGroundColor"
         android:backgroundTint="@color/mainBackGroundColor"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="parent"
@@ -163,6 +165,8 @@
         android:layout_marginRight="20dp"
         android:background="@color/mainBackGroundColor"
         android:backgroundTint="@color/mainBackGroundColor"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView9">
@@ -200,6 +204,8 @@
         android:layout_marginRight="20dp"
         android:background="@color/mainBackGroundColor"
         android:backgroundTint="@color/mainBackGroundColor"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardViewEmail">
