@@ -111,6 +111,12 @@
     <string name="FA__total">Total</string>
     <string name="FA__checkOut">Checkout</string>
 
+    <!--  Check Out  -->
+    <string name="CO__title">Checkout</string>
+    <string name="CO__addressTitle">Address</string>
+    <string name="CO__addressContinue">Continue</string>
+    <string name="CO__addressPlaceOrder">Place Order</string>
+
     <string name="searchLabel">Search</string>
     <string name="searchProductHintLabel">Search Products</string>
     <string name="contentDesImageButtonSearch">Search Image</string>

@@ -9,7 +9,7 @@ public class ProductResponse {
     @SerializedName("message")
     @Expose
     private String message;
-    @SerializedName("result")
+    @SerializedName("data")
     @Expose
     private List<Product> result = null;
 

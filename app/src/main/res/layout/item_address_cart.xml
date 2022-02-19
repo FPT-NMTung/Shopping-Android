@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/mainBackGroundColor">
+
+    <TextView
+            android:text="TextView"
+            android:layout_width="229dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtItemCheckoutAddressName"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+    <TextView
+            android:text="TextView"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtItemCheckoutAddressDetail"
+            app:layout_constraintTop_toBottomOf="@+id/txtItemCheckoutAddressName"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp"
+            android:fontFamily="@font/poppins_medium" />
+
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtItemCheckoutAddressPhone"
+            app:layout_constraintTop_toBottomOf="@+id/txtItemCheckoutAddressDetail"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginTop="8dp" />
+
+    <RadioButton
+            android:layout_width="29dp"
+            android:layout_height="35dp"
+            android:id="@+id/radioButtonCheckoutSelect"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="28dp" />
+
+    <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtItemCheckoutAddressPhone"
+            android:layout_marginTop="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="#818181" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

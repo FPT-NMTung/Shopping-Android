@@ -34,6 +34,7 @@ import fu.prm391.sampl.project.model.order.delete_order.DeleteOrderResponse;
 import fu.prm391.sampl.project.model.order.get_all_order.GetAllOrderResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.account.Login;
+import fu.prm391.sampl.project.view.checkout.CheckOutAddress;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -128,6 +129,7 @@ public class Cart extends Fragment {
             startActivity(intent);
         } else {
             loadAllListOrder();
+            setEventBtnCheckout();
         }
 
         return view;
@@ -137,6 +139,16 @@ public class Cart extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         call.cancel();
+    }
+
+    private void setEventBtnCheckout() {
+        btnCartCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CheckOutAddress.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void loadAllListOrder() {
