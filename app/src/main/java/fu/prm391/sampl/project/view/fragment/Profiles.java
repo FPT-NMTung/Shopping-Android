@@ -61,6 +61,7 @@ public class Profiles extends Fragment {
     private TextView labelVerified, profilesName, emailProfiles;
     private ImageView verifyImage, imageProfiles;
     private ActivityResultLauncher<Intent> launcher;
+    private String stringUri = "";
 
     public Profiles() {
         // Required empty public constructor
@@ -119,9 +120,7 @@ public class Profiles extends Fragment {
                 if (result.getResultCode() == 201) {
                     Intent data = result.getData();
                     profilesName.setText(data.getStringExtra("userName"));
-//                    emailProfiles.setText(data.getStringExtra("emailAddress"));
-                    String stringUri = data.getStringExtra("profileImage");
-//                    Picasso.get().lo
+                    stringUri = data.getStringExtra("profileImage");
                     Picasso.get().load(stringUri).fit().into(imageProfiles);
                 }
             }
@@ -191,11 +190,15 @@ public class Profiles extends Fragment {
                         public void onClick(View view) {
                             Intent intent = new Intent(getContext(), EditProfiles.class);
                             intent.putExtra("userInfo", user);
+                            if (stringUri != "") {
+                                intent.putExtra("stringUri2", stringUri);
+                            }
                             launcher.launch(intent);
                         }
                     });
                 }
             }
+
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
             }

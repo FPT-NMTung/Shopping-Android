@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -20,7 +19,7 @@ import java.util.ArrayList;
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.model.product.Product;
 import fu.prm391.sampl.project.model.product.ProductGridRecyclerViewAdapter;
-import fu.prm391.sampl.project.model.product.ProductResponse;
+import fu.prm391.sampl.project.model.product.ProductListResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.MainActivity;
 import retrofit2.Call;
@@ -37,12 +36,12 @@ public class TopDiscountProduct extends AppCompatActivity {
         setContentView(R.layout.activity_top_discount_product);
         recyclerView = findViewById(R.id.recyclerViewSuperSaleProduct);
 
-        Call<ProductResponse> productResponseCall = ApiClient.getProductService().getTopDiscountProduct();
-        productResponseCall.enqueue(new Callback<ProductResponse>() {
+        Call<ProductListResponse> productResponseCall = ApiClient.getProductService().getTopDiscountProduct();
+        productResponseCall.enqueue(new Callback<ProductListResponse>() {
             @Override
-            public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
+            public void onResponse(Call<ProductListResponse> call, Response<ProductListResponse> response) {
                 if (response.isSuccessful()) {
-                    ArrayList<Product> products = (ArrayList<Product>) response.body().getResult();
+                    ArrayList<Product> products = (ArrayList<Product>) response.body().getData();
                     recyclerView.setAdapter(new ProductGridRecyclerViewAdapter(TopDiscountProduct.this, products));
                     GridLayoutManager layoutManager = new GridLayoutManager(TopDiscountProduct.this, 2);
                     recyclerView.setLayoutManager(layoutManager);
@@ -57,7 +56,7 @@ public class TopDiscountProduct extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ProductResponse> call, Throwable t) {
+            public void onFailure(Call<ProductListResponse> call, Throwable t) {
                 Toast.makeText(TopDiscountProduct.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });

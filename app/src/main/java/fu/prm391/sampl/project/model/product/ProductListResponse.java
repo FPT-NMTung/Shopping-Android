@@ -4,14 +4,14 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ProductResponse {
+public class ProductListResponse {
 
     @SerializedName("message")
     @Expose
     private String message;
-    @SerializedName("result")
+    @SerializedName("data")
     @Expose
-    private List<Product> result = null;
+    private List<Product> data = null;
 
     public String getMessage() {
         return message;
@@ -21,12 +21,12 @@ public class ProductResponse {
         this.message = message;
     }
 
-    public List<Product> getResult() {
-        return result;
+    public List<Product> getData() {
+        return data;
     }
 
-    public void setResult(List<Product> result) {
-        this.result = result;
+    public void setData(List<Product> data) {
+        this.data = data;
     }
 
 }

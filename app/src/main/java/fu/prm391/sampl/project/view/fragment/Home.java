@@ -27,15 +27,13 @@ import fu.prm391.sampl.project.model.category.Category;
 import fu.prm391.sampl.project.model.category.CategoryTop4Adapter;
 import fu.prm391.sampl.project.model.category.CategoryResponse;
 import fu.prm391.sampl.project.model.product.Product;
-import fu.prm391.sampl.project.model.product.ProductResponse;
+import fu.prm391.sampl.project.model.product.ProductListResponse;
 import fu.prm391.sampl.project.model.product.ProductTrendingHomeAdapter;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.category.AllCategory;
 import fu.prm391.sampl.project.view.product.NewArrivalProduct;
 import fu.prm391.sampl.project.view.product.TopDiscountProduct;
 import fu.prm391.sampl.project.view.product.TrendingProduct;
-import fu.prm391.sampl.project.view.address.CreateNewAddress;
-import fu.prm391.sampl.project.view.address.ProfileShippingAddress;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -141,12 +139,12 @@ public class Home extends Fragment {
 
     private void getTrendingProducts(View view) {
         recyclerViewTopTrendingProduct = view.findViewById(R.id.recyclerViewTopTrendingProductHome);
-        Call<ProductResponse> productResponseCall = ApiClient.getProductService().getTopTrendingProduct();
-        productResponseCall.enqueue(new Callback<ProductResponse>() {
+        Call<ProductListResponse> productResponseCall = ApiClient.getProductService().getTopTrendingProduct();
+        productResponseCall.enqueue(new Callback<ProductListResponse>() {
             @Override
-            public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
+            public void onResponse(Call<ProductListResponse> call, Response<ProductListResponse> response) {
                 if (response.isSuccessful()) {
-                    ArrayList<Product> products = (ArrayList<Product>) response.body().getResult();
+                    ArrayList<Product> products = (ArrayList<Product>) response.body().getData();
                     recyclerViewTopTrendingProduct.setAdapter(new ProductTrendingHomeAdapter(getContext(), products));
                     LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false) {
                         @Override
@@ -166,7 +164,7 @@ public class Home extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ProductResponse> call, Throwable t) {
+            public void onFailure(Call<ProductListResponse> call, Throwable t) {
                 Toast.makeText(getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });

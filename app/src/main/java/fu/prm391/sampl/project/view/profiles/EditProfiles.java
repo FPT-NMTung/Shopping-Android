@@ -55,7 +55,7 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
     private FloatingActionButton fab;
     private Button btnSave;
     private TextView emailAddress;
-    private String encodedImage = "";
+    private String encodedImage;
     private String stringUri;
 
     @SuppressLint("WrongThread")
@@ -93,12 +93,10 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
                         || TextUtils.isEmpty(lastName.getText().toString().trim()) || TextUtils.isEmpty(phoneNumber.getText().toString().trim())) {
                     Toast.makeText(EditProfiles.this, "All fields are required!", Toast.LENGTH_SHORT).show();
                     btnSave.setEnabled(true);
-
                 } else {
                     // proceed save
                     updateProfileAction();
                 }
-
             }
         });
 
@@ -130,14 +128,11 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
     private void getInfoFromProfiles() {
         Intent intent = getIntent();
         User user = (User) intent.getSerializableExtra("userInfo");
-        System.out.println(user.getPhone());
         emailAddress.setText(user.getEmail());
         firstName.setText(user.getFirstName());
         lastName.setText(user.getLastName());
         phoneNumber.setText(user.getPhone());
-//        Picasso.get().load(stringUri).fit().into(cover);
         Picasso.get().load(user.getAvatar()).fit().into(cover);
-
         // check and set gender
         if (user.getGender() == 0) {
             gender.setSelection(2);
@@ -153,18 +148,12 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
         updateUserInfoRequest.setLastName(lastName.getText().toString().trim());
         updateUserInfoRequest.setGender(gender.getSelectedItemPosition() - 1);
         updateUserInfoRequest.setPhone(phoneNumber.getText().toString().trim());
-        if (encodedImage == "") {
-            Uri imageUri = Uri.parse(stringUri);
-            InputStream imageStream = null;
-            try {
-                imageStream = getContentResolver().openInputStream(imageUri);
-                Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                encodedImage = encodeImage(selectedImage);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+        if (encodedImage == null) {
+            updateUserInfoRequest.setImage(null);
+        } else {
+            updateUserInfoRequest.setImage("data:image/jpeg;base64," + encodedImage);
         }
-        updateUserInfoRequest.setImage("data:image/jpeg;base64," + encodedImage);
+
 
         // call Api
         Call<UpdateUserInfoResponse> updateUserInfoResponseCall = ApiClient.getUserService().updateUserInformation("Bearer " + token, updateUserInfoRequest);
