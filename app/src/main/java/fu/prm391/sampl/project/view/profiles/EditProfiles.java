@@ -88,10 +88,14 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View v) {
                 btnSave.setEnabled(false);
+                // check format edit text fill
                 if (TextUtils.isEmpty(emailAddress.getText().toString().trim())
                         || TextUtils.isEmpty(firstName.getText().toString().trim())
                         || TextUtils.isEmpty(lastName.getText().toString().trim()) || TextUtils.isEmpty(phoneNumber.getText().toString().trim())) {
                     Toast.makeText(EditProfiles.this, "All fields are required!", Toast.LENGTH_SHORT).show();
+                    btnSave.setEnabled(true);
+                } else if (phoneNumber.length() != 10) {
+                    Toast.makeText(EditProfiles.this, "Wrong format phone number", Toast.LENGTH_SHORT).show();
                     btnSave.setEnabled(true);
                 } else {
                     // proceed save
@@ -105,13 +109,10 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View view) {
                 ImagePicker.with(EditProfiles.this)
-
-
                         .crop()                    //Crop image(Optional), Check Customization for more option
                         .compress(1024)            //Final image size will be less than 1 MB(Optional)
                         .maxResultSize(150, 150)    //Final image resolution will be less than 1080 x 1080(Optional)
                         .start(294);
-
             }
         });
 
@@ -146,14 +147,14 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
         UpdateUserInfoRequest updateUserInfoRequest = new UpdateUserInfoRequest();
         updateUserInfoRequest.setFirstName(firstName.getText().toString().trim());
         updateUserInfoRequest.setLastName(lastName.getText().toString().trim());
-        updateUserInfoRequest.setGender(gender.getSelectedItemPosition() - 1);
+        updateUserInfoRequest.setGender(gender.getSelectedItemPosition() + 1);
         updateUserInfoRequest.setPhone(phoneNumber.getText().toString().trim());
+
         if (encodedImage == null) {
-            updateUserInfoRequest.setImage(null);
+            updateUserInfoRequest.setImage(stringUri);
         } else {
             updateUserInfoRequest.setImage("data:image/jpeg;base64," + encodedImage);
         }
-
 
         // call Api
         Call<UpdateUserInfoResponse> updateUserInfoResponseCall = ApiClient.getUserService().updateUserInformation("Bearer " + token, updateUserInfoRequest);
@@ -163,10 +164,6 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
                 if (response.isSuccessful()) {
                     UpdateUserInfoResponse updateUserInfoResponse = response.body();
                     Toast.makeText(EditProfiles.this, updateUserInfoResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent();
-                    intent.putExtra("userName", firstName.getText().toString().trim() + " " + lastName.getText().toString().trim());
-                    intent.putExtra("profileImage", stringUri);
-                    setResult(201, intent);
                     finish();
                 } else {
                     try {
@@ -189,7 +186,6 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
         String text = parent.getItemAtPosition(position).toString();
-
     }
 
     @Override

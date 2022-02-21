@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "fu.prm391.sampl.project"
-        minSdk 29
+        minSdk 28
         targetSdk 32
         versionCode 1
         versionName "1.0"

@@ -60,8 +60,7 @@ public class Profiles extends Fragment {
     private Button btnVerifyProfiles, btnEditProfiles;
     private TextView labelVerified, profilesName, emailProfiles;
     private ImageView verifyImage, imageProfiles;
-    private ActivityResultLauncher<Intent> launcher;
-    private String stringUri = "";
+    private String token = "";
 
     public Profiles() {
         // Required empty public constructor
@@ -94,17 +93,18 @@ public class Profiles extends Fragment {
         }
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profiles, container, false);
+        token = PreferencesHelpers.loadStringData(getContext(), "token");
 
-        String token = PreferencesHelpers.loadStringData(getContext(), "token");
         if (token == "") {
             startActivity(new Intent(getContext(), Login.class));
             getActivity().finish();
         }
-        // create launcher
 
         labelVerified = view.findViewById(R.id.labelVerifiedProfile);
         verifyImage = view.findViewById(R.id.imageVerifiedProfile);
@@ -113,18 +113,9 @@ public class Profiles extends Fragment {
         imageProfiles = view.findViewById(R.id.imageProfiles);
         btnVerifyProfiles = view.findViewById(R.id.btnVerifyProfiles);
         btnEditProfiles = view.findViewById(R.id.btnEditProfiles);
+        viewShippingAddress = view.findViewById(R.id.viewShippingAddressProfiles);
+        viewLogOut = view.findViewById(R.id.viewLogoutProfile);
 
-        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-            @Override
-            public void onActivityResult(ActivityResult result) {
-                if (result.getResultCode() == 201) {
-                    Intent data = result.getData();
-                    profilesName.setText(data.getStringExtra("userName"));
-                    stringUri = data.getStringExtra("profileImage");
-                    Picasso.get().load(stringUri).fit().into(imageProfiles);
-                }
-            }
-        });
         // set invisible when api have not called
         profilesName.setVisibility(View.INVISIBLE);
         emailProfiles.setVisibility(View.INVISIBLE);
@@ -134,6 +125,48 @@ public class Profiles extends Fragment {
         btnEditProfiles.setVisibility(View.INVISIBLE);
 
         // call Api
+        callApiProfiles();
+
+        // action change page to shipping Address
+        viewShippingAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ProfileShippingAddress.class);
+                startActivity(intent);
+//                getActivity().finish();
+            }
+        });
+
+        // logOut action
+        viewLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MaterialAlertDialogBuilder materialAlert = new MaterialAlertDialogBuilder(getContext(), R.style.ThemeOverlay_App_MaterialAlertDialog);
+                materialAlert.setTitle("ALERT");
+                materialAlert.setMessage("Are you Sure want to Logout");
+                materialAlert.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // move to home navigation
+                        BottomNavigationView bottomNavigationView;
+                        bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
+                        bottomNavigationView.setSelectedItemId(R.id.home2);
+                        // delete token
+                        PreferencesHelpers.removeSinglePreference(getContext(), "token");
+                    }
+                });
+                materialAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                });
+                materialAlert.show();
+            }
+        });
+        return view;
+    }
+
+    private void callApiProfiles() {
         Call<UserResponse> userResponseCall = ApiClient.getUserService().getUserInformation("Bearer " + token);
         userResponseCall.enqueue(new Callback<UserResponse>() {
             @Override
@@ -190,10 +223,7 @@ public class Profiles extends Fragment {
                         public void onClick(View view) {
                             Intent intent = new Intent(getContext(), EditProfiles.class);
                             intent.putExtra("userInfo", user);
-                            if (stringUri != "") {
-                                intent.putExtra("stringUri2", stringUri);
-                            }
-                            launcher.launch(intent);
+                            startActivity(intent);
                         }
                     });
                 }
@@ -203,41 +233,11 @@ public class Profiles extends Fragment {
             public void onFailure(Call<UserResponse> call, Throwable t) {
             }
         });
-        viewShippingAddress = view.findViewById(R.id.viewShippingAddressProfiles);
-        viewShippingAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ProfileShippingAddress.class);
-                startActivity(intent);
-//                getActivity().finish();
-            }
-        });
-        viewLogOut = view.findViewById(R.id.viewLogoutProfile);
-        viewLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MaterialAlertDialogBuilder materialAlert = new MaterialAlertDialogBuilder(getContext(), R.style.ThemeOverlay_App_MaterialAlertDialog);
-                materialAlert.setTitle("ALERT");
-                materialAlert.setMessage("Are you Sure want to Logout");
-                materialAlert.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // move to home navigation
-                        BottomNavigationView bottomNavigationView;
-                        bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
-                        bottomNavigationView.setSelectedItemId(R.id.home2);
-                        // delete token
-                        PreferencesHelpers.removeSinglePreference(getContext(), "token");
-                    }
-                });
-                materialAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                    }
-                });
-                materialAlert.show();
-            }
-        });
-        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        callApiProfiles();
     }
 }
