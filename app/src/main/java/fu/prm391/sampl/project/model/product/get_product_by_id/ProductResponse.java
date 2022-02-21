@@ -2,9 +2,6 @@ package fu.prm391.sampl.project.model.product.get_product_by_id;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
-
 import fu.prm391.sampl.project.model.product.Product;
 
 public class ProductResponse {

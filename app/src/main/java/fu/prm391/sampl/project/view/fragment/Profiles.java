@@ -4,6 +4,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -22,8 +26,11 @@ import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.model.user.User;
 import fu.prm391.sampl.project.model.user.UserResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
+import fu.prm391.sampl.project.view.MainActivity;
 import fu.prm391.sampl.project.view.account.Login;
 import fu.prm391.sampl.project.view.order.MyOrderHistory;
+import fu.prm391.sampl.project.view.address.ProfileShippingAddress;
+import fu.prm391.sampl.project.view.profiles.EditProfiles;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,10 +51,11 @@ public class Profiles extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private View viewLogOut, viewMyHistoryOrders;
+    private View viewLogOut, viewMyHistoryOrders, viewShippingAddress;
     private Button btnVerifyProfiles, btnEditProfiles;
     private TextView labelVerified, profilesName, emailProfiles;
     private ImageView verifyImage, imageProfiles;
+    private String token = "";
 
     public Profiles() {
         // Required empty public constructor
@@ -80,12 +88,14 @@ public class Profiles extends Fragment {
         }
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profiles, container, false);
+        token = PreferencesHelpers.loadStringData(getContext(), "token");
 
-        String token = PreferencesHelpers.loadStringData(getContext(), "token");
         if (token == "") {
             startActivity(new Intent(getContext(), Login.class));
             getActivity().finish();
@@ -96,31 +106,82 @@ public class Profiles extends Fragment {
         emailProfiles = view.findViewById(R.id.txtEmailProfiles);
         profilesName = view.findViewById(R.id.txtNameProfiles);
         imageProfiles = view.findViewById(R.id.imageProfiles);
-
-        // verify Profile Action
         btnVerifyProfiles = view.findViewById(R.id.btnVerifyProfiles);
-        btnVerifyProfiles.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // verify Profile Action
-            }
-        });
-
-        // edit profile action
         btnEditProfiles = view.findViewById(R.id.btnEditProfiles);
-        btnEditProfiles.setOnClickListener(new View.OnClickListener() {
+        viewShippingAddress = view.findViewById(R.id.viewShippingAddressProfiles);
+        viewLogOut = view.findViewById(R.id.viewLogoutProfile);
+
+        // set invisible when api have not called
+        profilesName.setVisibility(View.INVISIBLE);
+        emailProfiles.setVisibility(View.INVISIBLE);
+        labelVerified.setVisibility(View.INVISIBLE);
+        verifyImage.setVisibility(View.INVISIBLE);
+        btnVerifyProfiles.setVisibility(View.INVISIBLE);
+        btnEditProfiles.setVisibility(View.INVISIBLE);
+
+        // call Api
+        callApiProfiles();
+
+        // action change page to shipping Address
+        viewShippingAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // edit profile action
+                Intent intent = new Intent(getContext(), ProfileShippingAddress.class);
+                startActivity(intent);
             }
         });
 
+        viewMyHistoryOrders = view.findViewById(R.id.viewMyOrdersHistoryProfiles);
+        viewMyHistoryOrders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), MyOrderHistory.class));
+            }
+        });
+
+        // logOut action
+        viewLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MaterialAlertDialogBuilder materialAlert = new MaterialAlertDialogBuilder(getContext(), R.style.ThemeOverlay_App_MaterialAlertDialog);
+                materialAlert.setTitle("ALERT");
+                materialAlert.setMessage("Are you Sure want to Logout");
+                materialAlert.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // move to home navigation
+                        BottomNavigationView bottomNavigationView;
+                        bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
+                        bottomNavigationView.setSelectedItemId(R.id.home2);
+                        // delete token
+                        PreferencesHelpers.removeSinglePreference(getContext(), "token");
+                    }
+                });
+                materialAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                });
+                materialAlert.show();
+            }
+        });
+        return view;
+    }
+
+    private void callApiProfiles() {
         Call<UserResponse> userResponseCall = ApiClient.getUserService().getUserInformation("Bearer " + token);
         userResponseCall.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 if (response.isSuccessful()) {
                     User user = response.body().getData();
+                    // set visible when api call successful
+                    profilesName.setVisibility(View.VISIBLE);
+                    emailProfiles.setVisibility(View.VISIBLE);
+                    labelVerified.setVisibility(View.VISIBLE);
+                    verifyImage.setVisibility(View.VISIBLE);
+                    btnVerifyProfiles.setVisibility(View.VISIBLE);
+                    btnEditProfiles.setVisibility(View.VISIBLE);
                     // check username
                     if (user.getFirstName() == null && user.getLastName() == null) {
                         profilesName.setText("Unknown");
@@ -149,6 +210,24 @@ public class Profiles extends Fragment {
                         labelVerified.setText("UnVerified");
                         btnVerifyProfiles.setVisibility(View.VISIBLE);
                     }
+
+                    // verify Profile Action
+                    btnVerifyProfiles.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            // verify Profile Action
+                        }
+                    });
+
+                    // edit profile action
+                    btnEditProfiles.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(getContext(), EditProfiles.class);
+                            intent.putExtra("userInfo", user);
+                            startActivity(intent);
+                        }
+                    });
                 }
             }
 
@@ -156,44 +235,11 @@ public class Profiles extends Fragment {
             public void onFailure(Call<UserResponse> call, Throwable t) {
             }
         });
+    }
 
-        viewMyHistoryOrders = view.findViewById(R.id.viewMyOrdersHistoryProfiles);
-        viewMyHistoryOrders.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getContext(), MyOrderHistory.class));
-            }
-        });
-
-        // logout
-        viewLogOut = view.findViewById(R.id.viewLogoutProfile);
-        viewLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MaterialAlertDialogBuilder materialAlert = new MaterialAlertDialogBuilder(getContext(), R.style.ThemeOverlay_App_MaterialAlertDialog);
-                materialAlert.setTitle("ALERT");
-                materialAlert.setMessage("Are you Sure want to Logout");
-                materialAlert.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // move to home navigation
-                        BottomNavigationView bottomNavigationView;
-                        bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
-                        bottomNavigationView.setSelectedItemId(R.id.home2);
-                        // delete token
-                        PreferencesHelpers.removeSinglePreference(getContext(), "token");
-                    }
-                });
-                materialAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
-                });
-                materialAlert.show();
-            }
-        });
-        return view;
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        callApiProfiles();
     }
 }

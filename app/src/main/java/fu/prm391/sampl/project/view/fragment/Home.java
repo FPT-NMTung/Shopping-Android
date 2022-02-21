@@ -97,8 +97,6 @@ public class Home extends Fragment {
         return view;
     }
 
-
-
     private void getTop4Category(View view) {
         recyclerViewTop4Category = view.findViewById(R.id.recyclerViewTop4Cate);
         Call<CategoryResponse> categoryResponseCall = ApiClient.getCategoryService().getTop4Categories();

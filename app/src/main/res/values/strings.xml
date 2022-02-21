@@ -120,4 +120,17 @@
     <string name="add_to_cart_button_label">Add to Cart</string>
     <string name="similar_products">Similar Products</string>
     <string name="oneLabel">1</string>
+    <string name="editProfilesLabel">Edit Profiles</string>
+    <string name="UserInformationLabel">User Information</string>
+    <string name="firstNameLabel">First Name</string>
+    <string name="lastNameLabel">Last Name</string>
+    <string name="emailAddressLabel">Email Address</string>
+    <string-array name="Gender">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+    <string name="phoneLabel">Phone</string>
+    <string name="btnSave">Save</string>
+    <string name="genderLabel">Gender</string>
 </resources>

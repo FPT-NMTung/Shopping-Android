@@ -2,6 +2,7 @@ package fu.prm391.sampl.project.remote.service;
 
 import fu.prm391.sampl.project.model.product.get_list_product.ProductListResponse;
 import fu.prm391.sampl.project.model.product.get_product_by_id.ProductResponse;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;

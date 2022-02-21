@@ -28,6 +28,7 @@ public class TrendingProduct extends AppCompatActivity {
     private ImageView imageViewBack;
     private RecyclerView recyclerView;
     private ConstraintLayout loadingConstraintLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

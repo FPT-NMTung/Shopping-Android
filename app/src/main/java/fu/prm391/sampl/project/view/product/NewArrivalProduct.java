@@ -28,6 +28,7 @@ public class NewArrivalProduct extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ImageView imageViewBack;
     private ConstraintLayout loadingConstraintLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
