@@ -35,4 +35,13 @@ public class StringHelpers {
         return result;
     }
 
+    public static String numberLessThanTenFormat(int number) {
+        String result = "";
+        if (number < 10) {
+            result = "0" + number;
+        } else {
+            result = String.valueOf(number);
+        }
+        return result;
+    }
 }
