@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -16,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -36,7 +34,6 @@ import fu.prm391.sampl.project.model.product.Product;
 import fu.prm391.sampl.project.model.product.get_list_product.ProductListResponse;
 import fu.prm391.sampl.project.model.product.get_product_by_id.ProductResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
-import fu.prm391.sampl.project.view.MainActivity;
 import fu.prm391.sampl.project.view.account.Login;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -52,11 +49,10 @@ public class SpecifyProduct extends AppCompatActivity {
     private ConstraintLayout loadingConstraintLayout;
     private Button btnAddToCart;
     private ImageButton btnIncrease, btnDecrease;
-    private ImageView btnGoToCart;
     private CardView cardNumberSelectedProduct;
     private Product product;
     private int numberProduct = 1;
-    private final int upperLimitNumberProduct = 15;
+    private final int upperLimitNumberProduct = 10;
     private final int lowerLimitNumberProduct = 1;
     private String token;
 
@@ -140,7 +136,6 @@ public class SpecifyProduct extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ProductResponse> call, Throwable t) {
-                Log.i("Test", t.getLocalizedMessage());
             }
         });
 
@@ -153,7 +148,6 @@ public class SpecifyProduct extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (token == "") {
-                    finish();
                     startActivity(new Intent(SpecifyProduct.this, Login.class));
                     finish();
                 } else {
@@ -171,8 +165,7 @@ public class SpecifyProduct extends AppCompatActivity {
                                 if (response.isSuccessful()) { //add to cart successful
                                     AddToCartResponse addToCartResponse = response.body();
                                     Toast.makeText(SpecifyProduct.this, addToCartResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                                    // more action here
-
+                                    // more action here if needed
 
                                 } else {
                                     try {
@@ -225,8 +218,6 @@ public class SpecifyProduct extends AppCompatActivity {
                 if (numberProduct < upperLimitNumberProduct && numberProduct < product.getQuantity()) {
                     numberProduct++;
                     numberSelectedProduct.setText(StringHelpers.numberLessThanTenFormat(numberProduct));
-                } else {
-                    Toast.makeText(SpecifyProduct.this, "You can only select up to " + upperLimitNumberProduct + " products!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -237,8 +228,6 @@ public class SpecifyProduct extends AppCompatActivity {
                 if (numberProduct > lowerLimitNumberProduct) {
                     numberProduct--;
                     numberSelectedProduct.setText(StringHelpers.numberLessThanTenFormat(numberProduct));
-                } else {
-                    Toast.makeText(SpecifyProduct.this, "You need to select at least " + lowerLimitNumberProduct + " product!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

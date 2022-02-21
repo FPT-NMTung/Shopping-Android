@@ -26,6 +26,9 @@
                 android:name=".view.product.SpecifyProduct"
                 android:exported="false" />
         <activity
+            android:name=".view.category.SpecifyCategory"
+            android:exported="false" />
+        <activity
             android:name=".view.profiles.EditProfiles"
             android:exported="false" />
         <activity
