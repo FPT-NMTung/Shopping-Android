@@ -76,7 +76,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:animateLayoutChanges="true"
             android:id="@+id/layoutAddressCheckout"
-            android:visibility="gone">
+            android:visibility="visible">
 
         <TextView
                 android:text="@string/CO__addressTitle"
@@ -139,7 +139,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/layoutConfirmCheckout"
             android:animateLayoutChanges="true"
-            android:visibility="visible">
+            android:visibility="gone">
 
         <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
@@ -161,7 +161,7 @@
                         android:text="TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textView14"
+                        android:id="@+id/txtCheckoutConfirmationAddressName"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginTop="16dp"
@@ -171,8 +171,8 @@
                         android:text="TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textView16"
-                        app:layout_constraintTop_toBottomOf="@+id/textView14"
+                        android:id="@+id/txtCheckoutConfirmationAddressDetail"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCheckoutConfirmationAddressName"
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginTop="4dp"
                         android:layout_marginStart="16dp" />
@@ -181,8 +181,8 @@
                         android:text="TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textView22"
-                        app:layout_constraintTop_toBottomOf="@+id/textView16"
+                        android:id="@+id/txtCheckoutConfirmationAddressPhone"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCheckoutConfirmationAddressDetail"
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginTop="4dp"
                         android:layout_marginStart="16dp"
@@ -218,7 +218,7 @@
                         android:text="NGUYEN MANH TUNG"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txtCheckoutCardName"
+                        android:id="@+id/txtCheckoutConfirmationCardName"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -230,8 +230,8 @@
                         android:fontFamily="@font/inconsolata"
                         android:textStyle="bold"
                         android:textSize="22sp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginEnd="30dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="24dp"
                         android:shadowDx="4"
                         android:letterSpacing="0.12" />
 
@@ -239,16 +239,16 @@
                         android:text="10/24"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textView24"
+                        android:id="@+id/txtCheckoutConfirmationCardDate"
                         android:fontFamily="@font/inconsolata"
                         android:textStyle="bold"
                         android:textSize="14sp"
                         android:textColor="#FFFFFF"
                         android:shadowRadius="5"
                         android:shadowColor="#C4000000"
-                        app:layout_constraintBottom_toTopOf="@+id/txtCheckoutCardName"
+                        app:layout_constraintBottom_toTopOf="@+id/txtCheckoutConfirmationCardName"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginStart="30dp"
+                        android:layout_marginStart="24dp"
                         android:layout_marginBottom="8dp"
                         android:shadowDx="3"
                         android:shadowDy="3" />
@@ -257,14 +257,14 @@
                         android:text="1234 5678 9123 4567"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textView25"
-                        app:layout_constraintBottom_toTopOf="@+id/textView24"
+                        android:id="@+id/txtCheckoutConfirmationCardNumber"
+                        app:layout_constraintBottom_toTopOf="@+id/txtCheckoutConfirmationCardDate"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.498"
                         android:layout_marginBottom="8dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginEnd="30dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="24dp"
                         android:fontFamily="@font/inconsolata"
                         android:textSize="28sp"
                         android:textStyle="bold"
@@ -278,10 +278,10 @@
                         android:layout_height="33dp"
                         app:srcCompat="@drawable/radio_waves"
                         android:id="@+id/imageView7"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginTop="16dp"
-                        android:layout_marginEnd="284dp" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="24dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 

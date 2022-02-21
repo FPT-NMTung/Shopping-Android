@@ -43,6 +43,10 @@ public class CheckOutAddress extends AppCompatActivity {
 
     private String token;
 
+    private Address selectAddress;
+
+    private List<Address> list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +66,10 @@ public class CheckOutAddress extends AppCompatActivity {
 
         this.token = PreferencesHelpers.loadStringData(CheckOutAddress.this, "token");
 
+        this.selectAddress = null;
+
+        this.list = null;
+
         loadDataAddress();
 
         setStepView();
@@ -69,6 +77,10 @@ public class CheckOutAddress extends AppCompatActivity {
 
         setEventBtnNextStep();
         setEventBtnBack();
+    }
+
+    private void setSelectAddress(Address address) {
+        this.selectAddress = address;
     }
 
     private void setEventBtnNextStep() {
@@ -83,17 +95,28 @@ public class CheckOutAddress extends AppCompatActivity {
     }
 
     private void loadDataAddress() {
+        this.btnCheckoutAddressSubmit.setEnabled(false);
         Call<GetAllAddressResponse> call = ApiClient.getAddressService().getAllAddress("Bearer " + token);
         call.enqueue(new Callback<GetAllAddressResponse>() {
             @Override
             public void onResponse(Call<GetAllAddressResponse> call, Response<GetAllAddressResponse> response) {
                 if (response.isSuccessful()) {
-                    List<Address> list = response.body().getListAddress();
+                    list = response.body().getListAddress();
                     CheckoutAddressAdapter checkoutAddressAdapter = new CheckoutAddressAdapter(list, CheckOutAddress.this);
                     recyclerViewAddressCheckout.setLayoutManager(new LinearLayoutManager(CheckOutAddress.this));
                     recyclerViewAddressCheckout.setAdapter(checkoutAddressAdapter);
 
                     progressBarCheckoutAddress.setVisibility(View.INVISIBLE);
+
+                    btnCheckoutAddressSubmit.setEnabled(list.size() != 0);
+
+                    for (int i = 0; i < list.size(); i++) {
+                        Address temp = list.get(i);
+
+                        if (temp.getIsDefault() == 1) {
+                            selectAddress = temp;
+                        }
+                    }
                 }
             }
 
@@ -124,17 +147,19 @@ public class CheckOutAddress extends AppCompatActivity {
         this.stepView.setOnStepClickListener(new StepView.OnStepClickListener() {
             @Override
             public void onStepClick(int step) {
-                stepView.go(step, true);
+                if (list.size() != 0) {
+                    stepView.go(step, true);
 
-                switch (step) {
-                    case 0:
-                        layoutAddressCheckout.setVisibility(View.VISIBLE);
-                        layoutConfirmCheckout.setVisibility(View.INVISIBLE);
-                        break;
-                    case 1:
-                        layoutAddressCheckout.setVisibility(View.INVISIBLE);
-                        layoutConfirmCheckout.setVisibility(View.VISIBLE);
-                        break;
+                    switch (step) {
+                        case 0:
+                            layoutAddressCheckout.setVisibility(View.VISIBLE);
+                            layoutConfirmCheckout.setVisibility(View.INVISIBLE);
+                            break;
+                        case 1:
+                            layoutAddressCheckout.setVisibility(View.INVISIBLE);
+                            layoutConfirmCheckout.setVisibility(View.VISIBLE);
+                            break;
+                    }
                 }
             }
         });
