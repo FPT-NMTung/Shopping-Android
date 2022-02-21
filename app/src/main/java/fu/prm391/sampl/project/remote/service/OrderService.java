@@ -1,6 +1,8 @@
 package fu.prm391.sampl.project.remote.service;
 
 import fu.prm391.sampl.project.model.order.OrderResponse;
+import fu.prm391.sampl.project.model.order.add_to_cart.AddToCartRequest;
+import fu.prm391.sampl.project.model.order.add_to_cart.AddToCartResponse;
 import fu.prm391.sampl.project.model.order.decrease_quantity.DecreaseQuantityRequest;
 import fu.prm391.sampl.project.model.order.decrease_quantity.DecreaseQuantityResponse;
 import fu.prm391.sampl.project.model.order.delete_order.DeleteOrderRequest;
@@ -13,12 +15,16 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
 import retrofit2.http.Header;
+import retrofit2.http.POST;
 import retrofit2.http.PATCH;
 
 public interface OrderService {
 
     @GET("order/histories")
     Call<OrderResponse> getOrdersHistory(@Header("Authorization") String token);
+
+    @POST("order/add")
+    Call<AddToCartResponse> addProductToCart(@Header("Authorization") String token, @Body AddToCartRequest addToCartRequest);
 
     @GET("orders")
     Call<GetAllOrderResponse> getAllOrder(@Header("Authorization") String token);

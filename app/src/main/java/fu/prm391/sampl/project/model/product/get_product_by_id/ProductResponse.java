@@ -1,17 +1,16 @@
-package fu.prm391.sampl.project.model.product;
+package fu.prm391.sampl.project.model.product.get_product_by_id;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import fu.prm391.sampl.project.model.product.Product;
 
 public class ProductResponse {
-
     @SerializedName("message")
     @Expose
     private String message;
     @SerializedName("data")
     @Expose
-    private List<Product> result = null;
+    private Product data;
 
     public String getMessage() {
         return message;
@@ -21,12 +20,11 @@ public class ProductResponse {
         this.message = message;
     }
 
-    public List<Product> getResult() {
-        return result;
+    public Product getData() {
+        return data;
     }
 
-    public void setResult(List<Product> result) {
-        this.result = result;
+    public void setResult(Product result) {
+        this.data = result;
     }
-
 }

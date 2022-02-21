@@ -43,13 +43,22 @@ public class ProductGridLayoutItemAdapter extends RecyclerView.Adapter<ProductGr
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Product product = products.get(position);
         holder.productName.setText(product.getName());
-        holder.productPrice.setText(StringHelpers.currencyFormatter(product.getPrice()));
+        holder.productDiscount.setText(StringHelpers.percentageNumber(product.getDiscount()));
+        if(product.getDiscount() != 0) {
+            holder.productPrice.setText(StringHelpers.currencyFormatterWithPercent(product.getPrice(), product.getDiscount()));
+            holder.productDiscount.setVisibility(View.VISIBLE);
+            holder.discountTag.setVisibility(View.VISIBLE);
+        } else {
+            holder.productPrice.setText(StringHelpers.currencyFormatter(product.getPrice()));
+            holder.productDiscount.setVisibility(View.INVISIBLE);
+            holder.discountTag.setVisibility(View.INVISIBLE);
+        }
         Picasso.get().load(product.getImage()).fit().into(holder.productImage);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, SpecifyProduct.class);
-                intent.putExtra("specifyProduct", product);
+                intent.putExtra("productId", product.getId());
                 context.startActivity(intent);
             }
         });
@@ -65,14 +74,18 @@ public class ProductGridLayoutItemAdapter extends RecyclerView.Adapter<ProductGr
         ImageView productImage;
         TextView productName;
         TextView productPrice;
+        TextView productDiscount;
         CardView cardView;
+        ImageView discountTag;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             productImage = itemView.findViewById(R.id.imageProductItemGrid);
             productName = itemView.findViewById(R.id.txtProductItemGridName);
             productPrice = itemView.findViewById(R.id.txtProductItemGridPrice);
+            productDiscount = itemView.findViewById(R.id.txtProductItemGridDiscount);
             cardView = itemView.findViewById(R.id.cardProductItemGridView);
+            discountTag = itemView.findViewById(R.id.imageViewProductItemDiscountTag);
         }
     }
 }

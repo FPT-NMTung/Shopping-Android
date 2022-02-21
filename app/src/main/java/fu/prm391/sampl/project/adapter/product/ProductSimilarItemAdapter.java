@@ -22,12 +22,11 @@ import fu.prm391.sampl.project.helper.StringHelpers;
 import fu.prm391.sampl.project.model.product.Product;
 import fu.prm391.sampl.project.view.product.SpecifyProduct;
 
-public class ProductTrendingHomeAdapter extends RecyclerView.Adapter<ProductTrendingHomeAdapter.ViewHolder> {
-
+public class ProductSimilarItemAdapter extends RecyclerView.Adapter<ProductSimilarItemAdapter.ViewHolder> {
     private Context context;
     private ArrayList<Product> products;
 
-    public ProductTrendingHomeAdapter(Context context, ArrayList<Product> products) {
+    public ProductSimilarItemAdapter(Context context, ArrayList<Product> products) {
         this.context = context;
         this.products = products;
     }
@@ -36,8 +35,8 @@ public class ProductTrendingHomeAdapter extends RecyclerView.Adapter<ProductTren
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View productView = inflater.inflate(R.layout.item_top_trending_product, parent, false);
-        ProductTrendingHomeAdapter.ViewHolder viewHolder = new ProductTrendingHomeAdapter.ViewHolder(productView);
+        View productView = inflater.inflate(R.layout.item_similar_products, parent, false);
+        ProductSimilarItemAdapter.ViewHolder viewHolder = new ProductSimilarItemAdapter.ViewHolder(productView);
         return viewHolder;
     }
 
@@ -45,15 +44,7 @@ public class ProductTrendingHomeAdapter extends RecyclerView.Adapter<ProductTren
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Product product = products.get(position);
         holder.productName.setText(product.getName());
-        if(product.getDiscount() != 0) {
-            holder.productOldPrice.setText(StringHelpers.currencyFormatter(product.getPrice()));
-            holder.productPrice.setText(StringHelpers.currencyFormatterWithPercent(product.getPrice(), product.getDiscount()));
-            holder.productOldPrice.setPaintFlags(holder.productOldPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        } else {
-            holder.productOldPrice.setVisibility(View.GONE);
-            holder.productPrice.setText(StringHelpers.currencyFormatter(product.getPrice()));
-        }
-
+        holder.productPrice.setText(StringHelpers.currencyFormatterWithPercent(product.getPrice(), product.getDiscount()));
         Picasso.get().load(product.getImage()).fit().into(holder.productImage);
         holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,17 +68,16 @@ public class ProductTrendingHomeAdapter extends RecyclerView.Adapter<ProductTren
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView productName;
         private TextView productPrice;
-        private TextView productOldPrice;
+//        private TextView productOldPrice;
         private ImageView productImage;
         private ConstraintLayout constraintLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            productName = itemView.findViewById(R.id.txtProductNameHome);
-            productPrice = itemView.findViewById(R.id.txtProductPriceHome);
-            productImage = itemView.findViewById(R.id.imgTrendingProduct);
-            productOldPrice = itemView.findViewById(R.id.txtProductOldPriceHome);
-            constraintLayout = itemView.findViewById(R.id.consTraintLayoutTrendingProduct);
+            productName = itemView.findViewById(R.id.txtSimilarProductNameItem);
+            productPrice = itemView.findViewById(R.id.txtSimilarProductPriceItem);
+            productImage = itemView.findViewById(R.id.txtSimilarProductImageItem);
+            constraintLayout = itemView.findViewById(R.id.constraintLayoutItemSimilarProduct);
         }
     }
 }
