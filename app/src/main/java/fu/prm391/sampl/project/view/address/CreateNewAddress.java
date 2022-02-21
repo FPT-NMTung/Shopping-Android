@@ -1,24 +1,26 @@
 package fu.prm391.sampl.project.view.address;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import fu.prm391.sampl.project.R;
-import fu.prm391.sampl.project.adapter.DistrictAdapter;
-import fu.prm391.sampl.project.adapter.ProvinceAdapter;
-import fu.prm391.sampl.project.adapter.WardAdapter;
+import fu.prm391.sampl.project.adapter.address.DistrictAdapter;
+import fu.prm391.sampl.project.adapter.address.ProvinceAdapter;
+import fu.prm391.sampl.project.adapter.address.WardAdapter;
+import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.model.address.create_new_address.CreateNewAddressRequest;
 import fu.prm391.sampl.project.model.address.create_new_address.CreateNewAddressResponse;
 import fu.prm391.sampl.project.model.address.get_district.District;
@@ -27,6 +29,8 @@ import fu.prm391.sampl.project.model.address.get_province.GetProvinceResponse;
 import fu.prm391.sampl.project.model.address.get_province.Province;
 import fu.prm391.sampl.project.model.address.get_ward.GetWardResponse;
 import fu.prm391.sampl.project.model.address.get_ward.Ward;
+import fu.prm391.sampl.project.model.address.update_address.UpdateAddressRequest;
+import fu.prm391.sampl.project.model.address.update_address.UpdateAddressResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,14 +53,20 @@ public class CreateNewAddress extends AppCompatActivity {
     private EditText editTextPhone;
     private EditText editTextDetail;
 
+    private TextView title;
+
     private int provinceId;
     private int districtId;
     private int wardId;
+
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_address);
+
+        token = PreferencesHelpers.loadStringData(CreateNewAddress.this, "token");
 
         btnCnaBack = findViewById(R.id.btnCnaBack);
         btnCnaSubmit = findViewById(R.id.btnCnaSubmit);
@@ -69,9 +79,13 @@ public class CreateNewAddress extends AppCompatActivity {
         editTextPhone = findViewById(R.id.editText_cna_phone);
         editTextDetail = findViewById(R.id.editText_cna_detail);
 
+        title = findViewById(R.id.txtCnaTitle);
+
         provinceId = 0;
         districtId = 0;
         wardId = 0;
+
+        setInitLayout();
 
         setDefaultProvince();
         setDefaultDistrict();
@@ -85,6 +99,23 @@ public class CreateNewAddress extends AppCompatActivity {
 
         setEventBtnBack();
         setEventBtnSubmit();
+    }
+
+    private void setInitLayout() {
+        if (isUpdateAddress()) {
+            Intent intent = getIntent();
+            title.setText("Update Address");
+            btnCnaSubmit.setText("Update");
+
+            editTextName.setText(intent.getStringExtra("fullName"));
+            editTextPhone.setText(intent.getStringExtra("phone"));
+            editTextDetail.setText(intent.getStringExtra("detail"));
+        }
+    }
+
+    private boolean isUpdateAddress() {
+        Intent intent = getIntent();
+        return intent.hasExtra("updateAddress");
     }
 
     private void setEventBtnBack() {
@@ -134,31 +165,63 @@ public class CreateNewAddress extends AppCompatActivity {
                     return;
                 }
 
-                CreateNewAddressRequest createNewAddressRequest = new CreateNewAddressRequest();
-                createNewAddressRequest.setFullName(name);
-                createNewAddressRequest.setPhone(phone);
-                createNewAddressRequest.setDetail(detail);
-                createNewAddressRequest.setProvinceId(provinceId);
-                createNewAddressRequest.setDistrictId(districtId);
-                createNewAddressRequest.setWardId(wardId);
+                btnCnaSubmit.setEnabled(false);
+                if (isUpdateAddress()) {
+                    Intent intent = getIntent();
 
-                Call<CreateNewAddressResponse> call =ApiClient.getAddressService().createNewAddress("Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZW1haWwiOiJubXR1bmdvZmZpY2lhbEBnbWFpbC5jb20iLCJpYXQiOjE2NDQyMzM1OTl9.X7sI6-AIyKQHNj6-vlBHuuplFmTEkLnL5zkZfn5Dnzs", createNewAddressRequest);
-                call.enqueue(new Callback<CreateNewAddressResponse>() {
-                    @Override
-                    public void onResponse(Call<CreateNewAddressResponse> call, Response<CreateNewAddressResponse> response) {
-                        if (response.isSuccessful()) {
-                            Toast.makeText(CreateNewAddress.this, "Create new address successfully", Toast.LENGTH_SHORT).show();
-                            finish();
-                        } else {
-                            Toast.makeText(CreateNewAddress.this, "Create new address failed", Toast.LENGTH_SHORT).show();
+                    UpdateAddressRequest updateAddressRequest = new UpdateAddressRequest();
+
+                    updateAddressRequest.setId(intent.getIntExtra("id", 0));
+                    updateAddressRequest.setFullName(name);
+                    updateAddressRequest.setPhone(phone);
+                    updateAddressRequest.setProvinceId(provinceId);
+                    updateAddressRequest.setDistrictId(districtId);
+                    updateAddressRequest.setWardId(wardId);
+                    updateAddressRequest.setDetail(detail);
+
+                    Call<UpdateAddressResponse> call = ApiClient.getAddressService().updateAddress("Bearer " + token, updateAddressRequest);
+                    call.enqueue(new Callback<UpdateAddressResponse>() {
+                        @Override
+                        public void onResponse(Call<UpdateAddressResponse> call, Response<UpdateAddressResponse> response) {
+                            if (response.isSuccessful()) {
+                                Toast.makeText(CreateNewAddress.this, "Update successfully", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<CreateNewAddressResponse> call, Throwable t) {
+                        @Override
+                        public void onFailure(Call<UpdateAddressResponse> call, Throwable t) {
 
-                    }
-                });
+                        }
+                    });
+                } else {
+                    CreateNewAddressRequest createNewAddressRequest = new CreateNewAddressRequest();
+
+                    createNewAddressRequest.setFullName(name);
+                    createNewAddressRequest.setPhone(phone);
+                    createNewAddressRequest.setDetail(detail);
+                    createNewAddressRequest.setProvinceId(provinceId);
+                    createNewAddressRequest.setDistrictId(districtId);
+                    createNewAddressRequest.setWardId(wardId);
+
+                    Call<CreateNewAddressResponse> call = ApiClient.getAddressService().createNewAddress("Bearer " + token, createNewAddressRequest);
+                    call.enqueue(new Callback<CreateNewAddressResponse>() {
+                        @Override
+                        public void onResponse(Call<CreateNewAddressResponse> call, Response<CreateNewAddressResponse> response) {
+                            if (response.isSuccessful()) {
+                                Toast.makeText(CreateNewAddress.this, "Create new address successfully", Toast.LENGTH_SHORT).show();
+                                finish();
+                            } else {
+                                Toast.makeText(CreateNewAddress.this, "Create new address failed", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<CreateNewAddressResponse> call, Throwable t) {
+
+                        }
+                    });
+                }
             }
         });
     }

@@ -3,7 +3,12 @@ package fu.prm391.sampl.project.model.product;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Product {
+import java.io.Serializable;
+import java.util.List;
+
+import fu.prm391.sampl.project.model.category.Category;
+
+public class Product implements Serializable {
 
     @SerializedName("id")
     @Expose
@@ -35,11 +40,14 @@ public class Product {
     @SerializedName("discount")
     @Expose
     private int discount;
+    @SerializedName("category")
+    @Expose
+    private List<Category> categories;
 
     public Product() {
     }
 
-    public Product(int id, String name, String description, String image, double price, int quantity, int quantitySold, String createdAt, String updatedAt, int discount) {
+    public Product(int id, String name, String description, String image, double price, int quantity, int quantitySold, String createdAt, String updatedAt, int discount, List<Category> categories) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -50,6 +58,7 @@ public class Product {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.discount = discount;
+        this.categories = categories;
     }
 
     public int getId() {
@@ -130,5 +139,13 @@ public class Product {
 
     public void setDiscount(int discount) {
         this.discount = discount;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 }

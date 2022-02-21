@@ -3,7 +3,9 @@ package fu.prm391.sampl.project.model.user;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     @SerializedName("id")
     @Expose
     private int id;

@@ -17,8 +17,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 import fu.prm391.sampl.project.R;
-import fu.prm391.sampl.project.model.user.ResetPassRequest;
-import fu.prm391.sampl.project.model.user.ResetPassResponse;
+import fu.prm391.sampl.project.model.user.reset_password.ResetPassRequest;
+import fu.prm391.sampl.project.model.user.reset_password.ResetPassResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -74,15 +74,15 @@ public class ResetPassword extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     ResetPassResponse resetPassResponse = response.body();
-                    Toast.makeText(ResetPassword.this, resetPassResponse.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(ResetPassword.this, resetPassResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(ResetPassword.this, Login.class));
                     finish();
                 } else {
                     try {
                         JSONObject jsonObject = new JSONObject(response.errorBody().string());
-                        Toast.makeText(ResetPassword.this, jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                        Toast.makeText(ResetPassword.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                     } catch (JSONException | IOException e) {
-                        Toast.makeText(ResetPassword.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(ResetPassword.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
                     btnAccept.setEnabled(true);
                 }
@@ -90,7 +90,6 @@ public class ResetPassword extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResetPassResponse> call, Throwable t) {
-                Toast.makeText(ResetPassword.this, t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                 btnAccept.setEnabled(true);
             }
         });
@@ -104,7 +103,6 @@ public class ResetPassword extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(ResetPassword.this, ForgotPassword.class));
                 finish();
-
             }
         });
     }

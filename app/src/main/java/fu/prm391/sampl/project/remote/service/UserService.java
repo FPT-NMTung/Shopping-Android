@@ -1,13 +1,14 @@
 package fu.prm391.sampl.project.remote.service;
-
-import fu.prm391.sampl.project.model.user.ForgotPassRequest;
-import fu.prm391.sampl.project.model.user.ForgotPassResponse;
-import fu.prm391.sampl.project.model.user.LoginRequest;
-import fu.prm391.sampl.project.model.user.LoginResponse;
-import fu.prm391.sampl.project.model.user.RegisterRequest;
-import fu.prm391.sampl.project.model.user.RegisterResponse;
-import fu.prm391.sampl.project.model.user.ResetPassRequest;
-import fu.prm391.sampl.project.model.user.ResetPassResponse;
+import fu.prm391.sampl.project.model.user.UpdateUserInfoRequest;
+import fu.prm391.sampl.project.model.user.UpdateUserInfoResponse;
+import fu.prm391.sampl.project.model.user.forgot_password.ForgotPassRequest;
+import fu.prm391.sampl.project.model.user.forgot_password.ForgotPassResponse;
+import fu.prm391.sampl.project.model.user.login.LoginRequest;
+import fu.prm391.sampl.project.model.user.login.LoginResponse;
+import fu.prm391.sampl.project.model.user.register.RegisterRequest;
+import fu.prm391.sampl.project.model.user.register.RegisterResponse;
+import fu.prm391.sampl.project.model.user.reset_password.ResetPassRequest;
+import fu.prm391.sampl.project.model.user.reset_password.ResetPassResponse;
 import fu.prm391.sampl.project.model.user.UserResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -15,6 +16,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 public interface UserService {
 
@@ -32,4 +34,8 @@ public interface UserService {
 
     @GET("user/get-user-info")
     Call<UserResponse> getUserInformation(@Header("Authorization") String token);
+
+    @PUT("user/update-information")
+    Call<UpdateUserInfoResponse> updateUserInformation(@Header("Authorization") String token,
+                                                       @Body UpdateUserInfoRequest updateUserInfoRequest);
 }

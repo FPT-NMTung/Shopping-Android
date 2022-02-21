@@ -21,7 +21,7 @@
             tools:layout="@layout/fragment_cart" />
     <fragment
             android:id="@+id/search"
-            android:name="fu.prm391.sampl.project.view.fragment.Setting"
+            android:name="fu.prm391.sampl.project.view.fragment.Search"
             android:label="fragment_setting"
-            tools:layout="@layout/fragment_setting" />
+            tools:layout="@layout/fragment_search" />
 </navigation>
