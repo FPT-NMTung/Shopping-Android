@@ -76,7 +76,31 @@ public class SpecifyProduct extends AppCompatActivity {
 
         token = PreferencesHelpers.loadStringData(SpecifyProduct.this, "token");
 
-        // load Api product
+        loadProductFromApi();
+
+        adjustNumberSelectedProduct();
+
+        addToCartAction();
+
+        imageViewBack = findViewById(R.id.imageViewBackProduct);
+        imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+
+        imageViewFavorite = findViewById(R.id.imageViewFavoriteIconProduct);
+        imageViewFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+
+    }
+
+    private void loadProductFromApi() {
         Intent intent = getIntent();
         productId = intent.getIntExtra("productId", 0);
         Call<ProductResponse> productResponseCall = ApiClient.getProductService().getProductByID(productId);
@@ -107,27 +131,7 @@ public class SpecifyProduct extends AppCompatActivity {
                     productCategory.setText(productCategories);
                     Picasso.get().load(product.getImage()).fit().into(productImage);
 
-                    if (product.getCategories().size() != 0) {
-                        Call<ProductListResponse> productListResponseCall = ApiClient.getProductService().getProductByCategoryId(product.getCategories().get(0).getId());
-                        productListResponseCall.enqueue(new Callback<ProductListResponse>() {
-                            @Override
-                            public void onResponse(Call<ProductListResponse> call, Response<ProductListResponse> response) {
-                                if (response.isSuccessful()) {
-                                    ArrayList<Product> products = (ArrayList<Product>) response.body().getData();
-                                    recyclerViewSimilarProduct.setAdapter(new ProductSimilarItemAdapter(SpecifyProduct.this, products));
-                                    LinearLayoutManager layoutManager = new LinearLayoutManager(SpecifyProduct.this, LinearLayoutManager.HORIZONTAL, false);
-                                    recyclerViewSimilarProduct.setLayoutManager(layoutManager);
-
-                                    loadingConstraintLayout.setVisibility(View.GONE);
-                                    cardNumberSelectedProduct.setVisibility(View.VISIBLE);
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<ProductListResponse> call, Throwable t) {
-                            }
-                        });
-                    }
+                    getSimilarProducts();
 
                     loadingConstraintLayout.setVisibility(View.GONE);
                     cardNumberSelectedProduct.setVisibility(View.VISIBLE);
@@ -138,15 +142,37 @@ public class SpecifyProduct extends AppCompatActivity {
             public void onFailure(Call<ProductResponse> call, Throwable t) {
             }
         });
+    }
 
-        // adjust selected product
-        adjustNumberSelectedProduct();
+    private void getSimilarProducts() {
+        if (product.getCategories().size() != 0) {
+            Call<ProductListResponse> productListResponseCall = ApiClient.getProductService().getProductByCategoryId(product.getCategories().get(0).getId());
+            productListResponseCall.enqueue(new Callback<ProductListResponse>() {
+                @Override
+                public void onResponse(Call<ProductListResponse> call, Response<ProductListResponse> response) {
+                    if (response.isSuccessful()) {
+                        ArrayList<Product> products = (ArrayList<Product>) response.body().getData();
+                        recyclerViewSimilarProduct.setAdapter(new ProductSimilarItemAdapter(SpecifyProduct.this, products));
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(SpecifyProduct.this, LinearLayoutManager.HORIZONTAL, false);
+                        recyclerViewSimilarProduct.setLayoutManager(layoutManager);
 
+                        loadingConstraintLayout.setVisibility(View.GONE);
+                        cardNumberSelectedProduct.setVisibility(View.VISIBLE);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ProductListResponse> call, Throwable t) {
+                }
+            });
+        }
+    }
+
+    private void addToCartAction() {
         btnAddToCart = findViewById(R.id.btnAddToCart);
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (token == "") {
                     startActivity(new Intent(SpecifyProduct.this, Login.class));
                     finish();
@@ -187,22 +213,6 @@ public class SpecifyProduct extends AppCompatActivity {
                 }
             }
         });
-
-        imageViewBack = findViewById(R.id.imageViewBackProduct);
-        imageViewBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-        imageViewFavorite = findViewById(R.id.imageViewFavoriteIconProduct);
-        imageViewFavorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
-
     }
 
     private void adjustNumberSelectedProduct() {
