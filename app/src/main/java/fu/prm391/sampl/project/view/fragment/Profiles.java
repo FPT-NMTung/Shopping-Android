@@ -98,7 +98,7 @@ public class Profiles extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profiles, container, false);
         token = PreferencesHelpers.loadStringData(getContext(), "token");
 
-        checkLogedInUser();
+        checkLoginUser();
 
         labelVerified = view.findViewById(R.id.labelVerifiedProfile);
         verifyImage = view.findViewById(R.id.imageVerifiedProfile);
@@ -119,20 +119,15 @@ public class Profiles extends Fragment {
         btnEditProfiles.setVisibility(View.INVISIBLE);
 
 //        callAPIProfiles();
-
         verifyProfileAction();
-
         editProfileAction();
-
         moveToOtherActivities(view);
-
         logoutAction(view);
 
         return view;
-
     }
 
-    private void checkLogedInUser() {
+    private void checkLoginUser() {
         if (token == "") {
             startActivity(new Intent(getContext(), Login.class));
             getActivity().finish();
@@ -187,13 +182,11 @@ public class Profiles extends Fragment {
                     loadUserInfoToScreen();
                 }
             }
-            
+
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
             }
         });
-
-
     }
 
     private void loadUserInfoToScreen() {
