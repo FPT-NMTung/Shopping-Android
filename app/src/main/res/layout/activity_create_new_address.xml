@@ -88,22 +88,23 @@
                         android:id="@+id/cnaCardView1">
 
                     <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="textPersonName"
-                            android:ems="10"
-                            android:id="@+id/editText_cna_name"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginBottom="10dp"
-                            android:paddingTop="0dp"
-                            android:paddingRight="0dp"
-                            android:paddingBottom="0dp"
-                            android:paddingLeft="0dp"
-                            android:background="@android:color/transparent"
-                            android:hint="@string/CNA__editName" />
+                        android:id="@+id/editText_cna_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:fontFamily="@font/poppins_medium"
+                        android:hint="@string/CNA__editName"
+                        android:inputType="textPersonName"
+                        android:paddingLeft="0dp"
+                        android:paddingTop="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingBottom="0dp"
+                        android:textSize="16sp" />
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -140,22 +141,23 @@
                         android:layout_marginBottom="8dp">
 
                     <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="number"
-                            android:ems="10"
-                            android:id="@+id/editText_cna_phone"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginBottom="10dp"
-                            android:paddingTop="0dp"
-                            android:paddingRight="0dp"
-                            android:paddingBottom="0dp"
-                            android:paddingLeft="0dp"
-                            android:background="@android:color/transparent"
-                            android:hint="@string/CNA__editPhone" />
+                        android:id="@+id/editText_cna_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:fontFamily="@font/poppins_medium"
+                        android:hint="@string/CNA__editPhone"
+                        android:inputType="number"
+                        android:paddingLeft="0dp"
+                        android:paddingTop="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingBottom="0dp"
+                        android:textSize="16sp" />
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -305,23 +307,24 @@
                         android:layout_marginTop="8dp" >
 
                     <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="textPersonName"
-                            android:gravity="fill"
-                            android:ems="10"
-                            android:id="@+id/editText_cna_detail"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginBottom="10dp"
-                            android:paddingTop="0dp"
-                            android:paddingRight="0dp"
-                            android:paddingBottom="0dp"
-                            android:paddingLeft="0dp"
-                            android:background="@android:color/transparent"
-                            android:hint="@string/CNA__editDetail"/>
+                        android:id="@+id/editText_cna_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="fill"
+                        android:hint="@string/CNA__editDetail"
+                        android:inputType="textPersonName"
+                        android:paddingLeft="0dp"
+                        android:paddingTop="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingBottom="0dp"
+                        android:textSize="16sp" />
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 

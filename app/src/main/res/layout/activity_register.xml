@@ -77,6 +77,7 @@
             android:layout_marginRight="5dp"
             android:background="@color/mainBackGroundColor"
             android:ems="10"
+            android:fontFamily="@font/poppins_medium"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             tools:ignore="LabelFor,SpeakableTextPresentCheck" />
@@ -134,6 +135,7 @@
             android:layout_marginRight="5dp"
             android:background="@color/mainBackGroundColor"
             android:ems="10"
+            android:fontFamily="@font/poppins_medium"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             tools:ignore="LabelFor,SpeakableTextPresentCheck" />
@@ -161,6 +163,7 @@
             android:layout_marginRight="5dp"
             android:background="@color/mainBackGroundColor"
             android:ems="10"
+            android:fontFamily="@font/poppins_medium"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             tools:ignore="LabelFor,SpeakableTextPresentCheck" />
