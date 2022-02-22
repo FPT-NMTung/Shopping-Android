@@ -139,7 +139,7 @@
                 android:id="@+id/txtFirstName"
                 android:layout_width="177dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="15dp"
                 android:background="@null"
                 android:ems="10"
                 android:fontFamily="@font/poppins_semibold"
@@ -152,6 +152,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
@@ -176,9 +177,9 @@
 
             <TextView
                 android:id="@+id/textViewtEmailAddressEditProfile"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="15dp"
                 android:background="@null"
                 android:ems="10"
                 android:fontFamily="@font/poppins_semibold"
@@ -217,6 +218,7 @@
                 android:id="@+id/spinnerGender"
                 android:layout_width="177dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
                 android:background="@null"
                 android:ems="10"
                 android:fontFamily="@font/poppins_semibold"
@@ -235,6 +237,7 @@
                 android:id="@+id/textPhoneEditProfile"
                 android:layout_width="177dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
                 android:background="@null"
                 android:ems="10"
                 android:fontFamily="@font/poppins_semibold"
