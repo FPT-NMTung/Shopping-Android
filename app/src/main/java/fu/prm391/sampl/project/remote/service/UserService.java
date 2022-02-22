@@ -1,4 +1,5 @@
 package fu.prm391.sampl.project.remote.service;
+
 import fu.prm391.sampl.project.model.user.UpdateUserInfoRequest;
 import fu.prm391.sampl.project.model.user.UpdateUserInfoResponse;
 import fu.prm391.sampl.project.model.user.active_account.ActiveAccountRequest;

@@ -39,7 +39,6 @@ public class MyOrderHistory extends AppCompatActivity {
         token = PreferencesHelpers.loadStringData(MyOrderHistory.this, "token");
 
         loadListOrderHistories();
-
         backAction();
     }
 

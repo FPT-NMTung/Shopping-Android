@@ -36,9 +36,7 @@ public class AllCategory extends AppCompatActivity {
         loadingConstraintLayout.setVisibility(View.VISIBLE);
 
         recyclerViewAllCategory = findViewById(R.id.recyclerViewAllCategory);
-
         loadListCategories();
-
         backAction();
     }
 

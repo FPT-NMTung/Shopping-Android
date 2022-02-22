@@ -48,9 +48,7 @@ public class MyFavoriteProduct extends AppCompatActivity {
         recyclerViewMyFavorites = findViewById(R.id.recyclerViewMyFavorites);
 
         clearListInsideRecycleView();
-
         loadListFavoriteProducts();
-
         backAction();
     }
 

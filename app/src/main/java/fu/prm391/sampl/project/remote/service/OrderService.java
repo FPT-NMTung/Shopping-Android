@@ -33,7 +33,7 @@ public interface OrderService {
     Call<IncreaseQuantityResponse> increaseQuantityOrder(@Header("Authorization") String token, @Body IncreaseQuantityRequest request);
 
     @PATCH("order/decrease-quantity")
-    Call<DecreaseQuantityResponse> decreaseQuantityOrder(@Header("Authorization") String token, @Body DecreaseQuantityRequest request );
+    Call<DecreaseQuantityResponse> decreaseQuantityOrder(@Header("Authorization") String token, @Body DecreaseQuantityRequest request);
 
     @HTTP(method = "DELETE", path = "order/delete", hasBody = true)
     Call<DeleteOrderResponse> deleteOrder(@Header("Authorization") String token, @Body DeleteOrderRequest request);

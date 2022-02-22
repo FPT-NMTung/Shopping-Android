@@ -27,8 +27,6 @@ import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.model.user.User;
 import fu.prm391.sampl.project.model.user.UserResponse;
-import fu.prm391.sampl.project.model.user.active_account.ActiveAccountRequest;
-import fu.prm391.sampl.project.model.user.active_account.ActiveAccountResponse;
 import fu.prm391.sampl.project.model.user.send_email_active_account.EmailActiveAccountResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.account.Login;

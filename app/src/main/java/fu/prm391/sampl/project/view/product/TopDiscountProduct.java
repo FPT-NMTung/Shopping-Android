@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
@@ -38,7 +37,6 @@ public class TopDiscountProduct extends AppCompatActivity {
         loadingConstraintLayout.setVisibility(View.VISIBLE);
 
         loadListTopDiscountProduct();
-
         backAction();
     }
 

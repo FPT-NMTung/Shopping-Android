@@ -30,6 +30,7 @@ public class ResetPassword extends AppCompatActivity {
     private TextView txtBack;
     private Button btnAccept;
     private String email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +40,6 @@ public class ResetPassword extends AppCompatActivity {
     }
 
     private void resetPassAction() {
-
         password = findViewById(R.id.editTextPassResetPass);
         verifyCode = findViewById(R.id.editTextVerifyCodeResetPass);
         btnAccept = findViewById(R.id.btnAcceptResetPass);

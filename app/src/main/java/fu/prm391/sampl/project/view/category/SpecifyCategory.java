@@ -44,9 +44,7 @@ public class SpecifyCategory extends AppCompatActivity {
         txtTitle.setText(category.getName());
 
         recyclerView = findViewById(R.id.recyclerViewProductByCategory);
-
         loadListProductByCategoryId();
-
         backAction();
     }
 

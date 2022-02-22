@@ -79,15 +79,10 @@ public class SpecifyProduct extends AppCompatActivity {
         token = PreferencesHelpers.loadStringData(SpecifyProduct.this, "token");
 
         loadProductFromApi();
-
         adjustNumberSelectedProduct();
-
         addToCart();
-
         backAction();
-
         addFavoriteProduct();
-
     }
 
     private void loadProductFromApi() {

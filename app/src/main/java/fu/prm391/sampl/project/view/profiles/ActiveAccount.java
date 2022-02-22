@@ -20,7 +20,6 @@ import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.model.user.active_account.ActiveAccountRequest;
 import fu.prm391.sampl.project.model.user.active_account.ActiveAccountResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
-import fu.prm391.sampl.project.view.account.Login;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -42,6 +41,11 @@ public class ActiveAccount extends AppCompatActivity {
         etVerifyCode = findViewById(R.id.editTextCodeActiveAccount);
         btnAccept = findViewById(R.id.btnAcceptActiveAccount);
 
+        acceptAction();
+        backAction();
+    }
+
+    private void acceptAction() {
         btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,8 +58,6 @@ public class ActiveAccount extends AppCompatActivity {
                 }
             }
         });
-
-        backAction();
     }
 
     private void activeAccount() {
