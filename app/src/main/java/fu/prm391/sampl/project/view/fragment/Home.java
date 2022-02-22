@@ -145,7 +145,6 @@ public class Home extends Fragment {
                         }
                     };
                     recyclerViewTopTrendingProduct.setLayoutManager(layoutManager);
-                    loadingLayout.setVisibility(View.GONE);
                 }
             }
 
