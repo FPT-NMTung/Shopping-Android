@@ -31,6 +31,8 @@ import fu.prm391.sampl.project.model.category.Category;
 import fu.prm391.sampl.project.model.order.add_to_cart.AddToCartRequest;
 import fu.prm391.sampl.project.model.order.add_to_cart.AddToCartResponse;
 import fu.prm391.sampl.project.model.product.Product;
+import fu.prm391.sampl.project.model.product.favorite_product.add_favorite.AddFavoriteRequest;
+import fu.prm391.sampl.project.model.product.favorite_product.add_favorite.AddFavoriteResponse;
 import fu.prm391.sampl.project.model.product.get_list_product.ProductListResponse;
 import fu.prm391.sampl.project.model.product.get_product_by_id.ProductResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
@@ -90,11 +92,33 @@ public class SpecifyProduct extends AppCompatActivity {
             }
         });
 
-
         imageViewFavorite = findViewById(R.id.imageViewFavoriteIconProduct);
         imageViewFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AddFavoriteRequest addFavoriteRequest = new AddFavoriteRequest();
+                addFavoriteRequest.setProductId(productId);
+                Call<AddFavoriteResponse> addFavoriteResponseCall = ApiClient.getProductService().addFavoriteProduct("Bearer " + token, addFavoriteRequest);
+                addFavoriteResponseCall.enqueue(new Callback<AddFavoriteResponse>() {
+                    @Override
+                    public void onResponse(Call<AddFavoriteResponse> call, Response<AddFavoriteResponse> response) {
+                        if (response.isSuccessful()) {
+                            String message = response.body().getMessage();
+                            Toast.makeText(SpecifyProduct.this, message, Toast.LENGTH_SHORT).show();
+                        } else {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                                Toast.makeText(SpecifyProduct.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                            } catch (JSONException | IOException e) {
+                                Toast.makeText(SpecifyProduct.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<AddFavoriteResponse> call, Throwable t) {
+                    }
+                });
             }
         });
 
