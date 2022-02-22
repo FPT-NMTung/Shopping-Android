@@ -39,10 +39,10 @@
 
     <ImageButton
         android:id="@+id/imageButtonSearchProduct"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="20dp"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="29.5dp"
+        android:layout_marginEnd="28dp"
         android:backgroundTint="@color/black"
         android:contentDescription="@string/contentDesImageButtonSearch"
         android:elevation="10dp"
@@ -53,12 +53,12 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView12"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="34dp"
         android:layout_marginEnd="20dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="10dp"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="3dp"
         app:layout_constraintEnd_toStartOf="@+id/imageButtonSearchProduct"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView11">
@@ -75,6 +75,7 @@
             android:fontFamily="@font/poppins"
             android:hint="@string/searchProductHintLabel"
             android:inputType="textPersonName"
+            android:paddingStart="15dp"
             android:textColor="@color/black"
             android:textColorHint="@android:color/darker_gray"
             tools:ignore="TextContrastCheck" />
