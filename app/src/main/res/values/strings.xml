@@ -32,7 +32,7 @@
     <string name="contentDesIntroApp">BgIntroApp</string>
 
     <string name="please_enter">Please Enter digit code that you received on your Email Address.</string>
-    <string name="checkYourEmailVerifyCodeResetPassWordLabel">Check Your Email Verify Code</string>
+    <string name="checkYourEmailVerifyCodeResetPassWordLabel">Check Your Email For Verify Code</string>
     <string name="createAccountLabel">Create an Account</string>
     <string name="haveAnAccountLabel">Have an Account?</string>
     <string name="enterYourDetailsInformationLabel">Enter your Details Informations</string>
@@ -148,4 +148,5 @@
     <string name="phoneLabel">Phone</string>
     <string name="btnSave">Save</string>
     <string name="genderLabel">Gender</string>
+    <string name="active_your_account_label">Active Your Account</string>
 </resources>

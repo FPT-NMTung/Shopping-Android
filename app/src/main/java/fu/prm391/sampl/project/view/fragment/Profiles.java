@@ -12,20 +12,30 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.model.user.User;
 import fu.prm391.sampl.project.model.user.UserResponse;
+import fu.prm391.sampl.project.model.user.active_account.ActiveAccountRequest;
+import fu.prm391.sampl.project.model.user.active_account.ActiveAccountResponse;
+import fu.prm391.sampl.project.model.user.send_email_active_account.EmailActiveAccountResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.account.Login;
 import fu.prm391.sampl.project.view.address.ProfileShippingAddress;
 import fu.prm391.sampl.project.view.favorite_product.MyFavoriteProduct;
 import fu.prm391.sampl.project.view.order.MyOrderHistory;
+import fu.prm391.sampl.project.view.profiles.ActiveAccount;
 import fu.prm391.sampl.project.view.profiles.EditProfiles;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -262,7 +272,29 @@ public class Profiles extends Fragment {
         btnVerifyProfiles.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // verify Profile Action
+                Call<EmailActiveAccountResponse> emailActiveAccountResponseCall = ApiClient.getUserService().sendEmailActiveAccount("Bearer " + token);
+                emailActiveAccountResponseCall.enqueue(new Callback<EmailActiveAccountResponse>() {
+                    @Override
+                    public void onResponse(Call<EmailActiveAccountResponse> call, Response<EmailActiveAccountResponse> response) {
+                        if (response.isSuccessful()) {
+                            String message = response.body().getMessage();
+                            Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getContext(), ActiveAccount.class);
+                            startActivity(intent);
+                        } else {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                                Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                            } catch (JSONException | IOException e) {
+                                Toast.makeText(getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<EmailActiveAccountResponse> call, Throwable t) {
+                    }
+                });
             }
         });
     }
