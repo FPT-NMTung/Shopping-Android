@@ -262,7 +262,7 @@
         android:fontFamily="@font/poppins_semibold"
         android:gravity="top"
         android:lineSpacingExtra="0sp"
-        android:text="@string/LabelMyFavourites"
+        android:text="@string/LabelMyFavorites"
         android:textAppearance="@style/my_orders"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/viewMyFavoritiesProfiles" />

@@ -40,7 +40,7 @@ public interface ProductService {
     Call<ProductResponse> getProductByID(@Query("id") int id);
 
     @GET("favorites")
-    Call<ProductResponse> getFavoriteProducts(@Header("Authorization") String token);
+    Call<ProductListResponse> getFavoriteProducts(@Header("Authorization") String token);
 
     @POST("favorite/add")
     Call<AddFavoriteResponse> addFavoriteProduct(@Header("Authorization") String token,

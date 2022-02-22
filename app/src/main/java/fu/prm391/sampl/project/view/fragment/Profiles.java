@@ -4,10 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -26,11 +22,10 @@ import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.model.user.User;
 import fu.prm391.sampl.project.model.user.UserResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
-import fu.prm391.sampl.project.view.MainActivity;
 import fu.prm391.sampl.project.view.account.Login;
 import fu.prm391.sampl.project.view.address.ProfileShippingAddress;
+import fu.prm391.sampl.project.view.favorite_product.MyFavoriteProduct;
 import fu.prm391.sampl.project.view.order.MyOrderHistory;
-import fu.prm391.sampl.project.view.address.ProfileShippingAddress;
 import fu.prm391.sampl.project.view.profiles.EditProfiles;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,6 +48,7 @@ public class Profiles extends Fragment {
     private String mParam2;
 
     private View viewLogOut, viewMyHistoryOrders, viewShippingAddress;
+    private View viewMyFavorites;
     private Button btnVerifyProfiles, btnEditProfiles;
     private TextView labelVerified, profilesName, emailProfiles;
     private ImageView verifyImage, imageProfiles;
@@ -88,7 +84,6 @@ public class Profiles extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
 
 
     @Override
@@ -140,11 +135,11 @@ public class Profiles extends Fragment {
             }
         });
 
-        viewMyHistoryOrders = view.findViewById(R.id.viewMyOrdersHistoryProfiles);
-        viewMyHistoryOrders.setOnClickListener(new View.OnClickListener() {
+        viewMyFavorites = view.findViewById(R.id.viewMyFavoritiesProfiles);
+        viewMyFavorites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), MyOrderHistory.class));
+                startActivity(new Intent(getContext(), MyFavoriteProduct.class));
             }
         });
 
@@ -184,6 +179,7 @@ public class Profiles extends Fragment {
                 startActivity(intent);
             }
         });
+
 
         return view;
 

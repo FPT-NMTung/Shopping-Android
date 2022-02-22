@@ -47,7 +47,7 @@
     <string name="LabelProfiles">Profiles</string>
     <string name="LabelMyOrdersHistory">My Orders History</string>
     <string name="DesImage">TODO</string>
-    <string name="LabelMyFavourites">My Favourites</string>
+    <string name="LabelMyFavorites">My Favorites</string>
     <string name="LabelShippingAddress">Shipping Address</string>
     <string name="Labelgiftcardsvouchers"><![CDATA[Gift Cards & Vouchers]]></string>
     <string name="LabelLogout">Logout</string>
@@ -148,4 +148,5 @@
     <string name="phoneLabel">Phone</string>
     <string name="btnSave">Save</string>
     <string name="genderLabel">Gender</string>
+    <string name="txtMyFavoritesLabel">My Favorites</string>
 </resources>
