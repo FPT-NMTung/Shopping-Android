@@ -53,6 +53,7 @@ public class Profiles extends Fragment {
     private TextView labelVerified, profilesName, emailProfiles;
     private ImageView verifyImage, imageProfiles;
     private String token = "";
+    private User user;
 
     public Profiles() {
         // Required empty public constructor
@@ -85,6 +86,11 @@ public class Profiles extends Fragment {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        callAPIProfiles();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -92,10 +98,7 @@ public class Profiles extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profiles, container, false);
         token = PreferencesHelpers.loadStringData(getContext(), "token");
 
-        if (token == "") {
-            startActivity(new Intent(getContext(), Login.class));
-            getActivity().finish();
-        }
+        checkLogedInUser();
 
         labelVerified = view.findViewById(R.id.labelVerifiedProfile);
         verifyImage = view.findViewById(R.id.imageVerifiedProfile);
@@ -115,35 +118,28 @@ public class Profiles extends Fragment {
         btnVerifyProfiles.setVisibility(View.INVISIBLE);
         btnEditProfiles.setVisibility(View.INVISIBLE);
 
-        // call Api
-        callApiProfiles();
+//        callAPIProfiles();
 
-        // action change page to shipping Address
-        viewShippingAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ProfileShippingAddress.class);
-                startActivity(intent);
-            }
-        });
+        verifyProfileAction();
 
-        viewMyHistoryOrders = view.findViewById(R.id.viewMyOrdersHistoryProfiles);
-        viewMyHistoryOrders.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getContext(), MyOrderHistory.class));
-            }
-        });
+        editProfileAction();
 
-        viewMyFavorites = view.findViewById(R.id.viewMyFavoritiesProfiles);
-        viewMyFavorites.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getContext(), MyFavoriteProduct.class));
-            }
-        });
+        moveToOtherActivities(view);
 
-        // logout
+        logoutAction(view);
+
+        return view;
+
+    }
+
+    private void checkLogedInUser() {
+        if (token == "") {
+            startActivity(new Intent(getContext(), Login.class));
+            getActivity().finish();
+        }
+    }
+
+    private void logoutAction(View view) {
         viewLogOut = view.findViewById(R.id.viewLogoutProfile);
         viewLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,7 +167,68 @@ public class Profiles extends Fragment {
                 materialAlert.show();
             }
         });
+    }
 
+    private void callAPIProfiles() {
+        Call<UserResponse> userResponseCall = ApiClient.getUserService().getUserInformation("Bearer " + token);
+        userResponseCall.enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                if (response.isSuccessful()) {
+                    // set visible when api call successful
+                    profilesName.setVisibility(View.VISIBLE);
+                    emailProfiles.setVisibility(View.VISIBLE);
+                    labelVerified.setVisibility(View.VISIBLE);
+                    verifyImage.setVisibility(View.VISIBLE);
+                    btnVerifyProfiles.setVisibility(View.VISIBLE);
+                    btnEditProfiles.setVisibility(View.VISIBLE);
+
+                    user = response.body().getData();
+                    loadUserInfoToScreen();
+                }
+            }
+            
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+            }
+        });
+
+
+    }
+
+    private void loadUserInfoToScreen() {
+        // check username
+        if (user.getFirstName() == null && user.getLastName() == null) {
+            profilesName.setText("Unknown");
+        } else if (user.getFirstName() == null && user.getLastName() != null) {
+            profilesName.setText(user.getLastName());
+        } else if (user.getFirstName() != null && user.getLastName() == null) {
+            profilesName.setText(user.getFirstName());
+        } else {
+            profilesName.setText(user.getFirstName() + " " + user.getLastName());
+        }
+        // set default image
+        if (user.getAvatar() != null) {
+            Picasso.get().load(user.getAvatar()).fit().into(imageProfiles);
+        } else {
+            imageProfiles.setImageResource(R.drawable.icon_person);
+        }
+        // set email
+        emailProfiles.setText(user.getEmail());
+        // set verified user
+        if (user.isActive()) {
+            btnVerifyProfiles.setVisibility(View.INVISIBLE);
+            verifyImage.setImageResource(R.drawable.verified);
+            labelVerified.setText("Verified");
+        } else {
+            verifyImage.setImageResource(R.drawable.unverified);
+            labelVerified.setText("UnVerified");
+            btnVerifyProfiles.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void moveToOtherActivities(View view) {
+        // action change page to shipping Address
         viewShippingAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -180,83 +237,41 @@ public class Profiles extends Fragment {
             }
         });
 
-
-        return view;
-
-    }
-
-    private void callApiProfiles() {
-        Call<UserResponse> userResponseCall = ApiClient.getUserService().getUserInformation("Bearer " + token);
-        userResponseCall.enqueue(new Callback<UserResponse>() {
+        viewMyHistoryOrders = view.findViewById(R.id.viewMyOrdersHistoryProfiles);
+        viewMyHistoryOrders.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-                if (response.isSuccessful()) {
-                    User user = response.body().getData();
-                    // set visible when api call successful
-                    profilesName.setVisibility(View.VISIBLE);
-                    emailProfiles.setVisibility(View.VISIBLE);
-                    labelVerified.setVisibility(View.VISIBLE);
-                    verifyImage.setVisibility(View.VISIBLE);
-                    btnVerifyProfiles.setVisibility(View.VISIBLE);
-                    btnEditProfiles.setVisibility(View.VISIBLE);
-                    // check username
-                    if (user.getFirstName() == null && user.getLastName() == null) {
-                        profilesName.setText("Unknown");
-                    } else if (user.getFirstName() == null && user.getLastName() != null) {
-                        profilesName.setText(user.getLastName());
-                    } else if (user.getFirstName() != null && user.getLastName() == null) {
-                        profilesName.setText(user.getFirstName());
-                    } else {
-                        profilesName.setText(user.getFirstName() + " " + user.getLastName());
-                    }
-                    // set default image
-                    if (user.getAvatar() != null) {
-                        Picasso.get().load(user.getAvatar()).fit().into(imageProfiles);
-                    } else {
-                        imageProfiles.setImageResource(R.drawable.icon_person);
-                    }
-                    // set email
-                    emailProfiles.setText(user.getEmail());
-                    // set verified user
-                    if (user.isActive()) {
-                        btnVerifyProfiles.setVisibility(View.INVISIBLE);
-                        verifyImage.setImageResource(R.drawable.verified);
-                        labelVerified.setText("Verified");
-                    } else {
-                        verifyImage.setImageResource(R.drawable.unverified);
-                        labelVerified.setText("UnVerified");
-                        btnVerifyProfiles.setVisibility(View.VISIBLE);
-                    }
-
-                    // verify Profile Action
-                    btnVerifyProfiles.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            // verify Profile Action
-                        }
-                    });
-
-                    // edit profile action
-                    btnEditProfiles.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(getContext(), EditProfiles.class);
-                            intent.putExtra("userInfo", user);
-                            startActivity(intent);
-                        }
-                    });
-                }
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), MyOrderHistory.class));
             }
+        });
 
+        viewMyFavorites = view.findViewById(R.id.viewMyFavoritiesProfiles);
+        viewMyFavorites.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFailure(Call<UserResponse> call, Throwable t) {
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), MyFavoriteProduct.class));
             }
         });
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        callApiProfiles();
+    private void editProfileAction() {
+        btnEditProfiles.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), EditProfiles.class);
+                intent.putExtra("userInfo", user);
+                startActivity(intent);
+            }
+        });
     }
+
+    private void verifyProfileAction() {
+        btnVerifyProfiles.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // verify Profile Action
+            }
+        });
+    }
+
 }
