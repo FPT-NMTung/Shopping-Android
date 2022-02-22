@@ -44,6 +44,13 @@ public class SpecifyCategory extends AppCompatActivity {
         txtTitle.setText(category.getName());
 
         recyclerView = findViewById(R.id.recyclerViewProductByCategory);
+
+        loadListProductByCategoryId();
+
+        backAction();
+    }
+
+    private void loadListProductByCategoryId() {
         Call<ProductListResponse> productResponseCall = ApiClient.getProductService().getProductByCategoryId(category.getId());
         productResponseCall.enqueue(new Callback<ProductListResponse>() {
             @Override
@@ -61,8 +68,9 @@ public class SpecifyCategory extends AppCompatActivity {
             public void onFailure(Call<ProductListResponse> call, Throwable t) {
             }
         });
+    }
 
-        //back
+    private void backAction() {
         imageViewBack = findViewById(R.id.imageViewBackSpecifyCategory);
         imageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override

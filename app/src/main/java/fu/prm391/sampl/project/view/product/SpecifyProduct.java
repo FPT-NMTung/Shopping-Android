@@ -82,45 +82,11 @@ public class SpecifyProduct extends AppCompatActivity {
 
         adjustNumberSelectedProduct();
 
-        addToCartAction();
+        addToCart();
 
-        imageViewBack = findViewById(R.id.imageViewBackProduct);
-        imageViewBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        backAction();
 
-        imageViewFavorite = findViewById(R.id.imageViewFavoriteIconProduct);
-        imageViewFavorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AddFavoriteRequest addFavoriteRequest = new AddFavoriteRequest();
-                addFavoriteRequest.setProductId(productId);
-                Call<AddFavoriteResponse> addFavoriteResponseCall = ApiClient.getProductService().addFavoriteProduct("Bearer " + token, addFavoriteRequest);
-                addFavoriteResponseCall.enqueue(new Callback<AddFavoriteResponse>() {
-                    @Override
-                    public void onResponse(Call<AddFavoriteResponse> call, Response<AddFavoriteResponse> response) {
-                        if (response.isSuccessful()) {
-                            String message = response.body().getMessage();
-                            Toast.makeText(SpecifyProduct.this, message, Toast.LENGTH_SHORT).show();
-                        } else {
-                            try {
-                                JSONObject jsonObject = new JSONObject(response.errorBody().string());
-                                Toast.makeText(SpecifyProduct.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                            } catch (JSONException | IOException e) {
-                                Toast.makeText(SpecifyProduct.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<AddFavoriteResponse> call, Throwable t) {
-                    }
-                });
-            }
-        });
+        addFavoriteProduct();
 
     }
 
@@ -192,7 +158,7 @@ public class SpecifyProduct extends AppCompatActivity {
         }
     }
 
-    private void addToCartAction() {
+    private void addToCart() {
         btnAddToCart = findViewById(R.id.btnAddToCart);
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -201,7 +167,6 @@ public class SpecifyProduct extends AppCompatActivity {
                     startActivity(new Intent(SpecifyProduct.this, Login.class));
                     finish();
                 } else {
-                    btnAddToCart.setEnabled(false);
                     if (product.getQuantity() <= 0) {
                         Toast.makeText(SpecifyProduct.this, "Out of stocks!", Toast.LENGTH_SHORT).show();
                     } else {
@@ -216,7 +181,6 @@ public class SpecifyProduct extends AppCompatActivity {
                                     AddToCartResponse addToCartResponse = response.body();
                                     Toast.makeText(SpecifyProduct.this, addToCartResponse.getMessage(), Toast.LENGTH_SHORT).show();
                                     // more action here if needed
-
                                 } else {
                                     try {
                                         JSONObject jsonObject = new JSONObject(response.errorBody().string());
@@ -224,13 +188,11 @@ public class SpecifyProduct extends AppCompatActivity {
                                     } catch (JSONException | IOException e) {
                                         Toast.makeText(SpecifyProduct.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                                     }
-                                    btnAddToCart.setEnabled(true);
                                 }
                             }
 
                             @Override
                             public void onFailure(Call<AddToCartResponse> call, Throwable t) {
-                                btnAddToCart.setEnabled(true);
                             }
                         });
                     }
@@ -263,6 +225,48 @@ public class SpecifyProduct extends AppCompatActivity {
                     numberProduct--;
                     numberSelectedProduct.setText(StringHelpers.numberLessThanTenFormat(numberProduct));
                 }
+            }
+        });
+    }
+
+    private void addFavoriteProduct() {
+        imageViewFavorite = findViewById(R.id.imageViewFavoriteIconProduct);
+        imageViewFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AddFavoriteRequest addFavoriteRequest = new AddFavoriteRequest();
+                addFavoriteRequest.setProductId(productId);
+                Call<AddFavoriteResponse> addFavoriteResponseCall = ApiClient.getProductService().addFavoriteProduct("Bearer " + token, addFavoriteRequest);
+                addFavoriteResponseCall.enqueue(new Callback<AddFavoriteResponse>() {
+                    @Override
+                    public void onResponse(Call<AddFavoriteResponse> call, Response<AddFavoriteResponse> response) {
+                        if (response.isSuccessful()) {
+                            String message = response.body().getMessage();
+                            Toast.makeText(SpecifyProduct.this, message, Toast.LENGTH_SHORT).show();
+                        } else {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                                Toast.makeText(SpecifyProduct.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                            } catch (JSONException | IOException e) {
+                                Toast.makeText(SpecifyProduct.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<AddFavoriteResponse> call, Throwable t) {
+                    }
+                });
+            }
+        });
+    }
+
+    private void backAction() {
+        imageViewBack = findViewById(R.id.imageViewBackProduct);
+        imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

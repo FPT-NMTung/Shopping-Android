@@ -37,6 +37,12 @@ public class NewArrivalProduct extends AppCompatActivity {
         loadingConstraintLayout = findViewById(R.id.loadingConstraintLayoutNewArrival);
         loadingConstraintLayout.setVisibility(View.VISIBLE);
 
+        loadListNewArrivalProduct();
+
+        backAction();
+    }
+
+    private void loadListNewArrivalProduct() {
         Call<ProductListResponse> productResponseCall = ApiClient.getProductService().getNewArrivalsProduct();
         productResponseCall.enqueue(new Callback<ProductListResponse>() {
             @Override
@@ -54,7 +60,9 @@ public class NewArrivalProduct extends AppCompatActivity {
             public void onFailure(Call<ProductListResponse> call, Throwable t) {
             }
         });
+    }
 
+    private void backAction() {
         imageViewBack = findViewById(R.id.imageViewBackNewArrivalProduct);
         imageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override

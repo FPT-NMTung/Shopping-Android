@@ -37,6 +37,12 @@ public class TopDiscountProduct extends AppCompatActivity {
         loadingConstraintLayout = findViewById(R.id.loadingConstraintLayoutTopDiscount);
         loadingConstraintLayout.setVisibility(View.VISIBLE);
 
+        loadListTopDiscountProduct();
+
+        backAction();
+    }
+
+    private void loadListTopDiscountProduct() {
         Call<ProductListResponse> productResponseCall = ApiClient.getProductService().getTopDiscountProduct();
         productResponseCall.enqueue(new Callback<ProductListResponse>() {
             @Override
@@ -54,7 +60,9 @@ public class TopDiscountProduct extends AppCompatActivity {
             public void onFailure(Call<ProductListResponse> call, Throwable t) {
             }
         });
+    }
 
+    private void backAction() {
         imageViewBack = findViewById(R.id.imageViewBackDiscountProduct);
         imageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -12,14 +12,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 import fu.prm391.sampl.project.R;
-import fu.prm391.sampl.project.adapter.product.ProductListVerticalAdapter;
+import fu.prm391.sampl.project.adapter.product.ProductLinearVerticalItemAdapter;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.model.product.Product;
 import fu.prm391.sampl.project.model.product.favorite_product.delete_favorite.DeleteFavoriteRequest;
@@ -37,7 +33,7 @@ public class MyFavoriteProduct extends AppCompatActivity {
     private ConstraintLayout loadingLayout;
     private String token;
     private ArrayList<Product> products;
-    private ProductListVerticalAdapter productsAdapter;
+    private ProductLinearVerticalItemAdapter productsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +61,7 @@ public class MyFavoriteProduct extends AppCompatActivity {
             public void onResponse(Call<ProductListResponse> call, Response<ProductListResponse> response) {
                 if (response.isSuccessful()) {
                     products = (ArrayList<Product>) response.body().getData();
-                    productsAdapter = new ProductListVerticalAdapter(MyFavoriteProduct.this, products);
+                    productsAdapter = new ProductLinearVerticalItemAdapter(MyFavoriteProduct.this, products);
                     recyclerViewMyFavorites.setAdapter(productsAdapter);
                     LinearLayoutManager layoutManager = new LinearLayoutManager(MyFavoriteProduct.this, LinearLayoutManager.VERTICAL, false);
                     recyclerViewMyFavorites.setLayoutManager(layoutManager);
@@ -84,7 +80,7 @@ public class MyFavoriteProduct extends AppCompatActivity {
     }
 
     private void clearListInsideRecycleView() {
-        recyclerViewMyFavorites.setAdapter(new ProductListVerticalAdapter(MyFavoriteProduct.this, new ArrayList<>()));
+        recyclerViewMyFavorites.setAdapter(new ProductLinearVerticalItemAdapter(MyFavoriteProduct.this, new ArrayList<>()));
     }
 
     ItemTouchHelper.SimpleCallback favoriteProductItemTouchHelper = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {

@@ -37,6 +37,12 @@ public class TrendingProduct extends AppCompatActivity {
         loadingConstraintLayout = findViewById(R.id.loadingConstraintLayoutTopTrending);
         loadingConstraintLayout.setVisibility(View.VISIBLE);
 
+        getListTrendingProduct();
+
+        backAction();
+    }
+
+    private void getListTrendingProduct() {
         Call<ProductListResponse> productResponseCall = ApiClient.getProductService().getTopTrendingProduct();
         productResponseCall.enqueue(new Callback<ProductListResponse>() {
             @Override
@@ -54,7 +60,9 @@ public class TrendingProduct extends AppCompatActivity {
             public void onFailure(Call<ProductListResponse> call, Throwable t) {
             }
         });
+    }
 
+    private void backAction() {
         imageViewBack = findViewById(R.id.imageViewBackTrendingProduct);
         imageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override

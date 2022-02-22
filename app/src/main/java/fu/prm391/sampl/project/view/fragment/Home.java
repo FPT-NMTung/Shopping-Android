@@ -24,7 +24,7 @@ import fu.prm391.sampl.project.adapter.category.CategoryTop4Adapter;
 import fu.prm391.sampl.project.model.category.CategoryResponse;
 import fu.prm391.sampl.project.model.product.Product;
 import fu.prm391.sampl.project.model.product.get_list_product.ProductListResponse;
-import fu.prm391.sampl.project.adapter.product.ProductListVerticalAdapter;
+import fu.prm391.sampl.project.adapter.product.ProductLinearVerticalItemAdapter;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.category.AllCategory;
 import fu.prm391.sampl.project.view.product.NewArrivalProduct;
@@ -137,7 +137,7 @@ public class Home extends Fragment {
             public void onResponse(Call<ProductListResponse> call, Response<ProductListResponse> response) {
                 if (response.isSuccessful()) {
                     ArrayList<Product> products = (ArrayList<Product>) response.body().getData();
-                    recyclerViewTopTrendingProduct.setAdapter(new ProductListVerticalAdapter(getContext(), products));
+                    recyclerViewTopTrendingProduct.setAdapter(new ProductLinearVerticalItemAdapter(getContext(), products));
                     LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false) {
                         @Override
                         public boolean canScrollVertically() {
