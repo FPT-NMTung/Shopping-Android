@@ -360,8 +360,9 @@
         android:layout_height="55dp"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="5dp"
+        app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

@@ -3,6 +3,7 @@ package fu.prm391.sampl.project.view.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,6 +53,8 @@ public class Home extends Fragment {
     private RecyclerView recyclerViewTop4Category, recyclerViewTopTrendingProduct;
     private TextView txtViewAllCategory, txtViewAllTrendingProduct;
     private ImageView imageCart, imageTopDiscount, imageNewArrival;
+    private ConstraintLayout loadingLayout;
+
     public Home() {
         // Required empty public constructor
     }
@@ -90,6 +93,9 @@ public class Home extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        loadingLayout = view.findViewById(R.id.loadingConstraintLayoutHome);
+        loadingLayout.setVisibility(View.VISIBLE);
+
         getTop4Category(view);
         getTrendingProducts(view);
         moveToOtherActivities(view);
@@ -113,6 +119,7 @@ public class Home extends Fragment {
                         }
                     };
                     recyclerViewTop4Category.setLayoutManager(layoutManager);
+                    loadingLayout.setVisibility(View.GONE);
                 }
             }
 
@@ -138,6 +145,7 @@ public class Home extends Fragment {
                         }
                     };
                     recyclerViewTopTrendingProduct.setLayoutManager(layoutManager);
+                    loadingLayout.setVisibility(View.GONE);
                 }
             }
 
