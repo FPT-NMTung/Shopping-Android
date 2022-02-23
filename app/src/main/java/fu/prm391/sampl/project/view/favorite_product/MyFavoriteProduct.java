@@ -30,7 +30,7 @@ public class MyFavoriteProduct extends AppCompatActivity {
 
     private ImageView imageViewBack;
     private RecyclerView recyclerViewMyFavorites;
-    private ConstraintLayout loadingLayout;
+    private ConstraintLayout loadingLayout, noFavoriteConstraintLayout;
     private String token;
     private ArrayList<Product> products;
     private ProductLinearVerticalItemAdapter productsAdapter;
@@ -44,6 +44,8 @@ public class MyFavoriteProduct extends AppCompatActivity {
 
         loadingLayout = findViewById(R.id.loadingConstraintLayoutMyFavorites);
         loadingLayout.setVisibility(View.VISIBLE);
+        noFavoriteConstraintLayout = findViewById(R.id.noFavoriteProductConstraintLayout);
+        noFavoriteConstraintLayout.setVisibility(View.GONE);
 
         recyclerViewMyFavorites = findViewById(R.id.recyclerViewMyFavorites);
 
@@ -68,6 +70,11 @@ public class MyFavoriteProduct extends AppCompatActivity {
                     itemTouchHelper.attachToRecyclerView(recyclerViewMyFavorites);
 
                     loadingLayout.setVisibility(View.GONE);
+                    if(products.size() == 0) {
+                        noFavoriteConstraintLayout.setVisibility(View.VISIBLE);
+                    } else {
+                        noFavoriteConstraintLayout.setVisibility(View.GONE);
+                    }
                 }
             }
 
@@ -100,6 +107,11 @@ public class MyFavoriteProduct extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         String message = response.body().getMessage();
                         Toast.makeText(MyFavoriteProduct.this, message, Toast.LENGTH_SHORT).show();
+                        if(products.size() == 0) {
+                            noFavoriteConstraintLayout.setVisibility(View.VISIBLE);
+                        } else {
+                            noFavoriteConstraintLayout.setVisibility(View.GONE);
+                        }
                     } else {
                         revertItem(position, product);
                         Toast.makeText(MyFavoriteProduct.this, "Delete failed", Toast.LENGTH_SHORT).show();

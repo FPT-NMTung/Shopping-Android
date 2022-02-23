@@ -58,6 +58,31 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView16" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/noFavoriteProductConstraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/mainBackGroundColor"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView16">
+
+        <TextView
+            android:id="@+id/textView33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/your_favorite_products_list_is_empty"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/loadingConstraintLayoutMyFavorites"
         android:layout_width="match_parent"
         android:layout_height="0dp"
