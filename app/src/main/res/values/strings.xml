@@ -149,4 +149,6 @@
     <string name="btnSave">Save</string>
     <string name="genderLabel">Gender</string>
     <string name="active_your_account_label">Active Your Account</string>
+    <string name="send_again_label"><u>Send again</u></string>
+    <string name="get_some_trouble_with_verify_code">Get some trouble with your verify code?</string>
 </resources>
