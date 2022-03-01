@@ -32,7 +32,7 @@
     <string name="contentDesIntroApp">BgIntroApp</string>
 
     <string name="please_enter">Please Enter digit code that you received on your Email Address.</string>
-    <string name="checkYourEmailVerifyCodeResetPassWordLabel">Check Your Email Verify Code</string>
+    <string name="checkYourEmailVerifyCodeResetPassWordLabel">Check Your Email For Verify Code</string>
     <string name="createAccountLabel">Create an Account</string>
     <string name="haveAnAccountLabel">Have an Account?</string>
     <string name="enterYourDetailsInformationLabel">Enter your Details Informations</string>
@@ -47,7 +47,7 @@
     <string name="LabelProfiles">Profiles</string>
     <string name="LabelMyOrdersHistory">My Orders History</string>
     <string name="DesImage">TODO</string>
-    <string name="LabelMyFavourites">My Favourites</string>
+    <string name="LabelMyFavorites">My Favorites</string>
     <string name="LabelShippingAddress">Shipping Address</string>
     <string name="Labelgiftcardsvouchers"><![CDATA[Gift Cards & Vouchers]]></string>
     <string name="LabelLogout">Logout</string>
@@ -118,7 +118,7 @@
     <string name="CO__addressPlaceOrder">Place Order</string>
 
     <string name="searchLabel">Search</string>
-    <string name="searchProductHintLabel">Search Products</string>
+    <string name="searchProductHintLabel"><font size="16">Search Products</font></string>
     <string name="contentDesImageButtonSearch">Search Image</string>
     <string name="percentHintLabel">10%</string>
     <string name="old_price">Old Price</string>
@@ -148,4 +148,9 @@
     <string name="phoneLabel">Phone</string>
     <string name="btnSave">Save</string>
     <string name="genderLabel">Gender</string>
+    <string name="active_your_account_label">Active Your Account</string>
+    <string name="send_again_label"><u>Send again</u></string>
+    <string name="get_some_trouble_with_verify_code">Get some trouble with your verify code?</string>
+    <string name="you_have_not_placed_any_orders_yet">You have not placed any orders yet!</string>
+    <string name="your_favorite_products_list_is_empty">Your favorite products list is empty!</string>
 </resources>

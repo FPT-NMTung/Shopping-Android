@@ -44,6 +44,7 @@ public class Search extends Fragment {
     private RecyclerView recyclerViewSearchedProduct;
     private ImageButton btnSearch;
     private EditText txtSearchQuery;
+    private final int limitSearch = 10;
 
     public Search() {
         // Required empty public constructor
@@ -91,28 +92,32 @@ public class Search extends Fragment {
                 if (TextUtils.isEmpty(txtSearchQuery.getText().toString())) {
                     Toast.makeText(getContext(), "Enter search query to search!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Call<ProductListResponse> productResponseCall = ApiClient.getProductService().searchProducts(txtSearchQuery.getText().toString(), 10);
-                    productResponseCall.enqueue(new Callback<ProductListResponse>() {
-                        @Override
-                        public void onResponse(Call<ProductListResponse> call, Response<ProductListResponse> response) {
-                            if (response.isSuccessful()) {
-                                ArrayList<Product> products = (ArrayList<Product>) response.body().getData();
-                                if (products.size() == 0) {
-                                    Toast.makeText(getContext(), "There is no products like this!", Toast.LENGTH_SHORT).show();
-                                }
-                                recyclerViewSearchedProduct.setAdapter(new ProductGridLayoutItemAdapter(getContext(), products));
-                                GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
-                                recyclerViewSearchedProduct.setLayoutManager(layoutManager);
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<ProductListResponse> call, Throwable t) {
-                        }
-                    });
+                    searchProductsAction();
                 }
             }
         });
         return view;
+    }
+
+    private void searchProductsAction() {
+        Call<ProductListResponse> productResponseCall = ApiClient.getProductService().searchProducts(txtSearchQuery.getText().toString(), limitSearch);
+        productResponseCall.enqueue(new Callback<ProductListResponse>() {
+            @Override
+            public void onResponse(Call<ProductListResponse> call, Response<ProductListResponse> response) {
+                if (response.isSuccessful()) {
+                    ArrayList<Product> products = (ArrayList<Product>) response.body().getData();
+                    if (products.size() == 0) {
+                        Toast.makeText(getContext(), "There is no products like this!", Toast.LENGTH_SHORT).show();
+                    }
+                    recyclerViewSearchedProduct.setAdapter(new ProductGridLayoutItemAdapter(getContext(), products));
+                    GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
+                    recyclerViewSearchedProduct.setLayoutManager(layoutManager);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProductListResponse> call, Throwable t) {
+            }
+        });
     }
 }

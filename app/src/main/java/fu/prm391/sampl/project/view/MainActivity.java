@@ -6,17 +6,13 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
-import fu.prm391.sampl.project.view.account.Login;
 import fu.prm391.sampl.project.view.intro.Intro1;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, Intro1.class));
         }
         PreferencesHelpers.editBooleanData(MainActivity.this, "isFirstRun", false);
-//        cách 2:
+//        way 2:
 //        Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
 //                .getBoolean("isFirstRun", true);
 //        if (isFirstRun) {

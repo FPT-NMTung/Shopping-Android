@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="fu.prm391.sampl.project">
+    package="fu.prm391.sampl.project">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -9,22 +9,31 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
         android:icon="@drawable/app_icon"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project">
         <activity
-                android:name=".view.checkout.CheckOutAddress"
-                android:exported="false" />
+            android:name=".view.profiles.ActiveAccount"
+            android:exported="false" />
         <activity
-                android:name=".view.order.MyOrderHistory"
-                android:exported="false" />
+            android:name=".view.favorite_product.MyFavoriteProduct"
+            android:exported="false" />
         <activity
-                android:name=".view.product.SpecifyProduct"
-                android:exported="false" />
+            android:name=".view.checkout.CheckOutAddress"
+            android:exported="false" />
+        <activity
+            android:name=".view.order.MyOrderHistory"
+            android:exported="false" />
+        <activity
+            android:name=".view.product.SpecifyProduct"
+            android:exported="false" />
+        <activity
+            android:name=".view.category.SpecifyCategory"
+            android:exported="false" />
         <activity
             android:name=".view.profiles.EditProfiles"
             android:exported="false" />
@@ -32,47 +41,47 @@
             android:name=".view.address.CreateNewAddress"
             android:exported="false" />
         <activity
-                android:name=".view.product.TrendingProduct"
-                android:exported="false" />
+            android:name=".view.product.TrendingProduct"
+            android:exported="false" />
         <activity
-                android:name=".view.product.NewArrivalProduct"
-                android:exported="false" />
+            android:name=".view.product.NewArrivalProduct"
+            android:exported="false" />
         <activity
-                android:name=".view.product.TopDiscountProduct"
-                android:exported="false" />
+            android:name=".view.product.TopDiscountProduct"
+            android:exported="false" />
         <activity
-                android:name=".view.category.AllCategory"
-                android:exported="false" />
+            android:name=".view.category.AllCategory"
+            android:exported="false" />
         <activity
-                android:name=".view.account.ResetPassword"
-                android:exported="false" />
+            android:name=".view.account.ResetPassword"
+            android:exported="false" />
         <activity
-                android:name=".view.address.ProfileShippingAddress"
-                android:exported="false" />
+            android:name=".view.address.ProfileShippingAddress"
+            android:exported="false" />
         <activity
-                android:name=".view.intro.Intro3"
-                android:exported="false" />
+            android:name=".view.intro.Intro3"
+            android:exported="false" />
         <activity
-                android:name=".view.intro.Intro2"
-                android:exported="false" />
+            android:name=".view.intro.Intro2"
+            android:exported="false" />
         <activity
-                android:name=".view.intro.Intro1"
-                android:exported="false" />
+            android:name=".view.intro.Intro1"
+            android:exported="false" />
         <activity
-                android:name=".view.account.ForgotPassword"
-                android:exported="false" />
+            android:name=".view.account.ForgotPassword"
+            android:exported="false" />
         <activity
-                android:name=".view.account.Register"
-                android:exported="false" />
+            android:name=".view.account.Register"
+            android:exported="false" />
         <activity
-                android:name=".view.account.Login"
-                android:exported="false" />
+            android:name=".view.account.Login"
+            android:exported="false" />
         <activity
-                android:name=".view.MainActivity"
-                android:exported="false" />
+            android:name=".view.MainActivity"
+            android:exported="false" />
         <activity
-                android:name=".view.intro.IntroApp"
-                android:exported="true">
+            android:name=".view.intro.IntroApp"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -81,8 +90,8 @@
         </activity>
 
         <meta-data
-                android:name="preloaded_fonts"
-                android:resource="@array/preloaded_fonts" />
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

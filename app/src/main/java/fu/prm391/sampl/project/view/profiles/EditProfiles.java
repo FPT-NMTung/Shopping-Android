@@ -60,7 +60,6 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profiles);
 
-        // findViewById
         cover = findViewById(R.id.coverImg);
         fab = findViewById(R.id.floatingActionButton);
         btnBack = findViewById(R.id.imageViewBackEditProfile);
@@ -70,16 +69,28 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
         phoneNumber = findViewById(R.id.textPhoneEditProfile);
         btnSave = findViewById(R.id.btnSaveEditProfiles);
 
-        // spinner for select gender
-        gender = findViewById(R.id.spinnerGender);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.Gender, R.layout.color_spinner_layout);
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
-        gender.setAdapter(adapter);
-        gender.setOnItemSelectedListener(this);
-
+        setupSpinnerGender();
         getInfoFromProfiles();
+        saveAction();
+        uploadImageFromPhone();
+        backAction();
+    }
 
-        // btnSave action
+    private void uploadImageFromPhone() {
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImagePicker.with(EditProfiles.this)
+                        .crop()                    //Crop image(Optional), Check Customization for more option
+                        .compress(1024)            //Final image size will be less than 1 MB(Optional)
+                        .maxResultSize(1080, 1080)    //Final image resolution will be less than 1080 x 1080(Optional)
+                        .start(294);
+            }
+        });
+    }
+
+
+    private void saveAction() {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,26 +110,14 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
                 }
             }
         });
+    }
 
-        // upload image from phone
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ImagePicker.with(EditProfiles.this)
-                        .crop()                    //Crop image(Optional), Check Customization for more option
-                        .compress(1024)            //Final image size will be less than 1 MB(Optional)
-                        .maxResultSize(150, 150)    //Final image resolution will be less than 1080 x 1080(Optional)
-                        .start(294);
-            }
-        });
-
-        // BtnBack action
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+    private void setupSpinnerGender() {
+        gender = findViewById(R.id.spinnerGender);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.Gender, R.layout.color_spinner_layout);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
+        gender.setAdapter(adapter);
+        gender.setOnItemSelectedListener(this);
     }
 
     // get info from profile and put
@@ -186,7 +185,6 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
     @Override
@@ -216,4 +214,12 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
         return encImage;
     }
 
+    private void backAction() {
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
 }

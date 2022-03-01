@@ -3,6 +3,7 @@ package fu.prm391.sampl.project.view.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +24,7 @@ import fu.prm391.sampl.project.adapter.category.CategoryTop4Adapter;
 import fu.prm391.sampl.project.model.category.CategoryResponse;
 import fu.prm391.sampl.project.model.product.Product;
 import fu.prm391.sampl.project.model.product.get_list_product.ProductListResponse;
-import fu.prm391.sampl.project.adapter.product.ProductTrendingHomeAdapter;
+import fu.prm391.sampl.project.adapter.product.ProductLinearVerticalItemAdapter;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.category.AllCategory;
 import fu.prm391.sampl.project.view.product.NewArrivalProduct;
@@ -52,6 +53,8 @@ public class Home extends Fragment {
     private RecyclerView recyclerViewTop4Category, recyclerViewTopTrendingProduct;
     private TextView txtViewAllCategory, txtViewAllTrendingProduct;
     private ImageView imageCart, imageTopDiscount, imageNewArrival;
+    private ConstraintLayout loadingLayout;
+
     public Home() {
         // Required empty public constructor
     }
@@ -90,6 +93,9 @@ public class Home extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        loadingLayout = view.findViewById(R.id.loadingConstraintLayoutHome);
+        loadingLayout.setVisibility(View.VISIBLE);
+
         getTop4Category(view);
         getTrendingProducts(view);
         moveToOtherActivities(view);
@@ -113,6 +119,7 @@ public class Home extends Fragment {
                         }
                     };
                     recyclerViewTop4Category.setLayoutManager(layoutManager);
+                    loadingLayout.setVisibility(View.GONE);
                 }
             }
 
@@ -130,7 +137,7 @@ public class Home extends Fragment {
             public void onResponse(Call<ProductListResponse> call, Response<ProductListResponse> response) {
                 if (response.isSuccessful()) {
                     ArrayList<Product> products = (ArrayList<Product>) response.body().getData();
-                    recyclerViewTopTrendingProduct.setAdapter(new ProductTrendingHomeAdapter(getContext(), products));
+                    recyclerViewTopTrendingProduct.setAdapter(new ProductLinearVerticalItemAdapter(getContext(), products));
                     LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false) {
                         @Override
                         public boolean canScrollVertically() {

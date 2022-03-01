@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
@@ -26,7 +25,8 @@ public class MyOrderHistory extends AppCompatActivity {
 
     private ImageView imageViewBack;
     private RecyclerView recyclerView;
-    private ConstraintLayout loadingConstraintLayout;
+    private ConstraintLayout loadingConstraintLayout, noOrderConstraintLayout;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +35,31 @@ public class MyOrderHistory extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewMyOrdersHistory);
         loadingConstraintLayout = findViewById(R.id.loadingConstraintLayoutMyOrderHistory);
         loadingConstraintLayout.setVisibility(View.VISIBLE);
+        noOrderConstraintLayout = findViewById(R.id.noOrderHistoryConstraintLayout);
+        noOrderConstraintLayout.setVisibility(View.GONE);
 
-        String token = PreferencesHelpers.loadStringData(MyOrderHistory.this, "token");
+        token = PreferencesHelpers.loadStringData(MyOrderHistory.this, "token");
+
+        loadListOrderHistories();
+        backAction();
+    }
+
+    private void loadListOrderHistories() {
         Call<OrderResponse> orderResponseCall = ApiClient.getOrderService().getOrdersHistory("bearer " + token);
         orderResponseCall.enqueue(new Callback<OrderResponse>() {
             @Override
             public void onResponse(Call<OrderResponse> call, Response<OrderResponse> response) {
-
                 if (response.isSuccessful()) {
                     ArrayList<Order> orders = (ArrayList<Order>) response.body().getData();
-                    System.out.println(response.body().getData());
                     recyclerView.setAdapter(new MyOrdersHistoryAdapter(MyOrderHistory.this, orders));
                     LinearLayoutManager layoutManager = new LinearLayoutManager(MyOrderHistory.this, LinearLayoutManager.VERTICAL, false);
                     recyclerView.setLayoutManager(layoutManager);
                     loadingConstraintLayout.setVisibility(View.GONE);
+                    if (orders.size() == 0) {
+                        noOrderConstraintLayout.setVisibility(View.VISIBLE);
+                    } else {
+                        noOrderConstraintLayout.setVisibility(View.GONE);
+                    }
                 }
             }
 
@@ -56,7 +67,9 @@ public class MyOrderHistory extends AppCompatActivity {
             public void onFailure(Call<OrderResponse> call, Throwable t) {
             }
         });
-        //back
+    }
+
+    private void backAction() {
         imageViewBack = findViewById(R.id.imageViewBackMyOrderHistory);
         imageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
