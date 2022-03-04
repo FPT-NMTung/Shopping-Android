@@ -19,12 +19,15 @@ import com.shuhart.stepview.StepView;
 import java.util.ArrayList;
 import java.util.List;
 
+import fu.prm391.sampl.project.CheckOutSuccessActivity;
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.adapter.checkout.CheckoutAddressAdapter;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.helper.StringHelpers;
 import fu.prm391.sampl.project.model.address.Address;
 import fu.prm391.sampl.project.model.address.get_all_address.GetAllAddressResponse;
+import fu.prm391.sampl.project.model.order.check_out.CheckOutOrderRequest;
+import fu.prm391.sampl.project.model.order.check_out.CheckOutOrderResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.address.ProfileShippingAddress;
 import retrofit2.Call;
@@ -116,7 +119,24 @@ public class CheckOutAddress extends AppCompatActivity {
         this.btnPlaceOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnPlaceOrder.setEnabled(false);
+                Call<CheckOutOrderResponse> call = ApiClient.getOrderService().checkout("Bearer " + token, new CheckOutOrderRequest(selectAddress.getId()));
+                call.enqueue(new Callback<CheckOutOrderResponse>() {
+                    @Override
+                    public void onResponse(Call<CheckOutOrderResponse> call, Response<CheckOutOrderResponse> response) {
+                        if (response.isSuccessful()) {
+                            btnPlaceOrder.setEnabled(true);
+                            Intent intent = new Intent(CheckOutAddress.this, CheckOutSuccessActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                        }
+                    }
 
+                    @Override
+                    public void onFailure(Call<CheckOutOrderResponse> call, Throwable t) {
+
+                    }
+                });
             }
         });
     }

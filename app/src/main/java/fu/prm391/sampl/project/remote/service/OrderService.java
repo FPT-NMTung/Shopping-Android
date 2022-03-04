@@ -3,6 +3,8 @@ package fu.prm391.sampl.project.remote.service;
 import fu.prm391.sampl.project.model.order.OrderResponse;
 import fu.prm391.sampl.project.model.order.add_to_cart.AddToCartRequest;
 import fu.prm391.sampl.project.model.order.add_to_cart.AddToCartResponse;
+import fu.prm391.sampl.project.model.order.check_out.CheckOutOrderRequest;
+import fu.prm391.sampl.project.model.order.check_out.CheckOutOrderResponse;
 import fu.prm391.sampl.project.model.order.decrease_quantity.DecreaseQuantityRequest;
 import fu.prm391.sampl.project.model.order.decrease_quantity.DecreaseQuantityResponse;
 import fu.prm391.sampl.project.model.order.delete_order.DeleteOrderRequest;
@@ -37,4 +39,7 @@ public interface OrderService {
 
     @HTTP(method = "DELETE", path = "order/delete", hasBody = true)
     Call<DeleteOrderResponse> deleteOrder(@Header("Authorization") String token, @Body DeleteOrderRequest request);
+
+    @POST("order/check-out")
+    Call<CheckOutOrderResponse> checkout(@Header("Authorization") String token, @Body CheckOutOrderRequest request);
 }

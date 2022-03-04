@@ -117,6 +117,11 @@
     <string name="CO__addressContinue">Continue</string>
     <string name="CO__addressPlaceOrder">Place Order</string>
 
+    <!--  Success Check Out  -->
+    <string name="SCO__thanks">Thank you!</string>
+    <string name="SCO__detail">Your Order is Completed. Please Check the Delivery Status at History Order Pages.</string>
+    <string name="SCO__btnExit">Continue Shopping</string>
+
     <string name="searchLabel">Search</string>
     <string name="searchProductHintLabel"><font size="16">Search Products</font></string>
     <string name="contentDesImageButtonSearch">Search Image</string>
