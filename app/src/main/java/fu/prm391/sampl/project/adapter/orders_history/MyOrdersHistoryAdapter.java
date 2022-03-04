@@ -46,7 +46,7 @@ public class MyOrdersHistoryAdapter extends RecyclerView.Adapter<MyOrdersHistory
         Order order = orders.get(position);
         holder.productName.setText(order.getProduct().getName());
         holder.productPrice.setText(StringHelpers.currencyFormatter(order.getProduct().getPrice()));
-        holder.quantity.setText(order.getQuantity());
+        holder.quantity.setText(String.valueOf(order.getQuantity()));
         Picasso.get().load(order.getProduct().getImage()).fit().into(holder.productImage);
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
