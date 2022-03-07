@@ -20,9 +20,8 @@ import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.helper.StringHelpers;
 import fu.prm391.sampl.project.model.order.Order;
 import fu.prm391.sampl.project.view.product.SpecifyProduct;
-import retrofit2.Call;
 
-public class MyOrdersHistoryAdapter extends RecyclerView.Adapter<MyOrdersHistoryAdapter.ViewHolder>{
+public class MyOrdersHistoryAdapter extends RecyclerView.Adapter<MyOrdersHistoryAdapter.ViewHolder> {
 
     private Context context;
     private ArrayList<Order> orders;

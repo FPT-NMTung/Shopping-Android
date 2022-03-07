@@ -46,6 +46,77 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+    <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
+        android:id="@+id/segmentedButtonGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="15dp"
+        android:background="@color/mainBackGroundColor"
+        android:elevation="2dp"
+        app:borderColor="@color/material_dynamic_neutral_variant70"
+        app:borderWidth="1dp"
+        app:divider="@color/material_dynamic_neutral_variant70"
+        app:dividerPadding="10dp"
+        app:dividerWidth="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView8"
+        app:radius="30dp"
+        app:ripple="true"
+        app:rippleColor="@color/material_dynamic_neutral20"
+        app:selectedBackground="@color/material_dynamic_neutral20"
+        tools:ignore="TouchTargetSizeCheck">
+
+        <com.addisonelliott.segmentedbutton.SegmentedButton
+            android:id="@+id/segmentButton1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|center_horizontal|center_vertical"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_medium"
+            android:foregroundGravity="center"
+            android:padding="10dp"
+            app:drawableGravity="top"
+            app:selectedTextColor="@color/white"
+            app:text="Confirmed"
+            app:textColor="@color/black"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <com.addisonelliott.segmentedbutton.SegmentedButton
+            android:id="@+id/segmentButton2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_medium"
+            android:foregroundGravity="center"
+            android:padding="10dp"
+            app:drawableGravity="top"
+            app:selectedTextColor="@color/white"
+            app:text="Delivering"
+            app:textColor="@color/black"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+            tools:layout_editor_absoluteX="134dp" />
+
+        <com.addisonelliott.segmentedbutton.SegmentedButton
+            android:id="@+id/segmentButton3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_medium"
+            android:foregroundGravity="center"
+            app:drawableGravity="top"
+            app:selectedTextColor="@color/white"
+            app:text="Delivered"
+            app:textColor="@color/black"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+            tools:layout_editor_absoluteX="268dp" />
+    </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMyOrdersHistory"
         android:layout_width="0dp"
@@ -53,7 +124,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView8" />
+        app:layout_constraintTop_toBottomOf="@+id/segmentedButtonGroup" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/noOrderHistoryConstraintLayout"
@@ -71,7 +142,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
-            android:text="@string/you_have_not_placed_any_orders_yet"
+            android:text="@string/no_order_message"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -89,7 +160,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView8">
+        app:layout_constraintTop_toBottomOf="@+id/segmentedButtonGroup">
 
         <ProgressBar
             android:id="@+id/progressBarMyOrderHistory"

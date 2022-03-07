@@ -158,4 +158,11 @@
     <string name="get_some_trouble_with_verify_code">Get some trouble with your verify code?</string>
     <string name="you_have_not_placed_any_orders_yet">You have not placed any orders yet!</string>
     <string name="your_favorite_products_list_is_empty">Your favorite products list is empty!</string>
+    <string name="status_label">Status</string>
+    <string name="order_confirmed">Order confirmed</string>
+    <string name="delivery_is_in_progress">Delivery is in progress</string>
+    <string name="successfully_delivered">Successfully delivered</string>
+    <string name="quantity_order_history">Quantity:</string>
+    <string name="no_order_message">There are no orders here!</string>
+
 </resources>
