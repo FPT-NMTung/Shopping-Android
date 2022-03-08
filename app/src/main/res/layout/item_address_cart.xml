@@ -7,48 +7,49 @@
         android:background="@color/mainBackGroundColor">
 
     <TextView
-            android:text="TextView"
-            android:layout_width="229dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtItemCheckoutAddressName"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="24dp"
-            android:fontFamily="@font/poppins_medium"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
+        android:id="@+id/txtItemCheckoutAddressName"
+        android:layout_width="229dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/textview"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-            android:text="TextView"
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtItemCheckoutAddressDetail"
-            app:layout_constraintTop_toBottomOf="@+id/txtItemCheckoutAddressName"
-            android:layout_marginTop="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="24dp"
-            android:fontFamily="@font/poppins_medium" />
+        android:id="@+id/txtItemCheckoutAddressDetail"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/textview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtItemCheckoutAddressName" />
 
     <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtItemCheckoutAddressPhone"
-            app:layout_constraintTop_toBottomOf="@+id/txtItemCheckoutAddressDetail"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="24dp"
-            android:fontFamily="@font/poppins_medium"
-            android:layout_marginTop="8dp" />
+        android:id="@+id/txtItemCheckoutAddressPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/textview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtItemCheckoutAddressDetail" />
 
     <RadioButton
-            android:layout_width="29dp"
-            android:layout_height="35dp"
-            android:id="@+id/radioButtonCheckoutSelect"
-            android:layout_marginEnd="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="28dp" />
+        android:id="@+id/radioButtonCheckoutSelect"
+        android:layout_width="29dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <View
             android:layout_width="0dp"

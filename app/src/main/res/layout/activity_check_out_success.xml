@@ -19,14 +19,15 @@
             android:layout_marginTop="28dp" />
 
     <ImageView
-            android:layout_width="167dp"
-            android:layout_height="154dp"
-            app:srcCompat="@drawable/ic_twotone_check_circle_24"
-            android:id="@+id/imageView6"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="240dp" />
+        android:id="@+id/imageView6"
+        android:layout_width="167dp"
+        android:layout_height="154dp"
+        android:layout_marginTop="240dp"
+        android:contentDescription="@string/contentDesImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_twotone_check_circle_24" />
 
     <TextView
             android:text="@string/SCO__detail"

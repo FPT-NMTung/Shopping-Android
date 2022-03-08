@@ -176,5 +176,7 @@
     <string name="duong_email">DuongNTHE140073@fpt.edu.vn</string>
     <string name="facebook_label">- Facebook:</string>
     <string name="bac_facebook"><u>https://www.facebook.com/ABboyPD</u></string>
+    <string name="textview">TextView</string>
+    <string name="number_0">0</string>
 
 </resources>
