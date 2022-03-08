@@ -1,4 +1,4 @@
-package fu.prm391.sampl.project;
+package fu.prm391.sampl.project.view.checkout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.view.MainActivity;
 
 public class CheckOutSuccessActivity extends AppCompatActivity {

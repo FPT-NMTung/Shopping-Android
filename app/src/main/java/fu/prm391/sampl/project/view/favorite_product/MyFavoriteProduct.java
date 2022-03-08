@@ -70,7 +70,7 @@ public class MyFavoriteProduct extends AppCompatActivity {
                     itemTouchHelper.attachToRecyclerView(recyclerViewMyFavorites);
 
                     loadingLayout.setVisibility(View.GONE);
-                    if(products.size() == 0) {
+                    if (products.size() == 0) {
                         noFavoriteConstraintLayout.setVisibility(View.VISIBLE);
                     } else {
                         noFavoriteConstraintLayout.setVisibility(View.GONE);
@@ -107,7 +107,7 @@ public class MyFavoriteProduct extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         String message = response.body().getMessage();
                         Toast.makeText(MyFavoriteProduct.this, message, Toast.LENGTH_SHORT).show();
-                        if(products.size() == 0) {
+                        if (products.size() == 0) {
                             noFavoriteConstraintLayout.setVisibility(View.VISIBLE);
                         } else {
                             noFavoriteConstraintLayout.setVisibility(View.GONE);

@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -59,6 +60,7 @@ public class Profiles extends Fragment {
     private String token = "";
     private User user;
     private View viewContactUs;
+    private CardView loadingCard;
 
     public Profiles() {
         // Required empty public constructor
@@ -121,13 +123,8 @@ public class Profiles extends Fragment {
         viewShippingAddress = view.findViewById(R.id.viewShippingAddressProfiles);
         viewLogOut = view.findViewById(R.id.viewLogoutProfile);
 
-        // set invisible when api have not called
-        profilesName.setVisibility(View.INVISIBLE);
-        emailProfiles.setVisibility(View.INVISIBLE);
-        labelVerified.setVisibility(View.INVISIBLE);
-        verifyImage.setVisibility(View.INVISIBLE);
-        btnVerifyProfiles.setVisibility(View.INVISIBLE);
-        btnEditProfiles.setVisibility(View.INVISIBLE);
+        loadingCard = view.findViewById(R.id.loadingCardProfile);
+        loadingCard.setVisibility(View.VISIBLE);
 
 //        callAPIProfiles();
         editProfileAction();
@@ -173,19 +170,14 @@ public class Profiles extends Fragment {
     }
 
     private void callAPIProfiles() {
+        loadingCard.setVisibility(View.VISIBLE);
         Call<UserResponse> userResponseCall = ApiClient.getUserService().getUserInformation("Bearer " + token);
         userResponseCall.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 if (response.isSuccessful()) {
                     // set visible when api call successful
-                    profilesName.setVisibility(View.VISIBLE);
-                    emailProfiles.setVisibility(View.VISIBLE);
-                    labelVerified.setVisibility(View.VISIBLE);
-                    verifyImage.setVisibility(View.VISIBLE);
-                    btnVerifyProfiles.setVisibility(View.VISIBLE);
-                    btnEditProfiles.setVisibility(View.VISIBLE);
-
+                    loadingCard.setVisibility(View.GONE);
                     user = response.body().getData();
                     loadUserInfoToScreen();
                 }

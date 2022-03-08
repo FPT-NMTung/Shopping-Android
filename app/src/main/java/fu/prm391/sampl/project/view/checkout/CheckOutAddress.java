@@ -12,14 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.shuhart.stepview.StepView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import fu.prm391.sampl.project.CheckOutSuccessActivity;
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.adapter.checkout.CheckoutAddressAdapter;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
@@ -29,7 +27,6 @@ import fu.prm391.sampl.project.model.address.get_all_address.GetAllAddressRespon
 import fu.prm391.sampl.project.model.order.check_out.CheckOutOrderRequest;
 import fu.prm391.sampl.project.model.order.check_out.CheckOutOrderResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
-import fu.prm391.sampl.project.view.address.ProfileShippingAddress;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

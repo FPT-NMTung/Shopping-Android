@@ -20,7 +20,7 @@
             android:name=".view.contact_us.ContactUs"
             android:exported="false" />
         <activity
-            android:name=".CheckOutSuccessActivity"
+            android:name=".view.checkout.CheckOutSuccessActivity"
             android:exported="false" />
         <activity
             android:name=".view.profiles.ActiveAccount"
