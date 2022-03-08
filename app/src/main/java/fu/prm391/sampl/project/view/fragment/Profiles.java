@@ -4,6 +4,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -98,7 +100,13 @@ public class Profiles extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profiles, container, false);
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_profiles, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         token = PreferencesHelpers.loadStringData(getContext(), "token");
 
         checkLoginUser();
@@ -125,8 +133,6 @@ public class Profiles extends Fragment {
         editProfileAction();
         moveToOtherActivities(view);
         logoutAction(view);
-
-        return view;
     }
 
     private void checkLoginUser() {
