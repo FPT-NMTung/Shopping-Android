@@ -365,10 +365,10 @@
         android:contentDescription="@string/DesImage"
         android:src="@drawable/arrowright"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/viewVoucherProfiles" />
+        app:layout_constraintTop_toTopOf="@+id/viewContactUsProfiles" />
 
     <View
-        android:id="@+id/viewVoucherProfiles"
+        android:id="@+id/viewContactUsProfiles"
         android:layout_width="0dp"
         android:layout_height="41dp"
         android:layout_alignParentStart="true"
@@ -376,7 +376,6 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="30dp"
-        android:background="#00000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -396,24 +395,24 @@
         android:layout_marginEnd="30dp"
         android:background="#C6C5C5"
         android:backgroundTint="#C6C5C5"
-        app:layout_constraintBottom_toBottomOf="@+id/viewVoucherProfiles"
+        app:layout_constraintBottom_toBottomOf="@+id/viewContactUsProfiles"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/shippingAddress"
+        android:id="@+id/contactUs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="top"
         android:lineSpacingExtra="0sp"
-        android:text="@string/Labelgiftcardsvouchers"
+        android:text="@string/contact_us"
         android:textAppearance="@style/my_orders"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/viewVoucherProfiles" />
+        app:layout_constraintTop_toTopOf="@+id/viewContactUsProfiles" />
 
     <TextView
         android:id="@+id/Logout"
@@ -441,7 +440,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewVoucherProfiles"
+        app:layout_constraintTop_toBottomOf="@+id/viewContactUsProfiles"
         tools:ignore="MissingConstraints" />
 
     <ImageView

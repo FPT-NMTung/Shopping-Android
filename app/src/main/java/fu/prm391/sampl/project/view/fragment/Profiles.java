@@ -24,6 +24,7 @@ import fu.prm391.sampl.project.model.user.UserResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.account.Login;
 import fu.prm391.sampl.project.view.address.ProfileShippingAddress;
+import fu.prm391.sampl.project.view.contact_us.ContactUs;
 import fu.prm391.sampl.project.view.favorite_product.MyFavoriteProduct;
 import fu.prm391.sampl.project.view.order.MyOrderHistory;
 import fu.prm391.sampl.project.view.profiles.ActiveAccount;
@@ -55,6 +56,7 @@ public class Profiles extends Fragment {
     private ImageView verifyImage, imageProfiles;
     private String token = "";
     private User user;
+    private View viewContactUs;
 
     public Profiles() {
         // Required empty public constructor
@@ -245,6 +247,14 @@ public class Profiles extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getContext(), MyFavoriteProduct.class));
+            }
+        });
+
+        viewContactUs = view.findViewById(R.id.viewContactUsProfiles);
+        viewContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), ContactUs.class));
             }
         });
 

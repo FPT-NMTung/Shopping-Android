@@ -22,7 +22,7 @@
     <string name="intro2ScreenText">The Real Value </string>
     <string name="intro3ScreenText">Unique Design</string>
 
-    <string name="intro1Content">Coming to Jumbo Brand you can find the products here are quite diverse from: Tee, Bottom, Demin Jacket, Hoodie, accessories</string>
+    <string name="intro1Content">Coming to Jumbo Brand you can find the products here are quite diverse from: Tee, Bottom, Denim Jacket, Hoodie, accessories</string>
     <string name="intro3Content">The images are designed rebelliously, personality to help Jumbo products look cool and more play</string>
     <string name="intro2Content">Best Deal: Jumbo products provided with competitive prices and product quality are always guaranteed from material</string>
 
@@ -164,5 +164,17 @@
     <string name="successfully_delivered">Successfully delivered</string>
     <string name="quantity_order_history">Quantity:</string>
     <string name="no_order_message">There are no orders here!</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="tung_facebook"><u>https://www.facebook.com/NMTung.Socialnetwork</u></string>
+    <string name="nguyen_facebook"><u>https://www.facebook.com/mrlimfo</u></string>
+    <string name="jumbo_clothes">Jumbo Clothes</string>
+    <string name="email_contact_us">- Email:</string>
+    <string name="nguyen_email">NguyenhtHE141002@fpt.edu.vn</string>
+    <string name="tung_email">TungNMHE140062@fpt.edu.vn</string>
+    <string name="duong_Facebook"><u>https://www.facebook.com/ngthuyduong.mon2000</u></string>
+    <string name="bac_email">BacLNhe141006@fpt.edu.vn</string>
+    <string name="duong_email">DuongNTHE140073@fpt.edu.vn</string>
+    <string name="facebook_label">- Facebook:</string>
+    <string name="bac_facebook"><u>https://www.facebook.com/ABboyPD</u></string>
 
 </resources>
