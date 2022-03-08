@@ -22,7 +22,7 @@ import retrofit2.http.PATCH;
 import retrofit2.http.Query;
 
 public interface OrderService {
-    
+
     @POST("order/add")
     Call<AddToCartResponse> addProductToCart(@Header("Authorization") String token, @Body AddToCartRequest addToCartRequest);
 

@@ -165,18 +165,19 @@
     <string name="quantity_order_history">Quantity:</string>
     <string name="no_order_message">There are no orders here!</string>
     <string name="contact_us">Contact Us</string>
+    <string name="jumbo_clothes">Jumbo Clothes</string>
+    <string name="email_contact_us">Email:</string>
+    <string name="nguyen_email">NguyenHTHE141002@fpt.edu.vn</string>
+    <string name="tung_email">TungNMHE140062@fpt.edu.vn</string>
+    <string name="bac_email">BacLNHE141006@fpt.edu.vn</string>
+    <string name="duong_email">DuongNTHE140073@fpt.edu.vn</string>
+    <string name="facebook_label">Facebook:</string>
     <string name="tung_facebook"><u>https://www.facebook.com/NMTung.Socialnetwork</u></string>
     <string name="nguyen_facebook"><u>https://www.facebook.com/mrlimfo</u></string>
-    <string name="jumbo_clothes">Jumbo Clothes</string>
-    <string name="email_contact_us">- Email:</string>
-    <string name="nguyen_email">NguyenhtHE141002@fpt.edu.vn</string>
-    <string name="tung_email">TungNMHE140062@fpt.edu.vn</string>
     <string name="duong_Facebook"><u>https://www.facebook.com/ngthuyduong.mon2000</u></string>
-    <string name="bac_email">BacLNhe141006@fpt.edu.vn</string>
-    <string name="duong_email">DuongNTHE140073@fpt.edu.vn</string>
-    <string name="facebook_label">- Facebook:</string>
     <string name="bac_facebook"><u>https://www.facebook.com/ABboyPD</u></string>
     <string name="textview">TextView</string>
     <string name="number_0">0</string>
+    <string name="thanks_for_your_supports_3"><![CDATA[Thanks for your supports! <3]]></string>
 
 </resources>
