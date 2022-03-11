@@ -10,7 +10,7 @@ import android.widget.Button;
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.view.MainActivity;
 
-public class CheckOutSuccessActivity extends AppCompatActivity {
+public class CheckOutSuccess extends AppCompatActivity {
 
     private Button btnScoContinue;
 
@@ -23,7 +23,7 @@ public class CheckOutSuccessActivity extends AppCompatActivity {
         btnScoContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CheckOutSuccessActivity.this, MainActivity.class);
+                Intent intent = new Intent(CheckOutSuccess.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }

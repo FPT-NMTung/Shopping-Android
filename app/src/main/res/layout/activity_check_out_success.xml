@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mainBackGroundColor"
-    tools:context=".view.checkout.CheckOutSuccessActivity">
+    tools:context=".view.checkout.CheckOutSuccess">
 
     <TextView
         android:id="@+id/textView34"
