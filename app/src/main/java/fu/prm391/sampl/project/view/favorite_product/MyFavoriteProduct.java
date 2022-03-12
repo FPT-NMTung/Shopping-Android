@@ -86,6 +86,8 @@ public class MyFavoriteProduct extends AppCompatActivity {
 
     private void clearListInsideRecycleView() {
         recyclerViewMyFavorites.setAdapter(new ProductLinearVerticalItemAdapter(MyFavoriteProduct.this, new ArrayList<>()));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(MyFavoriteProduct.this, LinearLayoutManager.VERTICAL, false);
+        recyclerViewMyFavorites.setLayoutManager(layoutManager);
     }
 
     ItemTouchHelper.SimpleCallback favoriteProductItemTouchHelper = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
