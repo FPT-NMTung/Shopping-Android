@@ -131,7 +131,9 @@ public class SpecifyProduct extends AppCompatActivity {
 
     private void getSimilarProducts() {
         if (product.getCategories().size() != 0) {
-            Call<ProductListResponse> productListResponseCall = ApiClient.getProductService().getProductByCategoryId(product.getCategories().get(0).getId());
+            Call<ProductListResponse> productListResponseCall = ApiClient
+                    .getProductService()
+                    .getSimilarProductByCategoryId(product.getCategories().get(0).getId(), product.getId());
             productListResponseCall.enqueue(new Callback<ProductListResponse>() {
                 @Override
                 public void onResponse(Call<ProductListResponse> call, Response<ProductListResponse> response) {

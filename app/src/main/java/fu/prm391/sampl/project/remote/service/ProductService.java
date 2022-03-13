@@ -49,4 +49,8 @@ public interface ProductService {
     @HTTP(method = "DELETE", path = "favorite/delete", hasBody = true)
     Call<DeleteFavoriteResponse> deleteFavoriteProduct(@Header("Authorization") String token,
                                                        @Body DeleteFavoriteRequest deleteFavoriteRequest);
+
+    @GET("product/get-by-category-similar")
+    Call<ProductListResponse> getSimilarProductByCategoryId(@Query("categoryId") int categoryId,
+                                                            @Query("productId") int productId);
 }
