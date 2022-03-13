@@ -2,6 +2,7 @@ package fu.prm391.sampl.project.adapter.address;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import fu.prm391.sampl.project.model.address.update_default.UpdateDefaultAddress
 import fu.prm391.sampl.project.model.address.update_default.UpdateDefaultAddressResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.address.CreateNewAddress;
+import fu.prm391.sampl.project.view.address.ProfileShippingAddress;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,6 +33,7 @@ public class ShippingAddressAdapter extends RecyclerView.Adapter<ShippingAddress
     private List<Address> list;
     private LayoutInflater inflater;
     private Context context;
+    private String token;
 
     private RadioButton lastRdb;
     private int positionCheck;
@@ -41,6 +44,7 @@ public class ShippingAddressAdapter extends RecyclerView.Adapter<ShippingAddress
         this.context = context;
         this.lastRdb = null;
         this.positionCheck = 0;
+        token = PreferencesHelpers.loadStringData(context, "token");
     }
 
     @NonNull
@@ -79,16 +83,16 @@ public class ShippingAddressAdapter extends RecyclerView.Adapter<ShippingAddress
                     lastRdb.setChecked(false);
                     holder.getRdbPsaDefault().setChecked(true);
 
-                    Call<UpdateDefaultAddressResponse> call = ApiClient.getAddressService().updateDefaultAddress("Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZW1haWwiOiJubXR1bmdvZmZpY2lhbEBnbWFpbC5jb20iLCJpYXQiOjE2NDQyMzM1OTl9.X7sI6-AIyKQHNj6-vlBHuuplFmTEkLnL5zkZfn5Dnzs", new UpdateDefaultAddressRequest(address.getId()));
+                    Call<UpdateDefaultAddressResponse> call = ApiClient.getAddressService().updateDefaultAddress("Bearer " + token, new UpdateDefaultAddressRequest(address.getId()));
                     call.enqueue(new Callback<UpdateDefaultAddressResponse>() {
                         @Override
                         public void onResponse(Call<UpdateDefaultAddressResponse> call, Response<UpdateDefaultAddressResponse> response) {
-
+                            Log.i("TAG", "onResponse: UpdateDefaultAddressResponse");
                         }
 
                         @Override
                         public void onFailure(Call<UpdateDefaultAddressResponse> call, Throwable t) {
-
+                            Log.e("TAG", "onFailure: UpdateDefaultAddressResponse");
                         }
                     });
 
