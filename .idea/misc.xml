@@ -70,6 +70,8 @@
         <entry key="..\:/Fall2021/LearningClass/2.PRM392-MobileProgramming/Project/android_ui/app/src/main/res/menu/main_menu.xml" value="0.1824074074074074" />
         <entry key="..\:/android_ui/app/src/main/res/layout/activity_check_out_address.xml" value="0.30641025641025643" />
         <entry key="..\:/android_ui/app/src/main/res/layout/activity_check_out_success.xml" value="0.2936708860759494" />
+        <entry key="..\:/android_ui/app/src/main/res/layout/activity_profile_shipping_address.xml" value="0.25" />
+        <entry key="..\:/android_ui/app/src/main/res/layout/fragment_search.xml" value="0.30641025641025643" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23205128205128206" />
         <entry key="app/src/main/res/drawable/bg.xml" value="0.2311965811965812" />
         <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.18076923076923077" />
@@ -89,6 +91,8 @@
         <entry key="app/src/main/res/layout/activity_active_account.xml" value="0.2425591457802396" />
         <entry key="app/src/main/res/layout/activity_category.xml" value="0.20726495726495728" />
         <entry key="app/src/main/res/layout/activity_check_out_address.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_check_out_success.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/activity_contact_us.xml" value="0.26036767849508335" />
         <entry key="app/src/main/res/layout/activity_create_new_address.xml" value="0.20726495726495728" />
         <entry key="app/src/main/res/layout/activity_edit_profiles.xml" value="0.2970016479492188" />
         <entry key="app/src/main/res/layout/activity_favorite_product.xml" value="0.25" />
@@ -98,7 +102,7 @@
         <entry key="app/src/main/res/layout/activity_intro3.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_intro_app.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2526041666666667" />
-        <entry key="app/src/main/res/layout/activity_my_order_history.xml" value="0.2099187687045746" />
+        <entry key="app/src/main/res/layout/activity_my_order_history.xml" value="0.2682445759368836" />
         <entry key="app/src/main/res/layout/activity_new_arrival_product.xml" value="0.16452991452991453" />
         <entry key="app/src/main/res/layout/activity_profile_shipping_address.xml" value="0.2099187687045746" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.303125" />

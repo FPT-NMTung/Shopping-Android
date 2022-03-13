@@ -51,35 +51,35 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView11" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView12"
-        android:layout_width="0dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="20dp"
-        app:cardCornerRadius="6dp"
-        app:cardElevation="3dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageButtonSearchProduct"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView11">
+            android:id="@+id/cardView12"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="1dp"
+            app:layout_constraintEnd_toStartOf="@+id/imageButtonSearchProduct"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView11">
 
         <EditText
-            android:id="@+id/txtProductSearchQuery"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:autofillHints=""
-            android:background="@android:color/transparent"
-            android:ems="10"
-            android:fontFamily="@font/poppins_medium"
-            android:hint="@string/searchProductHintLabel"
-            android:inputType="textPersonName"
-            android:paddingStart="15dp"
-            android:paddingEnd="0dp"
-            android:textColor="@color/black"
-            android:textColorHint="@android:color/darker_gray"
-            tools:ignore="TextContrastCheck" />
+                android:id="@+id/txtProductSearchQuery"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:autofillHints=""
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="@string/searchProductHintLabel"
+                android:inputType="textPersonName"
+                android:paddingStart="15dp"
+                android:paddingEnd="0dp"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                tools:ignore="TextContrastCheck" />
 
     </androidx.cardview.widget.CardView>
 
