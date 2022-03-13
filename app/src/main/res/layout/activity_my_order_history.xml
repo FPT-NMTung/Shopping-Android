@@ -56,9 +56,9 @@
         android:layout_marginEnd="15dp"
         android:background="@color/mainBackGroundColor"
         android:elevation="2dp"
-        app:borderColor="@color/material_dynamic_neutral_variant70"
+        app:borderColor="#A5ABB1"
         app:borderWidth="1dp"
-        app:divider="@color/material_dynamic_neutral_variant70"
+        app:divider="#A5ABB1"
         app:dividerPadding="10dp"
         app:dividerWidth="1dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,8 +66,8 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView8"
         app:radius="30dp"
         app:ripple="true"
-        app:rippleColor="@color/material_dynamic_neutral20"
-        app:selectedBackground="@color/material_dynamic_neutral20"
+        app:rippleColor="#303335"
+        app:selectedBackground="#303335"
         tools:ignore="TouchTargetSizeCheck">
 
         <com.addisonelliott.segmentedbutton.SegmentedButton
