@@ -42,7 +42,7 @@
                     app:srcCompat="@drawable/icon_back" />
 
                 <ImageView
-                    android:id="@+id/imageViewFavoriteIconProduct"
+                    android:id="@+id/imageViewFavorite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -53,6 +53,19 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/icon_favorite" />
+
+                <ImageView
+                    android:id="@+id/imageViewUnFavorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:contentDescription="@string/contentDesImage"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/icon_favorite_border" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -33,6 +34,8 @@ import fu.prm391.sampl.project.model.order.add_to_cart.AddToCartResponse;
 import fu.prm391.sampl.project.model.product.Product;
 import fu.prm391.sampl.project.model.product.favorite_product.add_favorite.AddFavoriteRequest;
 import fu.prm391.sampl.project.model.product.favorite_product.add_favorite.AddFavoriteResponse;
+import fu.prm391.sampl.project.model.product.favorite_product.delete_favorite.DeleteFavoriteRequest;
+import fu.prm391.sampl.project.model.product.favorite_product.delete_favorite.DeleteFavoriteResponse;
 import fu.prm391.sampl.project.model.product.get_list_product.ProductListResponse;
 import fu.prm391.sampl.project.model.product.get_product_by_id.ProductResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
@@ -57,6 +60,7 @@ public class SpecifyProduct extends AppCompatActivity {
     private final int upperLimitNumberProduct = 10;
     private final int lowerLimitNumberProduct = 1;
     private String token;
+    private ImageView imageViewUnFavorite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,19 +80,28 @@ public class SpecifyProduct extends AppCompatActivity {
         loadingConstraintLayout.setVisibility(View.VISIBLE);
         cardNumberSelectedProduct.setVisibility(View.INVISIBLE);
 
+        imageViewFavorite = findViewById(R.id.imageViewFavorite);
+        imageViewUnFavorite = findViewById(R.id.imageViewUnFavorite);
+        imageViewFavorite.setVisibility(View.GONE);
+        imageViewUnFavorite.setVisibility(View.GONE);
+
         token = PreferencesHelpers.loadStringData(SpecifyProduct.this, "token");
 
         loadProductFromApi();
         adjustNumberSelectedProduct();
         addToCart();
         backAction();
-        addFavoriteProduct();
     }
 
     private void loadProductFromApi() {
         Intent intent = getIntent();
         productId = intent.getIntExtra("productId", 0);
-        Call<ProductResponse> productResponseCall = ApiClient.getProductService().getProductByID(productId);
+        Call<ProductResponse> productResponseCall;
+        if (token == null || token.equals("")) {
+            productResponseCall = ApiClient.getProductService().getProductById(productId);
+        } else {
+            productResponseCall = ApiClient.getProductService().getProductByIdWithToken("Bearer " + token, productId);
+        }
         productResponseCall.enqueue(new Callback<ProductResponse>() {
             @Override
             public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
@@ -117,6 +130,13 @@ public class SpecifyProduct extends AppCompatActivity {
                     Picasso.get().load(product.getImage()).fit().into(productImage);
 
                     getSimilarProducts();
+                    if (product.getFavorite()) {
+                        imageViewFavorite.setVisibility(View.VISIBLE);
+                    } else {
+                        imageViewUnFavorite.setVisibility(View.VISIBLE);
+                    }
+                    addFavoriteProduct();
+                    deleteFavoriteProduct();
 
                     loadingConstraintLayout.setVisibility(View.GONE);
                     cardNumberSelectedProduct.setVisibility(View.VISIBLE);
@@ -227,8 +247,7 @@ public class SpecifyProduct extends AppCompatActivity {
     }
 
     private void addFavoriteProduct() {
-        imageViewFavorite = findViewById(R.id.imageViewFavoriteIconProduct);
-        imageViewFavorite.setOnClickListener(new View.OnClickListener() {
+        imageViewUnFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AddFavoriteRequest addFavoriteRequest = new AddFavoriteRequest();
@@ -238,20 +257,38 @@ public class SpecifyProduct extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<AddFavoriteResponse> call, Response<AddFavoriteResponse> response) {
                         if (response.isSuccessful()) {
-                            String message = response.body().getMessage();
-                            Toast.makeText(SpecifyProduct.this, message, Toast.LENGTH_SHORT).show();
-                        } else {
-                            try {
-                                JSONObject jsonObject = new JSONObject(response.errorBody().string());
-                                Toast.makeText(SpecifyProduct.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                            } catch (JSONException | IOException e) {
-                                Toast.makeText(SpecifyProduct.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                            }
+                            imageViewUnFavorite.setVisibility(View.GONE);
+                            imageViewFavorite.setVisibility(View.VISIBLE);
                         }
                     }
 
                     @Override
                     public void onFailure(Call<AddFavoriteResponse> call, Throwable t) {
+                    }
+                });
+            }
+        });
+
+    }
+
+    private void deleteFavoriteProduct() {
+        imageViewFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DeleteFavoriteRequest deleteFavoriteRequest = new DeleteFavoriteRequest();
+                deleteFavoriteRequest.setProductId(productId);
+                Call<DeleteFavoriteResponse> deleteFavoriteResponseCall = ApiClient.getProductService().deleteFavoriteProduct("Bearer " + token, deleteFavoriteRequest);
+                deleteFavoriteResponseCall.enqueue(new Callback<DeleteFavoriteResponse>() {
+                    @Override
+                    public void onResponse(Call<DeleteFavoriteResponse> call, Response<DeleteFavoriteResponse> response) {
+                        if (response.isSuccessful()) {
+                            imageViewUnFavorite.setVisibility(View.VISIBLE);
+                            imageViewFavorite.setVisibility(View.GONE);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<DeleteFavoriteResponse> call, Throwable t) {
                     }
                 });
             }
