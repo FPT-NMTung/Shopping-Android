@@ -131,7 +131,7 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
         Picasso.get().load(user.getAvatar()).fit().into(cover);
         // check and set gender
         if (user.getGender() == 0) {
-            gender.setSelection(2);
+            gender.setSelection(0);
         } else {
             gender.setSelection(user.getGender() - 1);
         }
