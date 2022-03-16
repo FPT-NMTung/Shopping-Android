@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.shuhart.stepview.StepView;
 
@@ -146,12 +147,16 @@ public class CheckOutAddress extends AppCompatActivity {
                             Intent intent = new Intent(CheckOutAddress.this, CheckOutSuccess.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
+                        } else {
+                            Toast.makeText(CheckOutAddress.this, "Product quantity is not enough", Toast.LENGTH_LONG).show();
+                            finish();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<CheckOutOrderResponse> call, Throwable t) {
-
+                        Toast.makeText(CheckOutAddress.this, "Product quantity is not enough", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 });
             }
