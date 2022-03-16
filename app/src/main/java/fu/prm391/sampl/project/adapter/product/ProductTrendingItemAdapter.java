@@ -36,7 +36,7 @@ public class ProductTrendingItemAdapter extends RecyclerView.Adapter<ProductTren
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View productView = inflater.inflate(R.layout.item_top_trending_product, parent, false);
+        View productView = inflater.inflate(R.layout.item_product, parent, false);
         ProductTrendingItemAdapter.ViewHolder viewHolder = new ProductTrendingItemAdapter.ViewHolder(productView);
         return viewHolder;
     }
