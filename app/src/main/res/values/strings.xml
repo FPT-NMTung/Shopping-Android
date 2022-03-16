@@ -183,6 +183,6 @@
     <string name="LabelLastNameEdit">Last Name*</string>
     <string name="labelEmailAddress">Email Address* (Default)</string>
     <string name="labelGenderSelected">Choose Gender*</string>
-    <string name="labelPhoneEdit">Edit Phone Number*</string>
+    <string name="labelPhoneEdit">Phone Number*</string>
 
 </resources>
