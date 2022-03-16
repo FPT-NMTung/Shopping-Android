@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/consTraintLayoutTrendingProduct"
+    android:id="@+id/consTraintLayoutProductItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/mainBackGroundColor">
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imgTrendingProduct"
+            android:id="@+id/imgProductItem"
             android:layout_width="90dp"
             android:layout_height="100dp"
             android:backgroundTint="@color/mainBackGroundColor"
@@ -46,11 +46,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/cardView3"
-        app:layout_constraintTop_toBottomOf="@+id/txtProductPriceHome"
+        app:layout_constraintTop_toBottomOf="@+id/txtProductPriceItem"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/txtProductOldPriceHome"
+        android:id="@+id/txtProductOldPriceItem"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -63,11 +63,11 @@
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cardView3"
-        app:layout_constraintTop_toBottomOf="@+id/txtProductNameHome"
+        app:layout_constraintTop_toBottomOf="@+id/txtProductNameItem"
         tools:ignore="TextContrastCheck" />
 
     <TextView
-        android:id="@+id/txtProductNameHome"
+        android:id="@+id/txtProductNameItem"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -82,7 +82,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtProductPriceHome"
+        android:id="@+id/txtProductPriceItem"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -94,7 +94,7 @@
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cardView3"
-        app:layout_constraintTop_toBottomOf="@+id/txtProductOldPriceHome"
+        app:layout_constraintTop_toBottomOf="@+id/txtProductOldPriceItem"
         tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
