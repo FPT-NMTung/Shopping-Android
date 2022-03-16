@@ -79,7 +79,7 @@ public class OrderCartAdapter extends RecyclerView.Adapter<OrderCartViewHolder> 
         holder.getBtnPlus().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (order.getQuantity() < 10) {
+                if (order.getQuantity() < 10 && order.getProduct().getQuantity() > order.getQuantity()) {
                     int quantity = order.getQuantity() + 1;
                     order.setQuantity(quantity);
                     ((Cart) fragment).renderCheckout(list);

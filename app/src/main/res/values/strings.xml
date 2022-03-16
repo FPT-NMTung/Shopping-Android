@@ -119,7 +119,7 @@
 
     <!--  Success Check Out  -->
     <string name="SCO__thanks">Thank you!</string>
-    <string name="SCO__detail">Your Order is Completed. Please Check the Delivery Status at History Order Pages.</string>
+    <string name="SCO__detail">Your Order is Completed.\nPlease Check the Delivery Status at\nHistory Order Pages.</string>
     <string name="SCO__btnExit">Continue Shopping</string>
 
     <string name="searchLabel">Search</string>
@@ -183,6 +183,6 @@
     <string name="LabelLastNameEdit">Last Name*</string>
     <string name="labelEmailAddress">Email Address* (Default)</string>
     <string name="labelGenderSelected">Choose Gender*</string>
-    <string name="labelPhoneEdit">Edit Phone Number*</string>
+    <string name="labelPhoneEdit">Phone Number*</string>
 
 </resources>

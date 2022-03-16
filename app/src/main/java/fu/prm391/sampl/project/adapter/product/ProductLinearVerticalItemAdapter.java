@@ -36,7 +36,7 @@ public class ProductLinearVerticalItemAdapter extends RecyclerView.Adapter<Produ
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View productView = inflater.inflate(R.layout.item_top_trending_product, parent, false);
+        View productView = inflater.inflate(R.layout.item_product, parent, false);
         ProductLinearVerticalItemAdapter.ViewHolder viewHolder = new ProductLinearVerticalItemAdapter.ViewHolder(productView);
         return viewHolder;
     }
