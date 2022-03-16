@@ -49,6 +49,7 @@ public class CheckOutAddress extends AppCompatActivity {
     private RecyclerView recyclerViewAddressCheckout;
 
     private Button btnCheckoutAddressSubmit;
+    private Button caBtnNewAddress;
 
     private String token;
 
@@ -88,6 +89,7 @@ public class CheckOutAddress extends AppCompatActivity {
         this.recyclerViewAddressCheckout = findViewById(R.id.recyclerViewAddressCheckout);
 
         this.btnCheckoutAddressSubmit = findViewById(R.id.btnCheckoutAddressSubmit);
+        this.caBtnNewAddress = findViewById(R.id.caBtnNewAddress);
 
         this.txtConfirmationSubTotalValue = findViewById(R.id.txtConfirmationSubTotalValue);
         this.txtConfirmationShippingFeeValue = findViewById(R.id.txtConfirmationShippingFeeValue);
@@ -113,6 +115,23 @@ public class CheckOutAddress extends AppCompatActivity {
         setEventBtnNextStep();
         setEventBtnBack();
         setEventBtnPlaceOrder();
+        setEventBtnNewAddress();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadDataAddress();
+    }
+
+    private void setEventBtnNewAddress() {
+        caBtnNewAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CheckOutAddress.this, ProfileShippingAddress.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setEventBtnPlaceOrder() {
