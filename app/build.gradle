@@ -52,4 +52,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'com.github.addisonelliott:SegmentedButton:3.1.9'
     implementation 'com.github.dhaval2404:imagepicker:2.1'
+
 }

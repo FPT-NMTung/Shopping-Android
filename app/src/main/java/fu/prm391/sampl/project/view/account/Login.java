@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +34,7 @@ public class Login extends AppCompatActivity {
     private TextView txtCreateAccount, txtForgotPassword, txtSkip;
     private EditText email, password;
     private Button btnLogin;
+    private ImageView btnShowPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         moveToOtherActivities();
         loginAction();
+        showHidePass();
     }
 
     private void loginAction() {
@@ -123,6 +128,23 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(Login.this, MainActivity.class));
                 finish();
+            }
+        });
+    }
+
+    public void showHidePass() {
+        btnShowPass = findViewById(R.id.btnShowPassLogin);
+        btnShowPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (password.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())) {
+                    ((ImageView) (view)).setImageResource(R.drawable.ic_visibility_off);
+                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    ((ImageView) (view)).setImageResource(R.drawable.ic_visibility);
+                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+                password.setSelection(password.length());
             }
         });
     }

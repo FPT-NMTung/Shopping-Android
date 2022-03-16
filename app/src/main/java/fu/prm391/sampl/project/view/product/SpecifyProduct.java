@@ -130,7 +130,10 @@ public class SpecifyProduct extends AppCompatActivity {
                     Picasso.get().load(product.getImage()).fit().into(productImage);
 
                     getSimilarProducts();
-                    if (product.getFavorite()) {
+                    if (product.getFavorite() == null) {
+                        imageViewFavorite.setVisibility(View.GONE);
+                        imageViewUnFavorite.setVisibility(View.GONE);
+                    } else if (product.getFavorite()) {
                         imageViewFavorite.setVisibility(View.VISIBLE);
                     } else {
                         imageViewUnFavorite.setVisibility(View.VISIBLE);

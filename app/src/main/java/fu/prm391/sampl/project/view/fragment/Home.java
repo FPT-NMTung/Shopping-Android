@@ -21,6 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 import fu.prm391.sampl.project.R;
+import fu.prm391.sampl.project.adapter.product.ProductTrendingItemAdapter;
 import fu.prm391.sampl.project.model.category.Category;
 import fu.prm391.sampl.project.adapter.category.CategoryTop4Adapter;
 import fu.prm391.sampl.project.model.category.CategoryResponse;
@@ -142,7 +143,7 @@ public class Home extends Fragment {
             public void onResponse(Call<ProductListResponse> call, Response<ProductListResponse> response) {
                 if (response.isSuccessful()) {
                     ArrayList<Product> products = (ArrayList<Product>) response.body().getData();
-                    recyclerViewTopTrendingProduct.setAdapter(new ProductLinearVerticalItemAdapter(getContext(), products));
+                    recyclerViewTopTrendingProduct.setAdapter(new ProductTrendingItemAdapter(getContext(), products));
                     LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false) {
                         @Override
                         public boolean canScrollVertically() {

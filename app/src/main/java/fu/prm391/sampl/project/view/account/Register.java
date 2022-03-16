@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +33,7 @@ public class Register extends AppCompatActivity {
     private TextView txtHaveAnAccount, txtBack;
     private EditText email, password, rePassword;
     private Button btnRegister;
+    private ImageView btnShowPass, btnShowRePass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,7 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         moveToOtherActivities();
         registerAction();
+        showHidePass();
     }
 
     private void registerAction() {
@@ -119,6 +124,39 @@ public class Register extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(Register.this, Login.class));
                 finish();
+            }
+        });
+    }
+
+    public void showHidePass() {
+        btnShowPass = findViewById(R.id.btnShowPassRegister);
+        btnShowRePass = findViewById(R.id.btnShowRePassRegister);
+
+        btnShowPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (password.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())) {
+                    ((ImageView) (view)).setImageResource(R.drawable.ic_visibility_off);
+                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    ((ImageView) (view)).setImageResource(R.drawable.ic_visibility);
+                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+                password.setSelection(password.length());
+            }
+        });
+
+        btnShowRePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (rePassword.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())) {
+                    ((ImageView) (view)).setImageResource(R.drawable.ic_visibility_off);
+                    rePassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    ((ImageView) (view)).setImageResource(R.drawable.ic_visibility);
+                    rePassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+                rePassword.setSelection(rePassword.length());
             }
         });
     }
