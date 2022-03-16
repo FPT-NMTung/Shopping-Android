@@ -22,12 +22,12 @@ import fu.prm391.sampl.project.helper.StringHelpers;
 import fu.prm391.sampl.project.model.product.Product;
 import fu.prm391.sampl.project.view.product.SpecifyProduct;
 
-public class ProductLinearVerticalItemAdapter extends RecyclerView.Adapter<ProductLinearVerticalItemAdapter.ViewHolder> {
+public class ProductTrendingItemAdapter extends RecyclerView.Adapter<ProductTrendingItemAdapter.ViewHolder> {
 
     private Context context;
     private ArrayList<Product> products;
 
-    public ProductLinearVerticalItemAdapter(Context context, ArrayList<Product> products) {
+    public ProductTrendingItemAdapter(Context context, ArrayList<Product> products) {
         this.context = context;
         this.products = products;
     }
@@ -37,7 +37,7 @@ public class ProductLinearVerticalItemAdapter extends RecyclerView.Adapter<Produ
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View productView = inflater.inflate(R.layout.item_top_trending_product, parent, false);
-        ProductLinearVerticalItemAdapter.ViewHolder viewHolder = new ProductLinearVerticalItemAdapter.ViewHolder(productView);
+        ProductTrendingItemAdapter.ViewHolder viewHolder = new ProductTrendingItemAdapter.ViewHolder(productView);
         return viewHolder;
     }
 
@@ -67,7 +67,11 @@ public class ProductLinearVerticalItemAdapter extends RecyclerView.Adapter<Produ
 
     @Override
     public int getItemCount() {
-        return products.size();
+        if (products.size() <= 5) {
+            return products.size();
+        } else {
+            return 5;
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
