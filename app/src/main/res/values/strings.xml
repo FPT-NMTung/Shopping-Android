@@ -22,7 +22,7 @@
     <string name="intro2ScreenText">The Real Value </string>
     <string name="intro3ScreenText">Unique Design</string>
 
-    <string name="intro1Content">Coming to Jumbo Brand you can find the products here are quite diverse from: Tee, Bottom, Demin Jacket, Hoodie, accessories</string>
+    <string name="intro1Content">Coming to Jumbo Brand you can find the products here are quite diverse from: Tee, Bottom, Denim Jacket, Hoodie, accessories</string>
     <string name="intro3Content">The images are designed rebelliously, personality to help Jumbo products look cool and more play</string>
     <string name="intro2Content">Best Deal: Jumbo products provided with competitive prices and product quality are always guaranteed from material</string>
 
@@ -32,7 +32,7 @@
     <string name="contentDesIntroApp">BgIntroApp</string>
 
     <string name="please_enter">Please Enter digit code that you received on your Email Address.</string>
-    <string name="checkYourEmailVerifyCodeResetPassWordLabel">Check Your Email Verify Code</string>
+    <string name="checkYourEmailVerifyCodeResetPassWordLabel">Check Your Email For Verify Code</string>
     <string name="createAccountLabel">Create an Account</string>
     <string name="haveAnAccountLabel">Have an Account?</string>
     <string name="enterYourDetailsInformationLabel">Enter your Details Informations</string>
@@ -47,7 +47,7 @@
     <string name="LabelProfiles">Profiles</string>
     <string name="LabelMyOrdersHistory">My Orders History</string>
     <string name="DesImage">TODO</string>
-    <string name="LabelMyFavourites">My Favourites</string>
+    <string name="LabelMyFavorites">My Favorites</string>
     <string name="LabelShippingAddress">Shipping Address</string>
     <string name="Labelgiftcardsvouchers"><![CDATA[Gift Cards & Vouchers]]></string>
     <string name="LabelLogout">Logout</string>
@@ -117,8 +117,13 @@
     <string name="CO__addressContinue">Continue</string>
     <string name="CO__addressPlaceOrder">Place Order</string>
 
+    <!--  Success Check Out  -->
+    <string name="SCO__thanks">Thank you!</string>
+    <string name="SCO__detail">Your Order is Completed. Please Check the Delivery Status at History Order Pages.</string>
+    <string name="SCO__btnExit">Continue Shopping</string>
+
     <string name="searchLabel">Search</string>
-    <string name="searchProductHintLabel">Search Products</string>
+    <string name="searchProductHintLabel"><font size="16">Search Products</font></string>
     <string name="contentDesImageButtonSearch">Search Image</string>
     <string name="percentHintLabel">10%</string>
     <string name="old_price">Old Price</string>
@@ -148,4 +153,36 @@
     <string name="phoneLabel">Phone</string>
     <string name="btnSave">Save</string>
     <string name="genderLabel">Gender</string>
+    <string name="active_your_account_label">Active Your Account</string>
+    <string name="send_again_label"><u>Send again</u></string>
+    <string name="get_some_trouble_with_verify_code">Get some trouble with your verify code?</string>
+    <string name="you_have_not_placed_any_orders_yet">You have not placed any orders yet!</string>
+    <string name="your_favorite_products_list_is_empty">Your favorite products list is empty!</string>
+    <string name="status_label">Status</string>
+    <string name="order_confirmed">Order confirmed</string>
+    <string name="delivery_is_in_progress">Delivery is in progress</string>
+    <string name="successfully_delivered">Successfully delivered</string>
+    <string name="quantity_order_history">Quantity:</string>
+    <string name="no_order_message">There are no orders here!</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="jumbo_clothes">Jumbo Clothes</string>
+    <string name="email_contact_us">Email:</string>
+    <string name="nguyen_email">NguyenHTHE141002@fpt.edu.vn</string>
+    <string name="tung_email">TungNMHE140062@fpt.edu.vn</string>
+    <string name="bac_email">BacLNHE141006@fpt.edu.vn</string>
+    <string name="duong_email">DuongNTHE140073@fpt.edu.vn</string>
+    <string name="facebook_label">Facebook:</string>
+    <string name="tung_facebook"><u>https://www.facebook.com/NMTung.Socialnetwork</u></string>
+    <string name="nguyen_facebook"><u>https://www.facebook.com/mrlimfo</u></string>
+    <string name="duong_Facebook"><u>https://www.facebook.com/ngthuyduong.mon2000</u></string>
+    <string name="bac_facebook"><u>https://www.facebook.com/ABboyPD</u></string>
+    <string name="textview">TextView</string>
+    <string name="number_0">0</string>
+    <string name="thanks_for_your_supports_3"><![CDATA[Thanks for your supports! <3]]></string>
+    <string name="LabelFirstName">First Name*</string>
+    <string name="LabelLastNameEdit">Last Name*</string>
+    <string name="labelEmailAddress">Email Address* (Default)</string>
+    <string name="labelGenderSelected">Choose Gender*</string>
+    <string name="labelPhoneEdit">Edit Phone Number*</string>
+
 </resources>

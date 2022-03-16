@@ -22,12 +22,12 @@ import fu.prm391.sampl.project.helper.StringHelpers;
 import fu.prm391.sampl.project.model.product.Product;
 import fu.prm391.sampl.project.view.product.SpecifyProduct;
 
-public class ProductTrendingHomeAdapter extends RecyclerView.Adapter<ProductTrendingHomeAdapter.ViewHolder> {
+public class ProductLinearVerticalItemAdapter extends RecyclerView.Adapter<ProductLinearVerticalItemAdapter.ViewHolder> {
 
     private Context context;
     private ArrayList<Product> products;
 
-    public ProductTrendingHomeAdapter(Context context, ArrayList<Product> products) {
+    public ProductLinearVerticalItemAdapter(Context context, ArrayList<Product> products) {
         this.context = context;
         this.products = products;
     }
@@ -37,7 +37,7 @@ public class ProductTrendingHomeAdapter extends RecyclerView.Adapter<ProductTren
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View productView = inflater.inflate(R.layout.item_top_trending_product, parent, false);
-        ProductTrendingHomeAdapter.ViewHolder viewHolder = new ProductTrendingHomeAdapter.ViewHolder(productView);
+        ProductLinearVerticalItemAdapter.ViewHolder viewHolder = new ProductLinearVerticalItemAdapter.ViewHolder(productView);
         return viewHolder;
     }
 

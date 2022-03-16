@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -33,10 +32,13 @@ import fu.prm391.sampl.project.model.category.Category;
 import fu.prm391.sampl.project.model.order.add_to_cart.AddToCartRequest;
 import fu.prm391.sampl.project.model.order.add_to_cart.AddToCartResponse;
 import fu.prm391.sampl.project.model.product.Product;
+import fu.prm391.sampl.project.model.product.favorite_product.add_favorite.AddFavoriteRequest;
+import fu.prm391.sampl.project.model.product.favorite_product.add_favorite.AddFavoriteResponse;
+import fu.prm391.sampl.project.model.product.favorite_product.delete_favorite.DeleteFavoriteRequest;
+import fu.prm391.sampl.project.model.product.favorite_product.delete_favorite.DeleteFavoriteResponse;
 import fu.prm391.sampl.project.model.product.get_list_product.ProductListResponse;
 import fu.prm391.sampl.project.model.product.get_product_by_id.ProductResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
-import fu.prm391.sampl.project.view.MainActivity;
 import fu.prm391.sampl.project.view.account.Login;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -52,13 +54,13 @@ public class SpecifyProduct extends AppCompatActivity {
     private ConstraintLayout loadingConstraintLayout;
     private Button btnAddToCart;
     private ImageButton btnIncrease, btnDecrease;
-    private ImageView btnGoToCart;
     private CardView cardNumberSelectedProduct;
     private Product product;
     private int numberProduct = 1;
-    private final int upperLimitNumberProduct = 15;
+    private final int upperLimitNumberProduct = 10;
     private final int lowerLimitNumberProduct = 1;
     private String token;
+    private ImageView imageViewUnFavorite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,12 +80,28 @@ public class SpecifyProduct extends AppCompatActivity {
         loadingConstraintLayout.setVisibility(View.VISIBLE);
         cardNumberSelectedProduct.setVisibility(View.INVISIBLE);
 
+        imageViewFavorite = findViewById(R.id.imageViewFavorite);
+        imageViewUnFavorite = findViewById(R.id.imageViewUnFavorite);
+        imageViewFavorite.setVisibility(View.GONE);
+        imageViewUnFavorite.setVisibility(View.GONE);
+
         token = PreferencesHelpers.loadStringData(SpecifyProduct.this, "token");
 
-        // load Api product
+        loadProductFromApi();
+        adjustNumberSelectedProduct();
+        addToCart();
+        backAction();
+    }
+
+    private void loadProductFromApi() {
         Intent intent = getIntent();
         productId = intent.getIntExtra("productId", 0);
-        Call<ProductResponse> productResponseCall = ApiClient.getProductService().getProductByID(productId);
+        Call<ProductResponse> productResponseCall;
+        if (token == null || token.equals("")) {
+            productResponseCall = ApiClient.getProductService().getProductById(productId);
+        } else {
+            productResponseCall = ApiClient.getProductService().getProductByIdWithToken("Bearer " + token, productId);
+        }
         productResponseCall.enqueue(new Callback<ProductResponse>() {
             @Override
             public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
@@ -111,27 +129,14 @@ public class SpecifyProduct extends AppCompatActivity {
                     productCategory.setText(productCategories);
                     Picasso.get().load(product.getImage()).fit().into(productImage);
 
-                    if (product.getCategories().size() != 0) {
-                        Call<ProductListResponse> productListResponseCall = ApiClient.getProductService().getProductByCategoryId(product.getCategories().get(0).getId());
-                        productListResponseCall.enqueue(new Callback<ProductListResponse>() {
-                            @Override
-                            public void onResponse(Call<ProductListResponse> call, Response<ProductListResponse> response) {
-                                if (response.isSuccessful()) {
-                                    ArrayList<Product> products = (ArrayList<Product>) response.body().getData();
-                                    recyclerViewSimilarProduct.setAdapter(new ProductSimilarItemAdapter(SpecifyProduct.this, products));
-                                    LinearLayoutManager layoutManager = new LinearLayoutManager(SpecifyProduct.this, LinearLayoutManager.HORIZONTAL, false);
-                                    recyclerViewSimilarProduct.setLayoutManager(layoutManager);
-
-                                    loadingConstraintLayout.setVisibility(View.GONE);
-                                    cardNumberSelectedProduct.setVisibility(View.VISIBLE);
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<ProductListResponse> call, Throwable t) {
-                            }
-                        });
+                    getSimilarProducts();
+                    if (product.getFavorite()) {
+                        imageViewFavorite.setVisibility(View.VISIBLE);
+                    } else {
+                        imageViewUnFavorite.setVisibility(View.VISIBLE);
                     }
+                    addFavoriteProduct();
+                    deleteFavoriteProduct();
 
                     loadingConstraintLayout.setVisibility(View.GONE);
                     cardNumberSelectedProduct.setVisibility(View.VISIBLE);
@@ -140,24 +145,45 @@ public class SpecifyProduct extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ProductResponse> call, Throwable t) {
-                Log.i("Test", t.getLocalizedMessage());
             }
         });
+    }
 
-        // adjust selected product
-        adjustNumberSelectedProduct();
+    private void getSimilarProducts() {
+        if (product.getCategories().size() != 0) {
+            Call<ProductListResponse> productListResponseCall = ApiClient
+                    .getProductService()
+                    .getSimilarProductByCategoryId(product.getCategories().get(0).getId(), product.getId());
+            productListResponseCall.enqueue(new Callback<ProductListResponse>() {
+                @Override
+                public void onResponse(Call<ProductListResponse> call, Response<ProductListResponse> response) {
+                    if (response.isSuccessful()) {
+                        ArrayList<Product> products = (ArrayList<Product>) response.body().getData();
+                        recyclerViewSimilarProduct.setAdapter(new ProductSimilarItemAdapter(SpecifyProduct.this, products));
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(SpecifyProduct.this, LinearLayoutManager.HORIZONTAL, false);
+                        recyclerViewSimilarProduct.setLayoutManager(layoutManager);
 
+                        loadingConstraintLayout.setVisibility(View.GONE);
+                        cardNumberSelectedProduct.setVisibility(View.VISIBLE);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ProductListResponse> call, Throwable t) {
+                }
+            });
+        }
+    }
+
+    private void addToCart() {
         btnAddToCart = findViewById(R.id.btnAddToCart);
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (token == "") {
-                    finish();
                     startActivity(new Intent(SpecifyProduct.this, Login.class));
                     finish();
                 } else {
-                    btnAddToCart.setEnabled(false);
                     if (product.getQuantity() <= 0) {
                         Toast.makeText(SpecifyProduct.this, "Out of stocks!", Toast.LENGTH_SHORT).show();
                     } else {
@@ -171,9 +197,7 @@ public class SpecifyProduct extends AppCompatActivity {
                                 if (response.isSuccessful()) { //add to cart successful
                                     AddToCartResponse addToCartResponse = response.body();
                                     Toast.makeText(SpecifyProduct.this, addToCartResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                                    // more action here
-
-
+                                    // more action here if needed
                                 } else {
                                     try {
                                         JSONObject jsonObject = new JSONObject(response.errorBody().string());
@@ -181,35 +205,17 @@ public class SpecifyProduct extends AppCompatActivity {
                                     } catch (JSONException | IOException e) {
                                         Toast.makeText(SpecifyProduct.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                                     }
-                                    btnAddToCart.setEnabled(true);
                                 }
                             }
 
                             @Override
                             public void onFailure(Call<AddToCartResponse> call, Throwable t) {
-                                btnAddToCart.setEnabled(true);
                             }
                         });
                     }
                 }
             }
         });
-
-        imageViewBack = findViewById(R.id.imageViewBackProduct);
-        imageViewBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-        imageViewFavorite = findViewById(R.id.imageViewFavoriteIconProduct);
-        imageViewFavorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
-
     }
 
     private void adjustNumberSelectedProduct() {
@@ -225,8 +231,6 @@ public class SpecifyProduct extends AppCompatActivity {
                 if (numberProduct < upperLimitNumberProduct && numberProduct < product.getQuantity()) {
                     numberProduct++;
                     numberSelectedProduct.setText(StringHelpers.numberLessThanTenFormat(numberProduct));
-                } else {
-                    Toast.makeText(SpecifyProduct.this, "You can only select up to " + upperLimitNumberProduct + " products!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -237,9 +241,66 @@ public class SpecifyProduct extends AppCompatActivity {
                 if (numberProduct > lowerLimitNumberProduct) {
                     numberProduct--;
                     numberSelectedProduct.setText(StringHelpers.numberLessThanTenFormat(numberProduct));
-                } else {
-                    Toast.makeText(SpecifyProduct.this, "You need to select at least " + lowerLimitNumberProduct + " product!", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+    }
+
+    private void addFavoriteProduct() {
+        imageViewUnFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AddFavoriteRequest addFavoriteRequest = new AddFavoriteRequest();
+                addFavoriteRequest.setProductId(productId);
+                Call<AddFavoriteResponse> addFavoriteResponseCall = ApiClient.getProductService().addFavoriteProduct("Bearer " + token, addFavoriteRequest);
+                addFavoriteResponseCall.enqueue(new Callback<AddFavoriteResponse>() {
+                    @Override
+                    public void onResponse(Call<AddFavoriteResponse> call, Response<AddFavoriteResponse> response) {
+                        if (response.isSuccessful()) {
+                            imageViewUnFavorite.setVisibility(View.GONE);
+                            imageViewFavorite.setVisibility(View.VISIBLE);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<AddFavoriteResponse> call, Throwable t) {
+                    }
+                });
+            }
+        });
+
+    }
+
+    private void deleteFavoriteProduct() {
+        imageViewFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DeleteFavoriteRequest deleteFavoriteRequest = new DeleteFavoriteRequest();
+                deleteFavoriteRequest.setProductId(productId);
+                Call<DeleteFavoriteResponse> deleteFavoriteResponseCall = ApiClient.getProductService().deleteFavoriteProduct("Bearer " + token, deleteFavoriteRequest);
+                deleteFavoriteResponseCall.enqueue(new Callback<DeleteFavoriteResponse>() {
+                    @Override
+                    public void onResponse(Call<DeleteFavoriteResponse> call, Response<DeleteFavoriteResponse> response) {
+                        if (response.isSuccessful()) {
+                            imageViewUnFavorite.setVisibility(View.VISIBLE);
+                            imageViewFavorite.setVisibility(View.GONE);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<DeleteFavoriteResponse> call, Throwable t) {
+                    }
+                });
+            }
+        });
+    }
+
+    private void backAction() {
+        imageViewBack = findViewById(R.id.imageViewBackProduct);
+        imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

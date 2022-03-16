@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -74,6 +75,11 @@ public class Cart extends Fragment {
 
     private OrderCartAdapter orderCartAdapter;
 
+    private double total;
+    private double subTotal;
+    private double shippingFee;
+    private double tax;
+
     public Cart() {
         // Required empty public constructor
     }
@@ -109,8 +115,12 @@ public class Cart extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_cart, container, false);
+        return inflater.inflate(R.layout.fragment_cart, container, false);
+    }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         this.token = PreferencesHelpers.loadStringData(getContext(), "token");
 
         this.recyclerViewMainCart = view.findViewById(R.id.recyclerViewMainCart);
@@ -131,8 +141,6 @@ public class Cart extends Fragment {
             loadAllListOrder();
             setEventBtnCheckout();
         }
-
-        return view;
     }
 
     @Override
@@ -146,6 +154,12 @@ public class Cart extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CheckOutAddress.class);
+
+                intent.putExtra("subTotal", subTotal);
+                intent.putExtra("fee", shippingFee);
+                intent.putExtra("tax", tax);
+                intent.putExtra("total", total);
+
                 startActivity(intent);
             }
         });
@@ -185,10 +199,9 @@ public class Cart extends Fragment {
     }
 
     public void renderCheckout(List<Order> list) {
-        float total = 0;
-        float subTotal = 0;
-        float shippingFee = (list.size() == 0) ? 0 : 2;
-        float tax;
+        total = 0;
+        subTotal = 0;
+        shippingFee = (list.size() == 0) ? 0 : 2;
 
         for (int index = 0; index < list.size(); index++) {
             Order order = list.get(index);

@@ -10,4 +10,6 @@
     <color name="yellow">#FFFF00</color>
     <color name="mainBackGroundColor">#F2F6F9</color>
     <color name="gray">#D3D3D3</color>
+    <color name="green">#FF4F9A52</color>
+    <color name="orange_red">#FF932D26</color>
 </resources>

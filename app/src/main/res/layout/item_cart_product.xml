@@ -35,36 +35,37 @@
                     android:id="@+id/cardView14">
 
                 <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:srcCompat="@tools:sample/avatars"
-                        android:id="@+id/imageItemCartProduct" />
+                    android:id="@+id/imageItemCartProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/contentDesImage"
+                    tools:srcCompat="@tools:sample/avatars" />
             </androidx.cardview.widget.CardView>
 
             <TextView
-                    android:text="TextView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtItemCartNameProduct"
-                    app:layout_constraintStart_toEndOf="@+id/cardView14"
-                    android:layout_marginStart="16dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="12dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="16dp" />
+                android:id="@+id/txtItemCartNameProduct"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/textview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cardView14"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                    android:text="TextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtItemCartPriceProduct"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginBottom="12dp"
-                    app:layout_constraintStart_toEndOf="@+id/cardView14"
-                    android:layout_marginStart="16dp"
-                    android:textColor="#F44336"
-                    android:textStyle="bold" />
+                android:id="@+id/txtItemCartPriceProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="12dp"
+                android:text="@string/textview"
+                android:textColor="#F44336"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cardView14" />
 
             <androidx.cardview.widget.CardView
                     android:layout_width="85dp"
@@ -79,28 +80,32 @@
                         android:layout_height="match_parent">
 
                     <ImageButton
-                            android:layout_width="32dp"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/ic_round_add_24"
-                            android:id="@+id/imageItemCartPlus"
-                            android:backgroundTint="#FFFFFF"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent" />
+                        android:id="@+id/imageItemCartPlus"
+                        android:layout_width="32dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#FFFFFF"
+                        android:contentDescription="@string/contentDesImage"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_round_add_24"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
 
                     <ImageButton
-                            android:layout_width="32dp"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/ic_round_remove_24"
-                            android:id="@+id/imageItemCartSub"
-                            android:backgroundTint="#FFFFFF"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:hapticFeedbackEnabled="false" />
+                        android:id="@+id/imageItemCartSub"
+                        android:layout_width="32dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#FFFFFF"
+                        android:contentDescription="@string/contentDesImage"
+                        android:hapticFeedbackEnabled="false"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_round_remove_24"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
                     <TextView
-                            android:text="0"
+                            android:text="@string/number_0"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/txtItemCartQuantityProduct"
@@ -113,23 +118,23 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                    android:text="TextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtItemCartPriceEachProduct"
-                    app:layout_constraintBottom_toTopOf="@+id/txtItemCartPriceProduct"
-                    app:layout_constraintStart_toEndOf="@+id/cardView14"
-                    android:layout_marginStart="16dp" />
+                android:id="@+id/txtItemCartPriceEachProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/textview"
+                app:layout_constraintBottom_toTopOf="@+id/txtItemCartPriceProduct"
+                app:layout_constraintStart_toEndOf="@+id/cardView14" />
 
             <TextView
-                    android:text="TextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtItemCartPriceBaseProduct"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginBottom="31dp"
-                    app:layout_constraintStart_toEndOf="@+id/txtItemCartPriceEachProduct"
-                    android:layout_marginStart="8dp" />
+                android:id="@+id/txtItemCartPriceBaseProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="31dp"
+                android:text="@string/textview"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtItemCartPriceEachProduct" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

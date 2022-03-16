@@ -8,51 +8,41 @@
         android:background="@color/mainBackGroundColor">
 
     <TextView
-            android:text="@string/PSA__title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView11"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="24dp"
-            app:layout_constraintHorizontal_bias="0.498"
-            style="@style/discoverLabel" />
+        android:id="@+id/textView11"
+        style="@style/discoverLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/PSA__title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:id="@+id/btnPsaBack"
-            app:icon="@drawable/ic_baseline_arrow_back_ios_new_24"
-            app:layout_constraintEnd_toStartOf="@+id/textView11"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.275"
-            app:iconTint="@color/black"
-            android:backgroundTint="@color/mainBackGroundColor"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingEnd="10dp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="18dp"
-            app:iconSize="24dp"
-            android:layout_marginStart="8dp" />
-
-    <TextView
-            android:text="@string/PSA__second_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView12"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="88dp"
-            android:layout_marginStart="30dp"
-            style="@style/style_psa_second_title"
-            android:fontFamily="@font/poppins_semibold" />
+        android:id="@+id/btnPsaBack"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="18dp"
+        android:backgroundTint="@color/mainBackGroundColor"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:icon="@drawable/ic_baseline_arrow_back_ios_new_24"
+        app:iconSize="24dp"
+        app:iconTint="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/textView11"
+        app:layout_constraintHorizontal_bias="0.275"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -60,26 +50,20 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:id="@+id/recyclerViewAddress"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintTop_toBottomOf="@+id/btnPsaNewAddress"
+            android:layout_marginTop="8dp" />
 
     <Button
             android:text="@string/PSA__btn_create_new_address"
-            android:layout_width="118dp"
-            android:layout_height="28dp"
+            android:layout_width="132dp"
+            android:layout_height="46dp"
             android:id="@+id/btnPsaNewAddress"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
-            android:paddingTop="0dp"
-            android:paddingBottom="0dp"
-            android:padding="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerViewAddress"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="28dp"
-            style="@style/style_psa_second_title"
-            android:backgroundTint="@color/mainBackGroundColor"
+            android:layout_marginEnd="24dp"
             android:textStyle="normal"
-            android:layout_marginBottom="4dp" />
+            app:layout_constraintTop_toBottomOf="@+id/textView11"
+            android:layout_marginTop="20dp" />
 
     <ProgressBar
             style="?android:attr/progressBarStyle"

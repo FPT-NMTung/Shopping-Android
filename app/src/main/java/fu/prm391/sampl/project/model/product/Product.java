@@ -43,11 +43,16 @@ public class Product implements Serializable {
     @SerializedName("category")
     @Expose
     private List<Category> categories;
+    @SerializedName("isFavorite")
+    @Expose
+    private Boolean isFavorite;
 
     public Product() {
     }
 
-    public Product(int id, String name, String description, String image, double price, int quantity, int quantitySold, String createdAt, String updatedAt, int discount, List<Category> categories) {
+    public Product(int id, String name, String description, String image, double price,
+                   int quantity, int quantitySold, String createdAt, String updatedAt,
+                   int discount, List<Category> categories, Boolean isFavorite) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -59,6 +64,7 @@ public class Product implements Serializable {
         this.updatedAt = updatedAt;
         this.discount = discount;
         this.categories = categories;
+        this.isFavorite = isFavorite;
     }
 
     public int getId() {
@@ -147,5 +153,13 @@ public class Product implements Serializable {
 
     public void setCategories(List<Category> categories) {
         this.categories = categories;
+    }
+
+    public Boolean getFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(Boolean favorite) {
+        isFavorite = favorite;
     }
 }

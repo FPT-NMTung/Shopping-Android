@@ -14,6 +14,7 @@ import java.util.List;
 
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.model.address.Address;
+import fu.prm391.sampl.project.view.checkout.CheckOutAddress;
 
 public class CheckoutAddressAdapter extends RecyclerView.Adapter<CheckoutViewHolder> {
 
@@ -66,6 +67,7 @@ public class CheckoutAddressAdapter extends RecyclerView.Adapter<CheckoutViewHol
                     lastRadioButton.setChecked(false);
                     holder.getRadioButtonCheckoutSelect().setChecked(true);
                     lastRadioButton = holder.getRadioButtonCheckoutSelect();
+                    ((CheckOutAddress) context).setSelectAddress(address);
                 }
             }
         });

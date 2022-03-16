@@ -27,6 +27,7 @@ public class AllCategory extends AppCompatActivity {
     private ImageView imageViewBack;
     private RecyclerView recyclerViewAllCategory;
     private ConstraintLayout loadingConstraintLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,11 @@ public class AllCategory extends AppCompatActivity {
         loadingConstraintLayout.setVisibility(View.VISIBLE);
 
         recyclerViewAllCategory = findViewById(R.id.recyclerViewAllCategory);
+        loadListCategories();
+        backAction();
+    }
+
+    private void loadListCategories() {
         Call<CategoryResponse> categoryResponseCall = ApiClient.getCategoryService().getAllCategories();
         categoryResponseCall.enqueue(new Callback<CategoryResponse>() {
             @Override
@@ -52,8 +58,9 @@ public class AllCategory extends AppCompatActivity {
             public void onFailure(Call<CategoryResponse> call, Throwable t) {
             }
         });
+    }
 
-
+    private void backAction() {
         imageViewBack = findViewById(R.id.imageViewBackCategory);
         imageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
