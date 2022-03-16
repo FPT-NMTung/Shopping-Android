@@ -1,9 +1,16 @@
 package fu.prm391.sampl.project.view.profiles;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -39,6 +46,7 @@ import fu.prm391.sampl.project.model.user.UpdateUserInfoRequest;
 import fu.prm391.sampl.project.model.user.UpdateUserInfoResponse;
 import fu.prm391.sampl.project.model.user.User;
 import fu.prm391.sampl.project.remote.ApiClient;
+import fu.prm391.sampl.project.view.MainActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,6 +61,7 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
     private TextView emailAddress;
     private String encodedImage;
     private String stringUri;
+    private int storePermissionCode = 1;
 
     @SuppressLint("WrongThread")
     @Override
@@ -76,17 +85,51 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
         backAction();
     }
 
+    // READ_EXTERNAL_STORAGE and upload image from external storage
     private void uploadImageFromPhone() {
         fab.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
-                ImagePicker.with(EditProfiles.this)
-                        .crop()                    //Crop image(Optional), Check Customization for more option
-                        .compress(1024)            //Final image size will be less than 1 MB(Optional)
-                        .maxResultSize(1080, 1080)    //Final image resolution will be less than 1080 x 1080(Optional)
-                        .start(294);
+                if (ContextCompat.checkSelfPermission(EditProfiles.this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+//                    Toast.makeText(EditProfiles.this,"You have already granted this permission!",Toast.LENGTH_SHORT).show();
+                    ImagePicker.with(EditProfiles.this)
+                            .crop()                    //Crop image(Optional), Check Customization for more option
+                            .compress(1024)            //Final image size will be less than 1 MB(Optional)
+                            .maxResultSize(1080, 1080)    //Final image resolution will be less than 1080 x 1080(Optional)
+                            .start(294);
+                } else {
+                    requestStoragePermission();
+                }
+
             }
         });
+    }
+
+    private void requestStoragePermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Permission Needed")
+                    .setMessage("This permission is needed to read your external storage ")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            ActivityCompat.requestPermissions(EditProfiles.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, storePermissionCode);
+
+                        }
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    })
+                    .create().show();
+
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, storePermissionCode);
+        }
     }
 
 
@@ -176,6 +219,21 @@ public class EditProfiles extends AppCompatActivity implements AdapterView.OnIte
                 btnSave.setEnabled(true);
             }
         });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == storePermissionCode) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Permission GRANTED", Toast.LENGTH_SHORT);
+            } else {
+                Toast.makeText(this, "Permission DENIED", Toast.LENGTH_SHORT);
+            }
+
+        } else {
+            Toast.makeText(this, "Permission DENIED", Toast.LENGTH_SHORT);
+        }
     }
 
     @Override
