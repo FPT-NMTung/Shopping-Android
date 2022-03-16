@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.addisonelliott.segmentedbutton.SegmentedButtonGroup;
+
 import java.util.ArrayList;
 
 import fu.prm391.sampl.project.R;
@@ -27,6 +29,7 @@ public class MyOrderHistory extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ConstraintLayout loadingConstraintLayout, noOrderConstraintLayout;
     private String token;
+    private SegmentedButtonGroup segmentedButtonGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +43,25 @@ public class MyOrderHistory extends AppCompatActivity {
 
         token = PreferencesHelpers.loadStringData(MyOrderHistory.this, "token");
 
-        loadListOrderHistories();
+        setupSegmentedButton();
         backAction();
     }
 
-    private void loadListOrderHistories() {
-        Call<OrderResponse> orderResponseCall = ApiClient.getOrderService().getOrdersHistory("bearer " + token);
+    private void setupSegmentedButton() {
+        segmentedButtonGroup = findViewById(R.id.segmentedButtonGroup);
+        segmentedButtonGroup.setOnPositionChangedListener(new SegmentedButtonGroup.OnPositionChangedListener() {
+            @Override
+            public void onPositionChanged(int position) {
+                loadListOrderHistories(position);
+            }
+        });
+
+        segmentedButtonGroup.setPosition(0, true);
+    }
+
+    private void loadListOrderHistories(int status) {
+        loadingConstraintLayout.setVisibility(View.VISIBLE);
+        Call<OrderResponse> orderResponseCall = ApiClient.getOrderService().getOrdersHistoryByStatus("bearer " + token, status);
         orderResponseCall.enqueue(new Callback<OrderResponse>() {
             @Override
             public void onResponse(Call<OrderResponse> call, Response<OrderResponse> response) {

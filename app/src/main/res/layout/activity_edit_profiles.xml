@@ -46,6 +46,32 @@
         app:pressedTranslationZ="0dp"
         tools:ignore="DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
 
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/UserInformationLabel"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coverImg" />
+
+    <TextView
+        android:id="@+id/labelFirstName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="17dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/LabelFirstName"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewProfile"
         android:layout_width="0dp"
@@ -86,25 +112,12 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="158dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/UserInformationLabel"
-        android:textColor="#000000"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coverImg" />
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView9"
         android:layout_width="355dp"
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         app:cardBackgroundColor="@color/mainBackGroundColor"
         app:cardCornerRadius="15dp"
@@ -112,11 +125,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14">
+        app:layout_constraintTop_toBottomOf="@+id/labelFirstName">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="20dp"
+                android:background="#C6C5C5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/txtLastName"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <EditText
                 android:id="@+id/txtLastName"
@@ -131,6 +155,7 @@
                 android:text="@string/lastNameLabel"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/txtFirstName"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints" />
@@ -151,7 +176,8 @@
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -162,14 +188,15 @@
         android:layout_width="355dp"
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         app:cardBackgroundColor="@color/mainBackGroundColor"
         app:cardCornerRadius="15dp"
         app:cardElevation="15dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView9">
+        app:layout_constraintTop_toBottomOf="@+id/labelEmailAddresss">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -201,14 +228,15 @@
         android:layout_width="355dp"
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         app:cardBackgroundColor="@color/mainBackGroundColor"
         app:cardCornerRadius="15dp"
         app:cardElevation="15dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewEmail">
+        app:layout_constraintTop_toBottomOf="@+id/labelGenderSelected">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -216,7 +244,7 @@
 
             <Spinner
                 android:id="@+id/spinnerGender"
-                android:layout_width="177dp"
+                android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="15dp"
                 android:fontFamily="@font/poppins_semibold"
@@ -236,7 +264,6 @@
                 android:id="@+id/textPhoneEditProfile"
                 android:layout_width="177dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="15dp"
                 android:background="@null"
                 android:ems="10"
                 android:fontFamily="@font/poppins_semibold"
@@ -247,8 +274,8 @@
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/spinnerGender"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -268,5 +295,57 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/labelLastNameEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="17dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/LabelLastNameEdit"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/labelFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <TextView
+        android:id="@+id/labelEmailAddresss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/labelEmailAddress"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView9" />
+
+    <TextView
+        android:id="@+id/labelGenderSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/labelGenderSelected"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewEmail" />
+
+    <TextView
+        android:id="@+id/labelPhoneEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/labelPhoneEdit"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/labelGenderSelected"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewEmail" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

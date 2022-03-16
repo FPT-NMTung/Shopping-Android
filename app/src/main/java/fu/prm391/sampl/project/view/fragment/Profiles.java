@@ -4,6 +4,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -24,6 +27,7 @@ import fu.prm391.sampl.project.model.user.UserResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
 import fu.prm391.sampl.project.view.account.Login;
 import fu.prm391.sampl.project.view.address.ProfileShippingAddress;
+import fu.prm391.sampl.project.view.contact_us.ContactUs;
 import fu.prm391.sampl.project.view.favorite_product.MyFavoriteProduct;
 import fu.prm391.sampl.project.view.order.MyOrderHistory;
 import fu.prm391.sampl.project.view.profiles.ActiveAccount;
@@ -55,6 +59,8 @@ public class Profiles extends Fragment {
     private ImageView verifyImage, imageProfiles;
     private String token = "";
     private User user;
+    private View viewContactUs;
+    private CardView loadingCard;
 
     public Profiles() {
         // Required empty public constructor
@@ -96,7 +102,13 @@ public class Profiles extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profiles, container, false);
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_profiles, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         token = PreferencesHelpers.loadStringData(getContext(), "token");
 
         checkLoginUser();
@@ -111,20 +123,13 @@ public class Profiles extends Fragment {
         viewShippingAddress = view.findViewById(R.id.viewShippingAddressProfiles);
         viewLogOut = view.findViewById(R.id.viewLogoutProfile);
 
-        // set invisible when api have not called
-        profilesName.setVisibility(View.INVISIBLE);
-        emailProfiles.setVisibility(View.INVISIBLE);
-        labelVerified.setVisibility(View.INVISIBLE);
-        verifyImage.setVisibility(View.INVISIBLE);
-        btnVerifyProfiles.setVisibility(View.INVISIBLE);
-        btnEditProfiles.setVisibility(View.INVISIBLE);
+        loadingCard = view.findViewById(R.id.loadingCardProfile);
+        loadingCard.setVisibility(View.VISIBLE);
 
 //        callAPIProfiles();
         editProfileAction();
         moveToOtherActivities(view);
         logoutAction(view);
-
-        return view;
     }
 
     private void checkLoginUser() {
@@ -165,19 +170,14 @@ public class Profiles extends Fragment {
     }
 
     private void callAPIProfiles() {
+        loadingCard.setVisibility(View.VISIBLE);
         Call<UserResponse> userResponseCall = ApiClient.getUserService().getUserInformation("Bearer " + token);
         userResponseCall.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 if (response.isSuccessful()) {
                     // set visible when api call successful
-                    profilesName.setVisibility(View.VISIBLE);
-                    emailProfiles.setVisibility(View.VISIBLE);
-                    labelVerified.setVisibility(View.VISIBLE);
-                    verifyImage.setVisibility(View.VISIBLE);
-                    btnVerifyProfiles.setVisibility(View.VISIBLE);
-                    btnEditProfiles.setVisibility(View.VISIBLE);
-
+                    loadingCard.setVisibility(View.GONE);
                     user = response.body().getData();
                     loadUserInfoToScreen();
                 }
@@ -245,6 +245,14 @@ public class Profiles extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getContext(), MyFavoriteProduct.class));
+            }
+        });
+
+        viewContactUs = view.findViewById(R.id.viewContactUsProfiles);
+        viewContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), ContactUs.class));
             }
         });
 

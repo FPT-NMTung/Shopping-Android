@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -114,8 +115,12 @@ public class Cart extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_cart, container, false);
+        return inflater.inflate(R.layout.fragment_cart, container, false);
+    }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         this.token = PreferencesHelpers.loadStringData(getContext(), "token");
 
         this.recyclerViewMainCart = view.findViewById(R.id.recyclerViewMainCart);
@@ -136,8 +141,6 @@ public class Cart extends Fragment {
             loadAllListOrder();
             setEventBtnCheckout();
         }
-
-        return view;
     }
 
     @Override

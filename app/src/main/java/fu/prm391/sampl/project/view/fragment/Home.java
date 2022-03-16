@@ -3,6 +3,8 @@ package fu.prm391.sampl.project.view.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -87,12 +89,16 @@ public class Home extends Fragment {
         }
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_home, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         loadingLayout = view.findViewById(R.id.loadingConstraintLayoutHome);
         loadingLayout.setVisibility(View.VISIBLE);
 
@@ -100,7 +106,6 @@ public class Home extends Fragment {
         getTrendingProducts(view);
         moveToOtherActivities(view);
         moveToOtherNavigationTab(view);
-        return view;
     }
 
     private void getTop4Category(View view) {

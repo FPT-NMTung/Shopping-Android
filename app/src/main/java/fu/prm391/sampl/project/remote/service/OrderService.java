@@ -19,11 +19,9 @@ import retrofit2.http.HTTP;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PATCH;
+import retrofit2.http.Query;
 
 public interface OrderService {
-
-    @GET("order/histories")
-    Call<OrderResponse> getOrdersHistory(@Header("Authorization") String token);
 
     @POST("order/add")
     Call<AddToCartResponse> addProductToCart(@Header("Authorization") String token, @Body AddToCartRequest addToCartRequest);
@@ -42,4 +40,8 @@ public interface OrderService {
 
     @POST("order/check-out")
     Call<CheckOutOrderResponse> checkout(@Header("Authorization") String token, @Body CheckOutOrderRequest request);
+
+    @GET("order/histories")
+    Call<OrderResponse> getOrdersHistoryByStatus(@Header("Authorization") String token,
+                                                 @Query("status") int status);
 }

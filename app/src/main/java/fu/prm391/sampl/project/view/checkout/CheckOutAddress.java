@@ -12,14 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.shuhart.stepview.StepView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import fu.prm391.sampl.project.CheckOutSuccessActivity;
 import fu.prm391.sampl.project.R;
 import fu.prm391.sampl.project.adapter.checkout.CheckoutAddressAdapter;
 import fu.prm391.sampl.project.helper.PreferencesHelpers;
@@ -145,7 +143,7 @@ public class CheckOutAddress extends AppCompatActivity {
                     public void onResponse(Call<CheckOutOrderResponse> call, Response<CheckOutOrderResponse> response) {
                         if (response.isSuccessful()) {
                             btnPlaceOrder.setEnabled(true);
-                            Intent intent = new Intent(CheckOutAddress.this, CheckOutSuccessActivity.class);
+                            Intent intent = new Intent(CheckOutAddress.this, CheckOutSuccess.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                         }

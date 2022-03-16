@@ -4,6 +4,7 @@
     android:layout_height="40dp"
     android:fontFamily="@font/poppins_semibold"
     android:paddingStart="10dp"
+    android:paddingEnd="0dp"
     android:text="@string/genderLabel"
     android:textColor="@color/black"
     android:textSize="15sp">

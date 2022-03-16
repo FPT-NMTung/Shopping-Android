@@ -49,9 +49,14 @@ public class MyFavoriteProduct extends AppCompatActivity {
 
         recyclerViewMyFavorites = findViewById(R.id.recyclerViewMyFavorites);
 
+        backAction();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         clearListInsideRecycleView();
         loadListFavoriteProducts();
-        backAction();
     }
 
     private void loadListFavoriteProducts() {
@@ -70,7 +75,7 @@ public class MyFavoriteProduct extends AppCompatActivity {
                     itemTouchHelper.attachToRecyclerView(recyclerViewMyFavorites);
 
                     loadingLayout.setVisibility(View.GONE);
-                    if(products.size() == 0) {
+                    if (products.size() == 0) {
                         noFavoriteConstraintLayout.setVisibility(View.VISIBLE);
                     } else {
                         noFavoriteConstraintLayout.setVisibility(View.GONE);
@@ -86,6 +91,8 @@ public class MyFavoriteProduct extends AppCompatActivity {
 
     private void clearListInsideRecycleView() {
         recyclerViewMyFavorites.setAdapter(new ProductLinearVerticalItemAdapter(MyFavoriteProduct.this, new ArrayList<>()));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(MyFavoriteProduct.this, LinearLayoutManager.VERTICAL, false);
+        recyclerViewMyFavorites.setLayoutManager(layoutManager);
     }
 
     ItemTouchHelper.SimpleCallback favoriteProductItemTouchHelper = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
@@ -107,7 +114,7 @@ public class MyFavoriteProduct extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         String message = response.body().getMessage();
                         Toast.makeText(MyFavoriteProduct.this, message, Toast.LENGTH_SHORT).show();
-                        if(products.size() == 0) {
+                        if (products.size() == 0) {
                             noFavoriteConstraintLayout.setVisibility(View.VISIBLE);
                         } else {
                             noFavoriteConstraintLayout.setVisibility(View.GONE);

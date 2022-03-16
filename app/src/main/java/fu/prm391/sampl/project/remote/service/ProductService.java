@@ -37,7 +37,7 @@ public interface ProductService {
                                              @Query("limit") int limit);
 
     @GET("product/get")
-    Call<ProductResponse> getProductByID(@Query("id") int id);
+    Call<ProductResponse> getProductById(@Query("id") int id);
 
     @GET("favorites")
     Call<ProductListResponse> getFavoriteProducts(@Header("Authorization") String token);
@@ -49,4 +49,12 @@ public interface ProductService {
     @HTTP(method = "DELETE", path = "favorite/delete", hasBody = true)
     Call<DeleteFavoriteResponse> deleteFavoriteProduct(@Header("Authorization") String token,
                                                        @Body DeleteFavoriteRequest deleteFavoriteRequest);
+
+    @GET("product/get-by-category-similar")
+    Call<ProductListResponse> getSimilarProductByCategoryId(@Query("categoryId") int categoryId,
+                                                            @Query("productId") int productId);
+
+    @GET("product/get-by-token")
+    Call<ProductResponse> getProductByIdWithToken(@Header("Authorization") String token,
+                                                  @Query("id") int id);
 }
