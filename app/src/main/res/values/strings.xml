@@ -44,7 +44,7 @@
     <string name="pleaseEnterEmailAddressLabel">Please Enter your Email Address. Your will Receive a Code to Create a new Password via email.</string>
     <string name="txtNewPassStarLabel">New Password*</string>
 
-    <string name="LabelProfiles">Profiles</string>
+    <string name="LabelProfiles">Profile</string>
     <string name="LabelMyOrdersHistory">My Orders History</string>
     <string name="DesImage">TODO</string>
     <string name="LabelMyFavorites">My Favorites</string>
@@ -60,7 +60,7 @@
     <string name="discoverLabel">Discover</string>
     <string name="homeLabel">Home</string>
     <string name="cartLabel">Cart</string>
-    <string name="accountLabel">Account</string>
+    <string name="accountLabel">Profile</string>
     <!--    <string name="searchLabel">Search</string>-->
     <string name="contentDesImageCart">imageCartHome</string>
     <string name="categoriesLabel">Categories</string>
@@ -140,7 +140,7 @@
     <string name="add_to_cart_button_label">Add to Cart</string>
     <string name="similar_products">Similar Products</string>
     <string name="oneLabel">1</string>
-    <string name="editProfilesLabel">Edit Profiles</string>
+    <string name="editProfilesLabel">Edit Profile</string>
     <string name="UserInformationLabel">User Information</string>
     <string name="firstNameLabel">First Name</string>
     <string name="lastNameLabel">Last Name</string>

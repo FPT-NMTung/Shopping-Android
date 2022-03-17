@@ -28,6 +28,7 @@ import fu.prm391.sampl.project.model.address.get_all_address.GetAllAddressRespon
 import fu.prm391.sampl.project.model.order.check_out.CheckOutOrderRequest;
 import fu.prm391.sampl.project.model.order.check_out.CheckOutOrderResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
+import fu.prm391.sampl.project.view.address.CreateNewAddress;
 import fu.prm391.sampl.project.view.address.ProfileShippingAddress;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -127,7 +128,7 @@ public class CheckOutAddress extends AppCompatActivity {
         caBtnNewAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CheckOutAddress.this, ProfileShippingAddress.class);
+                Intent intent = new Intent(CheckOutAddress.this, CreateNewAddress.class);
                 startActivity(intent);
             }
         });
