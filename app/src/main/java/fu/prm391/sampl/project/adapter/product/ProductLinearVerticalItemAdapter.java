@@ -50,7 +50,7 @@ public class ProductLinearVerticalItemAdapter extends RecyclerView.Adapter<Produ
             holder.productPrice.setText(StringHelpers.currencyFormatterWithPercent(product.getPrice(), product.getDiscount()));
             holder.productOldPrice.setPaintFlags(holder.productOldPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         } else {
-            holder.productOldPrice.setVisibility(View.GONE);
+            holder.productOldPrice.setVisibility(View.INVISIBLE);
             holder.productPrice.setText(StringHelpers.currencyFormatter(product.getPrice()));
         }
 
