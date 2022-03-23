@@ -7,6 +7,52 @@
     android:background="@color/mainBackGroundColor"
     tools:context=".view.fragment.Profiles">
 
+    <View
+        android:id="@+id/viewChangePassword"
+        android:layout_width="0dp"
+        android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="30dp"
+        android:background="#00000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewShippingAddressProfiles"
+        tools:ignore="MissingConstraints" />
+
+    <View
+
+        android:id="@+id/line11"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="#C6C5C5"
+        android:backgroundTint="#C6C5C5"
+        app:layout_constraintBottom_toBottomOf="@+id/viewChangePassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/arrowLogout2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="30dp"
+
+        android:contentDescription="@string/DesImage"
+        android:src="@drawable/arrowright"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewChangePassword" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
@@ -239,11 +285,10 @@
         android:id="@+id/ArrowOrders"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="30dp"
 
         android:contentDescription="@string/DesImage"
         android:src="@drawable/arrowright"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/viewMyOrdersHistoryProfiles"
         app:layout_constraintTop_toTopOf="@+id/viewMyOrdersHistoryProfiles" />
     <!-- Line -->
 
@@ -317,11 +362,10 @@
         android:id="@+id/arrowMyFavourite"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="30dp"
 
         android:contentDescription="@string/DesImage"
         android:src="@drawable/arrowright"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/viewMyFavoritiesProfiles"
         app:layout_constraintTop_toTopOf="@+id/viewMyFavoritiesProfiles" />
 
     <View
@@ -376,22 +420,20 @@
         android:id="@+id/arrowShippingAddress"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="30dp"
 
         android:contentDescription="@string/DesImage"
         android:src="@drawable/arrowright"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/viewShippingAddressProfiles"
         app:layout_constraintTop_toTopOf="@+id/viewShippingAddressProfiles" />
 
     <ImageView
         android:id="@+id/arrowSGiftCards"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="30dp"
 
         android:contentDescription="@string/DesImage"
         android:src="@drawable/arrowright"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/viewContactUsProfiles"
         app:layout_constraintTop_toTopOf="@+id/viewContactUsProfiles" />
 
     <View
@@ -406,7 +448,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewShippingAddressProfiles"
+        app:layout_constraintTop_toBottomOf="@+id/viewChangePassword"
         tools:ignore="MissingConstraints" />
 
     <View
@@ -474,11 +516,10 @@
         android:id="@+id/arrowLogout"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="30dp"
 
         android:contentDescription="@string/DesImage"
         android:src="@drawable/arrowright"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/viewLogoutProfile"
         app:layout_constraintTop_toTopOf="@+id/viewLogoutProfile" />
 
     <View
@@ -499,6 +540,20 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="top"
+        android:lineSpacingExtra="0sp"
+        android:text="@string/change_password"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewChangePassword" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

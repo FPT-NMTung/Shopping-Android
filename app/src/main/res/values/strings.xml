@@ -184,5 +184,11 @@
     <string name="labelEmailAddress">Email Address* (Default)</string>
     <string name="labelGenderSelected">Choose Gender*</string>
     <string name="labelPhoneEdit">Phone Number*</string>
+    <string name="change_password">Change Password</string>
+    <string name="change_your_password">Change Your Password</string>
+    <string name="enter_your_old_password_and_set_your_new_password_here">Enter Your Old Password And Set Your New Password Here!</string>
+    <string name="re_password_Star">Re-Password*</string>
+    <string name="new_password_star">New Password*</string>
+    <string name="re_new_password_star">Old Password*</string>
 
 </resources>
