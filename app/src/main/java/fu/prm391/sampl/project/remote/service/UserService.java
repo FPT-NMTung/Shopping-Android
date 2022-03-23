@@ -4,6 +4,8 @@ import fu.prm391.sampl.project.model.user.UpdateUserInfoRequest;
 import fu.prm391.sampl.project.model.user.UpdateUserInfoResponse;
 import fu.prm391.sampl.project.model.user.active_account.ActiveAccountRequest;
 import fu.prm391.sampl.project.model.user.active_account.ActiveAccountResponse;
+import fu.prm391.sampl.project.model.user.change_password.ChangePasswordRequest;
+import fu.prm391.sampl.project.model.user.change_password.ChangePasswordResponse;
 import fu.prm391.sampl.project.model.user.forgot_password.ForgotPassRequest;
 import fu.prm391.sampl.project.model.user.forgot_password.ForgotPassResponse;
 import fu.prm391.sampl.project.model.user.login.LoginRequest;
@@ -50,4 +52,8 @@ public interface UserService {
     @PATCH("user/active")
     Call<ActiveAccountResponse> activeAccount(@Header("Authorization") String token,
                                               @Body ActiveAccountRequest activeAccountRequest);
+
+    @PATCH("user/change-password")
+    Call<ChangePasswordResponse> changePassword(@Header("Authorization") String token,
+                                               @Body ChangePasswordRequest changePasswordRequest);
 }

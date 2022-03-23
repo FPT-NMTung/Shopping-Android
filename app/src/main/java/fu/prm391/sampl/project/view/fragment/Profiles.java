@@ -25,6 +25,7 @@ import fu.prm391.sampl.project.helper.PreferencesHelpers;
 import fu.prm391.sampl.project.model.user.User;
 import fu.prm391.sampl.project.model.user.UserResponse;
 import fu.prm391.sampl.project.remote.ApiClient;
+import fu.prm391.sampl.project.view.account.ChangePassword;
 import fu.prm391.sampl.project.view.account.Login;
 import fu.prm391.sampl.project.view.address.ProfileShippingAddress;
 import fu.prm391.sampl.project.view.contact_us.ContactUs;
@@ -61,6 +62,7 @@ public class Profiles extends Fragment {
     private User user;
     private View viewContactUs;
     private CardView loadingCard;
+    private View viewChangePassword;
 
     public Profiles() {
         // Required empty public constructor
@@ -262,6 +264,14 @@ public class Profiles extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), ActiveAccount.class);
                 startActivity(intent);
+            }
+        });
+
+        viewChangePassword = view.findViewById(R.id.viewChangePassword);
+        viewChangePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), ChangePassword.class));
             }
         });
     }
