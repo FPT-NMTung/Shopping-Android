@@ -146,7 +146,9 @@ public class Cart extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        call.cancel();
+        if (call != null) {
+            call.cancel();
+        }
     }
 
     private void setEventBtnCheckout() {
