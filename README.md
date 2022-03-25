@@ -20,7 +20,7 @@
 
 |Rol|Name|Email|Task|
 |:---:|---|---|---|
-|1|Nguyen Manh Tung|admin@nmtung.xyz|Leader, Back-end dev, Android dev|
+|1|Nguyen Manh Tung|admin@nmtung.dev|Leader, Back-end dev, Android dev|
 |2|Nguyen Thuy Duong|DuongNTHE140073@fpt.edu.vn|Back-end dev, Tester|
 |3|Hoang Trung Nguyen|NguyenHTHE141002@fpt.edu.vn|Android dev|
 |4|Le Nhu Bac|BacLNHE141006@fpt.edu.vn|Android dev|
